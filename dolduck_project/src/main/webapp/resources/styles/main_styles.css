@@ -1474,3 +1474,34 @@ section
 	color: #6d6d6d;
 	line-height: 67px;
 }
+
+/*  고객센터 1:1채팅  */
+.div-button-chat, .icon-chat-circle{ width: 60px; height: 60px;}
+.icon-chat-ball{z-index: 10; }
+.icon-chat-circle{ 
+	z-index:9;
+	background: #FFA550; 
+	border-radius: 5em;
+	position: fixed;
+    top: 85%;
+    right: 3%;
+}
+.div-modal-chat{ 
+	display : none;
+	border: 1px solid #ccc;
+	width: 360px; height: 600px;
+	border-radius: 1em;
+	overflow : hidden;
+	position : fixed;
+	top : 15%; 
+	right: 2%;
+	z-index:10;
+	background: #fff;
+	color: #fff;
+}
+iframe{ display :block; 
+		width: 360px; height:85%; 
+		overflow:hidden;
+		border: 0;
+		z-index:99;
+}

@@ -13,6 +13,8 @@
 <link rel="stylesheet" type="text/css" href="resources/plugins/OwlCarousel2-2.2.1/animate.css">
 <link rel="stylesheet" type="text/css" href="resources/styles/main_styles.css">
 <link rel="stylesheet" type="text/css" href="resources/styles/responsive.css">
+<script type="text/javascript" src="https://code.jquery.com/jquery-3.4.1.min.js"></script>
+<script type="text/javascript" src="resources/js/home.js"></script>
 </head>
 <body>
 
@@ -412,6 +414,21 @@
 				</div>
 			</div>		
 		</div>
+	</div>
+	
+	<!-- 1:1 Contect Chat Center (Fixed Navigator) -->
+	<div class="div-button-chat" onclick="gotoChat()">
+		<div class="icon-chat-ball"><i class="fas fa-comment-dots"></i></div>	
+		<div class="icon-chat-circle"></div>
+	</div>
+	
+	<div class="div-modal-chat">
+		<div class="modal-top">
+			<div id="modal-title">고객센터</div>
+			<span></span>
+		</div>
+		<a href="#" class="button-modal-close" onclick="closeChat()">X</a>
+		<iframe src="http://localhost:3000/"></iframe>
 	</div>
 
 	<!-- Footer -->
