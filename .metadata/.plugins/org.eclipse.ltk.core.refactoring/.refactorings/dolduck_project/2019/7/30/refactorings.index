@@ -1,0 +1,13 @@
+1564105982130	Rename package 'com.my.test'
+1564106047530	Rename package 'com.my.test.common.aop'
+1564106057353	Rename package 'com.my.test.common.filter'
+1564106066587	Rename package 'com.my.test.dto'
+1564106085971	Rename package 'com.my.test.model.biz'
+1564106096485	Rename package 'com.my.test.model.dao'
+1564117449545	Rename package 'com.my.kpop'
+1564117461573	Rename package 'com.my.kpop.common.filter'
+1564117470408	Rename package 'com.my.kpop.common.aop'
+1564117487302	Rename package 'com.my.kpop.model.dao'
+1564117501622	Rename package 'com.my.kpop.dto'
+1564117520940	Rename package 'com.my.kpop.model.biz'
+1564195538902	Delete element
