@@ -3,23 +3,18 @@ var http = require('http').createServer(app);
 var io = require('socket.io').listen(http);
 
 app.get('/', (req, res) => {
-    res.sendFile(__dirname + '/index.html');
-});
-
-app.get('/chat', (req, res) => {
     res.sendFile(__dirname + '/chatroom.html');
 });
 
 io.sockets.on('connection', (socket) => {
     var socketId = socket.id;
-    var clientIp = socket.request.connection.remoteAddress; 
-    var addr = socket.handshake.address;         //접속한 클라이트의 ip 추적
-    console.log('addr : ' + addr + '/ clientIp : ' + clientIp);
-    console.log('New Connection from ' + addr.address+ ": " + clientIp.port);
+    var clientIp = socket.request.connection.remoteAddress;    //접속한 클라이트의 ip 추적  
+    console.log('New Connection from '+ clientIp);
     
     socket.on('chat message', (msg) => {
-        console.log('['+clientIp+']message  :' + msg);
+        //소켓을 통해 이벤트 전송
         io.emit('data', {"chatMessage" : msg, "clientIp" : clientIp });
+        console.log('['+clientIp+'] sent >>' + msg);
     });
 });
 
