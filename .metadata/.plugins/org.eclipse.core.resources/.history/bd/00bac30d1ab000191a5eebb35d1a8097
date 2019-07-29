@@ -1,0 +1,9 @@
+
+
+function gotoChat(){
+	$('.div-modal-chat').toggle();
+}
+	
+$('.button-modal-close').click(function(){
+	
+});

@@ -20,9 +20,6 @@ import org.springframework.web.bind.annotation.ResponseBody;
 import com.my.test.dto.MemberDto;
 import com.my.test.model.biz.MemberBiz;
 
-/**
- * Handles requests for the application home page.
- */
 @Controller
 public class HomeController {
 	
@@ -30,10 +27,7 @@ public class HomeController {
 	private MemberBiz biz;
 	
 	private static final Logger logger = LoggerFactory.getLogger(HomeController.class);
-	
-	/**
-	 * Simply selects the home view to render by returning its name.
-	 */
+
 	@RequestMapping(value = "/home.do", method = RequestMethod.GET)
 	public String home(Locale locale, Model model) {
 		logger.info("Welcome home! The client locale is {}.", locale);
@@ -48,6 +42,7 @@ public class HomeController {
 		return "home";
 	}
 	
+	/************************** 로그인 ***************************/
 	@RequestMapping("loginform.do")
 	public String loginform() {
 		return "login";
@@ -74,5 +69,11 @@ public class HomeController {
 		map.put("loginChk", loginChk);
 		
 		return map;
+	}
+	
+	/************************** 채팅방 ***************************/
+	@RequestMapping("chat.do")
+	public String chat() {
+		return "chatroom";
 	}
 }
