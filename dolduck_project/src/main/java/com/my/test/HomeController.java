@@ -71,9 +71,13 @@ public class HomeController {
 		return map;
 	}
 	
-	/************************** 채팅방 ***************************/
-	@RequestMapping("chat.do")
-	public String chat() {
-		return "chatroom";
+	public String showMusicChart() {
+		
+		
+		
+		
+		return "music_chart";
 	}
+	
+	
 }

@@ -36,7 +36,7 @@
 					<li class="active"><a href="index.html">HOME</a></li>
 					<li><a href="#">You Tube</a></li>
 					<li><a href="#">Vote</a></li>
-					<li><a href="#">Music Chart</a></li>
+					<li><a href="chart.do">Music Chart</a></li>
 					<li><a href="#">LIVE</a></li>
 					<li><a href="#">Board</a></li>
 					<li class="dropdown"><a href="#" class="dropdown-toggle" data-toggle="dropdown">Market</a>

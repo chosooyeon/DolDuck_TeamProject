@@ -1,12 +1,14 @@
 var app = require('express')();
 var http = require('http').createServer(app);
+var https = require('https');
 var io = require('socket.io').listen(http);
+var fs = require('fs');
+
+options = {
+   file : fs.readFileSync('')
+}
 
 app.get('/', (req, res) => {
-    res.sendFile(__dirname + '/index.html');
-});
-
-app.get('/chat', (req, res) => {
     res.sendFile(__dirname + '/chatroom.html');
 });
 
