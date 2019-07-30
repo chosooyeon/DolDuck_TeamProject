@@ -7,6 +7,6 @@
 </head>
 <body>
 <jsp:forward page="/home.do"></jsp:forward>
-1111111111111111
+
 </body>
 </html>
