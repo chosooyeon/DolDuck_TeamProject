@@ -53,7 +53,7 @@ public class HomeController {
 	/************************** 로그인 ***************************/
 	@RequestMapping("loginform.do")
 	public String loginform() {
-		return "login";
+		return "/member/login";
 	}
 	
 	@RequestMapping("login.do")
@@ -81,7 +81,7 @@ public class HomeController {
 	
 	@RequestMapping("chart.do")
 	public String showMusicChart() {
-		return "music_chart";
+		return "board/music_chart";
 	}
 	
 	

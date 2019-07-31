@@ -17,6 +17,8 @@
 </head>
 <body>
 
+	 <%@include file="../header.jsp" %>
+
 	<h1> Melon Realtime Music Chart</h1>
 	<hr><br><br><br><br><br>
 	

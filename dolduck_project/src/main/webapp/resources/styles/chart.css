@@ -3,3 +3,7 @@
 .div-chart{
 	width: 60%;
 }
+.table th, .table td{
+	color: black;
+	
+}
