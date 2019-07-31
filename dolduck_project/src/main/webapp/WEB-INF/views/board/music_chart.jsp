@@ -3,7 +3,7 @@
 <html>
 <head>
 <meta charset="UTF-8">
-<title>Music Chart</title>
+<title>All About K-POP! DD - 실시간 음원차트 순위</title>
 <!-- Bootstdap 4 -->
 <link rel="stylesheet" type="text/css" href="resources/styles/bootstrap-4.1.2/bootstrap.min.css">
 <link rel="stylesheet" type="text/css" href="resources/styles/chart.css">
@@ -16,7 +16,8 @@
 <script src="resources/styles/bootstrap-4.1.2/bootstrap.min.js"></script>
 </head>
 <body>
-
+	
+	<!-- Header -->
 	 <%@include file="../header.jsp" %>
 
 	<h1> Melon Realtime Music Chart</h1>

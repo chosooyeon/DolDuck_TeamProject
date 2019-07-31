@@ -1050,6 +1050,8 @@ svg{
 	position: fixed;
     top: 85%;
     right: 3%;
+    line-height: 4em;
+    text-align: center;
 }
 .div-modal-chat{ 
 	display : none;
@@ -1064,10 +1066,47 @@ svg{
 	background: #000;
 	color: #fff;
 }
-iframe{
+.iframe-chat{
 	display :block; 
-	width: 360px; height:85%; 
+	width: 320px; height:85%; 
 	overflow:hidden;
 	border: 0;
 	z-index:99;
+}
+
+/* Youtube 게시판 */
+#getVideo{
+	width: 80%;
+	position: absolute;
+	top: 30%; left: 10%;
+}
+.div-channel{
+	position: absolute;
+	top: 15%; left: 10%;
+	width: 80%;
+	border: 1px solid green;
+	color: black;
+}
+.div-iframe-player{
+	border: 1px dashed #ccc;
+    width : 350px;
+    height : 350px;
+ 	display: inline-block;
+ 	margin: 12px;
+}
+.button-channel{
+	width: 80px; height: 80px;
+	background: #FFA550;
+	border-radius: 3em;
+	color: white;
+}
+.a-player-title{
+    color: black;
+   	font-size: 15px;
+   	font-weight : bold;
+   	text-decoration: none;
+}
+.a-player-title:hover{
+    color : hotpink;
+    text-decoration: underline;
 }

@@ -2,7 +2,7 @@
 <!DOCTYPE html>
 <html lang="ko">
 <head>
-<title>DOL-Duck</title>
+<title>All About K-POP! -  DolDuck</title>
 <meta charset="utf-8">
 <meta http-equiv="X-UA-Compatible" content="IE=edge">
 <meta name="description" content="Mixtape template project">
@@ -18,84 +18,19 @@
 </head>
 <body>
 
+<!-- Header  -->
+<%@include file="header.jsp" %>
+
+
 <section class="super_container">
-   
-   <%@include file="header.jsp" %>
-   <!-- Header -->
-   <!-- <header class="header">
-      <section class="header_content d-flex flex-row align-items-center justify-content-center">
-         <div class="logo"><a href="#">DOL-Duck</a></div>
-         <div class="log_reg">
-            <ul class="d-flex flex-row align-items-start justify-content-start">
-               <li><a href="#">Login</a></li>
-               <li><a href="#">Register</a></li>
-            </ul>
-         </div>
-         
-         <nav class="main_nav">
-            <ul class="d-flex flex-row align-items-start justify-content-start">
-               <li class="active"><a href="index.html">HOME</a></li>
-               <li><a href="#">You Tube</a></li>
-               <li><a href="#">Vote</a></li>
-               <li><a href="chart.do">Music Chart</a></li>
-               <li><a href="#">LIVE</a></li>
-               <li><a href="#">Board</a></li>
-               <li class="dropdown"><a href="#" class="dropdown-toggle" data-toggle="dropdown">Market</a>
-                  <ul class="dropdown-menu" role="menu">
-                     <li class="dropdown-item:hover" ><a href="#">Hartship</a></li>
-                     <li class="dropdown-item:hover" ><a href="#">goodship</a></li>
-                  </ul>
-               </li>
-               <li class="form-group has-search">
-                  <span class="fa fa-search form-control-feedback"></span> 
-                  <input type="text" class="form-control" placeholder="Search">
-               </li>
-            </ul>
-         </nav>
-         <div class="hamburger ml-auto">
-            <div class="d-flex flex-column align-items-end justify-content-between">
-               <div></div>
-               <div></div>
-               <div></div>
-            </div>
-         </div>
-      </section>
-   </header>
-
-
-   <section class="menu">
-      <div>
-         <div class="menu_overlay"></div>
-         <div class="menu_container d-flex flex-column align-items-start justify-content-center">
-            <div class="menu_log_reg">
-               <ul class="d-flex flex-row align-items-start justify-content-start">
-                  <li><a href="#">Login</a></li>
-                  <li><a href="#">Register</a></li>
-               </ul>
-            </div>
-            <nav class="menu_nav">
-               <ul class="d-flex flex-column align-items-start justify-content-start">
-                  <li><a href="#">HOME</a></li>
-                  <li><a href="#">You Tube</a></li>
-                  <li><a href="#">Vote</a></li>
-                  <li><a href="#">Music Chart</a></li>
-                  <li><a href="#">LIVE</a></li>
-                  <li><a href="#">Board</a></li>
-               </ul>
-            </nav>
-         </div>
-      </div>
-   </section> --> 
 
    <!-- Home -->
-   
-
    <section class="home">
       <div class="home_video">
       <!-- video -->
             <div class="embed-responsive embed-responsive-16by9">
             <!-- resources/videos/index.mp4 -->
-               <iframe class="embed-responsive-item" src=""></iframe>
+               <iframe class="embed-responsive-item" src="resources/videos/index.mp4"></iframe>
             </div>
       </div>  
    </section>
@@ -205,8 +140,8 @@
    
    <!-- 1:1 Contect Chat Center (Fixed Navigator) -->
    <div class="div-button-chat" onclick="gotoChat()">
-      <div class="icon-chat-ball"><i class="fas fa-comment-dots"></i></div>   
-      <div class="icon-chat-circle"></div>
+      <div class="icon-chat-ball"></div>   
+      <div class="icon-chat-circle"><i class="fas fa-comment-alt-dots" style="color: white; z-index: 20;"></i></div>
    </div>
    
    <div class="div-modal-chat">
@@ -215,67 +150,11 @@
          <span></span>
       </div>
       <a href="#" class="button-modal-close" onclick="closeChat()">X</a>
-      <iframe src="http://localhost:3000/"></iframe>
+      <iframe class="iframe-chat" src="http://192.168.10.169:3000/"></iframe>
    </div>
 
-   <!-- Footer -->
-
-   <footer class="footer">
-      <div class="footer_container d-flex flex-xl-row flex-column align-items-start justify-content-start">
-         <div class="newsletter_container">
-            <div class="newsletter_title"><h2>Subscribe to our newsletter</h2></div>
-            <form action="#" id="newsletter_form" class="newsletter_form">
-               <input type="email" class="newsletter_input" placeholder="Your E-mail" required="required">
-               <button class="newsletter_button">Subscribe</button>
-            </form>
-         </div>
-         <div class="footer_lists d-flex flex-sm-row  flex-column align-items-start justify-content-start ml-xl-auto">
-
-            <!-- Useful Links -->
-            <div class="footer_list">
-               <div class="footer_list_title">Useful Links</div>
-               <ul>
-                  <li><a href="index.html">Home</a></li>
-                  <li><a href="about.html">About us</a></li>
-                  <li><a href="#">Testimonials</a></li>
-                  <li><a href="#">Music</a></li>
-                  <li><a href="blog.html">News</a></li>
-               </ul>
-            </div>
-
-            <!-- Mixtape -->
-            <div class="footer_list">
-               <div class="footer_list_title">Mixtape</div>
-               <ul>
-                  <li><a href="#">Music</a></li>
-                  <li><a href="#">PR & Marketing</a></li>
-                  <li><a href="#">Contact</a></li>
-                  <li><a href="#">About us</a></li>
-                  <li><a href="#">Testimonials</a></li>
-               </ul>
-            </div>
-
-            <!-- Connect -->
-            <div class="footer_list">
-               <div class="footer_list_title">Connect</div>
-               <ul>
-                  <li><a href="#">Returns</a></li>
-                  <li><a href="#">Shippings</a></li>
-                  <li><a href="#">Jobs</a></li>
-                  <li><a href="#">Social Media</a></li>
-                  <li><a href="#">Soundcloud</a></li>
-               </ul>
-            </div>
-
-         </div>
-      </div>
-      <div class="copyright_bar">
-         <span><!-- Link back to Colorlib can't be removed. Template is licensed under CC BY 3.0. -->
-Copyright &copy;<script>document.write(new Date().getFullYear());</script> All rights reserved | This template is made with <i class="fa fa-heart-o" aria-hidden="true"></i> by <a href="https://colorlib.com" target="_blank">Colorlib</a>
-<!-- Link back to Colorlib can't be removed. Template is licensed under CC BY 3.0. -->
-</span>
-      </div>
-   </footer>
+<!-- Footer  -->
+<%@include file="footer.jsp" %>
 </section>
 <script type="text/javascript" src="https://code.jquery.com/jquery-3.4.1.min.js"></script>
 <script type="text/javascript" src="resources/js/home.js"></script>
