@@ -20,8 +20,9 @@
 
 <section class="super_container">
    
+   <%@include file="header.jsp" %>
    <!-- Header -->
-   <header class="header">
+   <!-- <header class="header">
       <section class="header_content d-flex flex-row align-items-center justify-content-center">
          <div class="logo"><a href="#">DOL-Duck</a></div>
          <div class="log_reg">
@@ -61,7 +62,6 @@
       </section>
    </header>
 
-   <!-- Menu -->
 
    <section class="menu">
       <div>
@@ -85,7 +85,7 @@
             </nav>
          </div>
       </div>
-   </section>
+   </section> --> 
 
    <!-- Home -->
    
