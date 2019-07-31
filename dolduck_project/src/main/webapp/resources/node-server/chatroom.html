@@ -33,7 +33,13 @@
             var socket = io();
             $('form').submit(function(e){
                 e.preventDefault();
-                socket.emit('chat message', $('#m').val());
+                var msg = $('#m').val().trim();
+                if(msg != "" && msg != null ){
+                    socket.emit('chat message', msg);
+                }else{
+
+                }
+
                 $('#m').val('');
                 return false;
             });
