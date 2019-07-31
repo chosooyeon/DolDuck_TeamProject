@@ -79,6 +79,7 @@ public class HomeController {
 		return map;
 	}
 	
+	/************************** Music Chart 게시판 ***************************/
 	@RequestMapping("chart.do")
 	public String showMusicChart() {
 		return "board/music_chart";
@@ -117,6 +118,10 @@ public class HomeController {
 		return chart;
 	}
 	
-	
+	/************************** Youtube 게시판 ***************************/
+	@RequestMapping("youtube.do")
+	public String showYoutubeBoard() {
+		return "board/youtube";
+	}
 	
 }
