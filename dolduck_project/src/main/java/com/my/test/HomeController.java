@@ -88,8 +88,6 @@ public class HomeController {
 	@RequestMapping("musicsearch.do")
 	@ResponseBody
 	public JSONObject getChart() {
-		System.out.println("++++++++++++++음원차트를 긁어보자++++++++++++++");
-		
 		//멜론차트 크롤링해서 List로 return 
 		List<Music> list = new ArrayList<Music>();
 		list = crawling.getMusicChart();
