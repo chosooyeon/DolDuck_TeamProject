@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html lang="ko">
+<html>
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -9,38 +9,42 @@
         * { margin: 0; padding: 0; box-sizing: border-box; }
         body { font: 13px Helvetica, Arial; }
         form { background: #000; padding: 3px; position: fixed; bottom: 0; width: 100%; }
-        form input { border: 0; padding: 10px; width: 75%; margin-right: .5%;  font-size: 12px;}
-        form button { width: 13%; background: #FFA550; border: none; padding: 10px; }
+        form input { border: 0; padding: 10px; width: 88%; margin-right: .5%; }
+        form button { width: 9%; background: rgb(130, 224, 255); border: none; padding: 10px; }
         #messages { list-style-type: none; margin: 0; padding: 0; }
         #messages li { padding: 5px 10px; }
         #messages li:nth-child(odd) { background: #eee; }
         .div-button-send{ border: 1px solid red;  overflow-y : hidden;}
+        .div-chat-box{ overflow-y: auto; }
     </style>
 </head>
 <body>
     <div class="div-chat-box">
     <ul id="messages"></ul>
     </div>
-    <div class="div-button-send">
     <form action="">
-        <input id="m" autocomplete="off"/><button>전 송</button>
+        <input id="m" autocomplete="off"/><button>Send</button>
     </form>
-    </div>
-    <script src="/socket.io/socket.io.js"></script>
+    <script src="http://localhost:3000/socket.io/socket.io.js"></script>
     <script src="https://code.jquery.com/jquery-1.11.1.js"></script>
     <script>
-        $(function(){
-            var socket = io();
+        $(document).ready(function(){
+            var socket = io("http://localhost:3000");
+
             $('form').submit(function(e){
                 e.preventDefault();
                 socket.emit('chat message', $('#m').val());
                 $('#m').val('');
                 return false;
             });
+            
             socket.on('data', function(data){
-                $('#messages').append($('<li>').text(data.chatMessage));
+            	console.log(data);
+            	$('#messages').append($('<li>').text('[' + data.clientIp + ']- ' + data.chatMessage));
             });
-        })
+        });
     </script>
 </body>
 </html>
+
+
