@@ -36,15 +36,14 @@ body{ color : black; }
 <%@include file="../header.jsp" %>
 
 	<div id="getVideo"></div>
- 	</div>
+	<div class="div-channel">
 		<div class="div-button">
-			<div class="button-channel" id="ingigayo">
-				<!-- SBS 인기가요 안방1열 직캠 -->
-				<input type="hidden" class="videoId" name="ingigayo" value="PLzJT711y0gzKU38jpQ2DftF-QBX9iELp5">
+			<div class="button-channel" id="musicbank">
+				<!-- KBS 뮤직뱅크직캠 -->
+				<input type="hidden" class="videoId" name="musicbank" value="PLK8rVA0_KzOc-Trk-kz1sQijhADYXLY6C" >
 			</div>
-			 <div class="label-channel">인기가요</div>
+			<div class="label-channel">뮤직뱅크</div>
 		</div>
-<<<<<<< HanJS
 		<div class="div-button"> 
 			<div class="button-channel" id="showjung">
 				<!-- MBC 예능연구소 직캠-->
