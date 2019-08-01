@@ -1,7 +1,6 @@
-INDEX VERSION 1.4+/Users/zsoo/Documents/Workspace_Final/clone_final/DolDuck_TeamProject/.metadata/.plugins/org.eclipse.wst.jsdt.core/indexes
-2368915678.index
-2797790117.index
-1337374205.index
-2304032836.index
-3764679925.index
-403586927.index
+INDEX VERSION 1.4+C:\Users\user1\Documents\123\DolDuck_TeamProject\.metadata\.plugins\org.eclipse.wst.jsdt.core\indexes
+1700625336.index
+3431676260.index
+4012118176.index
+2073874229.index
+2869730625.index

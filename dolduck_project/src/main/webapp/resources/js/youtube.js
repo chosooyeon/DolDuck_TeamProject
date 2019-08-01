@@ -24,7 +24,7 @@
   		$.ajax({
             type : "GET",
             dataType : "JSON",
-            url : "https://www.googleapis.com/youtube/v3/playlistItems?playlistId="+ value +"&part=snippet&maxResults=24&key=AIzaSyC_cXlKb2F8jHoGVBXDekF92FFrzh78c18",
+            url : "https://www.googleapis.com/youtube/v3/playlistItems?playlistId="+ value +"&part=snippet&maxResults=20&key=AIzaSyC_cXlKb2F8jHoGVBXDekF92FFrzh78c18",
             success : function(jsonData){
                 for(var i=0 ; i<jsonData.items.length ; i++){
                     var items = jsonData.items[i];
