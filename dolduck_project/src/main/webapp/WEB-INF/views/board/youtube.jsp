@@ -44,13 +44,6 @@ body{ color : black; }
 			</div>
 			<div class="label-channel">뮤직뱅크</div>
 		</div>
-		<div class="div-button">
-			<div class="button-channel" id="ingigayo">
-				<!-- SBS 인기가요 안방1열 직캠 -->
-				<input type="hidden" class="videoId" name="ingigayo" value="PLzJT711y0gzKU38jpQ2DftF-QBX9iELp5">
-			</div>
-			 <div class="label-channel">인기가요</div>
-		</div>
 		<div class="div-button"> 
 			<div class="button-channel" id="showjung">
 				<!-- MBC 예능연구소 직캠-->
