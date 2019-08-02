@@ -120,7 +120,7 @@ public class HomeController {
 	
 	/************************** Youtube 게시판 ***************************/
 	@RequestMapping("youtube.do")
-	public String showYoutube() {
+	public String showYoutubeBoard() {
 		return "board/youtube";
 	}
 	
