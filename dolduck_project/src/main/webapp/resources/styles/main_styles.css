@@ -690,7 +690,7 @@ section
 6. vote
 *********************************/
 .vote{
-	height: 675px;
+	height: auto;
 	padding-top: 107px;
 	position:relative;
 	top: 0;
@@ -765,8 +765,9 @@ section
 }
 
 .txt-container{
+	clear:both;
 	text-align: center;
-	margin-top: 13px;
+	padding-top: 13px;			
 	padding-bottom: 22px;
 	border-bottom: 1px solid #e3e3e3;
 }
@@ -855,13 +856,35 @@ svg{
     position: absolute;
     border: 1px solid;
     border-radius: 4px 4px 4px 4px;
-    background: rgba(0, 0, 0, 0.8);
+    background: #000000;
     color : #ffa550;
     padding: 5px;
     text-align: center;
     font-size: 12px;
     min-width: 30px;
     margin: auto;
+}
+
+/*********************************
+7. channel
+*********************************/
+
+.channel{
+	width: 100%;
+	height: auto;
+	padding-left: 51px;
+	padding-right: 52px;
+}
+.dol_now{
+	font-size: 16px;
+	color: rgb(255, 255, 255);
+	text-align: center;
+	line-height: 2.5em;
+	border-radius: 4px;
+	background-color: rgb(255, 165, 0);
+	bottom: -185px;
+	max-height: 489px;
+	margin-top: 71px;
 }
 
 
@@ -1039,7 +1062,6 @@ svg{
 	color: #6d6d6d;
 	line-height: 67px;
 }
-
 /*  고객센터 1:1채팅  */
 .div-button-chat, .icon-chat-circle{ width: 60px; height: 60px;}
 .icon-chat-ball{z-index: 10; }
