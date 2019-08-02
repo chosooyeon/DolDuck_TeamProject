@@ -30,7 +30,7 @@
       <!-- video -->
             <div class="embed-responsive embed-responsive-16by9">
             <!-- resources/videos/index.mp4 -->
-               <iframe class="embed-responsive-item" src="resources/videos/index.mp4"></iframe>
+               <iframe class="embed-responsive-item" src=""></iframe>
             </div>
       </div>  
    </section>
@@ -106,20 +106,29 @@
                           </div>
                     <p class="rankNum">5</p>
                        </a>
-            </div>
-            <div class="vote_button"><a href="#">Vote Now</a></div>
-            
-               
-            
-         </div>
-      </div>
-      
-   </section>
+  				</div>
+				<div class="vote_button"><a href="#">Vote Now</a></div>
+			</div>
+		</div>
+		
+	</section>
 <svg width="700" height="320"></svg>
-
+		<!-- youtube -->
+	<section class="channel">
+		<div class="container">
+			<div class="row">
+				<div class="col-lg-6 offset-lg-3">
+				<!-- ranking -->
+					<p class="dol_now">나의 DOL은 지금</p>
+				</div>
+			</div>
+			<div class="row ">
+			</div>
+		</div>
+	</section>
    <!-- Extra -->
 
-   <div class="extra">
+   <section class="extra">
       <div class="extra_container">
          <div class="background_image" style="background-image:url(images/extra.jpg)"></div>
          <div class="container">
@@ -136,7 +145,7 @@
             </div>
          </div>      
       </div>
-   </div>
+   </section>
    
    <!-- 1:1 Contect Chat Center (Fixed Navigator) -->
    <div class="div-button-chat" onclick="gotoChat()">
