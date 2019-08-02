@@ -39,8 +39,8 @@
                <li><a href="#">Board</a></li>
                <li class="dropdown"><a href="#" class="dropdown-toggle" data-toggle="dropdown">Market</a>
                   <ul class="dropdown-menu" role="menu">
-                     <li class="dropdown-item:hover" ><a href="#">Hartship</a></li>
-                     <li class="dropdown-item:hover" ><a href="#">goodship</a></li>
+                     <li class="dropdown-item:hover" ><a href="heartShop.do">heartShop</a></li>
+                     <li class="dropdown-item:hover" ><a href="Goodies.do">Goodies</a></li>
                   </ul>
                </li>
                <li class="form-group has-search">
@@ -73,10 +73,10 @@
             </div>
             <nav class="menu_nav">
                <ul class="d-flex flex-column align-items-start justify-content-start">
-                  <li><a href="#">HOME</a></li>
-                  <li><a href="#">You Tube</a></li>
+                  <li><a href="home.do">HOME</a></li>
+                  <li><a href="youtube.do">You Tube</a></li>
                   <li><a href="#">Vote</a></li>
-                  <li><a href="#">Music Chart</a></li>
+                  <li><a href="chart.do">Music Chart</a></li>
                   <li><a href="#">LIVE</a></li>
                   <li><a href="#">Board</a></li>
                </ul>
@@ -102,6 +102,6 @@
 <script src="resources/plugins/jPlayer/jquery.jplayer.min.js"></script>
 <script src="resources/plugins/jPlayer/jplayer.playlist.min.js"></script>
 <script src="resources/js/custom.js"></script>
-<script src="resources/js/d3.min.js"></script>
+<script src="https://d3js.org/d3.v4.min.js"></script>
 <script src="https://kit.fontawesome.com/c1455fa856.js"></script>
-</html>
+</html> 

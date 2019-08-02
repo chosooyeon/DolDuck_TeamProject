@@ -887,7 +887,21 @@ svg{
 	margin-top: 71px;
 }
 
+.channel_button{
+	width: 161px;
+	height: 46px;
+	line-height: 46px;
+	background: #000000;
+	text-align: center;
+	margin: 38px 0 52px 881px;
+}
 
+.channel_button a {
+    color: #ffff;
+}
+.home_channer{
+	border: 
+}
 /*********************************
 9. Extra
 *********************************/
@@ -1189,3 +1203,12 @@ svg{
 	cursor: pointer;
 }
 
+/*********************************
+			  market
+*********************************/
+.goodies{
+	width:100%;
+	height: auto;
+	border: 1px solid #e3e3e3;
+
+}
