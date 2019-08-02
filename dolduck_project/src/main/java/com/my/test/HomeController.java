@@ -111,7 +111,7 @@ public class HomeController {
 		
 		////Realtime 시간얻기
 		long time = System.currentTimeMillis();
-		SimpleDateFormat dayTime = new SimpleDateFormat("yyyy-MM-dd hh_mm_ss")	;
+		SimpleDateFormat dayTime = new SimpleDateFormat("yyyy-MM-dd hh:mm:ss");
 		String str = dayTime.format(new Date(time));
 		chart.put("getTime", str);
 		
