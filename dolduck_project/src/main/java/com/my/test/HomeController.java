@@ -119,9 +119,16 @@ public class HomeController {
 	}
 	
 	/************************** Youtube 게시판 ***************************/
-	@RequestMapping("youtube.do")
-	public String showYoutubeBoard() {
-		return "board/youtube";
+	@RequestMapping("heartShop.do")
+	public String heartShop() {
+		return "market/heartShop";
 	}
+	/************************* market ************************************/
+	
+	@RequestMapping("Goodies.do")
+	public String Goodies() {
+		return "market/Goodies";
+	}
+	
 	
 }
