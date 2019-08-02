@@ -30,7 +30,7 @@
       <!-- video -->
             <div class="embed-responsive embed-responsive-16by9">
             <!-- resources/videos/index.mp4 -->
-               <iframe class="embed-responsive-item" src=""></iframe>
+               <iframe class="embed-responsive-item" src="resources/videos/index.mp4"></iframe>
             </div>
       </div>  
    </section>
@@ -57,7 +57,7 @@
                               <p class="favorites"><i class="fas fa-heart"></i>&nbsp;21,838</p>
                           </div>
                              <p class="rankNum">1</p>
-                       </a>\
+                       </a>
                   <a href="#" class="item">
                           <div class="thum" style="background-image:url(resources/images/3.jpg)"></div>
                              <div class="txt-container">
