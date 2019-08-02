@@ -4,7 +4,6 @@
   * @returns
   */
 
-
   $(document).ready(function(){
 	  	//youtube게시판 초기화 -> 1theK Channel
 	    var init = getVideoList("PLID4CZACkMJTQGYm6R0Gc4yk_CKZIZKdv");
@@ -28,9 +27,7 @@
             success : function(jsonData){
                 for(var i=0 ; i<jsonData.items.length ; i++){
                     var items = jsonData.items[i];
-//                    console.log('title : ' + items.snippet.title + '\n' +
-//                    'videoId : https://youtube.be/' +items.snippet.resourceId.videoId + '\n' +
-//                    'Thumbnail : ' + items.snippet.thumbnails.high.url);
+                    
                     $('#getVideo').append(`<div class="div-iframe-player">
                     		<div><iframe id="player" type="text/html" width="350" height="263" 
             				src="http://www.youtube.com/embed/${items.snippet.resourceId.videoId}?enablejsapi=1&origin=http://example.com"
