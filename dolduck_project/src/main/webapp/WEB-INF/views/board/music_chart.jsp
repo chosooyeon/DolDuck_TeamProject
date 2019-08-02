@@ -24,10 +24,9 @@
 	<hr><br><br><br><br><br>
 	
 	
-	<p>검색시간 : <label class="label-search"></label><p>
 	<div class="container">
 		<div class="center musicchart-board">	
-			<div class="button-pagination">더 보기</div>	
+			<p>검색시간 : <label class="label-search"></label><p>
 			<table class="table ">
 				<thead>
 					<tr>
@@ -40,6 +39,7 @@
 				</thead>
 				<tbody></tbody>
 			</table>
+			<button class="button-pagination">더 보기</button>	
 		</div>
 		
 	</div>

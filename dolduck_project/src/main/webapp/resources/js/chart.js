@@ -1,49 +1,54 @@
-
 $(document).ready(function(){
-	
-	var list_length = 34;
-	var start = 1, end = 10;
-	$(document).on('click','.button-pagination',function(){
-		if(end <= list_length/10*10){
-			alert(start + ' ~ ' + end)
-			start = end+1;
-			end += 10;
-		}else{
-			if(end <= list_length){
-				alert(start + ' ~ ' + end)
-				start = end+1;
-				end = list_length
-			}else{
-				$('더이상 게시글이 없습니다')	
-			}
+	var chart,
+	start = 0, end = 30
+			
+	//GET MUSIC CHART 100 FROM MELON USING AJAX
+	chart = getMusicChart()
+	//DEFAULT LIST 1~30
+	paginationOfList(chart, start, end)
+
+	$(document).on('click','.button-pagination', function(){
+		//If rank is over 100, end become 100 and 'button-pagination' become disabled
+		if(end > 100){	
+			end = 100
+			$('.button-pagination').attr('disabled', 'disabled');
 		}
-	})
+		start = end
+		end += 20
+		paginationOfList(chart, start, end)	
+	})	
 })
 
 function getMusicChart(){
+	var list;
 	$.ajax({
 		type : 'POST',
 		url : 'musicsearch.do',
 		dataType : 'json',
+		async : false,
 		success : function(data){
-			//console.log(data);
-			// key: getTime (크롤링 수집시간), chart
-			var list = data.chart;
 			$('.label-search').text(data.getTime);
-			$.each(list, function(key, song){
-				$('tbody').append(`<tr>
-									  <td scope="row">${song.rank}</td>
-									  <td><img src="${song.thumb}"></td>
-									  <td><a href="#">${song.title}</td>
-									  <td>${song.singer}</td>
-									  <td>${song.album}</td>
-								  </tr>`);
-			}); 	
+			list = data.chart;
 		},
 		error : function(){
-			console.log('ajax 통신에러');
-			alert('ajax 통신에러');
+			console.log('ajax 통신에러')
+			alert('네트워크 오류! 새로고침 후 다시 이용해주세요!')
 		}
 	});
+	
+	return list
+}
+
+function paginationOfList(chart, start, end){
+	for(var i=start ; i<end ; i++){
+		var song = chart[i]
+		$('tbody').append(`<tr>
+				  <td scope="row">${song.rank}</td>
+				  <td><img class="chart-thumbnail" src="${song.thumb}"></td>
+				  <td><a href="#">${song.title}</td>
+				  <td>${song.singer}</td>
+				  <td>${song.album}</td>
+			      </tr>`);
+	}
 }
 
