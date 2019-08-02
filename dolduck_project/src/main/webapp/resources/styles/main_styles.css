@@ -47,7 +47,7 @@ body
 	font-size: 14px;
 	font-weight: 400;
 	background: #FFFFFF;
-	color: #FFFFFF;
+	color: #000000;
 }
 div
 {
@@ -70,7 +70,7 @@ p
 	font-family: 'Futura', sans-serif;
 	font-size: 14px;
 	line-height: 2.18;
-	color: #FFFFFF;
+	color: #000;
 	-webkit-font-smoothing: antialiased;
 	-webkit-text-shadow: rgba(0,0,0,.01) 0 0 1px;
 	text-shadow: rgba(0,0,0,.01) 0 0 1px;
@@ -1145,25 +1145,25 @@ svg{
 /* Chart 게시판 */
 .chart-thumbnail{ 
 	width: 80px; height: 80px; 
-	border:1px solid red;
-	/* background-size:cover;
-	background-repeat: no-repeat; */
+	background-size:cover;
+	background-repeat: no-repeat;
 }
 .musicchart-board{
-	border: 1px solid green;
 	width: 90%;
 	display: inline-block;
 	margin: auto;
-	
+	color: black;
 }
 .button-pagination{
 	color: darkslategray;
 	width: 100%;
 	height: 50px;
+	background : #fff;
 	border: 1px solid #ccc;
 	box-shadow: 1px 2px 3px #ccc;
-	margin: 10px 0px 30px 0px;
+	margin: 30px 0px 30px 0px;
 	text-align: center;
 	line-height: 3.5em;
 	cursor: pointer;
 }
+
