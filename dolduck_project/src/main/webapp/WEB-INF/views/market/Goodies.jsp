@@ -6,20 +6,24 @@
 <meta charset="UTF-8">
 <title>Insert title here</title>
 </head>
+
 <body>
 <!-- header -->
 <%@include file="../header.jsp" %>
 
-<h1> </h1>
+
 	<section class="container">
+	
 		<div class="row">
-			<div class="goodies">
+		<h1> 굿즈샵</h1>
+			<div class="col-md-12 goodies">
+				<!-- 계시판ㄱㄱ -->
 				
 			</div>
 		</div>
 	
 	</section>
 
-<%@include file="../footer.jsp" %>
+
 </body>
 </html>

@@ -79,6 +79,8 @@
                   <li><a href="chart.do">Music Chart</a></li>
                   <li><a href="#">LIVE</a></li>
                   <li><a href="#">Board</a></li>
+                  <li><a href="heartShop.do">heartShop</a></li>
+                  <li><a href="Goodies.do">Goodies</a></li>
                </ul>
             </nav>
          </div>
