@@ -37,7 +37,7 @@
                <li><a href="chart.do">Music Chart</a></li>
                <li><a href="#">LIVE</a></li>
                <li><a href="#">Board</a></li>
-               <li class="dropdown"><a href="#" class="dropdown-toggle" data-toggle="dropdown">Market</a>
+               <li class="dropdown"><a href="heartShop.do" class="dropdown-toggle" data-toggle="dropdown">Market</a>
                   <ul class="dropdown-menu" role="menu">
                      <li class="dropdown-item:hover" ><a href="heartShop.do">heartShop</a></li>
                      <li class="dropdown-item:hover" ><a href="Goodies.do">Goodies</a></li>
