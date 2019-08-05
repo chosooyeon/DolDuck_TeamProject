@@ -124,4 +124,16 @@ public class HomeController {
 		return "board/youtube";
 	}
 	
+	/************************* market ************************************/
+	@RequestMapping("heartShop.do")
+	public String heartShop() {
+		return "market/heartShop";
+	}
+	
+	@RequestMapping("Goodies.do")
+	public String Goodies() {
+		return "market/Goodies";
+	}
+	
+	
 }
