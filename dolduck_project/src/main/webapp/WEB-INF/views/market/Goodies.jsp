@@ -12,7 +12,7 @@
 <%@include file="../header.jsp" %>
 
 
-	<section class="container market">
+	<div class="container market">
 	
 		
 		<h1> Market </h1>
@@ -31,7 +31,7 @@
 			</div>
 		
 	
-	</section>
+	</div>
 
 
 </body>
