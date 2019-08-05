@@ -25,7 +25,7 @@
 					if(data.loginChk){
 						location.href="home.do";
 					}else{
-						alert('아이디를 확인해주세요');
+						alert('아이디, 또는 패스워드를 확인해주세요');
 					}
 				},
 				error: function(){
@@ -36,6 +36,12 @@
 		
 	}
 
+	function enter_input(){
+		if(window.event.keyCode == 13){
+			login();
+		}
+	}
+	
 </script>
 </head>
 <body>
@@ -51,14 +57,14 @@
 	
 		<tr>
 			<th>ID</th>
-			<td><input class="form-control" type="text" id="id"></td>
+			<td><input class="form-control" type="text" id="id" onkeypress="enter_input()"></td>
 		</tr>
 		<tr>
 			<th>PW</th>
-			<td><input class="form-control" type="password" id="pw"></td>
+			<td><input class="form-control" type="password" id="pw" onkeypress="enter_input()"></td>
 		</tr>
 		<tr>
-			<td colspan="1"><input class="login_button" type="button" value="로그인" onclick="login();"></td>
+			<td colspan="1"><input class="login_button" type="button" value="로그인" onclick="login();" ></td>
 		</tr>
 		
 		<tr>
