@@ -24,7 +24,7 @@
          <div class="logo"><a href="home.do">DOL-Duck</a></div>
          <div class="log_reg">
             <ul class="d-flex flex-row align-items-start justify-content-start">
-               <li><a href="#">Login</a></li>
+               <li><a href="loginform.do">Login</a></li>
                <li><a href="#">Register</a></li>
             </ul>
          </div>
@@ -37,7 +37,7 @@
                <li><a href="chart.do">Music Chart</a></li>
                <li><a href="#">LIVE</a></li>
                <li><a href="#">Board</a></li>
-               <li class="dropdown"><a href="#" class="dropdown-toggle" data-toggle="dropdown">Market</a>
+               <li class="dropdown"><a href="heartShop.do" class="dropdown-toggle" data-toggle="dropdown">Market</a>
                   <ul class="dropdown-menu" role="menu">
                      <li class="dropdown-item:hover" ><a href="heartShop.do">heartShop</a></li>
                      <li class="dropdown-item:hover" ><a href="Goodies.do">Goodies</a></li>
