@@ -12,26 +12,26 @@
 <%@include file="../header.jsp" %>
 
 
-	<section class="container market">
+	<div class="container market">
 	
 		
 		<h1> Market </h1>
 		<ul class="nav nav-tabs">
 			<li class="nav-item">
-				<a class="nav-link market_link" href="heartShop.do">heartShop</a>
+				<a class="nav-link market_link" href="heartShop.do">HeartShop</a>
 			</li>
 			<li class="nav-item">
 				<a class="nav-link market_link" href="Goodies.do">Goodies</a>
 			</li>
 
 		</ul>
-			<div class="col-md-12 goodies">
-				<!-- 계시판ㄱㄱ -->
-				
-			</div>
+	
+		<div class="col-md-12 goodies">
+		<!-- 계시판ㄱㄱ -->
+		</div>
 		
 	
-	</section>
+	</div>
 
 
 </body>

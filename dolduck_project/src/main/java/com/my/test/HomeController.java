@@ -135,5 +135,13 @@ public class HomeController {
 		return "market/Goodies";
 	}
 	
+	/************************* 회원가입 ***********************************/
+	
+	@RequestMapping("join.do")
+	public String insert() {
+		return "member/Join";
+		
+	}
+	
 	
 }
