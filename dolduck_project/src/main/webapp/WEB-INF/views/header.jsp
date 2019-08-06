@@ -28,7 +28,7 @@
                
             	 <c:choose>
             	 	<c:when test="${empty login}">
-		               <li><a href="${pageContext.request.contextPath}/member/login.do">Login</a></li>
+		               <li><a href="${pageContext.request.contextPath}/login.do">Login</a></li>
             	 	</c:when>
             	 	<c:otherwise>
             	 		<li><span>${login.member_name}</span></li>	
@@ -36,7 +36,7 @@
             	 	</c:otherwise>
             	 </c:choose>
                
-                <li><a href="${pageContext.request.contextPath}/member/join.do">Register</a></li>
+                <li><a href="${pageContext.request.contextPath}/join.do">Register</a></li>
 
             </ul>
          </div>

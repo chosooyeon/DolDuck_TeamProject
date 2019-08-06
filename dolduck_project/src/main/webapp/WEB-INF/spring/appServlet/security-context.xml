@@ -13,6 +13,7 @@
 	<context:component-scan base-package="com.my.test"/>
 		<!-- 정적 리소스 파일들에는 보안 설정을 하지않음 css img등 -->
 	<http pattern="/resources/**" security="none"></http>
+	<http pattern="/include/**" security="none"/>
 	
 	<!-- 검사, 허가 url-->
 	<http auto-config="true" use-expressions="true" create-session="never">
@@ -25,7 +26,7 @@
 		<!-- 로그인폼 -->
 		<form-login	
 			login-page="/member/login.do"
-			login-processing-url="/member/login_check.do"
+			login-processing-url="/member/login.do"
 			authentication-success-handler-ref="userLoginSuccessHandler"
 			authentication-failure-handler-ref="userLoginFailureHandler"		
 			username-parameter="id"

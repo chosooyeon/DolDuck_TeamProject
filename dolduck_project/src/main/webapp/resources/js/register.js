@@ -83,7 +83,7 @@
 		
 			$.ajax({
 				url:"idChk.do",
-				type:"POST",
+				type:"GET",
 				data : "id="+user_id,
 
 				success:function(data){

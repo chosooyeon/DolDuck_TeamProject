@@ -47,16 +47,22 @@ public class LoginController {
 	private String randompassword;
 	
 	//로그인 페이지로 이동
-	@RequestMapping("/member/login.do")
+	@RequestMapping(value="login.do")
 	public String loginform() {
 		return "/member/login";
 	}
 	
-	//회원가입페이지로 이동 
-	@RequestMapping("/member/join.do")
-	public String joinform() {
-		return "/member/Join";
-	}
+	//로그인 페이지로 이동
+		@RequestMapping(value="/member/login.do")
+		public String login() {
+			return "/member/login";
+		}
+		
+//	//회원가입페이지로 이동 
+//	@RequestMapping("/member/join.do")
+//	public String joinform() {
+//		return "/member/Join";
+//	}
 	
 		
 	//회원가입
@@ -99,7 +105,7 @@ public class LoginController {
 	
 	
 	
-	@RequestMapping("idChk.do")
+	@RequestMapping(value="idChk.do", method=RequestMethod.GET)
 	@ResponseBody
 	public Map<String, Boolean> idChk(String id) {
 		logger.info("아이디 중복체크");

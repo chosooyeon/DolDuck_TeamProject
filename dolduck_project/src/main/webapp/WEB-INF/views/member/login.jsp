@@ -18,24 +18,28 @@
 	<div class="col-lg-6 offset-lg-3 login_table">
 	<h1 class="text-center login_text">DOL-Duck 로그인</h1>
 
+<span style="color:red;">${errMsg }</span>
+<form action="${pageContext.request.contextPath}/login.do" method="post">
+<input type="hidden" name="${_csrf.parameterName }" value="${_csrf.token}">
 	<table>
 	
 		<tr>
 			<th>ID</th>
-			<td><input class="form-control" type="text" id="id" onkeypress="enter_input()"></td>
+			<td><input class="form-control" type="text" id="id" name="id" onkeypress="enter_input()"></td>
 		</tr>
 		<tr>
 			<th>PW</th>
-			<td><input class="form-control" type="password" id="pw" onkeypress="enter_input()"></td>
+			<td><input class="form-control" type="password" id="pw" name="passwd" onkeypress="enter_input()"></td>
 		</tr>
 		<tr>
-			<td colspan="1"><input class="login_button" type="button" value="로그인" onclick="login();" ></td>
+			<td colspan="1"><input class="login_button" type="button" value="로그인" onclick="login()" ></td>
 		</tr>
 		<tr>
-			<td colspan="1"><input class="join_button" type="button" value="회원가입" onclick="location.href='/test/member/join.do'"></td>
+			<td colspan="1"><input class="join_button" type="button" value="회원가입" onclick="location.href='${pageContext.request.contextPath}/join.do'"></td>
 		</tr>
 		
 	</table>
+	</form>
 	</div>
 	</div>
 </div>

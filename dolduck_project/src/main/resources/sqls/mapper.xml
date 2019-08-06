@@ -56,11 +56,11 @@
 		MEMBER_PW as password,
 		MEMBER_ENABLED as enabled,
 		MEMBER_ROLE as authority,
-		MEMBER_SEQ, MEMBER_EMAIL
+		MEMBER_SEQ, MEMBER_EMAIL,
+		MEMBER_PHONE, MEMBER_ADDR
 		FROM MEMBER
 		WHERE MEMBER_ID=#{member_id}
 	</select>
-
 
 	<insert id="insertUser" parameterType="map">
 		INSERT INTO MEMBER
