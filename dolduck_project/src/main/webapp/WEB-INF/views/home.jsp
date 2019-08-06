@@ -30,7 +30,7 @@
       <!-- video -->
             <div class="embed-responsive embed-responsive-16by9">
             <!-- resources/videos/index.mp4 -->
-               <iframe class="embed-responsive-item" src=""></iframe>
+               <iframe class="embed-responsive-item" src="resources/videos/index.mp4"></iframe>
             </div>
       </div>  
    </section>
@@ -57,7 +57,7 @@
                               <p class="favorites"><i class="fas fa-heart"></i>&nbsp;21,838</p>
                           </div>
                              <p class="rankNum">1</p>
-                       </a>\
+                       </a>
                   <a href="#" class="item">
                           <div class="thum" style="background-image:url(resources/images/3.jpg)"></div>
                              <div class="txt-container">
@@ -112,17 +112,24 @@
 		</div>
 		
 	</section>
-<svg width="700" height="320"></svg>
+				 	<!-- 그래프 -->
+					<svg width="700" height="320"></svg>
+		
 		<!-- youtube -->
 	<section class="channel">
 		<div class="container">
 			<div class="row">
 				<div class="col-lg-6 offset-lg-3">
-				<!-- ranking -->
+				<!-- youtube -->
 					<p class="dol_now">나의 DOL은 지금</p>
 				</div>
 			</div>
 			<div class="row ">
+				<div class="channel_button"><a href="youtube.do">Channel More</a></div>
+				<!-- 채널 영상 넣기 -->
+				<div class="home_channel">
+				
+				</div>
 			</div>
 		</div>
 	</section>
@@ -163,8 +170,9 @@
    </div>
 
 <!-- Footer  -->
-<%@include file="footer.jsp" %>
 </section>
+<%@include file="footer.jsp" %>
+
 <script type="text/javascript" src="https://code.jquery.com/jquery-3.4.1.min.js"></script>
 <script type="text/javascript" src="resources/js/home.js"></script>
 <script src="resources/js/jquery-3.2.1.min.js"></script>
