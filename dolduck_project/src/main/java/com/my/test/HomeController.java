@@ -10,6 +10,7 @@ import java.util.Locale;
 import java.util.Map;
 
 import javax.servlet.http.HttpSession;
+import javax.websocket.Session;
 
 import org.json.simple.JSONArray;
 import org.json.simple.JSONObject;
@@ -77,6 +78,13 @@ public class HomeController {
 		map.put("loginChk", loginChk);
 		
 		return map;
+	}
+	
+	@RequestMapping("logout.do")
+	public String logout(HttpSession session) {
+		session.invalidate();
+		
+		return "redirect:home.do";
 	}
 	
 	/************************** Music Chart 게시판 ***************************/
