@@ -9,6 +9,7 @@ import java.util.List;
 import java.util.Locale;
 import java.util.Map;
 
+import javax.inject.Inject;
 import javax.servlet.http.HttpSession;
 
 import org.json.simple.JSONArray;
@@ -16,6 +17,7 @@ import org.json.simple.JSONObject;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.beans.factory.annotation.Qualifier;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.RequestMapping;
@@ -24,6 +26,7 @@ import org.springframework.web.bind.annotation.ResponseBody;
 
 import com.my.test.dto.MemberDto;
 import com.my.test.model.biz.MemberBiz;
+import com.my.test.model.biz.MemberBizImpl;
 import com.my.test.util.Music;
 import com.my.test.util.WebScrap;
 
@@ -32,6 +35,7 @@ public class HomeController {
 	
 	@Autowired
 	private MemberBiz biz;
+
 	private WebScrap crawling = new WebScrap();
 	
 	private static final Logger logger = LoggerFactory.getLogger(HomeController.class);
@@ -46,38 +50,37 @@ public class HomeController {
 		String formattedDate = dateFormat.format(date);
 		
 		model.addAttribute("serverTime", formattedDate );
-		
 		return "home";
 	}
 	
 	/************************** 로그인 ***************************/
-	@RequestMapping("loginform.do")
-	public String loginform() {
-		return "/member/login";
-	}
+//	@RequestMapping("loginform.do")
+//	public String loginform() {
+//		return "/member/login";
+//	}
 	
-	@RequestMapping("login.do")
-	@ResponseBody
-	public Map<String, Boolean> login(String id, String pw, HttpSession session){
-		System.out.println("여기 들어옴");
-		/*
-		 * @ResponseBody: java 객체를 response객체에 binding
-		 * @RequestBody: request객체로 넘어오는 데이터를 java 객체
-		 * */
-		
-		MemberDto dto = biz.login(id, pw);
-		boolean loginChk = false;
-		System.out.println(loginChk+"로그인 체크값");
-		if(dto!=null) {
-			session.setAttribute("login", dto);
-			loginChk=true;
-		}
-		
-		Map<String, Boolean> map = new HashMap<String, Boolean>();
-		map.put("loginChk", loginChk);
-		
-		return map;
-	}
+//	@RequestMapping("login.do")
+//	@ResponseBody
+//	public Map<String, Boolean> login(String id, String pw, HttpSession session){
+//		System.out.println("여기 들어옴");
+//		/*
+//		 * @ResponseBody: java 객체를 response객체에 binding
+//		 * @RequestBody: request객체로 넘어오는 데이터를 java 객체
+//		 * */
+//		
+//		MemberDto dto = biz.login(id, pw);
+//		boolean loginChk = false;
+//		System.out.println(loginChk+"로그인 체크값");
+//		if(dto!=null) {
+//			session.setAttribute("login", dto);
+//			loginChk=true;
+//		}
+//		
+//		Map<String, Boolean> map = new HashMap<String, Boolean>();
+//		map.put("loginChk", loginChk);
+//		
+//		return map;
+//	}
 	
 	/************************** Music Chart 게시판 ***************************/
 	@RequestMapping("chart.do")

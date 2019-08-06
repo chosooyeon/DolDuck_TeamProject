@@ -24,8 +24,8 @@
          <div class="logo"><a href="home.do">DOL-Duck</a></div>
          <div class="log_reg">
             <ul class="d-flex flex-row align-items-start justify-content-start">
-               <li><a href="loginform.do">Login</a></li>
-               <li><a href="#">Register</a></li>
+               <li><a href="${pageContext.request.contextPath}/member/login.do">Login</a></li>
+               <li><a href="${pageContext.request.contextPath}/member/join.do">Register</a></li>
             </ul>
          </div>
          
