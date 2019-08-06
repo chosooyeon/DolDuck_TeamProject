@@ -1,4 +1,5 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8" pageEncoding="UTF-8"%>
+<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
 <!DOCTYPE html>
 <html>
 <head>
@@ -24,8 +25,19 @@
          <div class="logo"><a href="home.do">DOL-Duck</a></div>
          <div class="log_reg">
             <ul class="d-flex flex-row align-items-start justify-content-start">
-               <li><a href="loginform.do">Login</a></li>
-               <li><a href="#">Register</a></li>
+               
+            	 <c:choose>
+            	 	<c:when test="${empty login}">
+		               <li><a href="${pageContext.request.contextPath}/member/login.do">Login</a></li>
+            	 	</c:when>
+            	 	<c:otherwise>
+            	 		<li><span>${login.member_name}</span></li>	
+            	 		<li><a href="logout.do">Logout</a></li>	
+            	 	</c:otherwise>
+            	 </c:choose>
+               
+                <li><a href="${pageContext.request.contextPath}/member/join.do">Register</a></li>
+
             </ul>
          </div>
          
