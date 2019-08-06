@@ -11,6 +11,7 @@ import java.util.Map;
 
 import javax.inject.Inject;
 import javax.servlet.http.HttpSession;
+import javax.websocket.Session;
 
 import org.json.simple.JSONArray;
 import org.json.simple.JSONObject;
@@ -81,6 +82,13 @@ public class HomeController {
 //		
 //		return map;
 //	}
+	
+	@RequestMapping("logout.do")
+	public String logout(HttpSession session) {
+		session.invalidate();
+		
+		return "redirect:home.do";
+	}
 	
 	/************************** Music Chart 게시판 ***************************/
 	@RequestMapping("chart.do")
