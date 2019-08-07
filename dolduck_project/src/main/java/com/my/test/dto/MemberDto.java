@@ -17,12 +17,13 @@ public class MemberDto extends User{
 	private Date member_regdate;
 //	private boolean member_enabled;
 	private String member_role;
+	private int member_heart;
 	private int member_vote;
 	
 	public MemberDto(String username, String password, boolean enabled, 
 			boolean accountNonExpired, boolean credentialsNonExpired, boolean accountNonLocked,
 			Collection<? extends GrantedAuthority> authorities, int member_seq, String member_id, String member_phone, String memebr_addr,
-			String memebr_email, String member_role, int member_vote ){
+			String memebr_email, String member_role, int member_heart, int member_vote ){
 		//userClass에 보내는 코드
 		super(username, password, enabled, accountNonExpired, credentialsNonExpired, accountNonLocked, authorities);
 		
@@ -32,6 +33,7 @@ public class MemberDto extends User{
 		this.memebr_addr = memebr_addr;
 		this.memebr_email = memebr_email;
 		this.member_role = member_role;
+		this.member_heart = member_heart;
 		this.member_vote = member_vote;
 
 	}
@@ -91,6 +93,14 @@ public class MemberDto extends User{
 	public void setMember_role(String member_role) {
 		this.member_role = member_role;
 	}
+	
+	public int getMember_heart() {
+		return member_heart;
+	}
+
+	public void setMember_heart(int member_heart) {
+		this.member_heart = member_heart;
+	}
 
 	public int getMember_vote() {
 		return member_vote;
@@ -104,9 +114,11 @@ public class MemberDto extends User{
 	public String toString() {
 		return "MemberDto [member_seq=" + member_seq + ", member_id=" + member_id + ", member_phone=" + member_phone
 				+ ", memebr_addr=" + memebr_addr + ", memebr_email=" + memebr_email + ", member_regdate="
-				+ member_regdate + ", member_role=" + member_role + ", member_vote=" + member_vote + "]";
+				+ member_regdate + ", member_role=" + member_role + ", member_heart=" + member_heart + ", member_vote="
+				+ member_vote + "]";
 	}
 
+	
 	
 	
 }
