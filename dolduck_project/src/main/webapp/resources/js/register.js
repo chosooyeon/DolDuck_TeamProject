@@ -103,30 +103,39 @@
 		}
 	}
 	
-//	function nick_check(){
-//		var user_nick = $("input[name=user_nickname]").val();
-//		if(user_nick == null || user_nick == ""){
-//			alert("닉네임을 입력하세요");
-//		}else{
-//			$.ajax({
-//				url:"nickChk.do",
-//				type:"GET",
-//				data:"nickname="+user_nick,
-//				success:function(data){
-//					if(data != user_nick){
-//						$("div[id=nick_confirm]").html('사용가능한 닉네임 입니다.');
-//						nickChk = true;
-//					}else{
-//						$("div[id=nick_confirm]").html('이미 사용중인 닉네임 입니다.');
-//						$("div[id=nick_confirm]").val("");
-//					}
-//				},
-//				error:function(){
-//					
-//				}
-//			});
-//		}
-//	}
+	function setAddr() {
+		new daum.Postcode({
+			oncomplete : function(data) {
+				var fullAddr = ""; //최종 주소 변수
+				var extraAddr = ""; //조합형 주소 변수
+				if (data.userSelectedType === 'R') {
+					//사용자가 도로명 주소를 선택했을 경우
+					fullAddr = data.roadAddress;
+				} else {//사용자가 지번 주소를 선택했을 경우
+					fullAddr = data.jibunAddress;
+				}
+
+				//사용자가 선택한 주소가 도로명 타입일 때 조합한다.
+				if (data.userSelectedType === 'R') {
+					//법정 동명이 있을 경우 추가한다.
+					if (data.bname !== "") {
+						extraAddr += data.bname
+					}//건물명이 있을 경우
+					if (data.buildingName !== "") {
+						extraAddr += (extraAddr !== '' ? ', '
+								+ data.buildingName : data.buildingName);
+					}//조합형 주소의 유무에 따라 양쪽에 괄호를 추가해 최종 주소를 만든다.
+					fullAddr += (extraAddr !== '' ? ' (' + extraAddr + ')'
+							: '');
+				}
+
+				document.getElementById("addr").value = fullAddr;
+				document.getElementById("zonecode").value = data.zonecode;
+				document.getElementById("detail_addr").focus();
+
+			}
+		}).open();
+	}
 	
 	function pass_check(){
 		var length = $("input[name=user_pw]").val().length;
