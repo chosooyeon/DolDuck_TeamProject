@@ -25,11 +25,11 @@
 	
 			<tr>
 				<th>ID</th>
-				<td><input class="form-control" type="text" id="id" name="id" ></td>
+				<td><input class="form-control login" type="text" id="id" name="id" ></td>
 			</tr>
 			<tr>
 				<th>PW</th>
-				<td><input class="form-control" type="password" id="pw" name="passwd"></td>
+				<td><input class="form-control login" type="password" id="pw" name="passwd"></td>
 			</tr>
 			<tr>
 				<td colspan="1"><input class="login_button" type="submit" value="로그인" ></td>

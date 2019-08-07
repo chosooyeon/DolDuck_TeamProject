@@ -63,9 +63,10 @@
 							<li class="dropdown-item:hover"><a href="heartShop.do">heartShop</a></li>
 							<li class="dropdown-item:hover"><a href="Goodies.do">Goodies</a></li>
 						</ul></li>
-					<li class="form-group has-search"><span
-						class="fa fa-search form-control-feedback"></span> <input
-						type="text" class="form-control" placeholder="Search"></li>
+					<li class="form-group has-search">
+						<span class="fa fa-search form-control-feedback"></span> 
+						<input type="text" class="form-control" placeholder="Search">
+					</li>
 				</ul>
 			</nav>
 			<div class="hamburger ml-auto">
