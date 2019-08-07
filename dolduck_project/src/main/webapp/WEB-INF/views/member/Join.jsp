@@ -93,13 +93,10 @@
 						</tr>
 						<tr>
 							<td>
-								<input type="text" name="user_addr" id="addr" placeholder="주소"
-							style="width: 60%; height: 30px; float: left;"
-							readonly="readonly"> <input type="button" id="set_addr"
-							class="e1" onclick="setAddr()" value="주소입력"> <input
-							type="text" id="detail_addr" name="detail_addr"
-							placeholder="상세주소" style="width: 98%; height: 30px;"> <input
-							type="hidden" id="zonecode" name="zonecode" value="" />
+								<input class="form-control" type="text" name="user_addr" id="addr" placeholder="주소" readonly="readonly"> 
+								<input type="button" id="set_addr" class="e1" onclick="setAddr()" value="주소입력"> 
+								<input class="form-control" type="text" id="detail_addr" name="detail_addr" placeholder="상세주소" > 
+								<input type="hidden" id="zonecode" name="zonecode" value="" />
 							</td>
 						</tr>
 						<tr>
