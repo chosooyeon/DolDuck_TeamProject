@@ -63,6 +63,7 @@ public class UserAuthenticationService implements UserDetailsService {
 							   user.get("MEMBER_ADDR").toString(),
 							   user.get("MEMBER_EMAIL").toString(),
 							   user.get("AUTHORITY").toString(),
+							   (Integer)Integer.valueOf(user.get("MEMBER_HEART").toString()),
 							   (Integer)Integer.valueOf(user.get("MEMBER_VOTE").toString())
 				);
 		

@@ -109,10 +109,8 @@
 		</div>
 	</section>
 </body>
-<script type="text/javascript"
-	src="https://code.jquery.com/jquery-3.4.1.min.js"></script>
 <script type="text/javascript" src="resources/js/home.js"></script>
-<script src="resources/js/jquery-3.2.1.min.js"></script>
+<script type="text/javascript" src="https://code.jquery.com/jquery-3.4.1.js"></script>
 <script src="resources/styles/bootstrap-4.1.2/popper.js"></script>
 <script src="resources/styles/bootstrap-4.1.2/bootstrap.min.js"></script>
 <script src="resources/plugins/greensock/TweenMax.min.js"></script>
