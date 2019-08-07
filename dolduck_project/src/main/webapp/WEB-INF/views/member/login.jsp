@@ -15,30 +15,30 @@
 
 <div class="container login">
 	<div class="row">
-	<div class="col-lg-6 offset-lg-3 login_table">
-	<h1 class="text-center login_text">DOL-Duck 로그인</h1>
+		<div class="col-lg-6 offset-lg-3 login_table">
+		<h1 class="text-center login_text">DOL-Duck 로그인</h1>
 
 <span style="color:red;">${errMsg }</span>
 <form action="${pageContext.request.contextPath}/home.do" method="post">
 <input type="hidden" name="${_csrf.parameterName }" value="${_csrf.token}">
-	<table>
+		<table>
 	
-		<tr>
-			<th>ID</th>
-			<td><input class="form-control" type="text" id="id" name="id" onkeypress="enter_input()"></td>
-		</tr>
-		<tr>
-			<th>PW</th>
-			<td><input class="form-control" type="password" id="pw" name="passwd" onkeypress="enter_input()"></td>
-		</tr>
-		<tr>
-			<td colspan="1"><input class="login_button" type="submit" value="로그인" ></td>
-		</tr>
-		<tr>
-			<td colspan="1"><input class="join_button" type="button" value="회원가입" onclick="location.href='${pageContext.request.contextPath}/join.do'"></td>
-		</tr>
+			<tr>
+				<th>ID</th>
+				<td><input class="form-control" type="text" id="id" name="id" ></td>
+			</tr>
+			<tr>
+				<th>PW</th>
+				<td><input class="form-control" type="password" id="pw" name="passwd"></td>
+			</tr>
+			<tr>
+				<td colspan="1"><input class="login_button" type="submit" value="로그인" ></td>
+			</tr>
+			<tr>
+				<td colspan="1"><input class="join_button" type="button" value="회원가입" onclick="location.href='${pageContext.request.contextPath}/join.do'"></td>
+			</tr>
 		
-	</table>
+		</table>
 	</form>
 	</div>
 	</div>
