@@ -11,7 +11,7 @@ function login(){
 			
 			$.ajax({
 				type : "post",
-				url : "login.do",
+				url : "loginDo",	
 				data : "id=" + idVal + "&pw=" + pwVal,
 				success : function(data){
 					if(data.loginChk == true){

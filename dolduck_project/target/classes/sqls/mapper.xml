@@ -25,7 +25,7 @@
 
 	<insert id="insert" parameterType="memberDto">
 		INSERT INTO MEMBER
-		VALUES(MEMBERSEQ.NEXTVAL,#{member_id},#{member_pw},#{member_name},#{member_phone},#{member_addr},#{member_email},SYSDATE,'Y','USER',0)
+		VALUES(MEMBERSEQ.NEXTVAL,#{member_id},#{member_pw},#{member_name},#{member_phone},#{member_addr},#{member_email},SYSDATE,'Y','USER',0, 1)
 	</insert>
 
 	<update id="update" parameterType="memberDto">
@@ -54,23 +54,29 @@
 		SELECT
 		MEMBER_ID as username,
 		MEMBER_PW as password,
+		MEMBER_NAME as membername,
 		MEMBER_ENABLED as enabled,
 		MEMBER_ROLE as authority,
-		MEMBER_SEQ, MEMBER_EMAIL
+		MEMBER_SEQ, 
+		MEMBER_EMAIL,
+		MEMBER_PHONE, 
+		MEMBER_ADDR,
+		MEMBER_REGDATE, 
+		MEMBER_HEART,
+		MEMBER_VOTE
 		FROM MEMBER
 		WHERE MEMBER_ID=#{member_id}
 	</select>
 
-
 	<insert id="insertUser" parameterType="map">
 		INSERT INTO MEMBER
-		VALUES(MEMBERSEQ.NEXTVAL,#{member_id},#{member_pw},#{member_name},#{member_phone},#{member_addr},#{member_email},SYSDATE,1,'ROLE_USER',1)
+		VALUES(MEMBERSEQ.NEXTVAL,#{member_id},#{member_pw},#{member_name},#{member_phone},#{member_addr},#{member_email},SYSDATE, 0, 1,'ROLE_USER',1)
 	</insert>
 
 	<!-- 회원가입 및 체크 -->
 	<insert id="memberRegister" parameterType="memberDto">
 		INSERT INTO MEMBER
-		VALUES(MEMBERSEQ.NEXTVAL,#{member_id},#{member_pw},#{member_name},#{member_phone},#{member_addr},#{member_email}, SYSDATE, 1, 'ROLE_USER',1)
+		VALUES(MEMBERSEQ.NEXTVAL,#{member_id},#{member_pw},#{member_name},#{member_phone},#{member_addr},#{member_email}, SYSDATE, 0, 1, 'ROLE_USER',1)
 	</insert>
 	<select id="loginChk" parameterType="map"
 		resultType="memberDto">

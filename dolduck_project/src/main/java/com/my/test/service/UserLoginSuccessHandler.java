@@ -25,7 +25,6 @@ public class UserLoginSuccessHandler implements AuthenticationSuccessHandler{
 		MemberDto dto = (MemberDto)authentication.getPrincipal();
 		System.out.println(dto);
 		String msg = authentication.getName()+"님 환영합니다";
-		System.out.println(msg+"님 환영합니다");
 		request.setAttribute("msg", msg);
 		RequestDispatcher rd = request.getRequestDispatcher("/");
 		rd.forward(request, response);	
