@@ -19,7 +19,7 @@
 	<h1 class="text-center login_text">DOL-Duck 로그인</h1>
 
 <span style="color:red;">${errMsg }</span>
-<form action="${pageContext.request.contextPath}/login.do" method="post">
+<form action="${pageContext.request.contextPath}/home.do" method="post">
 <input type="hidden" name="${_csrf.parameterName }" value="${_csrf.token}">
 	<table>
 	
@@ -32,7 +32,7 @@
 			<td><input class="form-control" type="password" id="pw" name="passwd" onkeypress="enter_input()"></td>
 		</tr>
 		<tr>
-			<td colspan="1"><input class="login_button" type="button" value="로그인" onclick="login()" ></td>
+			<td colspan="1"><input class="login_button" type="submit" value="로그인" ></td>
 		</tr>
 		<tr>
 			<td colspan="1"><input class="join_button" type="button" value="회원가입" onclick="location.href='${pageContext.request.contextPath}/join.do'"></td>

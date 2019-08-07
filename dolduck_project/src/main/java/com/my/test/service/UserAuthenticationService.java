@@ -58,11 +58,10 @@ public class UserAuthenticationService implements UserDetailsService {
 							   (Integer)Integer.valueOf(user.get("ENABLED").toString())==1, 
 							   true, true, true, authority,
 							   (Integer)Integer.valueOf(user.get("MEMBER_SEQ").toString()),
-							   user.get("MEMBER_ID").toString(),
+							   user.get("MEMBERNAME").toString(),
 							   user.get("MEMBER_PHONE").toString(),
 							   user.get("MEMBER_ADDR").toString(),
 							   user.get("MEMBER_EMAIL").toString(),
-							   (Date)Date.valueOf((String) user.get("MEMBER_REGDATE")),
 							   user.get("AUTHORITY").toString(),
 							   (Integer)Integer.valueOf(user.get("MEMBER_VOTE").toString())
 				);

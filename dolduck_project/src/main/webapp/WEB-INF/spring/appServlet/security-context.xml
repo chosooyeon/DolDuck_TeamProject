@@ -26,7 +26,7 @@
 		<!-- 로그인폼 -->
 		<form-login	
 			login-page="/member/login.do"
-			login-processing-url="/member/login.do"
+			login-processing-url="/home.do"
 			authentication-success-handler-ref="userLoginSuccessHandler"
 			authentication-failure-handler-ref="userLoginFailureHandler"		
 			username-parameter="id"

@@ -22,7 +22,7 @@ public class MemberDto extends User{
 	public MemberDto(String username, String password, boolean enabled, 
 			boolean accountNonExpired, boolean credentialsNonExpired, boolean accountNonLocked,
 			Collection<? extends GrantedAuthority> authorities, int member_seq, String member_id, String member_phone, String memebr_addr,
-			String memebr_email, Date member_regdate, String member_role, int member_vote ){
+			String memebr_email, String member_role, int member_vote ){
 		//userClass에 보내는 코드
 		super(username, password, enabled, accountNonExpired, credentialsNonExpired, accountNonLocked, authorities);
 		
@@ -31,7 +31,6 @@ public class MemberDto extends User{
 		this.member_phone = member_phone;
 		this.memebr_addr = memebr_addr;
 		this.memebr_email = memebr_email;
-		this.member_regdate = member_regdate;
 		this.member_role = member_role;
 		this.member_vote = member_vote;
 

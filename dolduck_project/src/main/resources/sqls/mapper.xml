@@ -54,10 +54,12 @@
 		SELECT
 		MEMBER_ID as username,
 		MEMBER_PW as password,
+		MEMBER_NAME as membername,
 		MEMBER_ENABLED as enabled,
 		MEMBER_ROLE as authority,
 		MEMBER_SEQ, MEMBER_EMAIL,
-		MEMBER_PHONE, MEMBER_ADDR
+		MEMBER_PHONE, MEMBER_ADDR,
+		MEMBER_REGDATE, MEMBER_VOTE
 		FROM MEMBER
 		WHERE MEMBER_ID=#{member_id}
 	</select>
