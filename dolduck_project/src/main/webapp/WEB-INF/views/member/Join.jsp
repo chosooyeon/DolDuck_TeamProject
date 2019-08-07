@@ -93,7 +93,40 @@
 						<td colspan="2"><input type="submit" value="회원가입"
 							style="margin-left: 10em;" /></td>
 					</tr>
+					
 				</table>
+				<div class="g-recaptcha" data-sitekey="6LfHerAUAAAAAMuHHv4SxdSPsJgE5L8_PQliNINI"></div>
+				<button id="test_btn">테스트 버튼</button>
+				<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+   				<script src='https://www.google.com/recaptcha/api.js'></script>
+ 				<script>
+			        $(document).ready(function() {
+			            $("#test_btn").click(function() {
+			                $.ajax({
+			                    url: 'VerifyRecaptcha',
+			                    type: 'post',
+			                    data: {
+			                        recaptcha: $("#g-recaptcha-response").val()
+			                    },
+			                    success: function(data) {
+			                        switch (data) {
+			                            case 0:
+			                                alert("자동 가입 방지 봇 통과");
+			                                break;
+			 
+			                            case 1:
+			                                alert("자동 가입 방지 봇을 확인 한뒤 진행 해 주세요.");
+			                                break;
+			 
+			                            default:
+			                                alert("자동 가입 방지 봇을 실행 하던 중 오류가 발생 했습니다. [Error bot Code : " + Number(data) + "]");
+			                                break;
+			                        }
+			                    }
+			                });
+			            });
+			        });
+				</script>
 			</form>
 
 		</div>

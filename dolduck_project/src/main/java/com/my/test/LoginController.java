@@ -1,5 +1,6 @@
 package com.my.test;
 
+import java.io.IOException;
 import java.io.UnsupportedEncodingException;
 import java.nio.file.AccessDeniedException;
 import java.util.HashMap;
@@ -178,6 +179,23 @@ public class LoginController {
 		
 	}
 		
+	@ResponseBody
+	@RequestMapping(value = "VerifyRecaptcha", method = RequestMethod.POST)
+	public int VerifyRecaptcha(HttpServletRequest request) {
+		VerifyRecaptcha.setSecretKey("6LfHerAUAAAAACUEUT2MZxaiydRTDktzKSogfRvS");
+		String gRecaptchaResponse = request.getParameter("recaptcha");
+		System.out.println(gRecaptchaResponse);
+		// 0 = 성공, 1 = 실패, -1 = 오류
+		try {
+			if (VerifyRecaptcha.verify(gRecaptchaResponse))
+				return 0;
+			else
+				return 1;
+		} catch (IOException e) {
+			e.printStackTrace();
+			return -1;
+		}
+	}
 	
 	@RequestMapping(value="emailCheck.do", method=RequestMethod.GET)
 	@ResponseBody
