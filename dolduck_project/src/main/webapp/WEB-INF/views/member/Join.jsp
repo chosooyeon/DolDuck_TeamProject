@@ -1,12 +1,15 @@
-<%@ page language="java" contentType="text/html; charset=UTF-8" pageEncoding="UTF-8"%>
+<%@ page language="java" contentType="text/html; charset=UTF-8"
+	pageEncoding="UTF-8"%>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
 <%@ taglib prefix="form" uri="http://www.springframework.org/tags/form"%>
-<%@ taglib prefix="sec" uri="http://www.springframework.org/security/tags" %>
+<%@ taglib prefix="sec"
+	uri="http://www.springframework.org/security/tags"%>
 <!DOCTYPE html>
 <html>
 <head>
 <meta charset="UTF-8">
 <script type="text/javascript" src="resources/js/register.js"></script>
+<script src="http://dmaps.daum.net/map_js_init/postcode.v2.js"></script>
 <title>Insert title here</title>
 </head>
 <body>
@@ -90,7 +93,13 @@
 						</tr>
 						<tr>
 							<td>
-								<input class="form-control" type="text" class="text" name="user_addr" placeholder="주소" required />
+								<input type="text" name="user_addr" id="addr" placeholder="주소"
+							style="width: 60%; height: 30px; float: left;"
+							readonly="readonly"> <input type="button" id="set_addr"
+							class="e1" onclick="setAddr()" value="주소입력"> <input
+							type="text" id="detail_addr" name="detail_addr"
+							placeholder="상세주소" style="width: 98%; height: 30px;"> <input
+							type="hidden" id="zonecode" name="zonecode" value="" />
 							</td>
 						</tr>
 						<tr>
