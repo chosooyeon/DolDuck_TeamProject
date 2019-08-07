@@ -26,7 +26,7 @@
 
 		</ul>
 	
-		<div class="col-md-12 goodies">
+		<div class="col-md-12 market_border">
 		<!-- 계시판ㄱㄱ -->
 		</div>
 		

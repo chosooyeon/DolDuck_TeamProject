@@ -4,30 +4,23 @@ import java.text.DateFormat;
 import java.text.SimpleDateFormat;
 import java.util.ArrayList;
 import java.util.Date;
-import java.util.HashMap;
 import java.util.List;
 import java.util.Locale;
-import java.util.Map;
 
-import javax.inject.Inject;
 import javax.servlet.http.HttpSession;
-import javax.websocket.Session;
 
 import org.json.simple.JSONArray;
 import org.json.simple.JSONObject;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.beans.factory.annotation.Qualifier;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.ResponseBody;
 
-import com.my.test.dto.MemberDto;
 import com.my.test.model.biz.MemberBiz;
-import com.my.test.model.biz.MemberBizImpl;
 import com.my.test.util.Music;
 import com.my.test.util.WebScrap;
 
@@ -145,6 +138,9 @@ public class HomeController {
 	public String Goodies() {
 		return "market/Goodies";
 	}
+	
+	
+	
 	
 	/************************* 회원가입 ***********************************/
 	

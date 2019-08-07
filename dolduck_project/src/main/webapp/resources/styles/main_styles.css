@@ -424,6 +424,7 @@ section
 
 .has-search .form-control {
     padding-left: 2rem;
+    width: 220px;
 }
 
 .has-search .form-control-feedback {
@@ -1210,12 +1211,16 @@ svg{
 *********************************/
 .market{
 	margin-top: 200px;
+	margin-bottom: 100px;
+}
+.market_ul{
+	border-bottom: none;
 }
 .market h1{
 	margin-bottom: 40px;
 }
 
-.goodies{
+.market_border{
 	position: relative;
 	width:100%;
 	height: auto;
@@ -1233,19 +1238,22 @@ svg{
 .market_link:hover {
 	color: #e3e3e3!important;
 }
-
-.goodies-item{
-	border: 1px solid rgb(0,0,1,.1);
-	display: inline-block;
-	width: 200px; height: 200px;
-	text-align: center;
-	margin: 5px 10px 20px;
+.heart_size{
+	margin-top: 10px;
+    width: 40px;
+}
+.heartShop-item{
+    border: 1px solid rgb(0,0,1,.1);
+    display: inline-block;
+    width: 200px;
+    height: 200px;
+    text-align: center;
+    margin: 21px 12px 20px;
 }
 
-.goodies-item-title{
-	font-weight: bold;
-	font-size: 20px;
-	margin-top : 10px;
+.heartShop-item-title{
+	font-size: 27px;
+    margin-top: 70px;
 }
 
 .btn-buy-item{
@@ -1276,12 +1284,9 @@ svg{
 *******************/
 
 .login{
-	
 	margin-top: 300px;
 }
 .login .login_table{
-	
-	
     height: 345px;
     text-align: -webkit-center;
     padding: 36px;
@@ -1290,12 +1295,14 @@ svg{
 .login_text{
 	margin-bottom: 24px;
 }
-.form-control{
-	color: #000000;
-	margin: 3px;
+.login .form-control{
+    color: #000000;
+    margin: 3px;
+    width: 250px;
+
 }
 .login_button{    
-    width: 345%;
+    width: 396%;
     margin: 18px 0 0 -3px;
     color: #ffffff;
     background: #ffa550;
@@ -1304,8 +1311,8 @@ svg{
     padding: .375rem .75rem;
 }
 .join_button{    
-	width: 345%;
-    margin: 1px 0 0 -3px;
+	width: 396%;
+    margin: -5px 0 0 -3px;
     color: #ffffff;
     background: #ffa550;
     border: 5px solid #ffa550;
@@ -1316,8 +1323,8 @@ svg{
 	  회원가입
 *******************/
 .join{
-	
-	margin-top: 220px;
+    margin-top: 182px;
+    margin-bottom: 100px;
 }
 .join .join_table{
 	
@@ -1328,15 +1335,15 @@ svg{
     border-radius: .25rem;
 }
 .join_form{
-	margin-top: 66px;
+	margin-top: 85px;
 }
 table {
   border-collapse: separate;
   border-spacing: 0 10px;
 }
 #btn_idcheck{
-	width: 251px;
-    margin: 0px 0 0 2px;
+    width: 381px;
+    margin: 3px 1px 0px 1px;
     color: #ffffff;
     background: #ffa550;
     border: 5px solid #ffa550;
@@ -1344,8 +1351,8 @@ table {
     padding: .375rem .75rem;
 }
 #btn_sendemail{
-	width: 251px;
-    margin: 0px 0 0 2px;
+    width: 381px;
+    margin: 3px 1px 0px 1px;
     color: #ffffff;
     background: #ffa550;
     border: 5px solid #ffa550;
@@ -1353,17 +1360,31 @@ table {
     padding: .375rem .75rem;
 }
 #ranChk{
-	width: 251px;
-    margin: 0px 0 0 2px;
+    width: 381px;
+    margin: 3px 1px 0px 1px;
     color: #ffffff;
     background: #ffa550;
     border: 5px solid #ffa550;
     border-radius: .25rem;
     padding: .375rem .75rem;
 }
+
+#addr{
+    width: 66%;
+    float: left;
+}
+#set_addr{
+    margin: -1px 2px 4px 5px;
+    color: #ffffff;
+    background: #ffa550;
+    border: 3px solid #ffa550;
+    border-radius: .25rem;
+    padding: .375rem .75rem;
+    width: 32%;
+}
 #joinup{
-	width: 251px;
-    margin: 0px 0 0 2px;
+    width: 381px;
+    margin: 42px 1px 0px 1px;
     color: #ffffff;
     background: #ffa550;
     border: 5px solid #ffa550;

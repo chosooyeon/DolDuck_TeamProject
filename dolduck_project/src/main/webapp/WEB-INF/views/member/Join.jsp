@@ -93,13 +93,10 @@
 						</tr>
 						<tr>
 							<td>
-								<input type="text" name="user_addr" id="addr" placeholder="주소"
-							style="width: 60%; height: 30px; float: left;"
-							readonly="readonly"> <input type="button" id="set_addr"
-							class="e1" onclick="setAddr()" value="주소입력"> <input
-							type="text" id="detail_addr" name="detail_addr"
-							placeholder="상세주소" style="width: 98%; height: 30px;"> <input
-							type="hidden" id="zonecode" name="zonecode" value="" />
+								<input class="form-control" type="text" name="user_addr" id="addr" placeholder="주소" readonly="readonly"> 
+								<input type="button" id="set_addr" class="e1" onclick="setAddr()" value="주소입력"> 
+								<input class="form-control" type="text" id="detail_addr" name="detail_addr" placeholder="상세주소" > 
+								<input type="hidden" id="zonecode" name="zonecode" value="" />
 							</td>
 						</tr>
 						<tr>
@@ -108,6 +105,38 @@
 							</td>
 						</tr>
 					</table>
+					<div class="g-recaptcha" data-sitekey="6LfHerAUAAAAAMuHHv4SxdSPsJgE5L8_PQliNINI"></div>
+				<button id="test_btn">테스트 버튼</button>
+				<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+   				<script src='https://www.google.com/recaptcha/api.js'></script>
+ 				<script>
+			        $(document).ready(function() {
+			            $("#test_btn").click(function() {
+			                $.ajax({
+			                    url: 'VerifyRecaptcha',
+			                    type: 'post',
+			                    data: {
+			                        recaptcha: $("#g-recaptcha-response").val()
+			                    },
+			                    success: function(data) {
+			                        switch (data) {
+			                            case 0:
+			                                alert("자동 가입 방지 봇 통과");
+			                                break;
+			 
+			                            case 1:
+			                                alert("자동 가입 방지 봇을 확인 한뒤 진행 해 주세요.");
+			                                break;
+			 
+			                            default:
+			                                alert("자동 가입 방지 봇을 실행 하던 중 오류가 발생 했습니다. [Error bot Code : " + Number(data) + "]");
+			                                break;
+			                        }
+			                    }
+			                });
+			            });
+			        });
+				</script>
 				</form>
 
 		</div>
