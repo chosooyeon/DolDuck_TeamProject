@@ -156,7 +156,7 @@ public class LoginController {
 		mailSender.setHost("smtp.gmail.com");
 		mailSender.setPassword("dkdntvmfjs1");
 		mailSender.setPort(587);
-		mailSender.setUsername("outflearn@gmail.com");
+		mailSender.setUsername("DOLDuck@gmail.com");
 		if(mailSender.getPort()==587) {
 			Properties javaMailProperties = new Properties();
 			javaMailProperties.setProperty("mail.smtp.starttls.enable", "true");
@@ -165,11 +165,11 @@ public class LoginController {
 		
 		MimeMessage msg = mailSender.createMimeMessage();
 		MimeMessageHelper helper = new MimeMessageHelper(msg, false, "UTF-8");
-		helper.setFrom(new InternetAddress("outflearn@gmail.com", "아웃프런"));
+		helper.setFrom(new InternetAddress("DOLDuck@gmail.com", "DOLDuck"));
 		helper.setTo(new InternetAddress(email,""));
 		System.out.println("email:" + email);
-		helper.setSubject("[아웃프런]인증번호 test");
-		helper.setText("<a><b style='color:blue;'>인증번호 : " +randompassword+"<a>", true);
+		helper.setSubject("[DOLDuck]인증번호 test");
+		helper.setText("<a><b style='color:hotpink;'>인증번호 : " +randompassword+"<a>", true);
 		
 		try {
 			mailSender.send(msg);
