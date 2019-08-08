@@ -90,9 +90,8 @@ public class HomeController {
 	}
 	
 	
-	@RequestMapping("musicsearch.do")
-	@ResponseBody
-	public JSONObject getChart() {
+	@RequestMapping(value = "musicsearch.do", method = {RequestMethod.POST})
+	public @ResponseBody JSONObject getChart() {
 		//멜론차트 크롤링해서 List로 return 
 		List<Music> list = new ArrayList<Music>();
 		list = crawling.getMusicChart();
