@@ -24,6 +24,7 @@ function getMusicChart(){
 	var token = $("meta[name='_csrf']").attr("content");
 	var header = $("meta[name='_csrf_header']").attr("content");
 	var list;
+	console.log(token, ' // ' , header); 
 	$.ajax({
 		type : 'POST',
 		url : 'musicsearch.do',
