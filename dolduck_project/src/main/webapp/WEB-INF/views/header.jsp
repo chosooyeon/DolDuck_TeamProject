@@ -41,11 +41,12 @@
 				<ul class="d-flex flex-row align-items-start justify-content-start">
 					<sec:authorize access="isAnonymous()">
 						<li><a href="${pageContext.request.contextPath}/login.do">Login</a></li>
+						<li><a href="${pageContext.request.contextPath}/join.do">Register</a></li>
 					</sec:authorize>
 					<sec:authorize access="isAuthenticated()">
 						<li><a href="logout.do">Logout</a></li>
+						<li><a href="${pageContext.request.contextPath}/mypage.do">Mypage</a></li>
 					</sec:authorize>
-					<li><a href="${pageContext.request.contextPath}/join.do">Register</a></li>
 				</ul>
 			</div>
 
