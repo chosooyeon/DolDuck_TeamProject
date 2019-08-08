@@ -6,7 +6,7 @@
 -- 회원주소, 회원이메일 회원가입일, 회원활동여부, 회원등급, 투표권갯수
 
 DROP TABLE MEMBER;
-DROP SEQUENCE NUMBERSEQ;
+DROP SEQUENCE MEMBERSEQ;
 
 CREATE SEQUENCE MEMBERSEQ;
 CREATE TABLE MEMBER(
@@ -27,7 +27,8 @@ CREATE TABLE MEMBER(
 
 SELECT * FROM MEMBER;
 
-INSERT INTO MEMBER VALUES(MEMBERSEQ.NEXTVAL, 'admin','admin1234','관리자','010-0000-0000','서울시 중랑구','1whtndus@naver.com',SYSDATE,'Y','ADMIN',0);
+INSERT INTO MEMBER VALUES(MEMBERSEQ.NEXTVAL, 'admin','admin1234','관리자','010-0000-0000','서울시 중랑구','1whtndus@naver.com',SYSDATE, 0, 1,'ADMIN',0);
 
+drop table member;
 SELECT * FROM MEMBER;
 

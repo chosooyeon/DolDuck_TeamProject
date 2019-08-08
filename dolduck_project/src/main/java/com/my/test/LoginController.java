@@ -154,9 +154,9 @@ public class LoginController {
 		JavaMailSenderImpl mailSender = new JavaMailSenderImpl();
 		
 		mailSender.setHost("smtp.gmail.com");
-		mailSender.setPassword("dkdntvmfjs1");
+		mailSender.setPassword("whwhwkd%5");
 		mailSender.setPort(587);
-		mailSender.setUsername("DOLDuck@gmail.com");
+		mailSender.setUsername("ad.team555@gmail.com");
 		if(mailSender.getPort()==587) {
 			Properties javaMailProperties = new Properties();
 			javaMailProperties.setProperty("mail.smtp.starttls.enable", "true");
@@ -165,7 +165,7 @@ public class LoginController {
 		
 		MimeMessage msg = mailSender.createMimeMessage();
 		MimeMessageHelper helper = new MimeMessageHelper(msg, false, "UTF-8");
-		helper.setFrom(new InternetAddress("DOLDuck@gmail.com", "DOLDuck"));
+		helper.setFrom(new InternetAddress("ad.team555@gmail.com", "Dol-Duck"));
 		helper.setTo(new InternetAddress(email,""));
 		System.out.println("email:" + email);
 		helper.setSubject("[DOLDuck]인증번호 test");
