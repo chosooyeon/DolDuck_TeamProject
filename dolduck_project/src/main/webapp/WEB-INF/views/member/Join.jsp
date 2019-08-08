@@ -55,7 +55,6 @@
 							<th>비밀번호</th>
 						</tr>
 						<tr>	
-							
 							<td>
 								<input class="form-control" type="password" class="text" name="user_pw" placeholder="비밀번호" onchange="pass_check()" required />
 								<div id="pass_check"></div>

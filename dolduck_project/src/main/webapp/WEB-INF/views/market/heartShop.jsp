@@ -31,7 +31,9 @@
 						<div class="vote-area-subject">하트 10개</div>
 						<div class="vote-area-button">
 							<span class="btn btn-buy-item">1,000원
-							<input type="hidden" name="item-price-heart" value="1000">
+								<input type="hidden" name="kindof" value="heart">
+								<input type="hidden" name="item-amount" value="10">
+								<input type="hidden" name="item-price" value="1000">
 							</span>
 						</div>
 					</li>
@@ -40,7 +42,9 @@
 						<div class="vote-area-subject">하트 20+1개</div>
 						<div class="vote-area-button">
 							<span class="btn btn-buy-item">2,000원
-							<input type="hidden" name="item-price-heart" value="2000">
+								<input type="hidden" name="kindof" value="heart">
+								<input type="hidden" name="item-amount" value="21">
+								<input type="hidden" name="item-price" value="2000">
 							</span>
 						</div>
 					</li>
@@ -49,7 +53,9 @@
 						<div class="vote-area-subject">하트 50+5개</div>
 						<div class="vote-area-button">
 							<span class="btn btn-buy-item">5,000원
-							<input type="hidden" name="item-price-heart" value="5000">
+								<input type="hidden" name="kindof" value="heart">
+								<input type="hidden" name="item-amount" value="55">
+								<input type="hidden" name="item-price" value="5000">
 							</span>
 						</div>
 					</li>
@@ -57,8 +63,10 @@
 						<div class="vote-area-img"><img class="heart_size"src="resources/images/heart.png"></div>
 						<div class="vote-area-subject">하트 100+10개</div>
 						<div class="vote-area-button">
-							<span class="btn btn-buy-item">10,000원
-							<input type="hidden" name="item-price-heart" value="10000">
+							<span class="btn btn-buy-item" >10,000원
+								<input type="hidden" name="kindof" value="heart">
+								<input type="hidden" name="item-amount" value="110">
+								<input type="hidden" name="item-price" value="10000">
 							</span>
 						</div>
 					</li>
@@ -70,7 +78,9 @@
 						<div class="vote-area-subject">투표권 1개</div>
 						<div class="vote-area-button">
 							<span class="btn btn-buy-item"><i class="fas fa-heart"></i>&nbsp;5
-							<input type="hidden" name="item-price-vote" value="5">
+								<input type="hidden" name="kindof" value="vote">
+								<input type="hidden" name="item-amount" value="1">
+								<input type="hidden" name="item-price" value="5">
 							</span>
 						</div>
 					</li>
@@ -79,7 +89,9 @@
 						<div class="vote-area-subject">투표권 11개</div>
 						<div class="vote-area-button">
 							<span class="btn btn-buy-item"><i class="fas fa-heart"></i>&nbsp;50
-							<input type="hidden" name="item-price-vote" value="50">
+								<input type="hidden" name="kindof" value="vote">
+								<input type="hidden" name="item-amount" value="11">
+								<input type="hidden" name="item-price" value="50">
 							</span>
 						</div>
 					</li>
@@ -88,7 +100,9 @@
 						<div class="vote-area-subject">투표권 55개</div>
 						<div class="vote-area-button">
 							<span class="btn btn-buy-item"><i class="fas fa-heart"></i>&nbsp;250
-							<input type="hidden" name="item-price-vote" value="250">
+								<input type="hidden" name="kindof" value="vote">
+								<input type="hidden" name="item-amount" value="55">
+								<input type="hidden" name="item-price" value="250">
 							</span>
 						</div>
 					</li>
@@ -97,7 +111,9 @@
 						<div class="vote-area-subject">투표권 120개</div>
 						<div class="vote-area-button">
 							<span class="btn btn-buy-item"><i class="fas fa-heart"></i>&nbsp;500
-							<input type="hidden" name="item-price-vote" value="500">
+								<input type="hidden" name="kindof" value="vote">
+								<input type="hidden" name="item-amount" value="120">
+								<input type="hidden" name="item-price" value="500">
 							</span>
 						</div>
 					</li>
@@ -105,13 +121,32 @@
 			</div>	
 		</div>
 		
-		<script src="" type="text/javascript"></script>
-		<script type="text/javascript">
+		<!-- Modal -->
+		<div class="modal fade" id="exampleModalCenter" tabindex="-1" role="dialog" aria-labelledby="exampleModalCenterTitle" aria-hidden="true">
+		  <div class="modal-dialog modal-dialog-centered" role="document">
+		    <div class="modal-content">
+		      <div class="modal-header">
+		        <h3 class="modal-title" id="exampleModalCenterTitle">결제하기</h3>
+		        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+		          <span aria-hidden="true">&times;</span>
+		        </button>
+		      </div>
+		      <div class="modal-body">
+		      		<span>선택하신제품 제품</span>
+		      		<h3><span id="selected-item"></span><b id="total-amount"></b>ea</h3><br>
+					<h2 id="total-price"></h2>
+		      </div>
+		      <div class="modal-footer">
+		        <button type="button" class="btn btn-secondary" data-dismiss="modal">취&nbsp;&nbsp;소</button>
+		        <button type="button" class="btn btn-primary btn-purchase">결&nbsp;&nbsp;제</button>
+		      </div>
+		    </div>
+		  </div>
+		</div>
 		
-			$({
-								
-			})
-		</script>	
+		
+		<script src="" type="text/javascript"></script>
+		<script src="resources/js/shop.js" type="text/javascript"></script>	
 	</div>
 <%@include file="../footer.jsp" %>
 </body>

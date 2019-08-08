@@ -1278,7 +1278,8 @@ svg{
 .vote-area-button{
 	padding: 5px;
 }
-
+#total-price { float: right;}
+#total-price b{ color: #007bff; }
 /*******************
 		로그인
 *******************/
