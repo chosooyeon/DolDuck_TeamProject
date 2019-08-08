@@ -22,7 +22,7 @@ $(window).on('load', function(){
 
 function getMusicChart(){
 	var list;
-	
+	console.log(token, ' // ' , header); 
 	$.ajax({
 		type : 'POST',
 		url : 'musicsearch.do',
