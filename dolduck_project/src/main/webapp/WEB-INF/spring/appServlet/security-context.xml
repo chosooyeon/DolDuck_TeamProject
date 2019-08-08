@@ -48,8 +48,9 @@
 			logout-url="/member/logout.do"
 			logout-success-url="/member/login.do"
 		/>
-		
+
 	<!-- <csrf disabled="true"/> -->
+
 	
 	</http>
 	
