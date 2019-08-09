@@ -22,7 +22,7 @@
 			</li>
 
 		</ul>
-		<div class="col-md-10 market_border">
+		<div class="col-lg-12 market_border">
 			<div class="heartShop">
 				<div class="heartShop-item-title"><span>하트존</span></div>
 				<ul class="">
