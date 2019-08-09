@@ -20,9 +20,6 @@
 		SELECT * FROM MEMBER
 	</select>
 
-	<!-- <select id="selectOne" parameterType="String" resultType="memberDto"> 
-		SELECT * FROM MEMBER WHERE MEMBER_ID=#{id} </select> -->
-
 	<insert id="insert" parameterType="memberDto">
 		INSERT INTO MEMBER
 		VALUES(MEMBERSEQ.NEXTVAL,#{member_id},#{member_pw},#{member_name},#{member_phone},#{member_addr},#{member_email},SYSDATE,'Y','USER',0, 1)
@@ -46,9 +43,6 @@
 			#{item}
 		</foreach>
 	</delete>
-
-	<!-- <select id="login" parameterType="map" resultType="memberDto"> SELECT 
-		* FROM MEMBER WHERE MEMBER_ID=#{id} AND MEMBER_PW=#{pw} </select> -->
 
 	<select id="selectUser" resultType="java.util.Map">
 		SELECT
@@ -88,11 +82,6 @@
 		SELECT * FROM MEMBER WHERE MEMBER_ID =#{member_id}
 	</select>
 
-<!-- 	<select id="nickChk" parameterType="map"
-		resultType="MemberDto">
-		SELECT * FROM MEMBER WHERE USER_NICKNAME = #{nickname}
-	</select> -->
-
 	<!-- 이름으로 이메일 가져오기(아이디) -->
 	<select id="bringByname" parameterType="map"
 		resultType="MemberDto">
@@ -110,11 +99,13 @@
 		UPDATE MEMBER SET USER_PW = #{member_pw} WHERE USER_ID = #{member_id}
 	</update>
 	
+	<!-- 마켓: 하트 구매하기  -->
 	<update id="purchaseHeart" parameterType="map">
 		UPDATE MEMBER SET MEMBER_HEART = ((SELECT MEMBER_HEART FROM MEMBER WHERE MEMBER_ID = #{member_id}) + #{heart})
 		WHERE MEMBER_ID = #{member_id}	
 	</update>
 	
+	<!-- 마켓: 투표권 구매하기 -->
 	<update id="purchaseVote" parameterType="map">
 		UPDATE MEMBER 
 		SET MEMBER_HEART = ((SELECT MEMBER_HEART FROM MEMBER WHERE MEMBER_ID = #{member_id}) - #{heart}),
