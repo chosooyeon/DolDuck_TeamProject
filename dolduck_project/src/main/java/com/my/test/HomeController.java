@@ -138,8 +138,20 @@ public class HomeController {
 		return "market/Goodies";
 	}
 	
+	@RequestMapping("buy-heart.do")
+	@ResponseBody
+	public String payHeart(String amount, String price) {
+		
+		
+		return "";
+	}
 	
-	
+	@RequestMapping("buy-vote.do")
+	public String payVoe(String amount, String price) {
+		
+		return "";
+	}
+
 	
 	/************************* 회원가입 ***********************************/
 	
