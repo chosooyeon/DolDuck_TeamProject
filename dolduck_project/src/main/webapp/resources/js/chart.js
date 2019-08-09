@@ -21,13 +21,23 @@ $(window).on('load', function(){
 })
 
 function getMusicChart(){
-	var list;
-	console.log(token, ' // ' , header); 
+	
+	var token = $("meta[name='_csrf']").attr("content")
+	var header = $("meta[name='_csrf_header']").attr("content")
+	var list
+	console.log(token, ' // ' , header)
+	
+	
 	$.ajax({
 		type : 'POST',
 		url : 'musicsearch.do',
 		dataType : 'json',
-		async : false ,
+		async : false 
+		,beforeSend: function( xhr ) {
+
+			  xhr.setRequestHeader(header, token);
+
+		},
 		success : function(data){
 			$('.label-search').text(data.getTime);
 			list = data.chart;
