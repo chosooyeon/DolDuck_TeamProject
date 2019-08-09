@@ -20,30 +20,41 @@ $(function(){
 		$('.modal').modal('show')
 		
 	}).on('click', '.btn-purchase', function(){
-		//Purchase Process
-		if(kindOf == 'heart'){
-			var IMP = window.IMP; 
-			IMP.init('imp70049115'); 
-			IMP.request_pay({
-				amount : price,
-				buyer_name : '돌덕',
-				name : `[돌덕]${kindOf}`,
-			}, function(response) {						//결제 후 호출되는 callback함수
-				if ( response.success ) { 				// Payment Successed
-					console.log(response);
-					ajaxPurchase('buy-heart.do', amount, price)
-					$('.modal').modal('hide')
-				} else {								// Payment Failed
-					alert('결제실패 : ' + response.error_msg);
-				}
-			})
-		}else if(kindOf == 'vote'){
-			ajaxPurchase('buy-vote.do', amount, price)
-		}
 		
+		if(sessionVerify()){
+			//Purchase Process
+			if(kindOf == 'heart'){
+				var IMP = window.IMP; 
+				IMP.init('imp70049115'); 
+				IMP.request_pay({
+					amount : price,
+					buyer_name : '돌덕',
+					name : `[돌덕]${kindOf}`,
+				}, function(response) {						//결제 후 호출되는 callback함수
+					if ( response.success ) { 				// Payment Successed
+						console.log(response);
+						ajaxPurchase('buy-heart.do', amount, price)
+						$('.modal').modal('hide')
+					} else {								// Payment Failed
+						alert('결제실패 : ' + response.error_msg);
+					}
+				})
+			}else if(kindOf == 'vote'){
+				ajaxPurchase('buy-vote.do', amount, price)
+			}
+		}else{
+			var conf = confirm('로그인이 필요한 페이지입니다! 로그인페이지로 이동하시겠습니까?')
+			if(conf) location.href = 'login.do'
+		}
 	})
 	
 })
+
+//ID(session) verifying at Purchase Process ...
+function sessionVerify(){
+	
+}
+
 
 //Insert and Update at DataBase of User
 function ajaxPurchase(comm, amount, price){
