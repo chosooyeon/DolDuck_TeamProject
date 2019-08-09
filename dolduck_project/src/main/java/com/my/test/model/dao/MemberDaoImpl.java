@@ -239,4 +239,53 @@ public class MemberDaoImpl implements MemberDao {
 	public int usersNameCheck(String name) {
 		return 0;
 	}
+
+	
+	//하트 구매 
+	@Override
+	public int purchaseHeart(int amount, String id) {
+		
+		int res = 0;
+		Map<String, Object> map = new HashMap<String, Object>();
+		map.put("heart", amount);
+		map.put("member_id", id);
+		
+		res = sqlSession.update(namespace + "purchaseHeart", map);
+		
+		return res;
+	}
+
+	//투표권 구매
+	@Override
+	public int purchaseVote(int amount, String id) {
+		int heart = 0;
+		int res = 0;
+		Map<String, Object> map = new HashMap<String, Object>();
+		map.put("vote", amount);
+		map.put("member_id", id);
+		
+		//투표권1개(♥5)	투표권 11개(♥50)	투표권 55개(♥250) 투표권 120개(♥500)
+		switch(amount){
+			case 1:
+				heart = 5;
+				break;
+			case 11: 
+				heart = 50;
+				break;
+			case 55:
+				heart = 250;
+				break;
+			case 120:
+				heart = 500;
+				break;
+			default : break;
+		}
+		map.put("heart", heart);
+		
+		res = sqlSession.update(namespace + "purchaseVote", map);
+		
+		
+		System.err.println("DaoImpl Result => " + res);
+		return res;
+	}
 }
