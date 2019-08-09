@@ -123,6 +123,17 @@ public class MemberBizImpl implements MemberBiz {
         return isCheck;
 	}
 
+	@Override
+	public int purchaseHeart(int amount, String id) {
+	
+		return dao.purchaseHeart(amount, id);
+	}
+
+	@Override
+	public int purchaseVote(int amount, String id) {
+		return dao.purchaseVote(amount, id);
+	}
+
 //	@Override
 //	public MemberDto login(String id, String pw) {
 //		return dao.login(id, pw);

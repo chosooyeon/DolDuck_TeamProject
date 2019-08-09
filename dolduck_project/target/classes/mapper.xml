@@ -109,4 +109,17 @@
 	<update id="changePw" parameterType="memberDto">
 		UPDATE MEMBER SET USER_PW = #{member_pw} WHERE USER_ID = #{member_id}
 	</update>
+	
+	<update id="purchaseHeart" parameterType="map">
+		UPDATE MEMBER SET MEMBER_HEART = ((SELECT MEMBER_HEART FROM MEMBER WHERE MEMBER_ID = #{member_id}) + #{heart})
+		WHERE MEMBER_ID = #{member_id}	
+	</update>
+	
+	<update id="purchaseVote" parameterType="map">
+		UPDATE MEMBER 
+		SET MEMBER_HEART = ((SELECT MEMBER_HEART FROM MEMBER WHERE MEMBER_ID = #{member_id}) - #{heart}),
+			MEMBER_VOTE = ((SELECT MEMBER_VOTE FROM MEMBER WHERE MEMBER_ID = #{member_id}) + #{vote})
+		WHERE MEMBER_ID = #{member_id}
+	</update>
+	
 </mapper>

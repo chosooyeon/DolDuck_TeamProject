@@ -31,4 +31,8 @@ public interface MemberBiz {
 	public MemberDto findPw(String name, String id);
 	public int changePw(String pw, String id);
 	public boolean usersNameCheck(String name);
+	
+	public int purchaseHeart(int amount, String id);
+	public int purchaseVote(int amount, String id);
+	
 }

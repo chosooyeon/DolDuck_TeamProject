@@ -1,5 +1,6 @@
 package com.my.test;
 
+import java.security.Principal;
 import java.text.DateFormat;
 import java.text.SimpleDateFormat;
 import java.util.ArrayList;
@@ -14,12 +15,16 @@ import org.json.simple.JSONObject;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.security.core.Authentication;
+import org.springframework.security.core.annotation.AuthenticationPrincipal;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
+import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.ResponseBody;
 
+import com.my.test.dto.MemberDto;
 import com.my.test.model.biz.MemberBiz;
 import com.my.test.util.Music;
 import com.my.test.util.WebScrap;
@@ -140,16 +145,38 @@ public class HomeController {
 	
 	@RequestMapping("buy-heart.do")
 	@ResponseBody
-	public String payHeart(String amount, String price) {
+	public String payHeart(@RequestParam int amount, @RequestParam int price, Authentication auth) {
+		//@AuthenticationPrincipal
+		MemberDto dto = (MemberDto)auth.getPrincipal();
+		String userId = dto.getUsername();
+		String result = "";
 		
-		
-		return "";
+		int res = biz.purchaseHeart(amount, userId);
+		if(res>0) {
+			result = "succeed";
+		}else {
+			result = "failed";
+		}
+		return result;
 	}
 	
 	@RequestMapping("buy-vote.do")
-	public String payVoe(String amount, String price) {
+	@ResponseBody
+	public String payVote(@RequestParam int amount, @RequestParam  int price, Authentication auth) {
+		//@AuthenticationPrincipal
+		MemberDto dto = (MemberDto)auth.getPrincipal();
+		String userId = dto.getUsername();
+		String result;
 		
-		return "";
+		int res = biz.purchaseVote(amount, userId);
+		System.out.println(userId + "님이 " + amount + "개의 투표권을 산다~");
+		System.err.println("Controller Result => " + res);
+		if(res>0) {
+			result = "succeed";
+		}else {
+			result = "failed";
+		}
+		return result;
 	}
 
 	
