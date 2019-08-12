@@ -13,9 +13,6 @@
 	src="https://code.jquery.com/jquery-3.4.1.min.js"></script>
 <script type="text/javascript" src="resources/js/login.js"></script>
 <script src="https://developers.kakao.com/sdk/js/kakao.min.js"></script>
-
-</head>
-<body>
 <style type="text/css">
 img#kakao-login-btn {
 	width: 240px;
@@ -23,6 +20,9 @@ img#kakao-login-btn {
 	height: 40px;
 }
 </style>
+</head>
+<body>
+
 	<%@include file="../header.jsp"%>
 
 	<div class="container login">
@@ -62,11 +62,11 @@ img#kakao-login-btn {
 						</tr>
 
 					</table>
-					<div class="fb-login-button" data-width="" data-size="large"
+					<!-- <div class="fb-login-button" data-width="" data-size="large"
 						data-button-type="login_with" data-auto-logout-link="false"
 						data-use-continue-as="false" scope="public_profile,email"
 						onlogin="checkLoginState();" style="margin-bottom: 0.4em;"></div>
-					<script src="resources/js/sns/facebooklogin.js"></script>
+					<script src="resources/js/sns/facebooklogin.js"></script> -->
 					<p></p>
 					<a id="kakao-login-btn"></a>
 					<script src="resources/js/sns/kakaologin.js"></script>
