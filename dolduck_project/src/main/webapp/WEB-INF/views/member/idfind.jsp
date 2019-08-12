@@ -16,7 +16,7 @@
 <div class="container login">
 	<div class="row">
 		<div class="col-lg-6 offset-lg-3 login_table">
-		<h1 class="text-center login_text">DOL-Duck 아이디 찾기</h1>
+		<h1 class="text-center login_text">아이디 찾기</h1>
 
 <form action="${pageContext.request.contextPath}/idfind.do" method="post">
 <input type="hidden" name="${_csrf.parameterName }" value="${_csrf.token}">
