@@ -51,6 +51,11 @@ public class HomeController {
 		model.addAttribute("serverTime", formattedDate );
 		return "home";
 	}
+	@RequestMapping("admin.do")
+	public String selectList(Model model) {
+		model.addAttribute("list",biz.selectList());
+		return "admin/admin";
+	}
 	
 	/************************** 로그인 ***************************/
 //	@RequestMapping("loginform.do")

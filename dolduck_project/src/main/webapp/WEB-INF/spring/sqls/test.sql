@@ -32,7 +32,9 @@ INSERT INTO MEMBER VALUES(MEMBERSEQ.NEXTVAL, 'admin','admin1234','관리자','01
 drop table member;
 SELECT * FROM MEMBER;
 
+delete from member where member_id='admin';
 
+UPDATE MEMBER SET MEMBER_ROLE='ROLE_ADMIN' WHERE MEMBER_ID='admin';
 
 select member_heart, member_vote from member where member_id = 'lotus526'
 
@@ -42,7 +44,6 @@ update member set member_heart = 1000, member_vote = 0 where member_id = 'lotus5
 update member set member_vote = 
 (select member_vote from member where member_id = 'lotus526') + 5
 where member_id = 'lotus526'
-
 
 --투표권 구매 
 update member 
