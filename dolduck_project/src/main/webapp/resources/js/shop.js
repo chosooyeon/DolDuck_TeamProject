@@ -50,12 +50,6 @@ $(function(){
 	
 })
 
-//ID(session) verifying at Purchase Process ...
-function sessionVerify(){
-	
-}
-
-
 //Insert and Update at DataBase of User
 function ajaxPurchase(comm, amount, price){
 	var token = $("meta[name='_csrf']").attr("content");
