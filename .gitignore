@@ -1,4 +1,4 @@
-#logs
+
 *.log
 upload/
 logs/
@@ -10,7 +10,6 @@ logs/
 ehthumbs.db
 Thumbs.db
 
-#이클립스 설정용 파일
 .metadata
 bin/
 tmp/
@@ -34,3 +33,4 @@ local.properties
 .recommenders/
 dolduck_project/target/m2e-wtp/web-resources/META-INF/MANIFEST.MF
 dolduck_project/target/m2e-wtp/web-resources/META-INF/maven/com.my/test/pom.properties
+
