@@ -31,3 +31,6 @@ local.properties
 .tern-project
 .springBeans
 .recommenders/
+dolduck_project/target/m2e-wtp/web-resources/META-INF/MANIFEST.MF
+dolduck_project/target/m2e-wtp/web-resources/META-INF/maven/com.my/test/pom.properties
+

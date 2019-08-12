@@ -56,7 +56,7 @@ img#kakao-login-btn {
 								onclick="location.href='${pageContext.request.contextPath}/join.do'"></td>
 						</tr>
 						<tr>
-							<td>&emsp;<a href="idfind.do">id 찾기</a>&emsp;
+							<td>&emsp;<a href="idfind.do">아이디 찾기</a>&emsp;
 							</td>
 							<td>/&emsp;&emsp;<a href="pwfind.jsp">비밀번호 찾기</a></td>
 						</tr>
