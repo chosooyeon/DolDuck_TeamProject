@@ -1255,7 +1255,9 @@ svg{
 	font-size: 27px;
     margin-top: 38px;
 }
-
+.Goodies{
+	height: 600px;
+}
 .btn-buy-item{
 	width: 108px;
     height: 32px;
@@ -1425,3 +1427,13 @@ table {
   background-color: white;
   overflow: hidden;
 }
+
+.btn_role{
+	background: #fff !important;
+
+}
+.btn_role:focus{
+	box-shadow: 0 0 0 0.2rem rgba(255, 255, 255, 0.25);
+}
+
+

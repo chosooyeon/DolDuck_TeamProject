@@ -1,6 +1,17 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8" pageEncoding="UTF-8"%>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
 <%@ taglib uri="http://www.springframework.org/security/tags" prefix="sec"%>
+<%@page import = "org.springframework.security.core.context.SecurityContextHolder" %>
+<%@page import = "org.springframework.security.core.Authentication" %>
+<%@page import = "com.my.test.dto.MemberDto" %>
+<%
+Authentication auth = SecurityContextHolder.getContext().getAuthentication();
+Object principal = auth.getPrincipal();
+String name = "";
+if(principal != null && principal instanceof MemberDto){
+	name = ((MemberDto)principal).getUsername();
+}
+%>
 <!DOCTYPE html>
 <html>
 <head>
@@ -33,11 +44,13 @@
 						<li><a href="${pageContext.request.contextPath}/login.do">Login</a></li>
 						<li><a href="${pageContext.request.contextPath}/join.do">Register</a></li>
 					</sec:authorize>
-					<sec:authorize access="hasRole('ROLE_USER')">
+					<sec:authorize access="hasAnyRole('ROLE_USER','ROLE_ARTIST')">
+						<li style="color:white"><%=name %>님 환영합니다.</li>
 						<li><a href="logout.do">Logout</a></li>
 						<li><a href="${pageContext.request.contextPath}/mypage.do">Mypage</a></li>
 					</sec:authorize>
 					<sec:authorize access="hasRole('ROLE_ADMIN')">
+						<li style="color:white"><%=name %>님 환영합니다.</li>
 						<li><a href="logout.do">Logout</a></li>
 						<li><a href="${pageContext.request.contextPath}/admin.do">Userpage</a></li>
 					</sec:authorize>

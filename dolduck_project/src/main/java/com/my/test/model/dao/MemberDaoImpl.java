@@ -5,12 +5,15 @@ import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
 
+import javax.mail.Session;
+
 import org.mybatis.spring.SqlSessionTemplate;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Repository;
 
 import com.my.test.dto.MemberDto;
 import com.my.test.dto.MemberJoinDto;
+import com.my.test.dto.SelectDto;
 
 @Repository
 public class MemberDaoImpl implements MemberDao {
@@ -19,9 +22,9 @@ public class MemberDaoImpl implements MemberDao {
 	private SqlSessionTemplate sqlSession;
 	
 	@Override
-	public List<MemberDto> selectList() {
+	public List<SelectDto> selectList() {
 		
-		List<MemberDto> list = new ArrayList<MemberDto>();
+		List<SelectDto> list = new ArrayList<SelectDto>();
 		try {
 			list = sqlSession.selectList(namespace+"selectList");
 		} catch (Exception e) {
@@ -31,88 +34,6 @@ public class MemberDaoImpl implements MemberDao {
 		
 		return list;
 	}
-
-//	@Override
-//	public MemberDto selectOne(String id) {
-//		MemberDto dto = new MemberDto();
-//		try {
-//			dto = sqlSession.selectOne(namespace+"selectOne",id);
-//		} catch (Exception e) {
-//			System.out.println("error");
-//			e.printStackTrace();
-//		}
-//		
-//		return dto;
-//	}
-
-	@Override
-	public int insert(MemberDto dto) {
-		int res = 0;
-		try {
-			res = sqlSession.insert(namespace+"insert",dto);
-		} catch (Exception e) {
-			System.out.println("error");
-			e.printStackTrace();
-		}
-		
-		return res;
-	}
-
-	@Override
-	public int update(MemberDto dto) {
-		int res = 0;
-		try {
-			res = sqlSession.update(namespace+"update",dto);
-		} catch (Exception e) {
-			System.out.println("error");
-			e.printStackTrace();
-		}
-		
-		return res;
-	}
-
-	@Override
-	public int delete(String id) {
-		int res = 0;
-		try {
-			res = sqlSession.update(namespace+"delete",id);
-		} catch (Exception e) {
-			System.out.println("error");
-			e.printStackTrace();
-		}
-		
-		return res;
-	}
-
-	@Override
-	public int muldel(String[] chk) {
-		
-		int res = 0;
-		List<String> list = new ArrayList<String>();
-		
-		for(String i : chk) {
-			list.add(i);
-		}
-		
-		res = sqlSession.delete(namespace + "muldel", list);
-		
-		return res;
-	}
-
-//	@Override
-//	public MemberDto login(String id, String pw) {
-//		MemberDto dto = null;
-//		
-//		Map<String, String> map = new HashMap<String, String>();
-//		map.put("id", id);
-//		map.put("pw", pw);
-//		try {
-//			dto = sqlSession.selectOne(namespace+"login",map);			
-//		} catch (Exception e) {
-//			e.printStackTrace();
-//		}
-//		return dto;
-//	}
 
 	@Override
 	public int insertUser(Map<String, String> map) {
@@ -169,25 +90,11 @@ public class MemberDaoImpl implements MemberDao {
 				
 		return dto;
 	}
-
-	@Override
-	public MemberDto nickCheck(String nickname) {
-		MemberDto dto = null;
-		
-		Map<String, String> map = new HashMap<String, String>();
-		map.put("nickname", nickname);
-		
-		System.out.println("닉네임 유효성 검사중");
-		
-		dto = sqlSession.selectOne(namespace + "nickChk", map);
-		
-		return dto;
-	}
 	
 	@Override
-	public int updateUserInfo(MemberDto dto) {
+	public int updateMember(MemberDto dto) {
 		int res = 0;
-		res = sqlSession.update(namespace + "updateUserInfo", dto);
+		res = sqlSession.update(namespace + "updateMember", dto);
 			
 			if(res>0) {
 				sqlSession.commit();
@@ -208,14 +115,28 @@ public class MemberDaoImpl implements MemberDao {
 	}
 
 
-	@Override
-	public MemberDto findId(String name, String nickname) {
-		return null;
-	}
+	public SelectDto idSearch(String name, String email) {
 
-	@Override
-	public MemberDto findPw(String name, String id) {
-		return null;
+		Map<String, String> idSearch = new HashMap<String, String>();
+		idSearch.put("name", name);
+		idSearch.put("email", email);
+		SelectDto dto = new SelectDto();
+
+		dto = sqlSession.selectOne(namespace + "idSearch", idSearch);
+		System.err.println(dto.getMember_id());
+		
+		return dto;
+	}
+	public SelectDto pwSearch(String id, String email) {
+
+		Map<String, Object> pwSearch = new HashMap<String, Object>();
+		pwSearch.put("id", id);
+		pwSearch.put("email", email);
+		SelectDto dto = new SelectDto();
+
+		dto = sqlSession.selectOne(namespace + "pwSearch", pwSearch);
+		
+		return dto;
 	}
 
 	@Override
@@ -223,8 +144,8 @@ public class MemberDaoImpl implements MemberDao {
 		int res = 1;
 		
 		Map<String, String> map = new HashMap<String, String>();
-		map.put("userPw", pw);
-		map.put("userId", id);
+		map.put("pw", pw);
+		map.put("id", id);
 			
 		res = sqlSession.insert(namespace + "changePw", map);
 		
@@ -288,4 +209,17 @@ public class MemberDaoImpl implements MemberDao {
 		System.err.println("DaoImpl Result => " + res);
 		return res;
 	}
+
+	@Override
+	public int updateRole(MemberDto dto) {
+		int res = 0;
+		res = sqlSession.update(namespace+"updateRole",dto);
+			
+			if(res>0) {
+				sqlSession.commit();
+			}
+		return res;
+	}
+
+
 }

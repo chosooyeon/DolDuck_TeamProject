@@ -19,22 +19,23 @@ CREATE TABLE MEMBER(
 	MEMBER_EMAIL VARCHAR2(1000) NOT NULL,
 	MEMBER_REGDATE DATE NOT NULL,
 	MEMBER_HEART NUMBER NOT NULL,
-	MEMBER_ENABLED NUMBER(1) DEFAULT 1,
-	MEMBER_ROLE VARCHAR2(10) DEFAULT 'ROLE_USER' NOT NULL,
+	MEMBER_ENABLED INTEGER DEFAULT 1,
+	MEMBER_ROLE VARCHAR2(15) DEFAULT 'ROLE_USER' NOT NULL,
 	MEMBER_VOTE NUMBER NOT NULL,
 	CONSTRAINT CON_MEMBER_ID UNIQUE(MEMBER_ID)
 );
 
 SELECT * FROM MEMBER;
 
-INSERT INTO MEMBER VALUES(MEMBERSEQ.NEXTVAL, 'admin','admin1234','관리자','010-0000-0000','서울시 중랑구','1whtndus@naver.com',SYSDATE, 0, 1,'ADMIN',0);
+-- 컬럼 값 변경
+ALTER TABLE MEMBER MODIFY(MEMBER_ROLE VARCHAR2(15));
 
-drop table member;
-SELECT * FROM MEMBER;
 
 delete from member where member_id='admin';
 
 UPDATE MEMBER SET MEMBER_ROLE='ROLE_ADMIN' WHERE MEMBER_ID='admin';
+
+UPDATE MEMBER SET MEMBER_ROLE='ROLE_ARTIST' WHERE MEMBER_ID='한지수';
 
 select member_heart, member_vote from member where member_id = 'lotus526'
 
@@ -51,3 +52,4 @@ set member_vote = ((select member_vote from member where member_id = 'lotus526')
 member_heart = ((select member_heart from member where member_id = 'lotus526') - 250)
 where member_id = 'lotus526'
 
+UPDATE MEMBER SET MEMBER_PW='$2a$10$WzmejPwX08xRYaKDbB1Ie.NOX5uwfHwSCahrNar1.VC0jWpx/.yiS' WHERE MEMBER_ID='1whtndus'
