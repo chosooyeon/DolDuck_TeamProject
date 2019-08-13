@@ -43,11 +43,14 @@
 						<li><a href="${pageContext.request.contextPath}/login.do">Login</a></li>
 						<li><a href="${pageContext.request.contextPath}/join.do">Register</a></li>
 					</sec:authorize>
-					<sec:authorize access="isAuthenticated()">
+					<sec:authorize access="hasRole('ROLE_USER')">
 						<li><a href="logout.do">Logout</a></li>
 						<li><a href="${pageContext.request.contextPath}/mypage.do">Mypage</a></li>
 					</sec:authorize>
-					
+					<sec:authorize access="hasRole('ROLE_ADMIN')">
+						<li><a href="logout.do">Logout</a></li>
+						<li><a href="${pageContext.request.contextPath}/admin.do">Userpage</a></li>
+					</sec:authorize>
 				</ul>
 			</div>
 

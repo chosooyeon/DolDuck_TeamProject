@@ -3,15 +3,13 @@ package com.my.test.model.biz;
 import java.util.List;
 import java.util.Map;
 
-import javax.inject.Inject;
-
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import com.my.test.dto.MemberDto;
 import com.my.test.dto.MemberJoinDto;
 import com.my.test.model.dao.MemberDao;
-import com.my.test.model.dao.MemberDaoImpl;
+import com.my.test.vote.VoteDto;
 
 @Service
 public class MemberBizImpl implements MemberBiz {
@@ -134,6 +132,21 @@ public class MemberBizImpl implements MemberBiz {
 		return dao.purchaseVote(amount, id);
 	}
 
+	@Override
+	public int insertVote(VoteDto dto) {
+		return dao.insertVote(dto);
+	}
+
+	@Override
+	public VoteDto selectOneVote(int page, String starName) {
+		return dao.selectOneVote(page, starName);
+	}
+
+	@Override
+	public int updateVote(VoteDto dto) {
+		return dao.updateVote(dto);
+	}
+	
 //	@Override
 //	public MemberDto login(String id, String pw) {
 //		return dao.login(id, pw);

@@ -3,10 +3,9 @@ package com.my.test.model.biz;
 import java.util.List;
 import java.util.Map;
 
-import org.springframework.stereotype.Service;
-
 import com.my.test.dto.MemberDto;
 import com.my.test.dto.MemberJoinDto;
+import com.my.test.vote.VoteDto;
 
 public interface MemberBiz {
 	public List<MemberDto> selectList();
@@ -34,5 +33,9 @@ public interface MemberBiz {
 	
 	public int purchaseHeart(int amount, String id);
 	public int purchaseVote(int amount, String id);
+	
+	public int insertVote(VoteDto dto);
+	public VoteDto selectOneVote(int page, String starName);
+	public int updateVote(VoteDto voteDto);
 	
 }

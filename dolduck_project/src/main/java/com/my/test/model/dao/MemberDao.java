@@ -1,13 +1,11 @@
 package com.my.test.model.dao;
 
 import java.util.List;
-
 import java.util.Map;
-
-import org.springframework.stereotype.Repository;
 
 import com.my.test.dto.MemberDto;
 import com.my.test.dto.MemberJoinDto;
+import com.my.test.vote.VoteDto;
 
 public interface MemberDao {
 	String namespace = "member.";
@@ -37,4 +35,8 @@ public interface MemberDao {
 	
 	public int purchaseHeart(int amount, String id);
 	public int purchaseVote(int amount, String id);
+	
+	public int insertVote(VoteDto votedto);
+	public VoteDto selectOneVote(int page, String starName);
+	public int updateVote(VoteDto dto);
 }
