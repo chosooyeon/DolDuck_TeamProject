@@ -27,7 +27,6 @@
          </div>
          <!-- Content -->
          <div class="center live-content">
-            Schedule
         </div>
 
     </div>
