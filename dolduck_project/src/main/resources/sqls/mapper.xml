@@ -16,20 +16,30 @@
 		<result column="MEMBER_VOTE" property="vote" />
 	</resultMap> -->
 
-	<select id="selectList" resultType="memberDto">
+	<select id="selectList" resultType="SelectDto">
 		SELECT * FROM MEMBER
 	</select>
 
-	<insert id="insert" parameterType="memberDto">
+	<!-- <select id="selectOne" parameterType="String" resultType="memberDto"> 
+		SELECT * FROM MEMBER WHERE MEMBER_ID=#{id} </select> -->
+
+	<insert id="insert" parameterType="MemberDto">
 		INSERT INTO MEMBER
 		VALUES(MEMBERSEQ.NEXTVAL,#{member_id},#{member_pw},#{member_name},#{member_phone},#{member_addr},#{member_email},SYSDATE,'Y','USER',0, 1)
 	</insert>
 
-	<update id="update" parameterType="memberDto">
+	<update id="update" parameterType="MemberDto">
 		UPDATE MEMBER SET
 		MEMBER_PW=#{member_pw}, MEMBER_NAME=#{member_name} WHERE
 		MEMBER_ID=#{member_id}
 	</update>
+	
+	<update id="Roleupdate" parameterType="MemberDto">
+		UPDATE MEMBER SET
+		MEMBER_ROLE=#{member_role} WHERE
+		MEMBER_ID=#{member_id}
+	</update>
+
 
 	<delete id="delete" parameterType="String">
 		DELETE FROM MEMBER WHERE
@@ -43,6 +53,9 @@
 			#{item}
 		</foreach>
 	</delete>
+
+	<!-- <select id="login" parameterType="map" resultType="memberDto"> SELECT 
+		* FROM MEMBER WHERE MEMBER_ID=#{id} AND MEMBER_PW=#{pw} </select> -->
 
 	<select id="selectUser" resultType="java.util.Map">
 		SELECT
@@ -68,12 +81,12 @@
 	</insert>
 
 	<!-- 회원가입 및 체크 -->
-	<insert id="memberRegister" parameterType="memberDto">
+	<insert id="memberRegister" parameterType="MemberDto">
 		INSERT INTO MEMBER
 		VALUES(MEMBERSEQ.NEXTVAL,#{member_id},#{member_pw},#{member_name},#{member_phone},#{member_addr},#{member_email}, SYSDATE, 0, 1, 'ROLE_USER',1)
 	</insert>
 	<select id="loginChk" parameterType="map"
-		resultType="memberDto">
+		resultType="MemberDto">
 		SELECT * FROM MEMBER WHERE MEMBER_ID = #{member_id} AND MEMBER_PW = #{member_pw}
 	</select>
 
@@ -81,6 +94,11 @@
 		resultType="com.my.test.dto.MemberJoinDto">
 		SELECT * FROM MEMBER WHERE MEMBER_ID =#{member_id}
 	</select>
+
+<!-- 	<select id="nickChk" parameterType="map"
+		resultType="MemberDto">
+		SELECT * FROM MEMBER WHERE USER_NICKNAME = #{nickname}
+	</select> -->
 
 	<!-- 이름으로 이메일 가져오기(아이디) -->
 	<select id="bringByname" parameterType="map"
@@ -90,27 +108,12 @@
 	</select>
 	<!-- 이름으로 이메일 가져오기(패스워드) -->
 	<select id="bringByid" parameterType="map"
-		resultType="memberDto">
+		resultType="MemberDto">
 		SELECT * FROM MEMBER WHERE USER_NAME = #{member_name} AND
 		USER_ID = #{member_id}
 	</select>
 	<!-- 임시비밀번호로 바꾸기 -->
-	<update id="changePw" parameterType="memberDto">
+	<update id="changePw" parameterType="MemberDto">
 		UPDATE MEMBER SET USER_PW = #{member_pw} WHERE USER_ID = #{member_id}
 	</update>
-	
-	<!-- 마켓: 하트 구매하기  -->
-	<update id="purchaseHeart" parameterType="map">
-		UPDATE MEMBER SET MEMBER_HEART = ((SELECT MEMBER_HEART FROM MEMBER WHERE MEMBER_ID = #{member_id}) + #{heart})
-		WHERE MEMBER_ID = #{member_id}	
-	</update>
-	
-	<!-- 마켓: 투표권 구매하기 -->
-	<update id="purchaseVote" parameterType="map">
-		UPDATE MEMBER 
-		SET MEMBER_HEART = ((SELECT MEMBER_HEART FROM MEMBER WHERE MEMBER_ID = #{member_id}) - #{heart}),
-			MEMBER_VOTE = ((SELECT MEMBER_VOTE FROM MEMBER WHERE MEMBER_ID = #{member_id}) + #{vote})
-		WHERE MEMBER_ID = #{member_id}
-	</update>
-	
 </mapper>
