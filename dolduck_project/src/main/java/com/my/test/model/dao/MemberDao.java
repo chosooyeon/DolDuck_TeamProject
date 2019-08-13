@@ -21,6 +21,7 @@ public interface MemberDao {
 	public MemberDto loginChk(String id, String pw);
 	public int register(Map<String, String> map);
 	public MemberJoinDto idCheck(String id);
+	public int updateRole(MemberDto dto);
 	public int updateMember(MemberDto dto);
 	public int updateUserPw(MemberDto dto);
 	public SelectDto idSearch(String name, String email);

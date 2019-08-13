@@ -17,6 +17,7 @@ public interface MemberBiz {
 	public MemberDto loginChk(String id, String pw);
 	public int register(Map<String, String> map);
 	public MemberJoinDto idCheck(String id);
+	public int updateRole(MemberDto dto);
 	public int updateMember(MemberDto dto);
 	public int updateUserPw(MemberDto dto);
 	public SelectDto idSearch(String name, String email);
@@ -25,4 +26,7 @@ public interface MemberBiz {
 	
 	public int purchaseHeart(int amount, String id);
 	public int purchaseVote(int amount, String id);
+
+
+	
 }

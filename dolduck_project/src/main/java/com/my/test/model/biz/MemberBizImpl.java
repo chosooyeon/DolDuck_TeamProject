@@ -87,6 +87,14 @@ public class MemberBizImpl implements MemberBiz {
 	public int purchaseVote(int amount, String id) {
 		return dao.purchaseVote(amount, id);
 	}
+
+	@Override
+	public int updateRole(MemberDto dto) {
+		// TODO Auto-generated method stub
+		return 0;
+	}
+
+
 	
 	
 }

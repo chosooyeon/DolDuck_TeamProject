@@ -5,6 +5,8 @@ import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
 
+import javax.mail.Session;
+
 import org.mybatis.spring.SqlSessionTemplate;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Repository;
@@ -207,4 +209,17 @@ public class MemberDaoImpl implements MemberDao {
 		System.err.println("DaoImpl Result => " + res);
 		return res;
 	}
+
+	@Override
+	public int updateRole(MemberDto dto) {
+		int res = 0;
+		res = sqlSession.update(namespace+"updateRole",dto);
+			
+			if(res>0) {
+				sqlSession.commit();
+			}
+		return res;
+	}
+
+
 }

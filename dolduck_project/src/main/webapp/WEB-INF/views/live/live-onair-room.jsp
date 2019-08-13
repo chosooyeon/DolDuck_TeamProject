@@ -18,8 +18,8 @@
     	<div class="col-lg-12 offset-lg-4 "> 
             <nav class="nav">
                <ul class="nav nav-tabs">
-                  <li class="nav-item" id="nav-link-home"><a class="nav-link" href="live-home.do">홈</a></li>
-                  <li class="nav-item" id="nav-link-schedule"><a class="nav-link" href="live-schdule.do">일정표</a></li>
+                  <li class="nav-item" id="nav-link-home"><a class="nav-link" href="live-home.do">&nbsp;&nbsp;홈&nbsp;&nbsp;</a></li>
+                  <li class="nav-item" id="nav-link-schedule"><a class="nav-link" href="live-schedule.do">일정표</a></li>
                   <li class="nav-item" id="nav-link-onair"><a class="nav-link" href="live-onair.do">온에어</a></li>
                   <li class="nav-item" id="nav-link-channel"><a class="nav-link" href="live-channel.do">채널보기</a></li>
                </ul>
@@ -27,7 +27,6 @@
          </div>
          <!-- Content -->
          <div class="center live-content">
-            Onai
         </div>
 
     </div>
