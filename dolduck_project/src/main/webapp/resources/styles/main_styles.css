@@ -1393,6 +1393,7 @@ table {
     border-radius: .25rem;
     padding: .375rem .75rem;
 }
+
 /*******************
 	 관리자화면
 *******************/
@@ -1427,6 +1428,7 @@ table {
   background-color: white;
   overflow: hidden;
 }
+
 .btn_role{
 	background: #fff !important;
 
@@ -1434,4 +1436,5 @@ table {
 .btn_role:focus{
 	box-shadow: 0 0 0 0.2rem rgba(255, 255, 255, 0.25);
 }
+
 

@@ -66,13 +66,13 @@
 		SELECT * FROM MEMBER WHERE MEMBER_ID =#{member_id}
 	</select>
 
-	<select id="idSearch" parameterType="map" resultType="memberDto">
+	<select id="idSearch" parameterType="map" resultType="SelectDto">
 		SELECT MEMBER_ID
 		FROM MEMBER WHERE MEMBER_NAME=#{member_name} AND MEMBER_EMAIL=#{member_email}
 
 	</select>
 
-	<select id="pwSearch" parameterType="map" resultType="memberDto">
+	<select id="pwSearch" parameterType="map" resultType="SelectDto">
 		SELECT MEMBER_ID
 		FROM MEMBER WHERE MEMBER_ID=#{member_id} AND MEMBER_EMAIL=#{member_email}
 	</select>
@@ -97,7 +97,7 @@
 	</update>
 
 	<update id="pwUpdate" parameterType="memberDto">
-		UPDATE MEMBER SET PW=#{pw} WHERE ID=#{id}
+		UPDATE MEMBER SET MEMBER_PW=#{member_pw} WHERE MEMBER_ID=#{member_id}
 	</update>
 	
 	<update id="user_delete" parameterType="int">
