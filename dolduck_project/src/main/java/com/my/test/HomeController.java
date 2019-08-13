@@ -97,8 +97,6 @@ public class HomeController {
 			JSONObject song = new JSONObject();
 			
 			song.put("rank", musicOne.getRank());
-			song.put("updown", musicOne.getRank_updown());
-			song.put("change", musicOne.getRank_change());
 			song.put("thumb", musicOne.getThumb());
 			song.put("title", musicOne.getTitle());
 			song.put("singer", musicOne.getSinger());

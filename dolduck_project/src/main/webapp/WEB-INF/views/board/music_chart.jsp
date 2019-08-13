@@ -58,6 +58,7 @@
                   <th scope="col">Song title</th>
                   <th scope="col">Singer</th>
                   <th scope="col">Album</th>
+                  <th scope="col">etc.</th> 
                </tr>
             </thead>
             <tbody></tbody>
