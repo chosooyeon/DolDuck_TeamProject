@@ -1149,7 +1149,6 @@ svg{
 	display:inline-block;
 	width: 85px; height: 85px;
 	margin : 0;
-	background: #FFA550;
 	border-radius: 5em;
 	color: white;
 	background-size: cover;
@@ -1180,7 +1179,7 @@ svg{
 #onethek{background-image: url("https://yt3.ggpht.com/a/AGF-l7-ckmAn2xRC36hJC0Wq-2SHxcoFcSE40LXIiA=s176-c-k-c0x00ffffff-no-rj-mo");}
 #bugs{background-image: url("https://yt3.ggpht.com/a/AGF-l78t-KaZIxS7jjX9IC-nIUPpbTT_uTiIUpAA9A=s176-c-k-c0x00ffffff-no-rj-mo");}
 #genie{background-image: url("https://yt3.ggpht.com/a/AGF-l780vGwZTRpSXT-Dqz6qVSXM_JyebeomJzC_kQ=s176-c-k-c0x00ffffff-no-rj-mo");}
-
+#melon{background-image: url("https://www.vpndate.com/wp-content/uploads/2017/06/Melon.png");}
 /* Chart 게시판 */
 .chart-thumbnail{ 
 	width: 80px; height: 80px; 
@@ -1190,7 +1189,7 @@ svg{
 .musicchart-board{
 	width: 90%;
 	display: inline-block;
-	margin: auto;
+	margin-top: 25em;
 	color: black;
 }
 .button-pagination{
@@ -1205,6 +1204,9 @@ svg{
 	line-height: 3.5em;
 	cursor: pointer;
 }
+
+
+
 
 /*********************************
 			  market
@@ -1393,7 +1395,6 @@ table {
     border-radius: .25rem;
     padding: .375rem .75rem;
 }
-
 /*******************
 	 관리자화면
 *******************/

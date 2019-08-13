@@ -3,12 +3,12 @@ package com.my.test.util;
 public class Music {
 
 	private String rank;
+	private String rank_updown;
 	private String rank_change;
 	private String thumb;
 	private String title;
 	private String singer;
 	private String album;
-	
 
 	public String getRank() { 
 		return rank;
@@ -46,5 +46,13 @@ public class Music {
 	public void setAlbum(String album) {
 		this.album = album;
 	}
+	public String getRank_updown() {
+		return rank_updown;
+	}
+	public void setRank_updown(String rank_updown) {
+		this.rank_updown = rank_updown;
+	}
+	
+	
 	
 }
