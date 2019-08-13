@@ -132,6 +132,27 @@ public class HomeController {
 		return "board/youtube";
 	}
 	
+	/************************** Youtube 게시판 ***************************/
+	@RequestMapping("live-home.do")
+	public String liveBoard() {
+		return "live/live-home";
+	}
+	
+	@RequestMapping("live-schedule.do")
+	public String liveSchedule() {
+		return "live/live-schedule";
+	}
+	
+	@RequestMapping("live-onair.do")
+	public String liveOnair() {
+		return "live/live-onair";
+	}
+	
+	@RequestMapping("live-channel.do")
+	public String liveChannel() {
+		return "live/live-channel";
+	}
+	
 	/************************* market ************************************/
 	@RequestMapping("heartShop.do")
 	public String heartShop() {
@@ -179,13 +200,5 @@ public class HomeController {
 		return result;
 	}
 
-	/************************* 회원가입 ***********************************/
-	
-	@RequestMapping("join.do")
-	public String insert() {
-		return "member/Join";
-		
-	}
-	
 	
 }
