@@ -54,9 +54,10 @@ function paginationOfList(chart, start, end){
       $('tbody').append(`<tr>
               <td scope="row">${song.rank}</td>
               <td><img class="chart-thumbnail" src="${song.thumb}"></td>
-              <td><a href="#">${song.title}</td>
+              <td><a href="#">${song.title}</td>₩
               <td>${song.singer}</td>
               <td>${song.album}</td>
+              <td><i class="far fa-share-alt" style="color: #ccc;"></i></td>
               </tr>`
       );
    }

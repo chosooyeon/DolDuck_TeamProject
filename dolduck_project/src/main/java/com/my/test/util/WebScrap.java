@@ -10,17 +10,10 @@ import org.jsoup.nodes.Element;
 import org.jsoup.select.Elements;
 
 public class WebScrap{
-	
-	public static void main(String[] args) {
-		WebScrap ws = new WebScrap();
-		ws.getMelonChart();
-		
-	}
-	
+
 	public List<Music> getMelonChart(){
 		
 		List<Music> chart = new ArrayList<Music>();
-		//String url = "https://www.melon.com/chart/index.htm";
 		try {
 			
 			Document doc = Jsoup.connect("https://www.melon.com/chart/index.htm").get();
@@ -39,11 +32,7 @@ public class WebScrap{
 				song.setTitle(ele.select(".rank01 a").text());
 				song.setSinger(ele.select(".rank02 .checkEllipsis a").text());
 				song.setAlbum(ele.select(".rank03 a").text());
-				song.setRank_updown(ele.select(".bullet_icons").text());
 				
-				String change = ele.select("span.rank_wrap span").text();
-				System.out.println(ele.select(".rank").text() + ": " +change);
-						
 				chart.add(song);
 			}
 			
@@ -73,8 +62,6 @@ public class WebScrap{
 				song.setTitle(ele.select("p.title a").text());
 				song.setSinger(ele.select("p.artist a").text());
 				song.setAlbum(ele.select("td.left a.album").text());
-				song.setRank_change(ele.select("p.change em").text());
-				song.setRank_updown(ele.select("p.change span").text());
 				
 				chart.add(song);
 			}
@@ -106,7 +93,6 @@ public class WebScrap{
 					
 					String rank = ele.select("td.number").text();
 					song.setRank(rank.split(" ")[0]);
-					song.setRank_updown(ele.select("td.number span.hide").text());
 					song.setThumb("https:"+ele.select("td a.cover img").attr("src"));
 					song.setTitle(ele.select("td.info a.title").text());
 					song.setSinger(ele.select("td.info a.artist").text());
