@@ -35,10 +35,10 @@
 	
 	<!-- 등급변경 -->
 	
-	<update id="Roleupdate" parameterType="MemberDto">
+	<update id="updateRole" parameterType="MemberDto">
 		UPDATE MEMBER SET
-		MEMBER_ROLE=#{member_role} WHERE
-		MEMBER_ID=#{member_id}
+		MEMBER_ROLE=#{member_role} 
+		WHERE MEMBER_ID=#{member_id}
 	</update>
 	
 

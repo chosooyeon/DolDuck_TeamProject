@@ -88,6 +88,27 @@ public class LoginController {
 	public String modified() {
 		return "/member/modified";
 	}
+	
+	@RequestMapping(value = "role_update.do", method = {RequestMethod.POST})
+	@ResponseBody
+	public Map<String,Boolean> roleUpdate(String role){
+		Boolean rolechk = false;
+		Map<String, Boolean> map = new HashMap<String, Boolean>();
+		int res = 0;
+		
+		
+		//biz.update
+		
+		return map;
+		
+		
+	}
+	
+	// 회원가입 페이지로 이동
+	@RequestMapping("join.do")
+	public String Join() {
+		return "/member/Join";
+	}
 
 	// 회원가입 페이지로 이동
 	@RequestMapping("register.do")
