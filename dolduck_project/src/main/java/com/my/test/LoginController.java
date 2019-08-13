@@ -147,19 +147,35 @@ public class LoginController {
 		return map;
 	}
 
-	@RequestMapping(value = "nickChk.do", method = RequestMethod.GET)
+	@RequestMapping(value = "idSearch.do", method = RequestMethod.POST)
 	@ResponseBody
-	public Map<String, Boolean> nickChk(String nickname) {
-		logger.info("닉네임 중복체크");
-		System.out.println(nickname);
-		boolean nickChk = false;
+	public Map<String, Boolean> idSearch(String name, String email) {
+		System.out.println(name);
+		boolean idSearch = false;
 
 		Map<String, Boolean> map = new HashMap<String, Boolean>();
-		if (biz.nickCheck(nickname) == null) {
-			nickChk = true;
-			map.put("nickChk", nickChk);
+		if (biz.idSearch(name, email) == null) {
+			idSearch = true;
+			map.put("idSearch", idSearch);
 		} else {
-			map.put("nickChk", nickChk);
+			map.put("idSearch", idSearch);
+		}
+		return map;
+
+	}
+	
+	@RequestMapping(value = "pwSearch.do", method = RequestMethod.POST)
+	@ResponseBody
+	public Map<String, Boolean> pwSearch(String id, String email) {
+		System.out.println(id);
+		boolean pwSearch = false;
+
+		Map<String, Boolean> map = new HashMap<String, Boolean>();
+		if (biz.pwSearch(id, email) == null) {
+			pwSearch = true;
+			map.put("pwSearch", pwSearch);
+		} else {
+			map.put("pwSearch", pwSearch);
 		}
 		return map;
 
@@ -266,7 +282,6 @@ public class LoginController {
 
 			if (res > 0) {
 
-				System.out.println("로그인하러 갑니다!");
 				String loginId = id;
 				idChk = false;
 
@@ -281,7 +296,6 @@ public class LoginController {
 			}
 
 		} else { // 아이디가 있으면 로그인
-			System.out.println("로그인하러 갑니다!");
 			String loginId = id;
 			idChk = false;
 
@@ -300,6 +314,11 @@ public class LoginController {
 
 	}
 
+	@RequestMapping(value = "naver.do")
+	public String naver(HttpSession session) {
+		return "";
+	}
+	
 	@RequestMapping(value = "facebook.do")
 	public String facebook(HttpServletRequest request, @RequestParam String id) {
 
