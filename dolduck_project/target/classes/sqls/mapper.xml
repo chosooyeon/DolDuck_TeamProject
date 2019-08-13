@@ -68,18 +68,21 @@
 
 	<select id="idSearch" parameterType="map" resultType="SelectDto">
 		SELECT MEMBER_ID
-		FROM MEMBER WHERE MEMBER_NAME=#{member_name} AND MEMBER_EMAIL=#{member_email}
-
+		FROM MEMBER WHERE MEMBER_NAME=#{name} AND MEMBER_EMAIL=#{email}
 	</select>
 
 	<select id="pwSearch" parameterType="map" resultType="SelectDto">
 		SELECT MEMBER_ID
-		FROM MEMBER WHERE MEMBER_ID=#{member_id} AND MEMBER_EMAIL=#{member_email}
+		FROM MEMBER WHERE MEMBER_ID=#{id} AND MEMBER_EMAIL=#{email}
 	</select>
 
 	<update id="updateMember" parameterType="memberDto">
 		UPDATE MEMBER SET PW=#{pw}, PHONE=#{phone}, ADDR=#{addr},
 		ZONECODE=#{zonecode} WHERE USERSEQ=#{userseq}
+	</update>
+	
+	<update id="updateUserPw" parameterType="memberDto">
+		UPDATE MEMBER SET PW=#{pw} WHERE USERSEQ=#{userseq}
 	</update>
 
 	<!-- 마켓: 하트 구매하기  -->
@@ -96,8 +99,8 @@
 		WHERE MEMBER_ID = #{member_id}
 	</update>
 
-	<update id="pwUpdate" parameterType="memberDto">
-		UPDATE MEMBER SET MEMBER_PW=#{member_pw} WHERE MEMBER_ID=#{member_id}
+	<update id="changePw" parameterType="SelectDto">
+		UPDATE MEMBER SET MEMBER_PW=#{pw} WHERE MEMBER_ID=#{id}
 	</update>
 	
 	<update id="user_delete" parameterType="int">

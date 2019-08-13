@@ -4,6 +4,17 @@
 <%@ taglib prefix="form" uri="http://www.springframework.org/tags/form"%>
 <%@ taglib prefix="sec"
 	uri="http://www.springframework.org/security/tags"%>
+<%@page import = "org.springframework.security.core.context.SecurityContextHolder" %>
+<%@page import = "org.springframework.security.core.Authentication" %>
+<%@page import = "com.my.test.dto.SelectDto" %>
+<%
+Authentication auth = SecurityContextHolder.getContext().getAuthentication();
+Object principal = auth.getPrincipal();
+String name = "";
+if(principal != null && principal instanceof SelectDto){
+	name = ((SelectDto)principal).getMember_name();
+}
+%>
 <!DOCTYPE html>
 <html>
 <head>
@@ -26,9 +37,7 @@
 							<th>이름</th>
 						</tr>
 						<tr>
-							<td>
-								<input class="form-control" type="text" class="text" name="user_name" placeholder="이름" required />
-							</td>
+							<td><%=name %></td>
 						</tr>
 						<tr>
 						</tr>

@@ -113,23 +113,24 @@ public class MemberDaoImpl implements MemberDao {
 	}
 
 
-	public MemberDto idSearch(String name, String email) {
+	public SelectDto idSearch(String name, String email) {
 
-		Map<String, Object> idSearch = new HashMap<String, Object>();
+		Map<String, String> idSearch = new HashMap<String, String>();
 		idSearch.put("name", name);
 		idSearch.put("email", email);
-		MemberDto dto =null;
+		SelectDto dto = new SelectDto();
 
 		dto = sqlSession.selectOne(namespace + "idSearch", idSearch);
+		System.err.println(dto.getMember_id());
 		
 		return dto;
 	}
-	public MemberDto pwSearch(String id, String email) {
+	public SelectDto pwSearch(String id, String email) {
 
 		Map<String, Object> pwSearch = new HashMap<String, Object>();
 		pwSearch.put("id", id);
 		pwSearch.put("email", email);
-		MemberDto dto = null;
+		SelectDto dto = new SelectDto();
 
 		dto = sqlSession.selectOne(namespace + "pwSearch", pwSearch);
 		
@@ -141,8 +142,8 @@ public class MemberDaoImpl implements MemberDao {
 		int res = 1;
 		
 		Map<String, String> map = new HashMap<String, String>();
-		map.put("userPw", pw);
-		map.put("userId", id);
+		map.put("pw", pw);
+		map.put("id", id);
 			
 		res = sqlSession.insert(namespace + "changePw", map);
 		

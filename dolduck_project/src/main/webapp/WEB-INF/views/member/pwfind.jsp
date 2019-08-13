@@ -6,6 +6,10 @@
 <html>
 <head>
 <meta charset="UTF-8">
+
+<meta name="_csrf" content="${_csrf.token}"/>
+<meta name="_csrf_header" content="${_csrf.headerName}"/> 
+
 <title>Login</title>
 <script type="text/javascript" src="https://code.jquery.com/jquery-3.4.1.min.js"></script>
 <script type="text/javascript" src="resources/js/find/pwfind.js"></script>
@@ -31,7 +35,7 @@
 				<td><input class="form-control login" type="email" id="email" name="email"></td>
 			</tr>
 			<tr>
-				<td colspan="1"><input class="login_button" type="button" value="비밀번호 찾기" onclick="pwfind()"></td>
+				<td colspan="1"><input class="login_button" type="button" value="비밀번호 찾기" onclick="sendEmail()"></td>
 			</tr>
 		</table>
 		<table>

@@ -19,8 +19,8 @@ public interface MemberBiz {
 	public MemberJoinDto idCheck(String id);
 	public int updateMember(MemberDto dto);
 	public int updateUserPw(MemberDto dto);
-	public MemberDto idSearch(String name, String email);
-	public MemberDto pwSearch(String id, String email);
+	public SelectDto idSearch(String name, String email);
+	public SelectDto pwSearch(String id, String email);
 	public int changePw(String pw, String id);
 	
 	public int purchaseHeart(int amount, String id);

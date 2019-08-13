@@ -63,12 +63,12 @@ public class MemberBizImpl implements MemberBiz {
 	}
 
 	@Override
-	public MemberDto idSearch(String name, String email) {
+	public SelectDto idSearch(String name, String email) {
 		return dao.idSearch(name, email);
 	}
 
 	@Override
-	public MemberDto pwSearch(String id, String email) {
+	public SelectDto pwSearch(String id, String email) {
 		return dao.pwSearch(id, email);
 	}
 

@@ -5,6 +5,7 @@
 <%@ page import="java.io.InputStreamReader" %>
 <%@ page import="org.json.simple.JSONObject" %>
 <%@ page import="org.json.simple.parser.JSONParser" %>
+<%@ page contentType="text/html;charset=UTF-8" language="java" %>
 
 <html>
   <head>
@@ -55,7 +56,8 @@
         out.print("<br>" + result.get("access_token"));
         session.setAttribute("access_token", result.get("access_token"));
         System.out.println("토큰값 : " + result.get("access_token"));
-        response.sendRedirect("/naver.do");
+        System.out.println("넘겨줍니다아아");
+        response.sendRedirect("naver.do");
         
       }
     } catch (Exception e) {
