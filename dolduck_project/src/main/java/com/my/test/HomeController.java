@@ -72,10 +72,22 @@ public class HomeController {
 	
 	
 	@RequestMapping(value = "musicsearch.do", method = {RequestMethod.POST})
-	public @ResponseBody JSONObject getChart() {
-		//멜론차트 크롤링해서 List로 return 
+	public @ResponseBody JSONObject getChart(String site) {
+		
 		List<Music> list = new ArrayList<Music>();
-		list = crawling.getMusicChart();
+
+		switch(site) {
+		case "melon": 
+			list = crawling.getMelonChart();
+			break;
+		case "bugs":
+			list = crawling.getBugsChart();
+			break;
+		case "genie":
+			list = crawling.getGenieChart();
+			break;
+		}
+		//멜론차트 크롤링해서 List로 return 
 				
 		//JSON타입으로 파싱
 		JSONObject chart = new JSONObject();
@@ -85,6 +97,8 @@ public class HomeController {
 			JSONObject song = new JSONObject();
 			
 			song.put("rank", musicOne.getRank());
+			song.put("updown", musicOne.getRank_updown());
+			song.put("change", musicOne.getRank_change());
 			song.put("thumb", musicOne.getThumb());
 			song.put("title", musicOne.getTitle());
 			song.put("singer", musicOne.getSinger());
@@ -101,6 +115,7 @@ public class HomeController {
 		
 		return chart;
 	}
+
 	
 	/************************** Youtube 게시판 ***************************/
 	@RequestMapping("youtube.do")
