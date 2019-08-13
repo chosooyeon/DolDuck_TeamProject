@@ -82,6 +82,12 @@
 		SELECT * FROM MEMBER WHERE MEMBER_ID =#{member_id}
 	</select>
 
+	<select id="idSearch" parameterType="map" resultType="memberDto">
+		SELECT MEMBER_ID
+		FROM MEMBER WHERE MEMBER_NAME=#{member_name} AND MEMBER_EMAIL=#{member_email}
+
+	</select>
+
 	<select id="pwSearch" parameterType="map" resultType="memberDto">
 		SELECT MEMBER_ID
 		FROM MEMBER WHERE MEMBER_ID=#{member_id} AND MEMBER_EMAIL=#{member_email}
@@ -91,7 +97,7 @@
 		UPDATE MEMBER SET PW=#{pw}, PHONE=#{phone}, ADDR=#{addr},
 		ZONECODE=#{zonecode} WHERE USERSEQ=#{userseq}
 	</update>
-	
+
 	<!-- 마켓: 하트 구매하기  -->
 	<update id="purchaseHeart" parameterType="map">
 		UPDATE MEMBER SET MEMBER_HEART = ((SELECT MEMBER_HEART FROM MEMBER WHERE MEMBER_ID = #{member_id}) + #{heart})
@@ -105,7 +111,7 @@
 			MEMBER_VOTE = ((SELECT MEMBER_VOTE FROM MEMBER WHERE MEMBER_ID = #{member_id}) + #{vote})
 		WHERE MEMBER_ID = #{member_id}
 	</update>
-	
+
 	<update id="pwUpdate" parameterType="memberDto">
 		UPDATE MEMBER SET PW=#{pw} WHERE ID=#{id}
 	</update>
