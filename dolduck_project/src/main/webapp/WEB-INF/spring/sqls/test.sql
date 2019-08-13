@@ -51,5 +51,3 @@ update member
 set member_vote = ((select member_vote from member where member_id = 'lotus526') + 10),
 member_heart = ((select member_heart from member where member_id = 'lotus526') - 250)
 where member_id = 'lotus526'
-
-UPDATE MEMBER SET MEMBER_PW='$2a$10$WzmejPwX08xRYaKDbB1Ie.NOX5uwfHwSCahrNar1.VC0jWpx/.yiS' WHERE MEMBER_ID='1whtndus'

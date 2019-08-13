@@ -8,6 +8,7 @@
 Authentication auth = SecurityContextHolder.getContext().getAuthentication();
 Object principal = auth.getPrincipal();
 String name = "";
+
 if(principal != null && principal instanceof MemberDto){
 	name = ((MemberDto)principal).getUsername();
 }
