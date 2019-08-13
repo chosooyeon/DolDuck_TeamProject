@@ -48,59 +48,59 @@ public class LoginController {
 	UserAuthenticationService user = new UserAuthenticationService();
 
 	@Inject
-	BCryptPasswordEncoder passwordEncoder; // 鍮꾨�踰덊샇 �븫�샇�솕 媛앹껜
+	BCryptPasswordEncoder passwordEncoder; // 비밀번호 암호화
 
 	@Inject
 	private MemberBizImpl biz;
 
 	private String randompassword;
 
-	// 濡쒓렇�씤 �럹�씠吏�濡� �씠�룞
+	//로그인 페이지로 이동
 	@RequestMapping(value = "login.do")
 	public String loginform() {
 		return "/member/login";
 	}
 
-	// 濡쒓렇�씤 �럹�씠吏�濡� �씠�룞
+	// 로그인 페이지로 이동
 	@RequestMapping(value = "/member/login.do")
 	public String login() {
 		return "/member/login";
 	}
 
-	// �븘�씠�뵒 李얘린 �럹�씠吏�濡� �씠�룞
+	// 아이디 찾기 페이지로 이동
 	@RequestMapping(value = "idfind.do")
 	public String idfind() {
 		return "/member/idfind";
 	}
 
-	// 鍮꾨�踰덊샇 李얘린 �럹�씠吏�濡� �씠�룞
+	// 비밀번호 찾기 페이지로 이동
 	@RequestMapping(value = "pwfind.do")
 	public String pwfind() {
 		return "/member/pwfind";
 	}
 
-	// 留덉씠�럹�씠吏�濡� �씠�룞
+	// 마이 페이지로 이동
 	@RequestMapping(value = "mypage.do")
 	public String mypage() {
 		return "/member/mypage";
 	}
 
-	// �쉶�썝�젙蹂� �닔�젙 �럹�씠吏�濡� �씠�룞
+	// 수정 페이지로 이동
 	@RequestMapping(value = "modified.do")
 	public String modified() {
 		return "/member/modified";
 	}
 
-	// �쉶�썝媛��엯 �럹�씠吏�濡� �씠�룞
+	// 회원가입 페이지로 이동
 	@RequestMapping("register.do")
 	public String userInsert(@RequestParam String user_id, @RequestParam String user_pw, @RequestParam String user_name,
 			@RequestParam String user_email, @RequestParam String user_phone, @RequestParam String user_addr) {
 
 		Map<String, String> map = new HashMap<String, String>();
 		map.put("member_id", user_id);
-		System.out.println("�븫�샇�솕 �쟾 鍮꾨쾲" + user_pw);
+		System.out.println("회원 비밀번호" + user_pw);
 		String encryptPassword = passwordEncoder.encode(user_pw);
-		System.out.println("�븫�샇�솕 �썑 鍮꾨쾲" + encryptPassword);
+		System.out.println("비밀번호 암호화" + encryptPassword);
 		map.put("member_pw", encryptPassword);
 		map.put("member_name", user_name);
 		map.put("member_phone", user_phone);
@@ -112,7 +112,7 @@ public class LoginController {
 		return "/member/login";
 	}
 
-	// 沅뚰븳�씠 �뾾�뒗 �궗�슜�옄�뿉寃� �븞�궡 �럹�씠吏� 異쒕젰
+	// 에러페이지로 이동
 	@RequestMapping("denied")
 	public String denied(Model model, Authentication auth, HttpServletRequest req) {
 		AccessDeniedException ade = (AccessDeniedException) req.getAttribute(WebAttributes.ACCESS_DENIED_403);
@@ -130,7 +130,7 @@ public class LoginController {
 	@RequestMapping(value = "idChk.do", method = RequestMethod.GET)
 	@ResponseBody
 	public Map<String, Boolean> idChk(String id) {
-		logger.info("�븘�씠�뵒 以묐났泥댄겕");
+		logger.info("아이디 체크");
 
 		System.out.println(id);
 		boolean idChk = false;
@@ -147,19 +147,35 @@ public class LoginController {
 		return map;
 	}
 
-	@RequestMapping(value = "nickChk.do", method = RequestMethod.GET)
+	@RequestMapping(value = "idSearch.do", method = RequestMethod.POST)
 	@ResponseBody
-	public Map<String, Boolean> nickChk(String nickname) {
-		logger.info("�땳�꽕�엫 以묐났泥댄겕");
-		System.out.println(nickname);
-		boolean nickChk = false;
+	public Map<String, Boolean> idSearch(String name, String email) {
+		System.out.println(name);
+		boolean idSearch = false;
 
 		Map<String, Boolean> map = new HashMap<String, Boolean>();
-		if (biz.nickCheck(nickname) == null) {
-			nickChk = true;
-			map.put("nickChk", nickChk);
+		if (biz.idSearch(name, email) == null) {
+			idSearch = true;
+			map.put("idSearch", idSearch);
 		} else {
-			map.put("nickChk", nickChk);
+			map.put("idSearch", idSearch);
+		}
+		return map;
+
+	}
+	
+	@RequestMapping(value = "pwSearch.do", method = RequestMethod.POST)
+	@ResponseBody
+	public Map<String, Boolean> pwSearch(String id, String email) {
+		System.out.println(id);
+		boolean pwSearch = false;
+
+		Map<String, Boolean> map = new HashMap<String, Boolean>();
+		if (biz.pwSearch(id, email) == null) {
+			pwSearch = true;
+			map.put("pwSearch", pwSearch);
+		} else {
+			map.put("pwSearch", pwSearch);
 		}
 		return map;
 
@@ -188,13 +204,13 @@ public class LoginController {
 		helper.setFrom(new InternetAddress("ad.team555@gmail.com", "Dol-Duck"));
 		helper.setTo(new InternetAddress(email, ""));
 		System.out.println("email:" + email);
-		helper.setSubject("[DOLDuck]�씤利앸쾲�샇 test");
-		helper.setText("<a><b style='color:hotpink;'>�씤利앸쾲�샇 : " + randompassword + "<a>", true);
+		helper.setSubject("[DOLDuck]회원가입");
+		helper.setText("<a><b style='color:hotpink;'>인증번호 : " + randompassword + "<a>", true);
 
 		try {
 			mailSender.send(msg);
 		} catch (MailException ex) {
-			logger.error("硫붿씪諛쒖넚 �떎�뙣", ex);
+			logger.error("인증실패", ex);
 		}
 
 	}
@@ -205,7 +221,6 @@ public class LoginController {
 		VerifyRecaptcha.setSecretKey("6LfHerAUAAAAACUEUT2MZxaiydRTDktzKSogfRvS");
 		String gRecaptchaResponse = request.getParameter("recaptcha");
 		System.out.println(gRecaptchaResponse);
-		// 0 = �꽦怨�, 1 = �떎�뙣, -1 = �삤瑜�
 		try {
 			if (VerifyRecaptcha.verify(gRecaptchaResponse))
 				return 0;
@@ -242,31 +257,29 @@ public class LoginController {
 	public String kakao(HttpServletRequest request, @RequestParam String id, @RequestParam String name) {
 		boolean idChk = false;
 
-		System.out.println("sns濡쒓렇�씤 �뱾�뼱�샂 ");
+		System.out.println("sns로그인 ");
 
-		if (biz.idCheck(id) == null) { // �븘�씠�뵒媛� �뾾�쑝硫� 媛��엯
+		if (biz.idCheck(id) == null) { 
 
-			System.out.println("SNS濡쒓렇�씤 媛��엯");
+			System.out.println("SNS로그인");
 			idChk = true;
 
 			int res = 0;
 
 			Map<String, String> map = new HashMap<String, String>();
 			map.put("member_id", id);
-			System.out.println("�븫�샇�솕 �쟾 鍮꾨쾲" + id);
+			System.out.println("아이디" + id);
 			String encryptPassword = passwordEncoder.encode(id);
-			System.out.println("�븫�샇�솕 �썑 鍮꾨쾲" + encryptPassword);
+			System.out.println("비밀번호 암호화" + encryptPassword);
 			map.put("member_pw", encryptPassword);
 			map.put("member_name", name);
-			map.put("member_phone", "�쟾�솕踰덊샇瑜� �엯�젰�빐二쇱꽭�슂");
-			map.put("member_addr", "二쇱냼瑜� �엯�젰�빐二쇱꽭�슂");
+			map.put("member_phone", "핸드폰 번호를 입력해주세요");
+			map.put("member_addr", "주소를 입력해주세요");
 			map.put("member_email", id+"@naver.com");
 
 			res = biz.insertUser(map);
 
 			if (res > 0) {
-
-				System.out.println("濡쒓렇�씤�븯�윭 媛묐땲�떎!");
 				String loginId = id;
 				idChk = false;
 
@@ -280,8 +293,7 @@ public class LoginController {
 				session.setAttribute("SPRING_SECURITY_CONTEXT", securityContext);
 			}
 
-		} else { // �븘�씠�뵒媛� �엳�쑝硫� 濡쒓렇�씤
-			System.out.println("濡쒓렇�씤�븯�윭 媛묐땲�떎!");
+		} else { // 아이디가 있으면 로그인
 			String loginId = id;
 			idChk = false;
 
@@ -300,6 +312,11 @@ public class LoginController {
 
 	}
 
+	@RequestMapping(value = "naver.do")
+	public String naver(HttpSession session) {
+		return "";
+	}
+	
 	@RequestMapping(value = "facebook.do")
 	public String facebook(HttpServletRequest request, @RequestParam String id) {
 
@@ -320,7 +337,7 @@ public class LoginController {
 
 		// this.auth = auth;
 		// Locale locale, Model model,
-		logger.info("test.do �엯�옣~!");
+		logger.info("test.do");
 
 		System.out.println("auth test 1 : " + auth);
 
@@ -328,16 +345,9 @@ public class LoginController {
 		String email = dto.getMemebr_email();
 
 		System.out.println(email);
-
-//		System.out.println("�쁾�쁾�쁾�쁾id�쁾�쁾�쁾="+id);
-//		UserInfoDto dto = (UserInfoDto)	auth.getPrincipal();
 		logger.info("welcome checkAuth! Authentication is{}.", auth);
-//		logger.info("UserAuthenticationService == {}", dto);
 
-//		model.addAttribute("auth", auth);
-//		model.addAttribute("dto", dto);	
-
-		System.out.println("�쁾�쁾�쁾�쁾�쁾�쁾�쁾�쁾" + auth.getName());
+		System.out.println("이름 가져오기" + auth.getName());
 		System.out.println("" + auth.getAuthorities());
 
 		return "test01";
