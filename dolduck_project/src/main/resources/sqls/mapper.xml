@@ -11,21 +11,31 @@
 		/> <result column="MEMBER_ROLE" property="role" /> <result column="MEMBER_VOTE" 
 		property="vote" /> </resultMap> -->
 
-	<select id="selectList" resultType="memberDto">
+	<select id="selectList" resultType="SelectDto">
 		SELECT * FROM MEMBER
 	</select>
 
-	<insert id="insert" parameterType="memberDto">
+	<!-- <select id="selectOne" parameterType="String" resultType="memberDto"> 
+		SELECT * FROM MEMBER WHERE MEMBER_ID=#{id} </select> -->
+
+	<insert id="insert" parameterType="MemberDto">
 		INSERT INTO MEMBER
 		VALUES(MEMBERSEQ.NEXTVAL,#{member_id},#{member_pw},#{member_name},#{member_phone},#{member_addr},#{member_email},SYSDATE,'Y','USER',0,
 		1)
 	</insert>
 
-	<update id="update" parameterType="memberDto">
+	<update id="update" parameterType="MemberDto">
 		UPDATE MEMBER SET
 		MEMBER_PW=#{member_pw}, MEMBER_NAME=#{member_name} WHERE
 		MEMBER_ID=#{member_id}
 	</update>
+	
+	<update id="Roleupdate" parameterType="MemberDto">
+		UPDATE MEMBER SET
+		MEMBER_ROLE=#{member_role} WHERE
+		MEMBER_ID=#{member_id}
+	</update>
+
 
 	<delete id="delete" parameterType="String">
 		DELETE FROM MEMBER WHERE
@@ -39,6 +49,9 @@
 			#{item}
 		</foreach>
 	</delete>
+
+	<!-- <select id="login" parameterType="map" resultType="memberDto"> SELECT 
+		* FROM MEMBER WHERE MEMBER_ID=#{id} AND MEMBER_PW=#{pw} </select> -->
 
 	<select id="selectUser" resultType="java.util.Map">
 		SELECT
@@ -66,11 +79,12 @@
 	</insert>
 
 	<!-- 회원가입 및 체크 -->
-	<insert id="memberRegister" parameterType="memberDto">
+	<insert id="memberRegister" parameterType="MemberDto">
 		INSERT INTO MEMBER
 		VALUES(MEMBERSEQ.NEXTVAL,#{member_id},#{member_pw},#{member_name},#{member_phone},#{member_addr},#{member_email},
 		SYSDATE, 0, 1, 'ROLE_USER',1)
 	</insert>
+
 	<select id="loginChk" parameterType="map" resultType="memberDto">
 		SELECT *
 		FROM MEMBER WHERE MEMBER_ID = #{member_id} AND MEMBER_PW =

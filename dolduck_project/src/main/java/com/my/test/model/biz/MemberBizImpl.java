@@ -10,6 +10,7 @@ import org.springframework.stereotype.Service;
 
 import com.my.test.dto.MemberDto;
 import com.my.test.dto.MemberJoinDto;
+import com.my.test.dto.SelectDto;
 import com.my.test.model.dao.MemberDao;
 import com.my.test.model.dao.MemberDaoImpl;
 
@@ -20,7 +21,7 @@ public class MemberBizImpl implements MemberBiz {
 	private MemberDao dao;
 	
 	@Override
-	public List<MemberDto> selectList() {
+	public List<SelectDto> selectList() {
 		return dao.selectList();
 	}
 

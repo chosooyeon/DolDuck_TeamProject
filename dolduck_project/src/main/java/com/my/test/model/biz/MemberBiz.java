@@ -7,9 +7,10 @@ import org.springframework.stereotype.Service;
 
 import com.my.test.dto.MemberDto;
 import com.my.test.dto.MemberJoinDto;
+import com.my.test.dto.SelectDto;
 
 public interface MemberBiz {
-	public List<MemberDto> selectList();
+	public List<SelectDto> selectList();
 //	public MemberDto selectOne(String id);
 	public int insert(MemberDto dto);
 	public int update(MemberDto dto);

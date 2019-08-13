@@ -13,6 +13,7 @@ import org.springframework.stereotype.Repository;
 
 import com.my.test.dto.MemberDto;
 import com.my.test.dto.MemberJoinDto;
+import com.my.test.dto.SelectDto;
 
 @Repository
 public class MemberDaoImpl implements MemberDao {
@@ -21,9 +22,9 @@ public class MemberDaoImpl implements MemberDao {
 	private SqlSessionTemplate sqlSession;
 	
 	@Override
-	public List<MemberDto> selectList() {
+	public List<SelectDto> selectList() {
 		
-		List<MemberDto> list = new ArrayList<MemberDto>();
+		List<SelectDto> list = new ArrayList<SelectDto>();
 		try {
 			list = sqlSession.selectList(namespace+"selectList");
 		} catch (Exception e) {
