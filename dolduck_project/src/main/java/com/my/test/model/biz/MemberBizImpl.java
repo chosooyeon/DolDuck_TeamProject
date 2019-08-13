@@ -81,13 +81,8 @@ public class MemberBizImpl implements MemberBiz {
 	}
 
 	@Override
-	public MemberDto nickCheck(String nickname) {
-		return dao.nickCheck(nickname);
-	}
-
-	@Override
-	public int updateUserInfo(MemberDto dto) {
-		return dao.updateUserInfo(dto);
+	public int updateMember(MemberDto dto) {
+		return dao.updateMember(dto);
 	}
 
 	@Override
@@ -96,32 +91,18 @@ public class MemberBizImpl implements MemberBiz {
 	}
 
 	@Override
-	public MemberDto findId(String name, String nickname) {
-		return dao.findId(name, nickname);
+	public MemberDto idSearch(String name, String email) {
+		return dao.idSearch(name, email);
 	}
 
 	@Override
-	public MemberDto findPw(String name, String id) {
-		return dao.findPw(name, id);
+	public MemberDto pwSearch(String id, String email) {
+		return dao.pwSearch(id, email);
 	}
 
 	@Override
 	public int changePw(String pw, String id) {
 		return dao.changePw(pw, id);
-	}
-
-	@Override
-	public boolean usersNameCheck(String name) {
-		boolean isCheck=false;
-        int check=dao.usersNameCheck(name);
-        // 0보다 크면 중복이 존재 true 반환
-        if(check>0) {
-            isCheck=true;
-        }else {
-            // 0이면 중복 없음.
-            isCheck=false;
-        }
-        return isCheck;
 	}
 
 	@Override
@@ -134,11 +115,6 @@ public class MemberBizImpl implements MemberBiz {
 	public int purchaseVote(int amount, String id) {
 		return dao.purchaseVote(amount, id);
 	}
-
-//	@Override
-//	public MemberDto login(String id, String pw) {
-//		return dao.login(id, pw);
-//	}
 	
 	
 }

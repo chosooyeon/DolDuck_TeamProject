@@ -1,10 +1,12 @@
 package com.my.test.model.dao;
 
+import java.io.IOException;
 import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
 
+import org.apache.ibatis.session.SqlSession;
 import org.mybatis.spring.SqlSessionTemplate;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Repository;
@@ -170,25 +172,11 @@ public class MemberDaoImpl implements MemberDao {
 				
 		return dto;
 	}
-
-	@Override
-	public MemberDto nickCheck(String nickname) {
-		MemberDto dto = null;
-		
-		Map<String, String> map = new HashMap<String, String>();
-		map.put("nickname", nickname);
-		
-		System.out.println("닉네임 유효성 검사중");
-		
-		dto = sqlSession.selectOne(namespace + "nickChk", map);
-		
-		return dto;
-	}
 	
 	@Override
-	public int updateUserInfo(MemberDto dto) {
+	public int updateMember(MemberDto dto) {
 		int res = 0;
-		res = sqlSession.update(namespace + "updateUserInfo", dto);
+		res = sqlSession.update(namespace + "updateMember", dto);
 			
 			if(res>0) {
 				sqlSession.commit();
@@ -209,14 +197,27 @@ public class MemberDaoImpl implements MemberDao {
 	}
 
 
-	@Override
-	public MemberDto findId(String name, String nickname) {
-		return null;
-	}
+	public MemberDto idSearch(String name, String email) {
 
-	@Override
-	public MemberDto findPw(String name, String id) {
-		return null;
+		Map<String, Object> idSearch = new HashMap<String, Object>();
+		idSearch.put("name", name);
+		idSearch.put("email", email);
+		MemberDto dto =null;
+
+		dto = sqlSession.selectOne(namespace + "idSearch", idSearch);
+		
+		return dto;
+	}
+	public MemberDto pwSearch(String id, String email) {
+
+		Map<String, Object> pwSearch = new HashMap<String, Object>();
+		pwSearch.put("id", id);
+		pwSearch.put("email", email);
+		MemberDto dto = null;
+
+		dto = sqlSession.selectOne(namespace + "pwSearch", pwSearch);
+		
+		return dto;
 	}
 
 	@Override

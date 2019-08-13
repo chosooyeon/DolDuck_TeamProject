@@ -58,7 +58,7 @@ img#kakao-login-btn {
 						<tr>
 							<td>&emsp;<a href="idfind.do">아이디 찾기</a>&emsp;
 							</td>
-							<td>/&emsp;&emsp;<a href="pwfind.jsp">비밀번호 찾기</a></td>
+							<td>/&emsp;&emsp;<a href="pwfind.do">비밀번호 찾기</a></td>
 						</tr>
 
 					</table>
@@ -72,6 +72,8 @@ img#kakao-login-btn {
 					<script src="resources/js/sns/kakaologin.js"></script>
 					<div id="kakao-logged-group"></div>
 					<div id="kakao-profile"></div>
+					<p></p>
+					<%@ include file="./naver.jsp"%>
 				</form>
 			</div>
 		</div>

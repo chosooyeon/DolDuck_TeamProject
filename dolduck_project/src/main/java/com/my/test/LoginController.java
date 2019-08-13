@@ -41,233 +41,246 @@ import com.my.test.service.UserAuthenticationService;
 @Controller
 public class LoginController {
 
-   private static final Logger logger = LoggerFactory.getLogger(LoginController.class);
-   
-   @Autowired
-   UserAuthenticationService user = new UserAuthenticationService();
+	private static final Logger logger = LoggerFactory.getLogger(LoginController.class);
+	
+	@Autowired
+	UserAuthenticationService user = new UserAuthenticationService();
 
-   @Inject
-   BCryptPasswordEncoder passwordEncoder; // 비밀번호 암호화 객체
+	@Inject
+	BCryptPasswordEncoder passwordEncoder; // 비밀번호 암호화
 
-   @Inject
-   private MemberBizImpl biz;
+	@Inject
+	private MemberBizImpl biz;
 
-   private String randompassword;
+	private String randompassword;
 
-   // 로그인 페이지로 이동
-   @RequestMapping(value = "login.do")
-   public String loginform() {
-      return "/member/login";
-   }
+	//로그인 페이지로 이동
+	@RequestMapping(value = "login.do")
+	public String loginform() {
+		return "/member/login";
+	}
 
-   // 로그인 페이지로 이동
-   @RequestMapping(value = "/member/login.do")
-   public String login() {
-      return "/member/login";
-   }
+	// 로그인 페이지로 이동
+	@RequestMapping(value = "/member/login.do")
+	public String login() {
+		return "/member/login";
+	}
 
-   // 아이디 찾기 페이지로 이동
-   @RequestMapping(value = "idfind.do")
-   public String idfind() {
-      return "/member/idfind";
-   }
+	// 아이디 찾기 페이지로 이동
+	@RequestMapping(value = "idfind.do")
+	public String idfind() {
+		return "/member/idfind";
+	}
 
-   // 비밀번호 찾기 페이지로 이동
-   @RequestMapping(value = "pwfind.do")
-   public String pwfind() {
-      return "/member/pwfind";
-   }
+	// 비밀번호 찾기 페이지로 이동
+	@RequestMapping(value = "pwfind.do")
+	public String pwfind() {
+		return "/member/pwfind";
+	}
 
-   // 마이페이지로 이동
-   @RequestMapping(value = "mypage.do")
-   public String mypage() {
-      return "/member/mypage";
-   }
+	// 마이 페이지로 이동
+	@RequestMapping(value = "mypage.do")
+	public String mypage() {
+		return "/member/mypage";
+	}
 
-   // 회원정보 수정 페이지로 이동
-   @RequestMapping(value = "modified.do")
-   public String modified() {
-      return "/member/modified";
-   }
+	// 수정 페이지로 이동
+	@RequestMapping(value = "modified.do")
+	public String modified() {
+		return "/member/modified";
+	}
 
-   // 회원가입 페이지로 이동
-   @RequestMapping("register.do")
-   public String userInsert(@RequestParam String user_id, @RequestParam String user_pw, @RequestParam String user_name,
-         @RequestParam String user_email, @RequestParam String user_phone, @RequestParam String user_addr) {
+	// 회원가입 페이지로 이동
+	@RequestMapping("register.do")
+	public String userInsert(@RequestParam String user_id, @RequestParam String user_pw, @RequestParam String user_name,
+			@RequestParam String user_email, @RequestParam String user_phone, @RequestParam String user_addr) {
 
-      Map<String, String> map = new HashMap<String, String>();
-      map.put("member_id", user_id);
-      System.out.println("암호화 전 비번" + user_pw);
-      String encryptPassword = passwordEncoder.encode(user_pw);
-      System.out.println("암호화 후 비번" + encryptPassword);
-      map.put("member_pw", encryptPassword);
-      map.put("member_name", user_name);
-      map.put("member_phone", user_phone);
-      map.put("member_addr", user_addr);
-      map.put("member_email", user_email);
+		Map<String, String> map = new HashMap<String, String>();
+		map.put("member_id", user_id);
+		System.out.println("회원 비밀번호" + user_pw);
+		String encryptPassword = passwordEncoder.encode(user_pw);
+		System.out.println("비밀번호 암호화" + encryptPassword);
+		map.put("member_pw", encryptPassword);
+		map.put("member_name", user_name);
+		map.put("member_phone", user_phone);
+		map.put("member_addr", user_addr);
+		map.put("member_email", user_email);
 
-      biz.insertUser(map);
+		biz.insertUser(map);
 
-      return "/member/login";
-   }
+		return "/member/login";
+	}
 
-   // 권한이 없는 사용자에게 안내 페이지 출력
-   @RequestMapping("denied")
-   public String denied(Model model, AuthenticateAction auth, HttpServletRequest req) {
-      AccessDeniedException ade = (AccessDeniedException) req.getAttribute(WebAttributes.ACCESS_DENIED_403);
+	// 에러페이지로 이동
+	@RequestMapping("denied")
+	public String denied(Model model, Authentication auth, HttpServletRequest req) {
+		AccessDeniedException ade = (AccessDeniedException) req.getAttribute(WebAttributes.ACCESS_DENIED_403);
 
-      model.addAttribute("errMSg", ade);
-      return "denied";
-   }
+		model.addAttribute("errMSg", ade);
+		return "denied";
+	}
 
-   @RequestMapping("logout")
-   public String logout(HttpSession session) {
-      session.invalidate();
-      return "redirect:loginform";
-   }
+	@RequestMapping("logout")
+	public String logout(HttpSession session) {
+		session.invalidate();
+		return "redirect:loginform";
+	}
 
-   @RequestMapping(value = "idChk.do", method = RequestMethod.GET)
-   @ResponseBody
-   public Map<String, Boolean> idChk(String id) {
-      logger.info("아이디 중복체크");
+	@RequestMapping(value = "idChk.do", method = RequestMethod.GET)
+	@ResponseBody
+	public Map<String, Boolean> idChk(String id) {
+		logger.info("아이디 체크");
 
-      System.out.println(id);
-      boolean idChk = false;
+		System.out.println(id);
+		boolean idChk = false;
 
-      Map<String, Boolean> map = new HashMap<String, Boolean>();
+		Map<String, Boolean> map = new HashMap<String, Boolean>();
 
-      if (biz.idCheck(id) == null) {
-         idChk = true;
-         map.put("idChk", idChk);
-      } else {
-         map.put("idChk", idChk);
-      }
+		if (biz.idCheck(id) == null) {
+			idChk = true;
+			map.put("idChk", idChk);
+		} else {
+			map.put("idChk", idChk);
+		}
 
-      return map;
-   }
+		return map;
+	}
 
-   @RequestMapping(value = "nickChk.do", method = RequestMethod.GET)
-   @ResponseBody
-   public Map<String, Boolean> nickChk(String nickname) {
-      logger.info("닉네임 중복체크");
-      System.out.println(nickname);
-      boolean nickChk = false;
+	@RequestMapping(value = "idSearch.do", method = RequestMethod.POST)
+	@ResponseBody
+	public Map<String, Boolean> idSearch(String name, String email) {
+		System.out.println(name);
+		boolean idSearch = false;
 
-      Map<String, Boolean> map = new HashMap<String, Boolean>();
-      if (biz.nickCheck(nickname) == null) {
-         nickChk = true;
-         map.put("nickChk", nickChk);
-      } else {
-         map.put("nickChk", nickChk);
-      }
-      return map;
+		Map<String, Boolean> map = new HashMap<String, Boolean>();
+		if (biz.idSearch(name, email) == null) {
+			idSearch = true;
+			map.put("idSearch", idSearch);
+		} else {
+			map.put("idSearch", idSearch);
+		}
+		return map;
 
-   }
+	}
+	
+	@RequestMapping(value = "pwSearch.do", method = RequestMethod.POST)
+	@ResponseBody
+	public Map<String, Boolean> pwSearch(String id, String email) {
+		System.out.println(id);
+		boolean pwSearch = false;
 
-   @RequestMapping(value = "sendEmail.do", method = RequestMethod.GET)
-   @ResponseBody
-   public void sendEmail(String email) throws UnsupportedEncodingException, MessagingException {
-      randompassword = MakeRandom.GetRandomPassword();
-      System.out.println(randompassword);
+		Map<String, Boolean> map = new HashMap<String, Boolean>();
+		if (biz.pwSearch(id, email) == null) {
+			pwSearch = true;
+			map.put("pwSearch", pwSearch);
+		} else {
+			map.put("pwSearch", pwSearch);
+		}
+		return map;
 
-      JavaMailSenderImpl mailSender = new JavaMailSenderImpl();
+	}
 
-      mailSender.setHost("smtp.gmail.com");
-      mailSender.setPassword("whwhwkd%5");
-      mailSender.setPort(587);
-      mailSender.setUsername("ad.team555@gmail.com");
-      if (mailSender.getPort() == 587) {
-         Properties javaMailProperties = new Properties();
-         javaMailProperties.setProperty("mail.smtp.starttls.enable", "true");
-         mailSender.setJavaMailProperties(javaMailProperties);
-      }
+	@RequestMapping(value = "sendEmail.do", method = RequestMethod.GET)
+	@ResponseBody
+	public void sendEmail(String email) throws UnsupportedEncodingException, MessagingException {
+		randompassword = MakeRandom.GetRandomPassword();
+		System.out.println(randompassword);
 
-      MimeMessage msg = mailSender.createMimeMessage();
-      MimeMessageHelper helper = new MimeMessageHelper(msg, false, "UTF-8");
-      helper.setFrom(new InternetAddress("ad.team555@gmail.com", "Dol-Duck"));
-      helper.setTo(new InternetAddress(email, ""));
-      System.out.println("email:" + email);
-      helper.setSubject("[DOLDuck]인증번호 test");
-      helper.setText("<a><b style='color:hotpink;'>인증번호 : " + randompassword + "<a>", true);
+		JavaMailSenderImpl mailSender = new JavaMailSenderImpl();
 
-      try {
-         mailSender.send(msg);
-      } catch (MailException ex) {
-         logger.error("메일발송 실패", ex);
-      }
+		mailSender.setHost("smtp.gmail.com");
+		mailSender.setPassword("whwhwkd%5");
+		mailSender.setPort(587);
+		mailSender.setUsername("ad.team555@gmail.com");
+		if (mailSender.getPort() == 587) {
+			Properties javaMailProperties = new Properties();
+			javaMailProperties.setProperty("mail.smtp.starttls.enable", "true");
+			mailSender.setJavaMailProperties(javaMailProperties);
+		}
 
-   }
+		MimeMessage msg = mailSender.createMimeMessage();
+		MimeMessageHelper helper = new MimeMessageHelper(msg, false, "UTF-8");
+		helper.setFrom(new InternetAddress("ad.team555@gmail.com", "Dol-Duck"));
+		helper.setTo(new InternetAddress(email, ""));
+		System.out.println("email:" + email);
+		helper.setSubject("[DOLDuck]회원가입");
+		helper.setText("<a><b style='color:hotpink;'>인증번호 : " + randompassword + "<a>", true);
 
-   @ResponseBody
-   @RequestMapping(value = "VerifyRecaptcha", method = RequestMethod.POST)
-   public int VerifyRecaptcha(HttpServletRequest request) {
-      VerifyRecaptcha.setSecretKey("6LfHerAUAAAAACUEUT2MZxaiydRTDktzKSogfRvS");
-      String gRecaptchaResponse = request.getParameter("recaptcha");
-      System.out.println(gRecaptchaResponse);
-      // 0 = 성공, 1 = 실패, -1 = 오류
-      try {
-         if (VerifyRecaptcha.verify(gRecaptchaResponse))
-            return 0;
-         else
-            return 1;
-      } catch (IOException e) {
-         e.printStackTrace();
-         return -1;
-      }
-   }
+		try {
+			mailSender.send(msg);
+		} catch (MailException ex) {
+			logger.error("인증실패", ex);
+		}
 
-   @RequestMapping(value = "emailCheck.do", method = RequestMethod.GET)
-   @ResponseBody
-   public Map<String, Boolean> email_check(String ranNumPass) {
+	}
 
-      boolean ranChk = false;
+	@ResponseBody
+	@RequestMapping(value = "VerifyRecaptcha", method = RequestMethod.POST)
+	public int VerifyRecaptcha(HttpServletRequest request) {
+		VerifyRecaptcha.setSecretKey("6LfHerAUAAAAACUEUT2MZxaiydRTDktzKSogfRvS");
+		String gRecaptchaResponse = request.getParameter("recaptcha");
+		System.out.println(gRecaptchaResponse);
+		try {
+			if (VerifyRecaptcha.verify(gRecaptchaResponse))
+				return 0;
+			else
+				return 1;
+		} catch (IOException e) {
+			e.printStackTrace();
+			return -1;
+		}
+	}
 
-      Map<String, Boolean> map = new HashMap<String, Boolean>();
+	@RequestMapping(value = "emailCheck.do", method = RequestMethod.GET)
+	@ResponseBody
+	public Map<String, Boolean> email_check(String ranNumPass) {
 
-      System.out.println(ranNumPass);
-      System.out.println(randompassword);
+		boolean ranChk = false;
 
-      if (randompassword.equals(ranNumPass)) {
-         ranChk = true;
-         map.put("ranChk", ranChk);
-      } else {
-         map.put("idchk", ranChk);
-      }
+		Map<String, Boolean> map = new HashMap<String, Boolean>();
 
-      return map;
-   }
+		System.out.println(ranNumPass);
+		System.out.println(randompassword);
 
-   @RequestMapping(value = "kakao.do", method = RequestMethod.POST)
-   public String kakao(HttpServletRequest request, @RequestParam String id, @RequestParam String name) {
-      boolean idChk = false;
+		if (randompassword.equals(ranNumPass)) {
+			ranChk = true;
+			map.put("ranChk", ranChk);
+		} else {
+			map.put("idchk", ranChk);
+		}
 
-      System.out.println("sns로그인 들어옴 ");
+		return map;
+	}
 
-      if (biz.idCheck(id) == null) { // 아이디가 없으면 가입
+	@RequestMapping(value = "kakao.do", method = RequestMethod.POST)
+	public String kakao(HttpServletRequest request, @RequestParam String id, @RequestParam String name) {
+		boolean idChk = false;
 
-         System.out.println("SNS로그인 가입");
-         idChk = true;
+		System.out.println("sns로그인 ");
 
-         int res = 0;
+		if (biz.idCheck(id) == null) { 
 
-         Map<String, String> map = new HashMap<String, String>();
-         map.put("member_id", id);
-         System.out.println("암호화 전 비번" + id);
-         String encryptPassword = passwordEncoder.encode(id);
-         System.out.println("암호화 후 비번" + encryptPassword);
-         map.put("member_pw", encryptPassword);
-         map.put("member_name", name);
-         map.put("member_phone", "전화번호를 입력해주세요");
-         map.put("member_addr", "주소를 입력해주세요");
-         map.put("member_email", id+"@naver.com");
+			System.out.println("SNS로그인");
+			idChk = true;
 
-         res = biz.insertUser(map);
+			int res = 0;
 
-         if (res > 0) {
+			Map<String, String> map = new HashMap<String, String>();
+			map.put("member_id", id);
+			System.out.println("아이디" + id);
+			String encryptPassword = passwordEncoder.encode(id);
+			System.out.println("비밀번호 암호화" + encryptPassword);
+			map.put("member_pw", encryptPassword);
+			map.put("member_name", name);
+			map.put("member_phone", "핸드폰 번호를 입력해주세요");
+			map.put("member_addr", "주소를 입력해주세요");
+			map.put("member_email", id+"@naver.com");
 
-            System.out.println("로그인하러 갑니다!");
-            String loginId = id;
-            idChk = false;
+			res = biz.insertUser(map);
+
+			if (res > 0) {
+				String loginId = id;
+				idChk = false;
 
             MemberDto dto = (MemberDto) user.loadUserByUsername(loginId);
             Authentication authentication = new UsernamePasswordAuthenticationToken(dto, dto.getPassword(),
@@ -279,11 +292,9 @@ public class LoginController {
             session.setAttribute("SPRING_SECURITY_CONTEXT", securityContext);
          }
 
-      } else { // 아이디가 있으면 로그인
-         System.out.println("로그인하러 갑니다!");
-         String loginId = id;
-         idChk = false;
-
+		} else { // 아이디가 있으면 로그인
+			String loginId = id;
+			idChk = false;
          MemberDto dto = (MemberDto) user.loadUserByUsername(loginId);
          Authentication authentication = new UsernamePasswordAuthenticationToken(dto, dto.getPassword(),
                dto.getAuthorities());
@@ -299,11 +310,10 @@ public class LoginController {
 
    }
 
-   @RequestMapping(value = "facebook.do")
-   public String facebook(HttpServletRequest request, @RequestParam String id) {
-
-      return "";
-   }
+	@RequestMapping(value = "naver.do")
+	public String naver(HttpSession session) {
+		return "";
+	}
 
    @RequestMapping("test01")
    public String test012(@RequestParam String test) {
@@ -317,27 +327,19 @@ public class LoginController {
    @RequestMapping("test.do")
    public String testpage(Authentication auth) {
 
-      // this.auth = auth;
-      // Locale locale, Model model,
-      logger.info("test.do 입장~!");
+		// this.auth = auth;
+		// Locale locale, Model model,
+		logger.info("test.do");
 
       System.out.println("auth test 1 : " + auth);
 
       MemberDto dto = (MemberDto) auth.getPrincipal();
       String email = dto.getMember_email();
+		System.out.println(email);
+		logger.info("welcome checkAuth! Authentication is{}.", auth);
 
-      System.out.println(email);
-
-//      System.out.println("★★★★id★★★="+id);
-//      UserInfoDto dto = (UserInfoDto)   auth.getPrincipal();
-      logger.info("welcome checkAuth! Authentication is{}.", auth);
-//      logger.info("UserAuthenticationService == {}", dto);
-
-//      model.addAttribute("auth", auth);
-//      model.addAttribute("dto", dto);   
-
-      System.out.println("★★★★★★★★" + auth.getName());
-      System.out.println("" + auth.getAuthorities());
+		System.out.println("이름 가져오기" + auth.getName());
+		System.out.println("" + auth.getAuthorities());
 
       return "test01";
    }
