@@ -114,7 +114,7 @@ public class MemberDto extends User{
 	@Override
 	public String toString() {
 		return "MemberDto [member_seq=" + member_seq + ", member_id=" + member_id + ", member_phone=" + member_phone
-				+ ", memebr_addr=" + member_addr + ", memebr_email=" + member_email + ", member_regdate="
+				+ ", member_addr=" + member_addr + ", member_email=" + member_email + ", member_regdate="
 				+ member_regdate + ", member_role=" + member_role + ", member_heart=" + member_heart + ", member_vote="
 				+ member_vote + "]";
 	}
