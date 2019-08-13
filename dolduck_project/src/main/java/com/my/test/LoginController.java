@@ -1,6 +1,6 @@
 package com.my.test;
 
-import java.io.IOException;	
+import java.io.IOException;
 import java.io.UnsupportedEncodingException;
 import java.nio.file.AccessDeniedException;
 import java.util.HashMap;
@@ -14,8 +14,7 @@ import javax.mail.internet.MimeMessage;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpSession;
 
-
-import org.codehaus.jackson.JsonNode;
+import org.apache.catalina.authenticator.SpnegoAuthenticator.AuthenticateAction;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -283,74 +282,66 @@ public class LoginController {
 				String loginId = id;
 				idChk = false;
 
-				MemberDto dto = (MemberDto) user.loadUserByUsername(loginId);
-				Authentication authentication = new UsernamePasswordAuthenticationToken(dto, dto.getPassword(),
-						dto.getAuthorities());
+            MemberDto dto = (MemberDto) user.loadUserByUsername(loginId);
+            Authentication authentication = new UsernamePasswordAuthenticationToken(dto, dto.getPassword(),
+                  dto.getAuthorities());
 
-				SecurityContext securityContext = SecurityContextHolder.getContext();
-				securityContext.setAuthentication(authentication);
-				HttpSession session = request.getSession(true);
-				session.setAttribute("SPRING_SECURITY_CONTEXT", securityContext);
-			}
+            SecurityContext securityContext = SecurityContextHolder.getContext();
+            securityContext.setAuthentication(authentication);
+            HttpSession session = request.getSession(true);
+            session.setAttribute("SPRING_SECURITY_CONTEXT", securityContext);
+         }
 
 		} else { // 아이디가 있으면 로그인
 			String loginId = id;
 			idChk = false;
+         MemberDto dto = (MemberDto) user.loadUserByUsername(loginId);
+         Authentication authentication = new UsernamePasswordAuthenticationToken(dto, dto.getPassword(),
+               dto.getAuthorities());
 
-			MemberDto dto = (MemberDto) user.loadUserByUsername(loginId);
-			Authentication authentication = new UsernamePasswordAuthenticationToken(dto, dto.getPassword(),
-					dto.getAuthorities());
+         SecurityContext securityContext = SecurityContextHolder.getContext();
+         securityContext.setAuthentication(authentication);
+         HttpSession session = request.getSession(true);
+         session.setAttribute("SPRING_SECURITY_CONTEXT", securityContext);
+         
+      }
 
-			SecurityContext securityContext = SecurityContextHolder.getContext();
-			securityContext.setAuthentication(authentication);
-			HttpSession session = request.getSession(true);
-			session.setAttribute("SPRING_SECURITY_CONTEXT", securityContext);
-			
-		}
+      return "redirect:/";
 
-		return "redirect:/";
-
-	}
+   }
 
 	@RequestMapping(value = "naver.do")
 	public String naver(HttpSession session) {
 		return "";
 	}
-	
-	@RequestMapping(value = "facebook.do")
-	public String facebook(HttpServletRequest request, @RequestParam String id) {
 
-		return "";
-	}
+   @RequestMapping("test01")
+   public String test012(@RequestParam String test) {
 
-	@RequestMapping("test01")
-	public String test012(@RequestParam String test) {
+      // System.out.println("auth test 2 : " + auth);
+      System.out.println(test);
 
-		// System.out.println("auth test 2 : " + auth);
-		System.out.println(test);
+      return "login";
+   }
 
-		return "login";
-	}
-
-	@RequestMapping("test.do")
-	public String testpage(Authentication auth) {
+   @RequestMapping("test.do")
+   public String testpage(Authentication auth) {
 
 		// this.auth = auth;
 		// Locale locale, Model model,
 		logger.info("test.do");
 
-		System.out.println("auth test 1 : " + auth);
+      System.out.println("auth test 1 : " + auth);
 
-		MemberDto dto = (MemberDto) auth.getPrincipal();
-		String email = dto.getMemebr_email();
-
+      MemberDto dto = (MemberDto) auth.getPrincipal();
+      String email = dto.getMember_email();
 		System.out.println(email);
 		logger.info("welcome checkAuth! Authentication is{}.", auth);
 
 		System.out.println("이름 가져오기" + auth.getName());
 		System.out.println("" + auth.getAuthorities());
 
-		return "test01";
-	}
+      return "test01";
+   }
 
 }

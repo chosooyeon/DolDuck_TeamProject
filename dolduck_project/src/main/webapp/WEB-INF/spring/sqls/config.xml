@@ -3,6 +3,7 @@
 <configuration>
 	<typeAliases>
 		<typeAlias type="com.my.test.dto.MemberDto" alias="MemberDto"/>
+		<typeAlias type="com.my.test.dto.SelectDto" alias="SelectDto"/>
 	</typeAliases>
 
 	<!-- resource : src/main/resources -->
