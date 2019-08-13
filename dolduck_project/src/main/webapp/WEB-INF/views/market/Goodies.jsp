@@ -18,7 +18,7 @@
 	
 		
 		<h1> Market </h1>
-		<ul class="nav nav-tabs">
+		<ul class="nav nav-tabs market_ul">
 			<li class="nav-item">
 				<a class="nav-link market_link" href="heartShop.do">HeartShop</a>
 			</li>
@@ -29,7 +29,9 @@
 		</ul>
 	
 		<div class="col-md-12 market_border">
-		<!-- 계시판ㄱㄱ -->
+			<div class="Goodies">
+			
+			</div>
 		</div>
 		
 	
