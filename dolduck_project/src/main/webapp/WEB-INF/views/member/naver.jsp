@@ -21,6 +21,6 @@
     apiURL += "&state=" + state;
     session.setAttribute("state", state);
  %>
-  <a href="<%=apiURL%>"><img height="50" width="234.4" src="../../../resources/images/naver_login_button.PNG"/></a>
+  <a href="<%=apiURL%>"><img height="50" width="234.4" src="../../resources/images/naver_login_button.PNG"/></a>
 </body>
 </html>

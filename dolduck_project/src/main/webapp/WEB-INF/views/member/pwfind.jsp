@@ -16,7 +16,7 @@
 <div class="container login">
 	<div class="row">
 		<div class="col-lg-6 offset-lg-3 login_table">
-		<h1 class="text-center login_text">DOL-Duck 비밀번호 찾기</h1>
+		<h1 class="text-center login_text">DOL-Duck</h1><h1><p></p>비밀번호 찾기</h1>
 
 <form action="${pageContext.request.contextPath}/pwfind.do" method="post">
 <input type="hidden" name="${_csrf.parameterName }" value="${_csrf.token}">
@@ -28,7 +28,7 @@
 			</tr>
 			<tr>
 				<th>EMAIL</th>
-				<td><input class="form-control login" type="password" id="email" name="email"></td>
+				<td><input class="form-control login" type="email" id="email" name="email"></td>
 			</tr>
 			<tr>
 				<td colspan="1"><input class="login_button" type="button" value="비밀번호 찾기" onclick="pwfind()"></td>
