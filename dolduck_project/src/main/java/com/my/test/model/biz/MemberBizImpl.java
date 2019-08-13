@@ -3,8 +3,6 @@ package com.my.test.model.biz;
 import java.util.List;
 import java.util.Map;
 
-import javax.inject.Inject;
-
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
@@ -12,7 +10,6 @@ import com.my.test.dto.MemberDto;
 import com.my.test.dto.MemberJoinDto;
 import com.my.test.dto.SelectDto;
 import com.my.test.model.dao.MemberDao;
-import com.my.test.model.dao.MemberDaoImpl;
 
 @Service
 public class MemberBizImpl implements MemberBiz {
@@ -23,31 +20,6 @@ public class MemberBizImpl implements MemberBiz {
 	@Override
 	public List<SelectDto> selectList() {
 		return dao.selectList();
-	}
-
-//	@Override
-//	public MemberDto selectOne(String id) {
-//		return dao.selectOne(id);
-//	}
-
-	@Override
-	public int insert(MemberDto dto) {
-		return dao.insert(dto);
-	}
-
-	@Override
-	public int update(MemberDto dto) {
-		return dao.update(dto);
-	}
-
-	@Override
-	public int delete(String id) {
-		return dao.delete(id);
-	}
-
-	@Override
-	public int muldel(String[] chk) {
-		return dao.muldel(chk);
 	}
 
 	@Override

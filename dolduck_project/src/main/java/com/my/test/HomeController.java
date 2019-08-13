@@ -55,34 +55,7 @@ public class HomeController {
 		return "admin/admin";
 	}
 	
-	/************************** 로그인 ***************************/
-//	@RequestMapping("loginform.do")
-//	public String loginform() {
-//		return "/member/login";
-//	}
-	
-//	@RequestMapping("login.do")
-//	@ResponseBody
-//	public Map<String, Boolean> login(String id, String pw, HttpSession session){
-//		System.out.println("여기 들어옴");
-//		/*
-//		 * @ResponseBody: java 객체를 response객체에 binding
-//		 * @RequestBody: request객체로 넘어오는 데이터를 java 객체
-//		 * */
-//		
-//		MemberDto dto = biz.login(id, pw);
-//		boolean loginChk = false;
-//		System.out.println(loginChk+"로그인 체크값");
-//		if(dto!=null) {
-//			session.setAttribute("login", dto);
-//			loginChk=true;
-//		}
-//		
-//		Map<String, Boolean> map = new HashMap<String, Boolean>();
-//		map.put("loginChk", loginChk);
-//		
-//		return map;
-//	}
+	/************************** 로그아웃 ***************************/
 	
 	@RequestMapping("logout.do")
 	public String logout(HttpSession session) {
@@ -149,7 +122,7 @@ public class HomeController {
 	@RequestMapping("buy-heart.do")
 	@ResponseBody
 	public String payHeart(@RequestParam int amount, @RequestParam int price, Authentication auth) {
-		//@AuthenticationPrincipal
+		
 		MemberDto dto = (MemberDto)auth.getPrincipal();
 		String userId = dto.getUsername();
 		String result = "";
@@ -166,7 +139,7 @@ public class HomeController {
 	@RequestMapping("buy-vote.do")
 	@ResponseBody
 	public String payVote(@RequestParam int amount, @RequestParam  int price, Authentication auth) {
-		//@AuthenticationPrincipal
+		
 		MemberDto dto = (MemberDto)auth.getPrincipal();
 		String userId = dto.getUsername();
 		String result;

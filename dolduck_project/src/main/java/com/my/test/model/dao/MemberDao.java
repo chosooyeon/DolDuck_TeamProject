@@ -14,13 +14,6 @@ public interface MemberDao {
 	String namespace = "member.";
 	
 	public List<SelectDto> selectList();
-//	public MemberDto selectOne(String id);
-	public int insert(MemberDto dto);
-	public int update(MemberDto dto);
-	public int delete(String id);
-	public int muldel(String[] chk);
-	
-//	public MemberDto login(String id, String pw);
 	
 	public int insertUser(Map<String, String> map);
 	public Map<String, Object> selectUser(String user_id);

@@ -43,7 +43,7 @@
 						<li><a href="${pageContext.request.contextPath}/login.do">Login</a></li>
 						<li><a href="${pageContext.request.contextPath}/join.do">Register</a></li>
 					</sec:authorize>
-					<sec:authorize access="hasRole('ROLE_USER','ROLE_ARTIST)">
+					<sec:authorize access="hasAnyRole('ROLE_USER','ROLE_ARTIST')">
 						<li><a href="logout.do">Logout</a></li>
 						<li><a href="${pageContext.request.contextPath}/mypage.do">Mypage</a></li>
 					</sec:authorize>

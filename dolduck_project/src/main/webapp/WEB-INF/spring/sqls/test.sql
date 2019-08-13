@@ -27,11 +27,6 @@ CREATE TABLE MEMBER(
 
 SELECT * FROM MEMBER;
 
-INSERT INTO MEMBER VALUES(MEMBERSEQ.NEXTVAL, 'admin','admin1234','관리자','010-0000-0000','서울시 중랑구','1whtndus@naver.com',SYSDATE, 0, 1,'ADMIN',0);
-
-drop table member;
-SELECT * FROM MEMBER;
-
 delete from member where member_id='admin';
 
 UPDATE MEMBER SET MEMBER_ROLE='ROLE_ADMIN' WHERE MEMBER_ID='admin';
