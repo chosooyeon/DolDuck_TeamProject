@@ -30,4 +30,6 @@ public interface MemberBiz {
 	public MemberDto pwSearch(String id, String email);
 	public int changePw(String pw, String id);
 	
+	public int purchaseHeart(int amount, String id);
+	public int purchaseVote(int amount, String id);
 }
