@@ -36,23 +36,26 @@ if(principal != null && principal instanceof MemberDto){
 		<section
 			class="header_content d-flex flex-row align-items-center justify-content-center">
 			<div class="logo">
-				<a href="home.do">DOL-Duck</a>
+				<a href="home.do"><img id="logo" alt="logo" src="resources/images/logo.png"></a>
 			</div>
 			<div class="log_reg">
 				<ul class="d-flex flex-row align-items-start justify-content-start">
 					<sec:authorize access="isAnonymous()">
 						<li><a href="${pageContext.request.contextPath}/login.do">Login</a></li>
-						<li><a href="${pageContext.request.contextPath}/join.do">Register</a></li>
 					</sec:authorize>
 					<sec:authorize access="hasAnyRole('ROLE_USER','ROLE_ARTIST')">
-						<li style="color:white"><%=name %>님 환영합니다.</li>
-						<li><a href="logout.do">Logout</a></li>
-						<li><a href="${pageContext.request.contextPath}/mypage.do">Mypage</a></li>
+						<li class="dropdown"><a class="dropdown-toggle" data-toggle="dropdown"><%=name %>님</a>
+						<ul class="dropdown-menu" role="menu">
+							<li class="dropdown-item:hover"><a href="logout.do">Logout</a></li>
+							<li class="dropdown-item:hover"><a href="${pageContext.request.contextPath}/mypage.do">Mypage</a></li>
+						</ul></li>	
 					</sec:authorize>
 					<sec:authorize access="hasRole('ROLE_ADMIN')">
-						<li style="color:white"><%=name %>님 환영합니다.</li>
-						<li><a href="logout.do">Logout</a></li>
-						<li><a href="${pageContext.request.contextPath}/admin.do">Userpage</a></li>
+						<li class="dropdown"><a class="dropdown-toggle" data-toggle="dropdown"><%=name %>님</a>
+						<ul class="dropdown-menu" role="menu">
+							<li class="dropdown-item:hover"><a href="logout.do">Logout</a></li>
+							<li class="dropdown-item:hover"><a href="${pageContext.request.contextPath}/admin.do">Userpage</a></li>
+						</ul></li>	
 					</sec:authorize>
 				</ul>
 			</div>
@@ -65,8 +68,7 @@ if(principal != null && principal instanceof MemberDto){
 					<li><a href="chart.do">Music Chart</a></li>
 					<li><a href="live-home.do">LIVE</a></li>
 					<li><a href="#">Board</a></li>
-					<li class="dropdown"><a href="heartShop.do"
-						class="dropdown-toggle" data-toggle="dropdown">Market</a>
+					<li class="dropdown"><a class="dropdown-toggle" data-toggle="dropdown">Market</a>
 						<ul class="dropdown-menu" role="menu">
 							<li class="dropdown-item:hover"><a href="heartShop.do">heartShop</a></li>
 							<li class="dropdown-item:hover"><a href="Goodies.do">Goodies</a></li>
@@ -96,8 +98,19 @@ if(principal != null && principal instanceof MemberDto){
 				class="menu_container d-flex flex-column align-items-start justify-content-center">
 				<div class="menu_log_reg">
 					<ul class="d-flex flex-row align-items-start justify-content-start">
-						<li><a href="loginform.do">Login</a></li>
-						<li><a href="#">Register</a></li>
+						<sec:authorize access="isAnonymous()">
+							<li><a href="${pageContext.request.contextPath}/login.do">Login</a></li>
+						</sec:authorize>
+						<sec:authorize access="hasAnyRole('ROLE_USER','ROLE_ARTIST')">
+						<li style="color:#fff"><%=name %>님</li>
+						<li><a href="logout.do">Logout</a></li>
+						<li><a href="${pageContext.request.contextPath}/mypage.do">Mypage</a></li>
+					</sec:authorize>
+					<sec:authorize access="hasRole('ROLE_ADMIN')">
+						<li style="color:#fff"><%=name %>님</li>
+						<li><a href="logout.do">Logout</a></li>
+						<li><a href="${pageContext.request.contextPath}/admin.do">Userpage</a></li>
+					</sec:authorize>
 					</ul>
 				</div>
 				<nav class="menu_nav">

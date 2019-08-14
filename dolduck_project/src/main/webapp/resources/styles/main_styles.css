@@ -332,6 +332,9 @@ section
 	font-size: 30px;
 	color: #FFFFFF;
 }
+#logo{
+	width: 11%;
+}
 .log_reg
 {
 	position: absolute;
@@ -350,7 +353,6 @@ section
 .log_reg ul li:not(:last-child)::after
 {
 	display: inline-block;
-	content: '/';
 	font-size: 14px;
 	color: #FFFFFF;
 	margin-left: 6px;
@@ -407,6 +409,10 @@ section
 	transition: all 400ms ease;
 }
 /* main메뉴 market 호버 */
+.dropdown{
+	color: #fff;
+}
+
 .dropdown:hover .dropdown-menu {
 	width: 100%;
 	min-width:7rem;
@@ -424,7 +430,7 @@ section
 
 .has-search .form-control {
     padding-left: 2rem;
-    width: 220px;
+    width: 78%;
 }
 
 .has-search .form-control-feedback {
@@ -573,7 +579,7 @@ section
 .menu_log_reg ul li:not(:last-child)::after
 {
 	display: inline-block;
-	content: '/';
+	content: "/";
 	font-size: 14px;
 	color: #FFFFFF;
 	margin-left: 6px;
@@ -638,6 +644,7 @@ section
 {
 	width: 100%;
 	height: auto;
+	margin-top: 100px;
 /* 	padding-left: 51px;
 	padding-right: 52px; */
 }

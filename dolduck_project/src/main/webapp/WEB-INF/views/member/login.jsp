@@ -27,8 +27,7 @@ img#kakao-login-btn {
 				<h1 class="text-center login_text">DOL-Duck 로그인</h1>
 
 				<span style="color: red;">${errMsg }</span>
-				<form action="${pageContext.request.contextPath}/home.do"
-					method="post">
+				<form action="${pageContext.request.contextPath}/home.do" method="post">
 					<input type="hidden" name="${_csrf.parameterName }"
 						value="${_csrf.token}">
 					<table>

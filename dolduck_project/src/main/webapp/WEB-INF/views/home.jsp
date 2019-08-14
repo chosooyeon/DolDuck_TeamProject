@@ -113,7 +113,7 @@
 		
 	</section>
 				 	<!-- 그래프 -->
-					<svg width="700" height="320"></svg>
+					<svg width="1170" height="502"></svg>
 		
 		<!-- youtube -->
 	<section class="channel">
