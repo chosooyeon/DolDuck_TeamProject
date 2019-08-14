@@ -1,8 +1,13 @@
-var token = $("meta[name='_csrf']").attr("content");
-var header = $("meta[name='_csrf_header']").attr("content");
 
-$(document).ready(function(){
-
+$(function(){
+	
+	$('.button-channel').on('click', () => {
+		alert('!!!!!!!!!!!!!!')
+	})
+	
+})
+ 
+/* 
    var chart,
    start = 0, end = 30
  
@@ -19,10 +24,14 @@ $(document).ready(function(){
       start = end
       end += 20
       paginationOfList(chart, start, end)   
-   })   
-})
+   })  
+   */
+
 
 function getMusicChart(){
+	var token = $("meta[name='_csrf']").attr("content");
+	var header = $("meta[name='_csrf_header']").attr("content");
+
 	var list;
 
    console.log(token, ' // ' , header); 

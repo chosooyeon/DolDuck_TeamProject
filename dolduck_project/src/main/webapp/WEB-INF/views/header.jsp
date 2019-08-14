@@ -51,7 +51,7 @@ if(principal != null && principal instanceof MemberDto){
 						<li><a href="${pageContext.request.contextPath}/mypage.do">Mypage</a></li>
 					</sec:authorize>
 					<sec:authorize access="hasRole('ROLE_ADMIN')">
-						<li style="color:white"><%=name %>님 환영합니다.</li>
+						<li style="color:white"><%=name %></li>
 						<li><a href="logout.do">Logout</a></li>
 						<li><a href="${pageContext.request.contextPath}/admin.do">Userpage</a></li>
 					</sec:authorize>
