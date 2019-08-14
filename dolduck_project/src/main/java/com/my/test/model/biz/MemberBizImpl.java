@@ -54,8 +54,8 @@ public class MemberBizImpl implements MemberBiz {
 	}
 
 	@Override
-	public int updateMember(MemberDto dto) {
-		return dao.updateMember(dto);
+	public int updateMember(Map<String, String> map) {
+		return dao.updateMember(map);
 	}
 
 	@Override

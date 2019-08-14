@@ -76,9 +76,9 @@
 		FROM MEMBER WHERE MEMBER_ID=#{id} AND MEMBER_EMAIL=#{email}
 	</select>
 
-	<update id="updateMember" parameterType="memberDto">
+	<update id="updateMember" parameterType="map">
 		UPDATE MEMBER SET PW=#{pw}, PHONE=#{phone}, ADDR=#{addr},
-		ZONECODE=#{zonecode} WHERE USERSEQ=#{userseq}
+		ZONECODE=#{zonecode} WHERE MEMBER_ID=#{id}
 	</update>
 	
 	<update id="updateUserPw" parameterType="memberDto">

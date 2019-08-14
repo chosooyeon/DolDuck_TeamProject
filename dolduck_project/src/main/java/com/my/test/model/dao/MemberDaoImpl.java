@@ -93,9 +93,9 @@ public class MemberDaoImpl implements MemberDao {
 	}
 	
 	@Override
-	public int updateMember(MemberDto dto) {
+	public int updateMember(Map<String, String> map) {
 		int res = 0;
-		res = sqlSession.update(namespace + "updateMember", dto);
+		res = sqlSession.update(namespace + "updateMember", map);
 			
 			if(res>0) {
 				sqlSession.commit();

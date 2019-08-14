@@ -14,22 +14,22 @@
 </head>
 <body>
 <%@include file="../header.jsp" %>
-<div class="container join">
+<div class="container modified">
 	<div class="row">
-		<div class="col-lg-6 offset-lg-3 join_table">
+		<div class="col-lg-6 offset-lg-3 modified_table">
 			<h1 class="text-center">마이페이지</h1>
-			<form method="post" action="${pageContext.request.contextPath}/modified.do">
-              <input type="hidden" name="${_csrf.parameterName}" value="${_csrf.token }">			
+			<form method="post" action="${pageContext.request.contextPath}/modifiedfied.do">
+              <input type="hidden" name="${member_id}" >			
 					
 					
-					<table class="join_form">
+					<table class="modified_form">
+					<sec:authorize access="isAuthenticated()">
 						<tr>
 							<th>이름</th>
 						</tr>
 						<tr>
-							<td>
-								<input class="form-control" type="text" class="text" name="user_name" placeholder="이름" required />
-							</td>
+								<sec:authentication property="principal.username" var="member_name" />
+								<td><div id="member_name"><%=name %></div></td>
 						</tr>
 						<tr>
 						</tr>
@@ -37,20 +37,12 @@
 							<th>아이디</th>
 						</tr>
 						<tr>
-							<td>
-								<div id="id_confirm">
-									<input class="form-control" type="text" class="text" name="user_id" placeholder="아이디" required />
-									<input type="button" class="idChk" id="btn_idcheck" value="중복확인" onclick="id_check()"/>
-								</div>
-								<p class="result">
-									<span class="msg">아이디를 확인해 주십시오.</span>
-								</p>
-								
-							</td>
-							
+								<sec:authentication property="principal.member_id" var="member_id" />
+								<td><div id="member_id">${member_id}</div></td>
 						</tr>
 						<tr>
 						</tr>
+						</sec:authorize>
 						<tr>
 							<th>비밀번호</th>
 						</tr>
@@ -101,11 +93,12 @@
 						</tr>
 						<tr>
 							<td colspan="2" >
-								<input id="joinup" type="submit" value="회원가입"/>
+								<input id="modified_up" type="submit" value="수정 완료"/>
+								<input id="modified_cancle" type="button" value="취소" onclick="location.href='${pageContext.request.contextPath}/mypage.do'" >
 							</td>
 						</tr>
 					</table>
-				<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+				
  
 				</form>
 

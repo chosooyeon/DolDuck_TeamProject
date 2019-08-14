@@ -1444,5 +1444,56 @@ table {
 .btn_role:focus{
 	box-shadow: 0 0 0 0.2rem rgba(255, 255, 255, 0.25);
 }
+/*******************
+	 마이페이지
+*******************/
+
+#modified{
+	width: 381px;
+    margin: 3px 1px 0px 1px;
+    color: #ffffff;
+    background: #ffa550;
+    border: 5px solid #ffa550;
+    border-radius: .25rem;
+    padding: .375rem .75rem;
+}
+
+/*******************
+	 정보수정
+*******************/
+.modified{
+    margin-top: 182px;
+    margin-bottom: 100px;
+}
+.modified .modified_table{
+	
+	border: 1px #e3e3e3;
+    height: auto;
+    text-align: -webkit-center;
+    padding: 36px;
+    border-radius: .25rem;
+}
+.modified_form{
+	margin-top: 85px;
+}
 
 
+#modified_up{
+    width: 49%;
+    float: left;
+    margin: 42px 1px 0px 1px;
+    color: #ffffff;
+    background: #ffa550;
+    border: 5px solid #ffa550;
+    border-radius: .25rem;
+    padding: .375rem .75rem;
+}
+#modified_cancle{
+    width: 49%;
+    margin: 42px 1px 0px 1px;
+    color: #ffffff;
+    background: #ffa550;
+    border: 5px solid #ffa550;
+    border-radius: .25rem;
+    padding: .375rem .75rem;
+}
