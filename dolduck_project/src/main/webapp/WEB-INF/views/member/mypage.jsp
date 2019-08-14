@@ -4,17 +4,7 @@
 <%@ taglib prefix="form" uri="http://www.springframework.org/tags/form"%>
 <%@ taglib prefix="sec"
 	uri="http://www.springframework.org/security/tags"%>
-<%@page import = "org.springframework.security.core.context.SecurityContextHolder" %>
-<%@page import = "org.springframework.security.core.Authentication" %>
-<%@page import = "com.my.test.dto.SelectDto" %>
-<%
-Authentication auth = SecurityContextHolder.getContext().getAuthentication();
-Object principal = auth.getPrincipal();
-String name = "";
-if(principal != null && principal instanceof SelectDto){
-	name = ((SelectDto)principal).getMember_name();
-}
-%>
+
 <!DOCTYPE html>
 <html>
 <head>
@@ -33,11 +23,13 @@ if(principal != null && principal instanceof SelectDto){
               <input type="hidden" name="${_csrf.parameterName}" value="${_csrf.token }">			
 					
 					<table class="join_form">
+					<sec:authorize access="isAuthenticated()">
 						<tr>
 							<th>이름</th>
 						</tr>
 						<tr>
-							<td><%=name %></td>
+                    		<sec:authentication property="principal.username" var="member_name" />
+							<td><div id="member_name"><%=name %></div></td>
 						</tr>
 						<tr>
 						</tr>
@@ -45,73 +37,36 @@ if(principal != null && principal instanceof SelectDto){
 							<th>아이디</th>
 						</tr>
 						<tr>
-							<td>
-								<div id="id_confirm">
-									<input class="form-control" type="text" class="text" name="user_id" placeholder="아이디" required />
-									<input type="button" class="idChk" id="btn_idcheck" value="중복확인" onclick="id_check()"/>
-								</div>
-								<p class="result">
-									<span class="msg">아이디를 확인해 주십시오.</span>
-								</p>
-								
-							</td>
-							
-						</tr>
-						<tr>
-						</tr>
-						<tr>
-							<th>비밀번호</th>
-						</tr>
-						<tr>	
-							
-							<td>
-								<input class="form-control" type="password" class="text" name="user_pw" placeholder="비밀번호" onchange="pass_check()" required />
-								<div id="pass_check"></div>
-								<input class="form-control" type="password" class="text" name="user_pw02" placeholder="비밀번호 확인" onchange="pass_confirm()" required />
-								<div id="pass_confirm"></div>
-							</td>
+							<sec:authentication property="principal.member_id" var="member_id" />
+							<td><div id="member_id">${member_id}</div></td>
 						</tr>
 						<tr>
 							<th>전화번호</th>
 						</tr>
 						<tr>
-							<td>
-								<input class="form-control" type="text" class="text" name="user_phone" placeholder="전화번호" required />
-							</td>
+							<sec:authentication property="principal.member_phone" var="member_phone" />
+							<td><div id="member_phone">${member_phone}</div></td>
 						</tr>
 						<tr>
 							<th>이메일</th>
 						</tr>
 						<tr>
-							<td>
-								<input class="form-control" type="email" class="text" name="user_email" placeholder="이메일" required/>
-								<input type="button" id="btn_sendemail" value="인증번호발송" onclick="sendEmail()"/><p></p>
-							</td>
-						</tr>
-						<tr>
-							<td>
-								<input class="form-control" type="text" class="text" name="ranNum" placeholder="이메일 인증번호" required/>
-								<input type="button" id="ranChk" value="인증번호확인" onclick="ranNumChk()"/>
-								<div id="confirm"></div>
-								<div id="emailChkConfirm"></div>
-							</td>
+							<sec:authentication property="principal.member_email" var="member_email" />
+							<td><div id="member_email">${member_email}</div></td>
 						</tr>
 						<tr>
 							<th>주소</th>
 						</tr>
 						<tr>
-							<td>
-								<input class="form-control" type="text" name="user_addr" id="addr" placeholder="주소" readonly="readonly"> 
-								<input type="button" id="set_addr" class="e1" onclick="setAddr()" value="주소입력"> 
-								<input class="form-control" type="text" id="detail_addr" name="detail_addr" placeholder="상세주소" > 
-								<input type="hidden" id="zonecode" name="zonecode" value="" />
-							</td>
+							<sec:authentication property="principal.member_addr" var="member_addr" />
+							<td><div id="member_addr">${member_addr}</div></td>
 						</tr>
 						<tr>
 							<td colspan="2" >
 								<input id="modified" type="submit" value="회원 정보 수정"/>
 							</td>
 						</tr>
+						</sec:authorize>
 					</table>
 				<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
  

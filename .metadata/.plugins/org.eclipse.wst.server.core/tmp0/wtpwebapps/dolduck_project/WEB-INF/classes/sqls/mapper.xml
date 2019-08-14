@@ -113,4 +113,20 @@
 		WHERE MEMBER_ID = #{member_id}
 	</update>
 	
+	
+	<insert id="insertVote" parameterType="com.my.test.vote.VoteDto">
+		INSERT INTO VOTE
+		VALUES(#{page}, #{starName}, #{voteNumber})
+	</insert>
+	
+	<select id="selectOneVote" parameterType="com.my.test.vote.VoteDto" resultType="com.my.test.vote.VoteDto">
+		SELECT * FROM VOTE
+		WHERE VOTE_PAGE=#{page} AND VOTE_NAME=#{starName}
+	</select>
+	
+	<update id="updateVote" parameterType="com.my.test.vote.VoteDto">
+		UPDATE VOTE
+		SET VOTE_TOTAL=((VOTE_TOTAL)+#{voteNumber})
+		WHERE VOTE_PAGE=#{page} AND VOTE_NAME=#{starName}
+	</update>
 </mapper>

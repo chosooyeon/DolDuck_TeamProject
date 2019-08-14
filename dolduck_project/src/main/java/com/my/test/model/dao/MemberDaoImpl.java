@@ -14,6 +14,7 @@ import org.springframework.stereotype.Repository;
 import com.my.test.dto.MemberDto;
 import com.my.test.dto.MemberJoinDto;
 import com.my.test.dto.SelectDto;
+import com.my.test.vote.VoteDto;
 
 @Repository
 public class MemberDaoImpl implements MemberDao {
@@ -220,6 +221,52 @@ public class MemberDaoImpl implements MemberDao {
 			}
 		return res;
 	}
+	
+	@Override
+	public int insertVote(VoteDto votedto) {
+		int res = 0;
+		try {
+			res = sqlSession.insert(namespace+"insertVote",votedto);
+		} catch (Exception e) {
+			System.out.println("error2");
+			e.printStackTrace();
+		}
+		
+		return res;
+	}
+	
+	@Override
+	public VoteDto selectOneVote(int page, String starName) {
+		VoteDto dto = new VoteDto();
+		dto = null;
+		
+		System.out.println("page:"+page+"starName:"+starName);
+		
+		Map<String, String> map = new HashMap<String, String>();
+		map.put("page", page+"");
+		map.put("starName", starName);
+		
+		try {
+			dto = sqlSession.selectOne(namespace+"selectOneVote",new VoteDto(page,starName));
+			System.out.println("dtouu:"+dto);
+		} catch (Exception e) {
+			System.out.println("error");
+			e.printStackTrace();
+		}
+		
+		return dto;
+	}
 
-
+	@Override
+	public int updateVote(VoteDto dto) {
+		int res = 0;
+		try {
+			res = sqlSession.update(namespace+"updateVote",dto);
+		} catch (Exception e) {
+			System.out.println("error");
+			e.printStackTrace();
+		}
+		
+		return res;
+	}
 }

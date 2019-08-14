@@ -50,6 +50,24 @@ where member_id = 'lotus526'
 update member 
 set member_vote = ((select member_vote from member where member_id = 'lotus526') + 10),
 member_heart = ((select member_heart from member where member_id = 'lotus526') - 250)
+
 where member_id = 'lotus526'
 
-UPDATE MEMBER SET MEMBER_PW='$2a$10$WzmejPwX08xRYaKDbB1Ie.NOX5uwfHwSCahrNar1.VC0jWpx/.yiS' WHERE MEMBER_ID='1whtndus'
+/*-------------------------------------		 투표 테이블	-----------------------------------------*/
+-- 투표 테이블 VOTE
+-- 투표번호 시퀀스 VOTESEQ
+-- 컬럼 : 스타이름, 투표수, 페이지번호(0~5)
+-- 0:여자그룹/ 1:여자아이돌/ 2:신인스타
+-- 3:별별스타/ 4:남자그룹/ 5:남자아이돌
+
+DROP TABLE VOTE;
+
+CREATE TABLE VOTE(
+	VOTE_PAGE NUMBER NOT NULL,
+	VOTE_NAME VARCHAR2(1000) NOT NULL,
+	VOTE_TOTAL NUMBER NOT NULL
+);
+
+INSERT INTO VOTE VALUES('WINNER', 1, 0);
+
+SELECT * FROM VOTE;
