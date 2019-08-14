@@ -62,37 +62,37 @@ public class LoginController {
 	// 로그인 페이지로 이동
 	@RequestMapping(value = "login.do")
 	public String loginform() {
-		return "/member/login";
+		return "member/login";
 	}
 
 	// 로그인 페이지로 이동
 	@RequestMapping(value = "/member/login.do")
 	public String login() {
-		return "/member/login";
+		return "member/login";
 	}
 
 	// 아이디 찾기 페이지로 이동
 	@RequestMapping(value = "idfind.do")
 	public String idfind() {
-		return "/member/idfind";
+		return "member/idfind";
 	}
 
 	// 비밀번호 찾기 페이지로 이동
 	@RequestMapping(value = "pwfind.do")
 	public String pwfind() {
-		return "/member/pwfind";
+		return "member/pwfind";
 	}
 
 	// 마이 페이지로 이동
 	@RequestMapping(value = "mypage.do")
 	public String mypage() {
-		return "/member/mypage";
+		return "member/mypage";
 	}
 
 	// 수정 페이지로 이동
 	@RequestMapping(value = "modified.do")
 	public String modified() {
-		return "/member/modified";
+		return "member/modified";
 	}
 	
 	@RequestMapping(value = "role_update.do", method = {RequestMethod.POST})
@@ -113,7 +113,7 @@ public class LoginController {
 	// 회원가입 페이지로 이동
 	@RequestMapping("join.do")
 	public String Join() {
-		return "/member/Join";
+		return "member/Join";
 	}
 
 	// 회원가입 페이지로 이동
@@ -134,7 +134,7 @@ public class LoginController {
 
 		biz.insertUser(map);
 
-		return "/member/login";
+		return "member/login";
 	}
 
 	// 에러페이지로 이동
@@ -373,12 +373,12 @@ public class LoginController {
 	}  
 
 	@RequestMapping(value = "naver.do")
-	public String naver(HttpServletRequest request) throws Exception {
+	public String naver(HttpServletRequest request, HttpSession session) throws Exception {
 
 		boolean idChk = false;
 		
-		String token = (String) request.getAttribute("access_token");// 네이버 로그인 접근 토큰; 여기에 복사한 토큰값을 넣어줍니다.
-		String header = "Bearer " + token; // Bearer 다음에 공백 추가
+		String _token = (String) session.getAttribute("access_token");
+		String header = "Bearer " + _token; // Bearer 다음에 공백 추가
 		try {
 			String apiURL = "https://openapi.naver.com/v1/nid/me";
 			URL url = new URL(apiURL);
@@ -436,7 +436,7 @@ public class LoginController {
 
 				SecurityContext securityContext = SecurityContextHolder.getContext();
 				securityContext.setAuthentication(authentication);
-				HttpSession session = request.getSession(true);
+				session = request.getSession(true);
 				session.setAttribute("SPRING_SECURITY_CONTEXT", securityContext);
 			} else { // 아이디가 있으면 로그인
 				System.err.println("로그인~");
@@ -448,7 +448,7 @@ public class LoginController {
 
 				SecurityContext securityContext = SecurityContextHolder.getContext();
 				securityContext.setAuthentication(authentication);
-				HttpSession session = request.getSession(true);
+				session = request.getSession(true);
 				session.setAttribute("SPRING_SECURITY_CONTEXT", securityContext);
 
 			}
