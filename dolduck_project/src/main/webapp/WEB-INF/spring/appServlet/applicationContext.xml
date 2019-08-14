@@ -8,6 +8,7 @@
 		<property name="locations">
 			<list>
 				<value>classpath:properties/db.properties</value>
+				<value>classpath:properties/twitter4j.properties</value>
 			</list>
 		</property>
 	</bean>
