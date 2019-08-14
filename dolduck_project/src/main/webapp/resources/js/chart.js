@@ -1,13 +1,15 @@
-$(window).on('load', function(){
+var token = $("meta[name='_csrf']").attr("content");
+var header = $("meta[name='_csrf_header']").attr("content");
+
+$(document).ready(function(){
 
    var chart,
    start = 0, end = 30
-         
+ 
    //GET MUSIC CHART 100 FROM MELON USING AJAX
    chart = getMusicChart()
    //DEFAULT LIST 1~30
    paginationOfList(chart, start, end)
-
    $(document).on('click','.button-pagination', function(){
       //If rank is over 100, end become 100 and 'button-pagination' become disabled
       if(end > 100){   
@@ -22,15 +24,15 @@ $(window).on('load', function(){
 
 function getMusicChart(){
 	var list;
-   var token = $("meta[name='_csrf']").attr("content");
-   var header = $("meta[name='_csrf_header']").attr("content");
+
    console.log(token, ' // ' , header); 
    $.ajax({
       type : 'POST',
       url : 'musicsearch.do',
+      data : { 'site' : 'genie' },
       dataType : 'json',
       async : false ,
-     beforeSend: function( xhr ) {
+      beforeSend: function( xhr ) {
          xhr.setRequestHeader(header, token);
       },
       success : function(data){
@@ -52,10 +54,11 @@ function paginationOfList(chart, start, end){
       $('tbody').append(`<tr>
               <td scope="row">${song.rank}</td>
               <td><img class="chart-thumbnail" src="${song.thumb}"></td>
-              <td><a href="#">${song.title}</td>
+              <td><a href="#">${song.title}</td>₩
               <td>${song.singer}</td>
               <td>${song.album}</td>
-               </tr>`
+              <td><i class="far fa-share-alt" style="color: #ccc;"></i></td>
+              </tr>`
       );
    }
 }

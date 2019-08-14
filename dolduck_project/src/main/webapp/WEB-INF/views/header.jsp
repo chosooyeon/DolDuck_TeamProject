@@ -1,8 +1,17 @@
-<%@ page language="java" contentType="text/html; charset=UTF-8"
-	pageEncoding="UTF-8"%>
+<%@ page language="java" contentType="text/html; charset=UTF-8" pageEncoding="UTF-8"%>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
-<%@ taglib uri="http://www.springframework.org/security/tags"
-	prefix="sec"%>
+<%@ taglib uri="http://www.springframework.org/security/tags" prefix="sec"%>
+<%@page import = "org.springframework.security.core.context.SecurityContextHolder" %>
+<%@page import = "org.springframework.security.core.Authentication" %>
+<%@page import = "com.my.test.dto.MemberDto" %>
+<%
+Authentication auth = SecurityContextHolder.getContext().getAuthentication();
+Object principal = auth.getPrincipal();
+String name = "";
+if(principal != null && principal instanceof MemberDto){
+	name = ((MemberDto)principal).getUsername();
+}
+%>
 <!DOCTYPE html>
 <html>
 <head>
@@ -10,21 +19,13 @@
 <meta http-equiv="X-UA-Compatible" content="IE=edge">
 <meta name="description" content="Mixtape template project">
 <meta name="viewport" content="width=device-width, initial-scale=1">
-<link rel="stylesheet" type="text/css"
-	href="resources/styles/bootstrap-4.1.2/bootstrap.min.css">
-<link
-	href="resources/plugins/font-awesome-4.7.0/css/font-awesome.min.css"
-	rel="stylesheet" type="text/css">
-<link rel="stylesheet" type="text/css"
-	href="resources/plugins/OwlCarousel2-2.2.1/owl.carousel.css">
-<link rel="stylesheet" type="text/css"
-	href="resources/plugins/OwlCarousel2-2.2.1/owl.theme.default.css">
-<link rel="stylesheet" type="text/css"
-	href="resources/plugins/OwlCarousel2-2.2.1/animate.css">
-<link rel="stylesheet" type="text/css"
-	href="resources/styles/main_styles.css">
-<link rel="stylesheet" type="text/css"
-	href="resources/styles/responsive.css">
+<link rel="stylesheet" type="text/css" href="resources/styles/bootstrap-4.1.2/bootstrap.min.css">
+<link href="resources/plugins/font-awesome-4.7.0/css/font-awesome.min.css" rel="stylesheet" type="text/css">
+<link rel="stylesheet" type="text/css" href="resources/plugins/OwlCarousel2-2.2.1/owl.carousel.css">
+<link rel="stylesheet" type="text/css" href="resources/plugins/OwlCarousel2-2.2.1/owl.theme.default.css">
+<link rel="stylesheet" type="text/css" href="resources/plugins/OwlCarousel2-2.2.1/animate.css">
+<link rel="stylesheet" type="text/css" href="resources/styles/main_styles.css">
+<link rel="stylesheet" type="text/css" href="resources/styles/responsive.css">
 
 </head>
 <title>Header</title>
@@ -43,11 +44,13 @@
 						<li><a href="${pageContext.request.contextPath}/login.do">Login</a></li>
 						<li><a href="${pageContext.request.contextPath}/join.do">Register</a></li>
 					</sec:authorize>
-					<sec:authorize access="hasRole('ROLE_USER')">
+					<sec:authorize access="hasAnyRole('ROLE_USER','ROLE_ARTIST')">
+						<li style="color:white"><%=name %>님 환영합니다.</li>
 						<li><a href="logout.do">Logout</a></li>
 						<li><a href="${pageContext.request.contextPath}/mypage.do">Mypage</a></li>
 					</sec:authorize>
 					<sec:authorize access="hasRole('ROLE_ADMIN')">
+						<li style="color:white"><%=name %>님 환영합니다.</li>
 						<li><a href="logout.do">Logout</a></li>
 						<li><a href="${pageContext.request.contextPath}/admin.do">Userpage</a></li>
 					</sec:authorize>
@@ -60,7 +63,7 @@
 					<li><a href="youtube.do">YouTube</a></li>
 					<li><a href="vote.do">Vote</a></li>
 					<li><a href="chart.do">Music Chart</a></li>
-					<li><a href="#">LIVE</a></li>
+					<li><a href="live-home.do">LIVE</a></li>
 					<li><a href="#">Board</a></li>
 					<li class="dropdown"><a href="heartShop.do"
 						class="dropdown-toggle" data-toggle="dropdown">Market</a>

@@ -1,6 +1,5 @@
 package com.my.test;
 
-import java.security.Principal;
 import java.text.DateFormat;
 import java.text.SimpleDateFormat;
 import java.util.ArrayList;
@@ -16,7 +15,6 @@ import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.security.core.Authentication;
-import org.springframework.security.core.annotation.AuthenticationPrincipal;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.RequestMapping;
@@ -66,34 +64,7 @@ public class HomeController {
 		return "admin/admin";
 	}
 	
-	/************************** 로그인 ***************************/
-//	@RequestMapping("loginform.do")
-//	public String loginform() {
-//		return "/member/login";
-//	}
-	
-//	@RequestMapping("login.do")
-//	@ResponseBody
-//	public Map<String, Boolean> login(String id, String pw, HttpSession session){
-//		System.out.println("여기 들어옴");
-//		/*
-//		 * @ResponseBody: java 객체를 response객체에 binding
-//		 * @RequestBody: request객체로 넘어오는 데이터를 java 객체
-//		 * */
-//		
-//		MemberDto dto = biz.login(id, pw);
-//		boolean loginChk = false;
-//		System.out.println(loginChk+"로그인 체크값");
-//		if(dto!=null) {
-//			session.setAttribute("login", dto);
-//			loginChk=true;
-//		}
-//		
-//		Map<String, Boolean> map = new HashMap<String, Boolean>();
-//		map.put("loginChk", loginChk);
-//		
-//		return map;
-//	}
+	/************************** 로그아웃 ***************************/
 	
 	@RequestMapping("logout.do")
 	public String logout(HttpSession session) {
@@ -110,10 +81,22 @@ public class HomeController {
 	
 	
 	@RequestMapping(value = "musicsearch.do", method = {RequestMethod.POST})
-	public @ResponseBody JSONObject getChart() {
-		//멜론차트 크롤링해서 List로 return 
+	public @ResponseBody JSONObject getChart(String site) {
+		
 		List<Music> list = new ArrayList<Music>();
-		list = crawling.getMusicChart();
+
+		switch(site) {
+		case "melon": 
+			list = crawling.getMelonChart();
+			break;
+		case "bugs":
+			list = crawling.getBugsChart();
+			break;
+		case "genie":
+			list = crawling.getGenieChart();
+			break;
+		}
+		//멜론차트 크롤링해서 List로 return 
 				
 		//JSON타입으로 파싱
 		JSONObject chart = new JSONObject();
@@ -139,11 +122,33 @@ public class HomeController {
 		
 		return chart;
 	}
+
 	
 	/************************** Youtube 게시판 ***************************/
 	@RequestMapping("youtube.do")
 	public String showYoutubeBoard() {
 		return "board/youtube";
+	}
+	
+	/************************** Youtube 게시판 ***************************/
+	@RequestMapping("live-home.do")
+	public String liveBoard() {
+		return "live/live-home";
+	}
+	
+	@RequestMapping("live-schedule.do")
+	public String liveSchedule() {
+		return "live/live-schedule";
+	}
+	
+	@RequestMapping("live-onair.do")
+	public String liveOnair() {
+		return "live/live-onair";
+	}
+	
+	@RequestMapping("live-channel.do")
+	public String liveChannel() {
+		return "live/live-channel";
 	}
 	
 	/************************* market ************************************/
@@ -160,7 +165,7 @@ public class HomeController {
 	@RequestMapping("buy-heart.do")
 	@ResponseBody
 	public String payHeart(@RequestParam int amount, @RequestParam int price, Authentication auth) {
-		//@AuthenticationPrincipal
+		
 		MemberDto dto = (MemberDto)auth.getPrincipal();
 		String userId = dto.getUsername();
 		String result = "";
@@ -177,7 +182,7 @@ public class HomeController {
 	@RequestMapping("buy-vote.do")
 	@ResponseBody
 	public String payVote(@RequestParam int amount, @RequestParam  int price, Authentication auth) {
-		//@AuthenticationPrincipal
+		
 		MemberDto dto = (MemberDto)auth.getPrincipal();
 		String userId = dto.getUsername();
 		String result;
@@ -193,14 +198,6 @@ public class HomeController {
 		return result;
 	}
 
-	/************************* 회원가입 ***********************************/
-	
-	@RequestMapping("join.do")
-	public String insert() {
-		return "member/Join";
-		
-	}
-	
 	
 	
 	/************************* Vote 게시판 ************************************/

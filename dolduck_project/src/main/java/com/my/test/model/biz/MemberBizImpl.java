@@ -8,6 +8,7 @@ import org.springframework.stereotype.Service;
 
 import com.my.test.dto.MemberDto;
 import com.my.test.dto.MemberJoinDto;
+import com.my.test.dto.SelectDto;
 import com.my.test.model.dao.MemberDao;
 import com.my.test.vote.VoteDto;
 
@@ -18,33 +19,8 @@ public class MemberBizImpl implements MemberBiz {
 	private MemberDao dao;
 	
 	@Override
-	public List<MemberDto> selectList() {
+	public List<SelectDto> selectList() {
 		return dao.selectList();
-	}
-
-//	@Override
-//	public MemberDto selectOne(String id) {
-//		return dao.selectOne(id);
-//	}
-
-	@Override
-	public int insert(MemberDto dto) {
-		return dao.insert(dto);
-	}
-
-	@Override
-	public int update(MemberDto dto) {
-		return dao.update(dto);
-	}
-
-	@Override
-	public int delete(String id) {
-		return dao.delete(id);
-	}
-
-	@Override
-	public int muldel(String[] chk) {
-		return dao.muldel(chk);
 	}
 
 	@Override
@@ -78,13 +54,8 @@ public class MemberBizImpl implements MemberBiz {
 	}
 
 	@Override
-	public MemberDto nickCheck(String nickname) {
-		return dao.nickCheck(nickname);
-	}
-
-	@Override
-	public int updateUserInfo(MemberDto dto) {
-		return dao.updateUserInfo(dto);
+	public int updateMember(MemberDto dto) {
+		return dao.updateMember(dto);
 	}
 
 	@Override
@@ -93,32 +64,18 @@ public class MemberBizImpl implements MemberBiz {
 	}
 
 	@Override
-	public MemberDto findId(String name, String nickname) {
-		return dao.findId(name, nickname);
+	public SelectDto idSearch(String name, String email) {
+		return dao.idSearch(name, email);
 	}
 
 	@Override
-	public MemberDto findPw(String name, String id) {
-		return dao.findPw(name, id);
+	public SelectDto pwSearch(String id, String email) {
+		return dao.pwSearch(id, email);
 	}
 
 	@Override
 	public int changePw(String pw, String id) {
 		return dao.changePw(pw, id);
-	}
-
-	@Override
-	public boolean usersNameCheck(String name) {
-		boolean isCheck=false;
-        int check=dao.usersNameCheck(name);
-        // 0보다 크면 중복이 존재 true 반환
-        if(check>0) {
-            isCheck=true;
-        }else {
-            // 0이면 중복 없음.
-            isCheck=false;
-        }
-        return isCheck;
 	}
 
 	@Override
@@ -151,6 +108,9 @@ public class MemberBizImpl implements MemberBiz {
 //	public MemberDto login(String id, String pw) {
 //		return dao.login(id, pw);
 //	}
-	
-	
+	public int updateRole(MemberDto dto) {
+		// TODO Auto-generated method stub
+		return 0;
+	}
+
 }

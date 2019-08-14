@@ -3,10 +3,8 @@
 <html>
 <head>
 <meta charset="UTF-8">
-
 <meta name="_csrf" content="${_csrf.token}"/>
 <meta name="_csrf_header" content="${_csrf.headerName}"/> 
-
 <title>All About K-POP! DD - 실시간 음원차트 순위</title>
 <!-- Bootstdap 4 -->
 <link rel="stylesheet" type="text/css" href="resources/styles/bootstrap-4.1.2/bootstrap.min.css">
@@ -22,13 +20,34 @@
 <body>
    
    <!-- Header -->
-    <%@include file="../header.jsp" %>
+    <%@include file="/WEB-INF/views/header.jsp" %>
+   
+    <!-- Navigator Icon -->
+    <div class="div-channel">
+      <!-- Melon -->
+		<div class="div-button">
+			<div class="button-channel" id="melon">
+				<input type="hidden" class="videoId" name="melon" value="https://www.melon.com/chart/index.htm" >
+			</div>
+			<div class="label-channel">Melon</div>
+		</div>
+      <!-- Bugs-->
+		<div class="div-button"> 
+			<div class="button-channel" id="bugs">
+				<input type="hidden" class="videoId" name="bugs" value="https://music.bugs.co.kr/chart">
+			</div>
+			<div class="label-channel">Bugs</div>
+		</div>
+      <!--  Genie 뮤직  -->
+		<div class="div-button">
+			<div class="button-channel" id="genie">
+				<input type="hidden" class="videoId" name="genie" value="https://www.genie.co.kr/chart/top200">
+			</div>
+			 <div class="label-channel">Genie뮤직</div>
+		</div>
+	</div>
 
-   <h1> Melon Realtime Music Chart</h1>
-   <hr><br><br><br><br><br>
-   
-   
-   <div class="container">
+   <div class="container ">
       <div class="center musicchart-board">   
          <p>검색시간 : <label class="label-search"></label><p>
          <table class="table ">
@@ -39,6 +58,7 @@
                   <th scope="col">Song title</th>
                   <th scope="col">Singer</th>
                   <th scope="col">Album</th>
+                  <th scope="col">etc.</th> 
                </tr>
             </thead>
             <tbody></tbody>
