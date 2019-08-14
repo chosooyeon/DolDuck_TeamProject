@@ -100,13 +100,15 @@
 							</td>
 						</tr>
 						<tr>
+							<td><div class="g-recaptcha" data-sitekey="6LfHerAUAAAAAMuHHv4SxdSPsJgE5L8_PQliNINI"></div></td>
+						</tr>
+						<tr>
 							<td colspan="2" >
 								<input id="joinup" type="submit" value="회원가입"/>
 							</td>
 						</tr>
 					</table>
-					<div class="g-recaptcha" data-sitekey="6LfHerAUAAAAAMuHHv4SxdSPsJgE5L8_PQliNINI"></div>
-				<button id="test_btn">테스트 버튼</button>
+					
 				<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
    				<script src='https://www.google.com/recaptcha/api.js'></script>
  				<script>

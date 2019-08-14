@@ -211,6 +211,7 @@ public class MemberDaoImpl implements MemberDao {
 		return res;
 	}
 	
+	// 투표게시판 db 저장
 	@Override
 	public int insertVote(VoteDto votedto) {
 		int res = 0;
@@ -223,21 +224,23 @@ public class MemberDaoImpl implements MemberDao {
 		
 		return res;
 	}
-	
 	@Override
 	public VoteDto selectOneVote(int page, String starName) {
 		VoteDto dto = new VoteDto();
-		dto = null;
+		System.out.println("dto:"+dto);
 		
 		System.out.println("page:"+page+"starName:"+starName);
 		
 		Map<String, String> map = new HashMap<String, String>();
 		map.put("page", page+"");
 		map.put("starName", starName);
+		dto.setPage(page);
+		dto.setStarName(starName);
 		
 		try {
-			dto = sqlSession.selectOne(namespace+"selectOneVote",new VoteDto(page,starName));
-			System.out.println("dtouu:"+dto);
+			dto = sqlSession.selectOne(namespace+"selectOneVote",dto);
+//			System.out.println("dtouu:"+dto);
+//			System.out.println("dto.getPage():"+dto.getPage());
 		} catch (Exception e) {
 			System.out.println("error");
 			e.printStackTrace();
@@ -245,7 +248,6 @@ public class MemberDaoImpl implements MemberDao {
 		
 		return dto;
 	}
-
 	@Override
 	public int updateVote(VoteDto dto) {
 		int res = 0;
@@ -259,6 +261,7 @@ public class MemberDaoImpl implements MemberDao {
 		return res;
 	}
 
+	
 	@Override
 	public int updateRole(MemberDto dto) {
 		int res = 0;
