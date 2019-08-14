@@ -6,6 +6,7 @@ import java.util.Map;
 import com.my.test.dto.MemberDto;
 import com.my.test.dto.MemberJoinDto;
 import com.my.test.dto.SelectDto;
+import com.my.test.vote.VoteDto;
 
 public interface MemberBiz {
 	public List<SelectDto> selectList();
@@ -28,5 +29,9 @@ public interface MemberBiz {
 	public int purchaseVote(int amount, String id);
 
 
+	
+	public int insertVote(VoteDto dto);
+	public VoteDto selectOneVote(int page, String starName);
+	public int updateVote(VoteDto voteDto);
 	
 }

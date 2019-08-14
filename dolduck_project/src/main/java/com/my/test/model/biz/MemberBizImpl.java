@@ -10,6 +10,7 @@ import com.my.test.dto.MemberDto;
 import com.my.test.dto.MemberJoinDto;
 import com.my.test.dto.SelectDto;
 import com.my.test.model.dao.MemberDao;
+import com.my.test.vote.VoteDto;
 
 @Service
 public class MemberBizImpl implements MemberBiz {
@@ -94,7 +95,19 @@ public class MemberBizImpl implements MemberBiz {
 		return 0;
 	}
 
+	public int insertVote(VoteDto dto) {
+		return dao.insertVote(dto);
+	}
 
+	@Override
+	public VoteDto selectOneVote(int page, String starName) {
+		return dao.selectOneVote(page, starName);
+	}
+
+	@Override
+	public int updateVote(VoteDto dto) {
+		return dao.updateVote(dto);
+	}
 	
 	
 }

@@ -156,7 +156,7 @@ button:active
 }
 .form-control
 {
-	color: #db5246;
+	color: #000;
 }
 section
 {
@@ -1248,12 +1248,12 @@ svg{
     width: 200px;
     height: 200px;
     text-align: center;
-    margin: 21px 12px 20px;
+    margin: 21px 36px 44px;
 }
 
 .heartShop-item-title{
 	font-size: 27px;
-    margin-top: 70px;
+    margin-top: 38px;
 }
 
 .btn-buy-item{
@@ -1390,4 +1390,38 @@ table {
     border: 5px solid #ffa550;
     border-radius: .25rem;
     padding: .375rem .75rem;
+}
+/*******************
+	 관리자화면
+*******************/
+
+.admin{
+	margin-top: 200px;
+}
+.admin_board{
+	border: 3px solid #e3e3e3;
+    height: 400px;
+}
+.accordion {
+  background-color: #eee;
+  color: #444;
+  cursor: pointer;
+  padding: 18px;
+  width: 100%;
+  border: none;
+  text-align: left;
+  outline: none;
+  font-size: 15px;
+  transition: 0.4s;
+}
+
+.accordion:hover{
+  background-color: #ccc; 
+}
+
+.panel {
+  padding: 0 18px;
+  display: none;
+  background-color: white;
+  overflow: hidden;
 }
