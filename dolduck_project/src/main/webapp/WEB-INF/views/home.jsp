@@ -30,7 +30,7 @@
       <!-- video -->
             <div class="embed-responsive embed-responsive-16by9">
             <!-- resources/videos/index.mp4 -->
-               <iframe class="embed-responsive-item" src="resources/videos/index.mp4"></iframe>
+               <iframe class="embed-responsive-item" src=""></iframe>
             </div>
       </div>  
    </section>
