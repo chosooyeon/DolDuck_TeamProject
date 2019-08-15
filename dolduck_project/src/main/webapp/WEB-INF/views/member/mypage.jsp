@@ -1,10 +1,19 @@
-<%@ page language="java" contentType="text/html; charset=UTF-8"
-	pageEncoding="UTF-8"%>
-<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
+<%@ page language="java" contentType="text/html; charset=UTF-8" pageEncoding="UTF-8"%>
 <%@ taglib prefix="form" uri="http://www.springframework.org/tags/form"%>
-<%@ taglib prefix="sec"
-	uri="http://www.springframework.org/security/tags"%>
+<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
+<%@ taglib prefix="sec" uri="http://www.springframework.org/security/tags" %>
+<%@page import = "org.springframework.security.core.context.SecurityContextHolder" %>
+<%@page import = "org.springframework.security.core.Authentication" %>
+<%@page import = "com.my.test.dto.MemberDto" %>
+<%
+Authentication auth = SecurityContextHolder.getContext().getAuthentication();
+Object principal = auth.getPrincipal();
+String name = "";
 
+if(principal != null && principal instanceof MemberDto){
+	name = ((MemberDto)principal).getUsername();
+}
+%>
 <!DOCTYPE html>
 <html>
 <head>

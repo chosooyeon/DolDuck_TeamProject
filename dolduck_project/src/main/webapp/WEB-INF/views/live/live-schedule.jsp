@@ -1,8 +1,11 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8" pageEncoding="UTF-8"%>
+<%@taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <!DOCTYPE html>
 <html>
 <head>
 <meta charset="UTF-8">
+<meta name="_csrf" content="${_csrf.token}"/>
+<meta name="_csrf_header" content="${_csrf.headerName}"/> 
 <title>All About K-POP! DD - Live</title>
 <link rel="stylesheet" type="text/css" href="resources/styles/live.css">
 <link rel="stylesheet" href="resources/js/fullcalendar/core/main.css">
@@ -12,7 +15,6 @@
 <link href='https://use.fontawesome.com/releases/v5.0.6/css/all.css' rel='stylesheet'>
 <link href='https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css' rel='stylesheet' />
 <style type="text/css">
-
 .popover-modal{
 	width: 200px; height: 130px;
 	border: 1px solid #ddd;
@@ -43,7 +45,11 @@
                </ul>
             </nav>
          </div>
-         <!-- Calendar -->
+        <!-- Add Events Button for ADMIN -->
+        <div id="area-addEvent">
+        	<button type="button" class="btn btn-warning" id="btn-addevent">일정추가</button>
+        </div> 
+        <!-- Calendar -->
         <div class="center calendar-box">
 		    <div id="calendar"></div>
        </div>

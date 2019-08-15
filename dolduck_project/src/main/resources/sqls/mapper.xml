@@ -14,6 +14,7 @@
 	<select id="selectList" resultType="SelectDto">
 		SELECT * FROM MEMBER
 	</select>
+	<cache></cache>
 	
 	<select id="selectUser" resultType="java.util.Map">
 		SELECT
@@ -106,8 +107,7 @@
 	<update id="user_delete" parameterType="int">
 		UPDATE LOGIN SET ENABLED='N' WHERE USERSEQ=#{userseq}
 	</update>
-	
-	<insert id="insertVote" parameterType="com.my.test.vote.VoteDto">
+		<insert id="insertVote" parameterType="com.my.test.vote.VoteDto">
 		INSERT INTO VOTE
 		VALUES(#{page}, #{starName}, #{voteNumber})
 	</insert>
@@ -122,4 +122,6 @@
 		SET VOTE_TOTAL=((VOTE_TOTAL)+#{voteNumber})
 		WHERE VOTE_PAGE=#{page} AND VOTE_NAME=#{starName}
 	</update>
+	
+	
 </mapper>
