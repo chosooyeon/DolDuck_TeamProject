@@ -132,7 +132,6 @@ public class WebScrap{
 					starChart.add(star);
 				}
 			}
-
 		} catch (IOException e) {
 			System.err.println("JSoup 크롤링 에러");
 		}

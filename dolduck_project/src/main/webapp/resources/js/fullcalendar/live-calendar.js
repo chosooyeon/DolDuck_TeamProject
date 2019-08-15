@@ -1,10 +1,5 @@
 
-	var CalEventId = 0
-	var popOver = $('.popover-modal')
-	var xIndex, yIndex 
 	var _events = getEventList()
-	console.log(_events)
-	popOver.hide()
 	
 	document.addEventListener('DOMContentLoaded', function() {
 		
@@ -33,11 +28,6 @@
 
           calendar.render();
       });
-
-	
-	function closePopover(){
-		popOver.hide() 
-	}
 
 	function getEventList(){
 		

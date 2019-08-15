@@ -34,6 +34,7 @@ import com.my.test.vote.VoteDto;
 
 @Controller
 public class HomeController {
+	
 	private int voteNumber;
 	private String starName;
 	private int page;
@@ -46,7 +47,6 @@ public class HomeController {
 	
 	VoteDto dto = new VoteDto();
 	private WebScrap crawling = new WebScrap();
-	//private StarScrap star = new StarScrap();
 	
 	private static final Logger logger = LoggerFactory.getLogger(HomeController.class);
 
@@ -166,14 +166,11 @@ public class HomeController {
 		
 		for(BroadcastDto dto : list) {
 			JSONObject event = new JSONObject();
-			
 			String[] DateTime = dto.getBroadcast_date().split(" ");
 			
 			event.put("id", dto.getBroadcast_seq());
 			event.put("title", "["+DateTime[1]+"] " + dto.getBroadcast_caster());
 			event.put("start", DateTime[0]);
-			//event.put("caster", dto.getBroadcast_caster());
-			//event.put("time", DateTime[1]);
 
 			eventArr.add(event);
 		}
@@ -324,11 +321,13 @@ public class HomeController {
 	
 	@RequestMapping("voteresult.do")
 	public String voteResult(Model model) {
+		
 		System.out.println(voteNumber+starName+page);
 		System.out.println(dto.getStarName()+dto.getPage()+dto.getVoteNumber());
 		model.addAttribute("starName", starName);
 		model.addAttribute("voteNumber", voteNumber);
 		System.out.println("select:"+biz.selectOneVote(page, starName));
+		
 		if(biz.selectOneVote(page, starName).getStarName() == null) {
 			biz.insertVote(new VoteDto(page,starName,voteNumber));
 			System.out.println("insert");
@@ -336,6 +335,7 @@ public class HomeController {
 			biz.updateVote(new VoteDto(page,starName,voteNumber));
 			System.out.println("update");
 		}
+		
 		return "vote/voteresult";
 	}
 	
