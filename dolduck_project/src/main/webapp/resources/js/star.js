@@ -4,7 +4,6 @@ var header = $("meta[name='_csrf_header']").attr("content");
 $(document).ready(function(){
 	var starChart,
 	start = 0, end = 30
-	
 
 	$(document).on('click', '.girl-group', function(){
 		$('tbody').children().remove();
@@ -169,6 +168,7 @@ function paginationOfList(starChart, start, end, page){
 	}
 }
 
+
 function getStarChart(page){
 	var list;
 	
@@ -229,7 +229,6 @@ function voteChk(){
 function voteSetNum(){
 	alert('투표수:'+$('#voteNum').val());
 	// 보유투표권수 체크
-
 	$.ajax({
 		type : 'POST',
 		url : 'votenumber.do?voteNumber='+$('#voteNum').val(),
@@ -250,27 +249,6 @@ function voteSetNum(){
 	});
 };
 
-// function voteResultPage(data){
-// alert('page:'+data.page);
-//var token = $("meta[name='_csrf']").attr("content");
-//var header = $("meta[name='_csrf_header']").attr("content");
-// $.ajax({
-// type : 'POST',
-// url : 'votesave.do',
-// data : 'json',
-// async : false,
-//beforeSend: function( xhr ) {
-//    xhr.setRequestHeader(header, token);
-//},
-// success : function(){
-// alert('저장성공');
-// votePopup('voteresult.do');
-// },
-// error : function(){
-// alert('ajax 통신에러 (voteSaveToDB');
-// }
-// });
-// }
 
 function voteSaveToDB(data){
 	

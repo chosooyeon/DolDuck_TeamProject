@@ -201,23 +201,14 @@ public class MemberDaoImpl implements MemberDao {
 			default : break;
 		}
 		map.put("heart", heart);
-		
 		res = sqlSession.update(namespace + "purchaseVote", map);
-		
-		
-		System.err.println("DaoImpl Result => " + res);
+
 		return res;
 	}
 
 	@Override
 	public int updateRole(MemberDto dto) {
-		int res = 0;
-		res = sqlSession.update(namespace+"updateRole",dto);
-			
-			if(res>0) {
-				sqlSession.commit();
-			}
-		return res;
+		return sqlSession.update(namespace+"updateRole",dto);
 	}
 	
 	@Override

@@ -25,7 +25,7 @@ $(function(){
       end += 20
       paginationOfList(chart, start, end)   
    })  
-   */
+*/
 
 
 function getMusicChart(){

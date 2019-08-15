@@ -24,7 +24,6 @@
 	z-index: 90;
 }
 </style>
-
 </head>
 <body>
     <!-- Header -->
@@ -68,7 +67,8 @@
 		</div>
     </div>
 
-    
+    <!-- Footer -->
+    <%@include file="/WEB-INF/views/footer.jsp" %>
     
     <script src="https://code.jquery.com/jquery-3.4.1.min.js"></script>
     <script src="resources/js/live.js"></script>
