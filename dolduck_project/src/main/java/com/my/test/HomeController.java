@@ -22,12 +22,13 @@ import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.ResponseBody;
 
+import com.my.test.dto.BroadcastDto;
 import com.my.test.dto.MemberDto;
+import com.my.test.model.biz.BroadcastBiz;
 import com.my.test.model.biz.MemberBiz;
 import com.my.test.util.Music;
 import com.my.test.util.WebScrap;
 import com.my.test.vote.Star;
-import com.my.test.vote.StarScrap;
 import com.my.test.vote.VoteDao;
 import com.my.test.vote.VoteDto;
 
@@ -39,10 +40,13 @@ public class HomeController {
 	
 	@Autowired
 	private MemberBiz biz;
-	private StarScrap star = new StarScrap();
+	
+	@Autowired
+	private BroadcastBiz b_biz;
+	
 	VoteDto dto = new VoteDto();
-
 	private WebScrap crawling = new WebScrap();
+	//private StarScrap star = new StarScrap();
 	
 	private static final Logger logger = LoggerFactory.getLogger(HomeController.class);
 
@@ -130,7 +134,7 @@ public class HomeController {
 		return "board/youtube";
 	}
 	
-	/************************** Youtube 게시판 ***************************/
+	/************************** Live 게시판 ***************************/
 	@RequestMapping("live-home.do")
 	public String liveBoard() {
 		return "live/live-home";
@@ -149,6 +153,43 @@ public class HomeController {
 	@RequestMapping("live-channel.do")
 	public String liveChannel() {
 		return "live/live-channel";
+	}
+	
+	@RequestMapping("/getcalevents.do")
+	@ResponseBody
+	public JSONObject getCalendarEvents() {
+		
+		List<BroadcastDto> list = b_biz.selectList();
+		
+		JSONObject events = new JSONObject();
+		JSONArray eventArr = new JSONArray();
+		
+		for(BroadcastDto dto : list) {
+			JSONObject event = new JSONObject();
+			
+			String[] DateTime = dto.getBroadcast_date().split(" ");
+			
+			event.put("id", dto.getBroadcast_seq());
+			event.put("title", "["+DateTime[1]+"] " + dto.getBroadcast_caster());
+			event.put("start", DateTime[0]);
+			//event.put("caster", dto.getBroadcast_caster());
+			//event.put("time", DateTime[1]);
+
+			eventArr.add(event);
+		}
+		events.put("list", eventArr);
+		
+		return events;
+	}
+	
+	@RequestMapping("live-addpopup.do")
+	public String popupLiveSchedule() {
+		return "live/live-add-schedule";
+	}
+	
+	@RequestMapping( value = "addevent.do", method={RequestMethod.POST})
+	public String addEvent(String caster, String live_date, String live_time) {
+		return "";
 	}
 	
 	/************************* market ************************************/
@@ -212,7 +253,7 @@ public class HomeController {
 		System.out.println();
 		List<Star> list = new ArrayList<Star>();
 		
-		list = star.getStarChart(page);
+		list = crawling.getStarChart(page);
 		
 		//JSON타입으로 파싱
 		JSONObject starChart = new JSONObject();
@@ -226,7 +267,7 @@ public class HomeController {
 			
 			starArr.add(star);
 		}
-	////Realtime 시간얻기
+			////Realtime 시간얻기
 			long time = System.currentTimeMillis();
 			SimpleDateFormat dayTime = new SimpleDateFormat("yyyy-MM-dd hh:mm:ss");
 			String str = dayTime.format(new Date(time));
@@ -255,8 +296,6 @@ public class HomeController {
 		}else {
 			dao.insert(starname, page);
 		}
-		
-		
 		
 		System.out.println("page:"+page);
 		System.out.println("starname:"+starname);
