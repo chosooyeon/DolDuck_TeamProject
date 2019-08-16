@@ -35,7 +35,7 @@
 				<td colspan="1"><input class="login_button" type="button" value="아이디 찾기" onclick="idfind()"></td>
 			</tr>
 		</table>
-			<!-- <span class ="result" style="color:red;"></span> -->
+			
 		<table>
 			<tr>
 				<td colspan="1"><input class="goto_login" type="button" value="로그인하러가기" ></td>
@@ -47,7 +47,8 @@
 	</form>
 	</div>
 	</div>
-	
+	<div class="modal fade" id="checkModal" tableindex="-1" role="dialog" aria-hidden="true">
+	</div>
 </div>
 </body>
 </html>

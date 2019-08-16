@@ -26,9 +26,8 @@ function idfind(){
 					var id = data.id
 					if(idSearch == true){
 						$(function(){
-							$('.result').html(`
+							$('#checkModal').html(`
 							<!-- Modal -->
-							<div class="modal fade" id="checkModal" tableindex="-1" role="dialog" aria-hidden="true">
 								<div class="modal-dialog">
 									<div class="modal-content">
 										<!-- header -->
@@ -37,14 +36,13 @@ function idfind(){
 											<h4 class="modal-title">[DOLDuck]아이디 찾기</h4>
 										</div>
 										<!-- body -->
-										<div class="modal-body">${name} 님의 아이디는 ${id }입니다.</div>
+										<div class="modal-body">${name} 님의 아이디는 <strong>${id }</strong>입니다.</div>
 										<!-- Footer -->
 										<div class="modal-footer">
 											<button type="button" class="btn btn-default" data-dismiss="modal">닫기</button>
 										</div>
 									</div>
-								</div>
-							</div>`);
+								</div>`);
 							$('#checkModal').modal("show");
 						})
 					}else{
