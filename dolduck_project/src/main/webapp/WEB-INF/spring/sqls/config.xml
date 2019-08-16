@@ -2,15 +2,22 @@
 <!DOCTYPE configuration PUBLIC "-//mybatis.org//DTD Config 3.0//EN" "http://mybatis.org/dtd/mybatis-3-config.dtd" >
 <configuration>
 	<typeAliases>
-		<typeAlias type="com.my.test.dto.MemberDto" alias="MemberDto"/>
+		<typeAlias type="com.my.test.dto.MemberDto"	alias="MemberDto" />
+		<typeAlias type="com.my.test.freeboard.dto.FreeboardDto" alias="FreeboardDto" />
+		<typeAlias type="com.my.test.freeboard.dto.FreeboardCommentDto" alias="FreeboardCommentDto" />
+
 		<typeAlias type="com.my.test.dto.SelectDto" alias="SelectDto"/>
 		<typeAlias type="com.my.test.dto.BroadcastDto" alias="BroadcastDto"/>
 		<typeAlias type="com.my.test.vote.VoteDto" alias="VoteDto"/>
+
 	</typeAliases>
 
 	<!-- resource : src/main/resources -->
 	<mappers>
-		<mapper resource="/sqls/mapper.xml"/>
+		<mapper resource="/sqls/mapper.xml" />
+		<mapper resource="/sqls/freeboard_mapper.xml" />
+		<mapper resource="/sqls/comment_mapper.xml" />
+
 		<mapper resource="/sqls/broadcast-mapper.xml"/>
 		<mapper resource="/sqls/vote-mapper.xml"/>
 	</mappers>
