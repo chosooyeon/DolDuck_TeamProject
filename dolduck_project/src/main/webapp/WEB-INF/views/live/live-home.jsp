@@ -9,7 +9,7 @@
 </head>
 <body>
     <!-- Header -->
-    <%@include file="../header.jsp" %>
+    <%@include file="/WEB-INF/views/header.jsp" %>
     <!-- Slide Caresel  -->
     <div id="live-slide" class="container-field">
        <div id="demo" class="carousel slide" data-ride="carousel">
@@ -73,6 +73,9 @@
         </div>
 
     </div>
+    
+    <!-- Footer -->
+    <%@include file="/WEB-INF/views/footer.jsp" %>
     
     <script src="https://code.jquery.com/jquery-3.4.1.min.js"></script>
     <script src="resources/js/live.js"></script>

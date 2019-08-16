@@ -15,6 +15,7 @@ import com.my.test.dto.MemberVoteDto;
 import com.my.test.dto.SelectDto;
 import com.my.test.vote.VoteDto;
 
+
 @Repository
 public class MemberDaoImpl implements MemberDao {
 
@@ -92,9 +93,9 @@ public class MemberDaoImpl implements MemberDao {
 	}
 	
 	@Override
-	public int updateMember(MemberDto dto) {
+	public int updateMember(Map<String, String> map) {
 		int res = 0;
-		res = sqlSession.update(namespace + "updateMember", dto);
+		res = sqlSession.update(namespace + "updateMember", map);
 			
 			if(res>0) {
 				sqlSession.commit();
@@ -202,11 +203,8 @@ public class MemberDaoImpl implements MemberDao {
 			default : break;
 		}
 		map.put("heart", heart);
-		
 		res = sqlSession.update(namespace + "purchaseVote", map);
-		
-		
-		System.err.println("DaoImpl Result => " + res);
+
 		return res;
 	}
 	

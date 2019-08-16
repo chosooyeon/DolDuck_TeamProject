@@ -39,6 +39,21 @@ public class MemberDto extends User{
 
 	}
 
+	@Override
+	public String getPassword() {
+		return super.getPassword();
+	}
+
+	@Override
+	public String getUsername() {
+		return super.getUsername();
+	}
+
+	@Override
+	public boolean isEnabled() {
+		return super.isEnabled();
+	}
+
 	public int getMember_seq() {
 		return member_seq;
 	}

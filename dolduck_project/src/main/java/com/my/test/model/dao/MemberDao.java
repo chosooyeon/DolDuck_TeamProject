@@ -5,6 +5,7 @@ import java.util.Map;
 
 import com.my.test.dto.MemberDto;
 import com.my.test.dto.MemberJoinDto;
+
 import com.my.test.vote.VoteDto;
 import com.my.test.dto.SelectDto;
 
@@ -20,7 +21,7 @@ public interface MemberDao {
 	public int register(Map<String, String> map);
 	public MemberJoinDto idCheck(String id);
 	public int updateRole(MemberDto dto);
-	public int updateMember(MemberDto dto);
+	public int updateMember(Map<String, String> map);
 	public int updateUserPw(MemberDto dto);
 	public SelectDto idSearch(String name, String email);
 	public SelectDto pwSearch(String id, String email);

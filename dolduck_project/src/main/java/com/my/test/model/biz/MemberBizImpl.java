@@ -54,8 +54,8 @@ public class MemberBizImpl implements MemberBiz {
 	}
 
 	@Override
-	public int updateMember(MemberDto dto) {
-		return dao.updateMember(dto);
+	public int updateMember(Map<String, String> map) {
+		return dao.updateMember(map);
 	}
 
 	@Override
@@ -89,7 +89,6 @@ public class MemberBizImpl implements MemberBiz {
 		return dao.purchaseVote(amount, id);
 	}
 
-	@Override
 	public int insertVote(VoteDto dto) {
 		return dao.insertVote(dto);
 	}
@@ -103,7 +102,7 @@ public class MemberBizImpl implements MemberBiz {
 	public int updateVote(VoteDto dto) {
 		return dao.updateVote(dto);
 	}
-	
+
 	@Override
 	public int selectMemberVote(String member_id) {
 		return dao.selectMemberVote(member_id);
@@ -118,6 +117,7 @@ public class MemberBizImpl implements MemberBiz {
 //	public MemberDto login(String id, String pw) {
 //		return dao.login(id, pw);
 //	}
+
 	public int updateRole(MemberDto dto) {
 		// TODO Auto-generated method stub
 		return 0;

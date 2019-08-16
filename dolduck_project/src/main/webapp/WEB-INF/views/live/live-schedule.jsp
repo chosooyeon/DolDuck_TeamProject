@@ -1,10 +1,29 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8" pageEncoding="UTF-8"%>
+<%@taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <!DOCTYPE html>
 <html>
 <head>
 <meta charset="UTF-8">
+<meta name="_csrf" content="${_csrf.token}"/>
+<meta name="_csrf_header" content="${_csrf.headerName}"/> 
 <title>All About K-POP! DD - Live</title>
 <link rel="stylesheet" type="text/css" href="resources/styles/live.css">
+<link rel="stylesheet" href="resources/js/fullcalendar/core/main.css">
+<link rel="stylesheet" href="resources/js/fullcalendar/daygrid/main.css">
+<link rel="stylesheet" href="resources/js/fullcalendar/timegrid/main.css">
+<link rel="stylesheet" href="resources/js/fullcalendar/bootstrap/main.css">
+<link href='https://use.fontawesome.com/releases/v5.0.6/css/all.css' rel='stylesheet'>
+<link href='https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css' rel='stylesheet' />
+<style type="text/css">
+.popover-modal{
+	width: 200px; height: 130px;
+	border: 1px solid #ddd;
+	box-shadow: 0 2px 6px rgba(0,0,0,.15);
+	background-color: #fff;
+	position: absolute;
+	z-index: 90;
+}
+</style>
 </head>
 <body>
     <!-- Header -->
@@ -25,13 +44,39 @@
                </ul>
             </nav>
          </div>
-         <!-- Content -->
-         <div class="center live-content">
-        </div>
-
+        <!-- Add Events Button for ADMIN -->
+        <div id="area-addEvent">
+        	<button type="button" class="btn btn-warning" id="btn-addevent">일정추가</button>
+        </div> 
+        <!-- Calendar -->
+        <div class="center calendar-box">
+		    <div id="calendar"></div>
+       </div>
+       <div class="popover-modal">
+		    	<div class="popover-header">
+		    		<span class="currentDate"></span>
+		    		<span class="icon-x" onclick="closePopover()"><i class="far fa-times" style="color:#ccc;"></i></span>
+		    	</div>
+		    	<div class="popover-content">
+		    		
+		    	</div>
+		    	<div class="popover-btns">
+		    		<span><a>공유하기</a></span>
+		    		<span><a> 찜하기 </a></span>
+		    	</div>
+		</div>
     </div>
+
+    <!-- Footer -->
+    <%@include file="/WEB-INF/views/footer.jsp" %>
     
     <script src="https://code.jquery.com/jquery-3.4.1.min.js"></script>
     <script src="resources/js/live.js"></script>
+    <script src="resources/js/fullcalendar/core/main.js"></script>
+    <script src="resources/js/fullcalendar/daygrid/main.js"></script>
+    <script src="resources/js/fullcalendar/timegrid/main.js"></script>
+    <script src="resources/js/fullcalendar/interaction/main.js"></script>
+    <script src="resources/js/fullcalendar/bootstrap/main.js"></script>
+    <script src="resources/js/fullcalendar/live-calendar.js"></script>
 </body>
 </html>
