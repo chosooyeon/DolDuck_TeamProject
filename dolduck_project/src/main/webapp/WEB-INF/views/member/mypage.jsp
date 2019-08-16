@@ -23,7 +23,7 @@ if(principal != null && principal instanceof MemberDto){
 <title>Insert title here</title>
 </head>
 <body>
-<%@include file="/WEB-INF/views/header.jsp" %>
+<%-- <%@include file="/WEB-INF/views/header.jsp" %> --%>
 <div class="container join">
 	<div class="row">
 		<div class="col-lg-6 offset-lg-3 join_table">

@@ -89,12 +89,6 @@ public class MemberBizImpl implements MemberBiz {
 		return dao.purchaseVote(amount, id);
 	}
 
-	@Override
-
-	public int updateRole(MemberDto dto) {
-		return dao.updateRole(dto);
-	}
-
 	public int insertVote(VoteDto dto) {
 		return dao.insertVote(dto);
 	}

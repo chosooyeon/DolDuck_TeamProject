@@ -207,12 +207,7 @@ public class MemberDaoImpl implements MemberDao {
 
 		return res;
 	}
-
-	@Override
-	public int updateRole(MemberDto dto) {
-		return sqlSession.update(namespace+"updateRole",dto);
-	}
-
+	
 	// 투표게시판 db 저장
 	@Override
 	public int insertVote(VoteDto votedto) {
