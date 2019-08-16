@@ -33,5 +33,6 @@ public interface MemberBiz {
 	public int insertVote(VoteDto dto);
 	public VoteDto selectOneVote(int page, String starName);
 	public int updateVote(VoteDto voteDto);
-	
+	public int selectMemberVote(String member_id);
+	public int updateMemberVote(String member_id, int voteNumber);
 }

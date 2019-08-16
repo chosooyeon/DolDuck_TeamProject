@@ -52,7 +52,8 @@ set member_vote = ((select member_vote from member where member_id = 'lotus526')
 member_heart = ((select member_heart from member where member_id = 'lotus526') - 250)
 where member_id = 'lotus526'
 
-/*-------------------------------------		 투표 테이블	-----------------------------------------*/
+
+/*------------------------------------- 투표 테이블	-----------------------------------------*/
 -- 투표 테이블 VOTE
 -- 투표번호 시퀀스 VOTESEQ
 -- 컬럼 : 스타이름, 투표수, 페이지번호(0~5)

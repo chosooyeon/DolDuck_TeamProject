@@ -28,13 +28,18 @@ import com.my.test.model.biz.BroadcastBiz;
 import com.my.test.model.biz.MemberBiz;
 import com.my.test.util.Music;
 import com.my.test.util.WebScrap;
-import com.my.test.vote.Star;
+import com.my.test.vote.VoteCrawlingDto;
+import com.my.test.vote.VoteCrawling;
 import com.my.test.vote.VoteDao;
 import com.my.test.vote.VoteDto;
 
 @Controller
 public class HomeController {
 	
+	@Autowired
+	private MemberBiz biz;
+
+
 	private int voteNumber;
 	private String starName;
 	private int page;

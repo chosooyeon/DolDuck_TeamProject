@@ -11,9 +11,9 @@ import org.springframework.stereotype.Repository;
 
 import com.my.test.dto.MemberDto;
 import com.my.test.dto.MemberJoinDto;
-
-import com.my.test.vote.VoteDto;
+import com.my.test.dto.MemberVoteDto;
 import com.my.test.dto.SelectDto;
+import com.my.test.vote.VoteDto;
 
 
 @Repository
@@ -250,6 +250,39 @@ public class MemberDaoImpl implements MemberDao {
 		int res = 0;
 		try {
 			res = sqlSession.update(namespace+"updateVote",dto);
+		} catch (Exception e) {
+			System.out.println("error");
+			e.printStackTrace();
+		}
+		
+		return res;
+	}
+
+	// member 에서 투표권수 select
+	@Override
+	public int selectMemberVote(String member_id) {
+		int res = 0;
+		try {
+			res = sqlSession.selectOne(namespace+"selectMemberVote",member_id);
+		} catch (Exception e) {
+			System.out.println("error");
+			e.printStackTrace();
+		}
+		return res;
+	}
+	
+	// member 에서 투표권수 빼기
+	@Override
+	public int updateMemberVote(String member_id, int voteNumber) {
+		int res = 0;
+		
+		MemberVoteDto memberVoteDto = new MemberVoteDto();
+		memberVoteDto.setMember_id(member_id);
+		memberVoteDto.setVoteNumber(voteNumber);
+		
+		try {
+			res = sqlSession.update(namespace+"updateMemberVote",memberVoteDto);
+			System.out.println("updateMemberVote:"+memberVoteDto);
 		} catch (Exception e) {
 			System.out.println("error");
 			e.printStackTrace();
