@@ -42,6 +42,7 @@ import org.springframework.web.bind.annotation.ResponseBody;
 import com.my.test.dto.MemberDto;
 import com.my.test.model.biz.MemberBizImpl;
 import com.my.test.service.UserAuthenticationService;
+import com.my.test.twitter.TwitterAPI;
 
 @Controller
 public class LoginController {
@@ -94,22 +95,20 @@ public class LoginController {
 	public String modified() {
 		return "member/modified";
 	}
-	
-	@RequestMapping(value = "role_update.do", method = {RequestMethod.POST})
+
+	@RequestMapping(value = "role_update.do", method = { RequestMethod.POST })
 	@ResponseBody
-	public Map<String,Boolean> roleUpdate(String role){
+	public Map<String, Boolean> roleUpdate(String role) {
 		Boolean rolechk = false;
 		Map<String, Boolean> map = new HashMap<String, Boolean>();
 		int res = 0;
-		
-		
-		//biz.update
-		
+
+		// biz.update
+
 		return map;
-		
-		
+
 	}
-	
+
 	// 회원가입 페이지로 이동
 	@RequestMapping("join.do")
 	public String Join() {
@@ -366,17 +365,17 @@ public class LoginController {
 		return "redirect:/";
 
 	}
-	
+
 	@RequestMapping(value = "callback.do")
-	public String naverlogin(HttpServletRequest request) throws Exception {  
-	    return "member/callback";
-	}  
+	public String naverlogin(HttpServletRequest request) throws Exception {
+		return "member/callback";
+	}
 
 	@RequestMapping(value = "naver.do")
 	public String naver(HttpServletRequest request, HttpSession session) throws Exception {
 
 		boolean idChk = false;
-		
+
 		String _token = (String) session.getAttribute("access_token");
 		String header = "Bearer " + _token; // Bearer 다음에 공백 추가
 		try {
@@ -460,33 +459,83 @@ public class LoginController {
 		return "redirect:/";
 	}
 
-	@RequestMapping("test01")
-	public String test012(@RequestParam String test) {
+	@RequestMapping("twitter.do")
+	public String Twitter(HttpServletRequest request, HttpSession session) throws Throwable {
+		boolean idChk = false;
 
-		// System.out.println("auth test 2 : " + auth);
-		System.out.println(test);
+		TwitterAPI twitter = new TwitterAPI();
+		twitter.getRequestToken();
 
-		return "login";
+		String token = twitter.requestToken.getToken();
+		String tokensecret = twitter.requestToken.getTokenSecret();
+		String authorizationurl = twitter.requestToken.getAuthorizationURL();
+
+		String oauth_token = request.getParameter("oauth_token");
+		String oauth_verifier = request.getParameter("oauth_verifier");
+		if (token.equals(oauth_token)) {
+			System.out.println("여기로 들어온다아아");
+			twitter.SignIn(token, tokensecret);
+
+			String id = twitter.twitter.verifyCredentials().getId() + ""; // 사용자 아이디
+			String name = twitter.twitter.verifyCredentials().getScreenName(); // 사용자 이름
+			idChk = true;
+
+			int res = 0;
+
+			Map<String, String> map = new HashMap<String, String>();
+			map.put("member_id", id);
+			System.out.println("아이디" + id);
+			String encryptPassword = passwordEncoder.encode(id);
+			System.out.println("비밀번호 암호화" + encryptPassword);
+			map.put("member_pw", encryptPassword);
+			map.put("member_name", name);
+			map.put("member_phone", "핸드폰 번호를 입력해주세요");
+			map.put("member_addr", "주소를 입력해주세요");
+			map.put("member_email", id + "@naver.com");
+
+			res = biz.insertUser(map);
+
+			if (res > 0) {
+				String loginId = id;
+				idChk = false;
+				System.err.println("등록~");
+				MemberDto dto = (MemberDto) user.loadUserByUsername(loginId);
+				Authentication authentication = new UsernamePasswordAuthenticationToken(dto, dto.getPassword(),
+						dto.getAuthorities());
+
+				SecurityContext securityContext = SecurityContextHolder.getContext();
+				securityContext.setAuthentication(authentication);
+				session = request.getSession(true);
+				session.setAttribute("SPRING_SECURITY_CONTEXT", securityContext);
+			} else { // 아이디가 있으면 로그인
+				System.err.println("로그인~");
+				String loginId = id;
+				idChk = false;
+				MemberDto dto = (MemberDto) user.loadUserByUsername(loginId);
+				Authentication authentication = new UsernamePasswordAuthenticationToken(dto, dto.getPassword(),
+						dto.getAuthorities());
+
+				SecurityContext securityContext = SecurityContextHolder.getContext();
+				securityContext.setAuthentication(authentication);
+				session = request.getSession(true);
+				session.setAttribute("SPRING_SECURITY_CONTEXT", securityContext);
+			}
+
+		}
+		return "redirect:/";
 	}
-
-	@RequestMapping("test.do")
-	public String testpage(Authentication auth) {
-
-		// this.auth = auth;
-		// Locale locale, Model model,
-		logger.info("test.do");
-
-		System.out.println("auth test 1 : " + auth);
-
-		MemberDto dto = (MemberDto) auth.getPrincipal();
-		String email = dto.getMember_email();
-		System.out.println(email);
-		logger.info("welcome checkAuth! Authentication is{}.", auth);
-
-		System.out.println("이름 가져오기" + auth.getName());
-		System.out.println("" + auth.getAuthorities());
-
-		return "test01";
-	}
-
 }
+//	@RequestMapping("twitter.do")
+//	public void twitter() throws IOException, TwitterException {
+//		Twitter twitter = new initalize().twitter;
+//
+//		Query query = new Query("강다니엘");
+//		QueryResult result = null;
+//		
+//		result = twitter.search(query);
+//		for (Status status : result.getTweets()) {
+//		    System.out.println("@" + status.getUser().getScreenName() + ":"
+//		             + status.getText() + "|||"
+//		             + status.getRetweetCount() + "\r\n");
+//		}
+//	}
