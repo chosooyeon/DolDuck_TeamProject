@@ -30,120 +30,96 @@
 	<!-- Header  -->
 	<%@include file="header.jsp"%>
 	<section class="super_container">
-		<!-- Home -->
-		<section class="home">
-			<div class="home_video">
-				<!-- video -->
-				<div class="embed-responsive embed-responsive-16by9">
-					<!-- resources/videos/index.mp4 -->
-					<iframe class="embed-responsive-item"
-						src="resources/videos/index.mp4"></iframe>
-				</div>
+   <!-- Home -->
+   <section class="home">
+      <div class="home_video">
+      <!-- video -->
+            <div class="embed-responsive embed-responsive-16by9">
+            <!-- resources/videos/index.mp4 -->
+               <iframe class="embed-responsive-item" src="resources/videos/index.mp4"></iframe>
+            </div>
+      </div>  
+   </section>
+   
+   <!-- vote -->
+   <section class="vote">
+      <div class="container">
+         <div class="row">
+            <div class="col-lg-6 offset-lg-3">
+            <!-- ranking -->
+               <p class="ranking">DOL RANKING CHART</p>
+            </div>
+         </div>
+         <div class="row row-lg-eq-height">
+            <div class="col-md-12">
+                  <a href="#" class="item">
+                          <div class="thum" style="background-image:url(resources/images/2.jpg)"></div>
+                          <div class="txt-container">
+                             <p class="date">빅</p>
+                              <p class="bbsTit">뱅</p>
+                          </div>
+                          <div class="etc">
+                              <p class="reply"><i class="far fa-comment-alt"></i>549</p>
+                              <p class="favorites"><i class="fas fa-heart"></i>&nbsp;21,838</p>
+                          </div>
+                             <p class="rankNum">1</p>
+                       </a>
+                  <a href="#" class="item">
+                          <div class="thum" style="background-image:url(resources/images/3.jpg)"></div>
+                             <div class="txt-container">
+                                  <p class="date">big</p>
+                                 <p class="bbsTit">bang</p>
+                          </div>
+                          <div class="etc">
+                              <p class="reply"><i class="far fa-comment-alt"></i>549</p>
+                              <p class="favorites"><i class="fas fa-heart"></i>&nbsp;21,838</p>
+                          </div>
+                          <p class="rankNum">2</p>
+                       </a>
+                  <a href="#" class="item">
+                          <div class="thum" style="background-image:url(resources/images/4.jpg)"></div>
+                             <div class="txt-container">
+                                  <p class="date">big</p>
+                                 <p class="bbsTit">bang</p>
+                          </div>
+                          <div class="etc">
+                              <p class="reply"><i class="far fa-comment-alt"></i>549</p>
+                              <p class="favorites"><i class="fas fa-heart"></i>&nbsp;21,838</p>
+                          </div>
+                    <p class="rankNum">3</p>
+                       </a>
+                  <a href="#" class="item">
+                          <div class="thum" style="background-image:url(resources/images/5.jpg)"></div>
+                             <div class="txt-container">
+                                  <p class="date">big</p>
+                                 <p class="bbsTit">bang</p>
+                             </div>
+                          <div class="etc">
+                              <p class="reply"><i class="far fa-comment-alt"></i>549</p>
+                              <p class="favorites"><i class="fas fa-heart"></i>&nbsp;21,838</p>
+                          </div>
+                    <p class="rankNum">4</p>
+                       </a>
+               <a href="#" class="item">
+                          <div class="thum" style="background-image:url(resources/images/1.jpg)"></div>
+                             <div class="txt-container">
+                                  <p class="date">big</p>
+                                 <p class="bbsTit">bang</p>
+                             </div>
+                          <div class="etc">
+                              <p class="reply"><i class="far fa-comment-alt"></i>549</p>
+                              <p class="favorites"><i class="fas fa-heart"></i>&nbsp;21,838</p>
+                          </div>
+                    <p class="rankNum">5</p>
+                       </a>
+  				</div>
+				<div class="vote_button"><a href="#">Vote Now</a></div>
 			</div>
-		</section>
-
-		<!-- vote -->
-		<section class="vote">
-			<div class="container">
-				<div class="row">
-					<div class="col-lg-6 offset-lg-3">
-						<!-- ranking -->
-						<p class="ranking">DOL RANKING CHART</p>
-					</div>
-				</div>
-				<div class="row row-lg-eq-height">
-					<div class="col-md-12">
-						<a href="#" class="item">
-							<div class="thum"
-								style="background-image: url(resources/images/2.jpg)"></div>
-							<div class="txt-container">
-								<p class="date">빅</p>
-								<p class="bbsTit">뱅</p>
-							</div>
-							<div class="etc">
-								<p class="reply">
-									<i class="far fa-comment-alt"></i>549
-								</p>
-								<p class="favorites">
-									<i class="fas fa-heart"></i>&nbsp;21,838
-								</p>
-							</div>
-							<p class="rankNum">1</p>
-						</a> <a href="#" class="item">
-							<div class="thum"
-								style="background-image: url(resources/images/3.jpg)"></div>
-							<div class="txt-container">
-								<p class="date">big</p>
-								<p class="bbsTit">bang</p>
-							</div>
-							<div class="etc">
-								<p class="reply">
-									<i class="far fa-comment-alt"></i>549
-								</p>
-								<p class="favorites">
-									<i class="fas fa-heart"></i>&nbsp;21,838
-								</p>
-							</div>
-							<p class="rankNum">2</p>
-						</a> <a href="#" class="item">
-							<div class="thum"
-								style="background-image: url(resources/images/4.jpg)"></div>
-							<div class="txt-container">
-								<p class="date">big</p>
-								<p class="bbsTit">bang</p>
-							</div>
-							<div class="etc">
-								<p class="reply">
-									<i class="far fa-comment-alt"></i>549
-								</p>
-								<p class="favorites">
-									<i class="fas fa-heart"></i>&nbsp;21,838
-								</p>
-							</div>
-							<p class="rankNum">3</p>
-						</a> <a href="#" class="item">
-							<div class="thum"
-								style="background-image: url(resources/images/5.jpg)"></div>
-							<div class="txt-container">
-								<p class="date">big</p>
-								<p class="bbsTit">bang</p>
-							</div>
-							<div class="etc">
-								<p class="reply">
-									<i class="far fa-comment-alt"></i>549
-								</p>
-								<p class="favorites">
-									<i class="fas fa-heart"></i>&nbsp;21,838
-								</p>
-							</div>
-							<p class="rankNum">4</p>
-						</a> <a href="#" class="item">
-							<div class="thum"
-								style="background-image: url(resources/images/1.jpg)"></div>
-							<div class="txt-container">
-								<p class="date">big</p>
-								<p class="bbsTit">bang</p>
-							</div>
-							<div class="etc">
-								<p class="reply">
-									<i class="far fa-comment-alt"></i>549
-								</p>
-								<p class="favorites">
-									<i class="fas fa-heart"></i>&nbsp;21,838
-								</p>
-							</div>
-							<p class="rankNum">5</p>
-						</a>
-					</div>
-					<div class="vote_button">
-						<a href="#">Vote Now</a>
-					</div>
-				</div>
-			</div>
-
-		</section>
-		<!-- 그래프 -->
-		<svg width="700" height="320"></svg>
+		</div>
+		
+	</section>
+				 	<!-- 그래프 -->
+	<svg width="1170" height="502"></svg>
 
 		<!-- youtube -->
 		<section class="channel">

@@ -54,8 +54,8 @@ public class MemberBizImpl implements MemberBiz {
 	}
 
 	@Override
-	public int updateMember(MemberDto dto) {
-		return dao.updateMember(dto);
+	public int updateMember(Map<String, String> map) {
+		return dao.updateMember(map);
 	}
 
 	@Override
@@ -91,8 +91,7 @@ public class MemberBizImpl implements MemberBiz {
 
 	@Override
 	public int updateRole(MemberDto dto) {
-		// TODO Auto-generated method stub
-		return 0;
+		return dao.updateRole(dto);
 	}
 
 	public int insertVote(VoteDto dto) {

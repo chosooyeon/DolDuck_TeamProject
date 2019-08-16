@@ -34,6 +34,8 @@ import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 import org.springframework.security.web.WebAttributes;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
+import org.springframework.web.bind.annotation.ModelAttribute;
+import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RequestParam;
@@ -95,15 +97,15 @@ public class LoginController {
 	public String modified() {
 		return "member/modified";
 	}
+	
+	/* @RequestMapping(value = "role_update.do", method = {RequestMethod.POST}) */
+	@PostMapping("role_update.do")
 
-	@RequestMapping(value = "role_update.do", method = { RequestMethod.POST })
 	@ResponseBody
 	public Map<String, Boolean> roleUpdate(String role) {
 		Boolean rolechk = false;
 		Map<String, Boolean> map = new HashMap<String, Boolean>();
 		int res = 0;
-
-		// biz.update
 
 		return map;
 
@@ -113,6 +115,31 @@ public class LoginController {
 	@RequestMapping("join.do")
 	public String Join() {
 		return "member/Join";
+	}
+	// 업데이트 페이지로 이동
+	@RequestMapping("modifiedfied.do")
+	public String updateMember(@RequestParam String user_id,@RequestParam String user_pw,@RequestParam String user_email, 
+			@RequestParam String user_phone, @RequestParam String user_addr) {
+		System.out.println("1");
+		Map<String, String> map = new HashMap<String, String>();
+		String encryptPassword = passwordEncoder.encode(user_pw);
+		map.put("member_pw", encryptPassword);
+		map.put("member_phone", user_phone);
+		map.put("member_addr", user_addr);
+		map.put("member_email", user_email);
+		map.put("member_id", user_id);
+		
+		
+		int res = biz.updateMember(map);
+		if(res > 0) {
+			System.out.println("2");
+			return "member/mypage";
+		}else {
+			System.out.println("3");
+			return "member/modified";
+		}
+		
+		
 	}
 
 	// 회원가입 페이지로 이동

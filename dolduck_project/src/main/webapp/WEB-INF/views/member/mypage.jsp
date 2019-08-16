@@ -31,6 +31,7 @@ if(principal != null && principal instanceof MemberDto){
 			<form method="post" action="${pageContext.request.contextPath}/modified.do">
               <input type="hidden" name="${_csrf.parameterName}" value="${_csrf.token }">			
 					
+					
 					<table class="join_form">
 					<sec:authorize access="isAuthenticated()">
 						<tr>
@@ -39,8 +40,6 @@ if(principal != null && principal instanceof MemberDto){
 						<tr>
                     		<sec:authentication property="principal.username" var="member_name" />
 							<td><div id="member_name"><%=name %></div></td>
-						</tr>
-						<tr>
 						</tr>
 						<tr>
 							<th>아이디</th>
@@ -71,15 +70,29 @@ if(principal != null && principal instanceof MemberDto){
 							<td><div id="member_addr">${member_addr}</div></td>
 						</tr>
 						<tr>
-							<td colspan="2" >
-								<input id="modified" type="submit" value="회원 정보 수정"/>
-							</td>
+							<th>하트수량</th>
+						</tr>
+						<tr>
+							<sec:authentication property="principal.member_heart" var="member_heart" />
+							<td><div id="member_heart">${member_heart}</div></td>
+						</tr>
+						<tr>
+							<th>투표권</th>
+						</tr>
+						<tr>
+							<sec:authentication property="principal.member_vote" var="member_vote" />
+							<td><div id="member_vote">${member_vote}</div></td>
 						</tr>
 						</sec:authorize>
 					</table>
-				<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+					
+					<div>
+						<button id="modified" type="submit" value="회원 정보 수정" ></button>
+					</div>
+				
  
 				</form>
+				
 		</div>
 	</div>
 </div>
