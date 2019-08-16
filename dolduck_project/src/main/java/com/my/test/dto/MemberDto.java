@@ -12,30 +12,46 @@ public class MemberDto extends User{
 //	private String member_pw;
 //	private String member_name;
 	private String member_phone;
-	private String memebr_addr;
-	private String memebr_email;
+	private String member_addr;
+	private String member_email;
 	private Date member_regdate;
 //	private boolean member_enabled;
 	private String member_role;
 	private int member_heart;
 	private int member_vote;
+
 	
 	public MemberDto(String username, String password, boolean enabled, 
 			boolean accountNonExpired, boolean credentialsNonExpired, boolean accountNonLocked,
-			Collection<? extends GrantedAuthority> authorities, int member_seq, String member_id, String member_phone, String memebr_addr,
-			String memebr_email, String member_role, int member_heart, int member_vote ){
+			Collection<? extends GrantedAuthority> authorities, int member_seq, String member_id, String member_phone, String member_addr,
+			String member_email, String member_role, int member_heart, int member_vote ){
 		//userClass에 보내는 코드
 		super(username, password, enabled, accountNonExpired, credentialsNonExpired, accountNonLocked, authorities);
 		
 		this.member_seq = member_seq;
 		this.member_id = member_id;
 		this.member_phone = member_phone;
-		this.memebr_addr = memebr_addr;
-		this.memebr_email = memebr_email;
+		this.member_addr = member_addr;
+		this.member_email = member_email;
 		this.member_role = member_role;
 		this.member_heart = member_heart;
 		this.member_vote = member_vote;
 
+	}
+
+	@Override
+	public String getPassword() {
+		return super.getPassword();
+	}
+
+	@Override
+	public String getUsername() {
+		return super.getUsername();
+	}
+
+	@Override
+	public boolean isEnabled() {
+		return super.isEnabled();
 	}
 
 	public int getMember_seq() {
@@ -62,20 +78,20 @@ public class MemberDto extends User{
 		this.member_phone = member_phone;
 	}
 
-	public String getMemebr_addr() {
-		return memebr_addr;
+	public String getMember_addr() {
+		return member_addr;
 	}
 
-	public void setMemebr_addr(String memebr_addr) {
-		this.memebr_addr = memebr_addr;
+	public void setMember_addr(String member_addr) {
+		this.member_addr = member_addr;
 	}
 
-	public String getMemebr_email() {
-		return memebr_email;
+	public String getMember_email() {
+		return member_email;
 	}
 
-	public void setMemebr_email(String memebr_email) {
-		this.memebr_email = memebr_email;
+	public void setMember_email(String member_email) {
+		this.member_email = member_email;
 	}
 
 	public Date getMember_regdate() {
@@ -113,7 +129,7 @@ public class MemberDto extends User{
 	@Override
 	public String toString() {
 		return "MemberDto [member_seq=" + member_seq + ", member_id=" + member_id + ", member_phone=" + member_phone
-				+ ", memebr_addr=" + memebr_addr + ", memebr_email=" + memebr_email + ", member_regdate="
+				+ ", member_addr=" + member_addr + ", member_email=" + member_email + ", member_regdate="
 				+ member_regdate + ", member_role=" + member_role + ", member_heart=" + member_heart + ", member_vote="
 				+ member_vote + "]";
 	}

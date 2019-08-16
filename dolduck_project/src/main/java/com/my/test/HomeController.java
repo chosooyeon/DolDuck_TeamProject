@@ -1,6 +1,5 @@
 package com.my.test;
 
-import java.security.Principal;
 import java.text.DateFormat;
 import java.text.SimpleDateFormat;
 import java.util.ArrayList;
@@ -16,7 +15,6 @@ import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.security.core.Authentication;
-import org.springframework.security.core.annotation.AuthenticationPrincipal;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.RequestMapping;
@@ -24,17 +22,30 @@ import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.ResponseBody;
 
+import com.my.test.dto.BroadcastDto;
 import com.my.test.dto.MemberDto;
+import com.my.test.model.biz.BroadcastBiz;
 import com.my.test.model.biz.MemberBiz;
 import com.my.test.util.Music;
 import com.my.test.util.WebScrap;
+import com.my.test.vote.Star;
+import com.my.test.vote.VoteDao;
+import com.my.test.vote.VoteDto;
 
 @Controller
 public class HomeController {
 	
+	private int voteNumber;
+	private String starName;
+	private int page;
+	
 	@Autowired
 	private MemberBiz biz;
-
+	
+	@Autowired
+	private BroadcastBiz b_biz;
+	
+	VoteDto dto = new VoteDto();
 	private WebScrap crawling = new WebScrap();
 	
 	private static final Logger logger = LoggerFactory.getLogger(HomeController.class);
@@ -51,35 +62,13 @@ public class HomeController {
 		model.addAttribute("serverTime", formattedDate );
 		return "home";
 	}
+	@RequestMapping("admin.do")
+	public String selectList(Model model) {
+		model.addAttribute("list",biz.selectList());
+		return "admin/admin";
+	}
 	
-	/************************** 로그인 ***************************/
-//	@RequestMapping("loginform.do")
-//	public String loginform() {
-//		return "/member/login";
-//	}
-	
-//	@RequestMapping("login.do")
-//	@ResponseBody
-//	public Map<String, Boolean> login(String id, String pw, HttpSession session){
-//		System.out.println("여기 들어옴");
-//		/*
-//		 * @ResponseBody: java 객체를 response객체에 binding
-//		 * @RequestBody: request객체로 넘어오는 데이터를 java 객체
-//		 * */
-//		
-//		MemberDto dto = biz.login(id, pw);
-//		boolean loginChk = false;
-//		System.out.println(loginChk+"로그인 체크값");
-//		if(dto!=null) {
-//			session.setAttribute("login", dto);
-//			loginChk=true;
-//		}
-//		
-//		Map<String, Boolean> map = new HashMap<String, Boolean>();
-//		map.put("loginChk", loginChk);
-//		
-//		return map;
-//	}
+	/************************** 로그아웃 ***************************/
 	
 	@RequestMapping("logout.do")
 	public String logout(HttpSession session) {
@@ -96,10 +85,22 @@ public class HomeController {
 	
 	
 	@RequestMapping(value = "musicsearch.do", method = {RequestMethod.POST})
-	public @ResponseBody JSONObject getChart() {
-		//멜론차트 크롤링해서 List로 return 
+	public @ResponseBody JSONObject getChart(String site) {
+		
 		List<Music> list = new ArrayList<Music>();
-		list = crawling.getMusicChart();
+
+		switch(site) {
+		case "melon": 
+			list = crawling.getMelonChart();
+			break;
+		case "bugs":
+			list = crawling.getBugsChart();
+			break;
+		case "genie":
+			list = crawling.getGenieChart();
+			break;
+		}
+		//멜론차트 크롤링해서 List로 return 
 				
 		//JSON타입으로 파싱
 		JSONObject chart = new JSONObject();
@@ -125,11 +126,67 @@ public class HomeController {
 		
 		return chart;
 	}
+
 	
 	/************************** Youtube 게시판 ***************************/
 	@RequestMapping("youtube.do")
 	public String showYoutubeBoard() {
 		return "board/youtube";
+	}
+	
+	/************************** Live 게시판 ***************************/
+	@RequestMapping("live-home.do")
+	public String liveBoard() {
+		return "live/live-home";
+	}
+	
+	@RequestMapping("live-schedule.do")
+	public String liveSchedule() {
+		return "live/live-schedule";
+	}
+	
+	@RequestMapping("live-onair.do")
+	public String liveOnair() {
+		return "live/live-onair";
+	}
+	
+	@RequestMapping("live-channel.do")
+	public String liveChannel() {
+		return "live/live-channel";
+	}
+	
+	@RequestMapping("/getcalevents.do")
+	@ResponseBody
+	public JSONObject getCalendarEvents() {
+		
+		List<BroadcastDto> list = b_biz.selectList();
+		
+		JSONObject events = new JSONObject();
+		JSONArray eventArr = new JSONArray();
+		
+		for(BroadcastDto dto : list) {
+			JSONObject event = new JSONObject();
+			String[] DateTime = dto.getBroadcast_date().split(" ");
+			
+			event.put("id", dto.getBroadcast_seq());
+			event.put("title", "["+DateTime[1]+"] " + dto.getBroadcast_caster());
+			event.put("start", DateTime[0]);
+
+			eventArr.add(event);
+		}
+		events.put("list", eventArr);
+		
+		return events;
+	}
+	
+	@RequestMapping("live-addpopup.do")
+	public String popupLiveSchedule() {
+		return "live/live-add-schedule";
+	}
+	
+	@RequestMapping( value = "addevent.do", method={RequestMethod.POST})
+	public String addEvent(String caster, String live_date, String live_time) {
+		return "";
 	}
 	
 	/************************* market ************************************/
@@ -146,7 +203,7 @@ public class HomeController {
 	@RequestMapping("buy-heart.do")
 	@ResponseBody
 	public String payHeart(@RequestParam int amount, @RequestParam int price, Authentication auth) {
-		//@AuthenticationPrincipal
+		
 		MemberDto dto = (MemberDto)auth.getPrincipal();
 		String userId = dto.getUsername();
 		String result = "";
@@ -163,7 +220,7 @@ public class HomeController {
 	@RequestMapping("buy-vote.do")
 	@ResponseBody
 	public String payVote(@RequestParam int amount, @RequestParam  int price, Authentication auth) {
-		//@AuthenticationPrincipal
+		
 		MemberDto dto = (MemberDto)auth.getPrincipal();
 		String userId = dto.getUsername();
 		String result;
@@ -179,13 +236,121 @@ public class HomeController {
 		return result;
 	}
 
-	/************************* 회원가입 ***********************************/
 	
-	@RequestMapping("join.do")
-	public String insert() {
-		return "member/Join";
-		
+	
+	/************************* Vote 게시판 ************************************/
+	@RequestMapping("vote.do")
+	public String showStarChart() {
+		return "vote/star";
 	}
 	
+	@RequestMapping("votesearch.do")
+	@ResponseBody
+	public JSONObject getStar(int page) {
+		System.out.println();
+		List<Star> list = new ArrayList<Star>();
+		
+		list = crawling.getStarChart(page);
+		
+		//JSON타입으로 파싱
+		JSONObject starChart = new JSONObject();
+		JSONArray starArr = new JSONArray();
+
+		for(Star starOne : list) {
+			JSONObject star = new JSONObject();
+			
+			star.put("name", starOne.getName());
+			star.put("img", starOne.getImg());
+			
+			starArr.add(star);
+		}
+			////Realtime 시간얻기
+			long time = System.currentTimeMillis();
+			SimpleDateFormat dayTime = new SimpleDateFormat("yyyy-MM-dd hh:mm:ss");
+			String str = dayTime.format(new Date(time));
+			starChart.put("getTime", str);
+		starChart.put("starChart", starArr);
+		System.out.println("starChart:"+starChart);
+		return starChart;
+	}
 	
+	@RequestMapping("votelike.do")
+	@ResponseBody
+	public JSONObject voteLike(String starname, int page) {
+		System.out.println();
+		this.starName = starname;
+		this.page = page;
+		
+		dto.setStarName(starname);
+		dto.setPage(page);
+
+		JSONObject starChart = new JSONObject();
+		starChart.put("name", starname);
+		
+		VoteDao dao = new VoteDao();
+		if(dao.update(starname, page) != 0) {
+			dao.update(starname, page);
+		}else {
+			dao.insert(starname, page);
+		}
+		
+		System.out.println("page:"+page);
+		System.out.println("starname:"+starname);
+		System.out.println(starChart);
+		return starChart;
+	}
+	
+	@RequestMapping("votepopup.do")
+	public String votePopup() {
+		return "vote/votepopup";
+	}
+	
+	@RequestMapping("votenumber.do")
+	@ResponseBody
+	public JSONObject voteNumber(int voteNumber) {
+		JSONObject obj = new JSONObject();
+		dto.setVoteNumber(voteNumber);
+		System.out.println("votenumber:"+dto.getVoteNumber());
+		this.voteNumber = voteNumber;
+		obj.put("voteNum", voteNumber);
+		obj.put("starName", starName);
+		obj.put("page", page);
+		System.out.println(obj.get("starName")+"  "+obj.get("voteNum"));
+		return obj;
+	}
+	
+	@RequestMapping("voteresult.do")
+	public String voteResult(Model model) {
+		
+		System.out.println(voteNumber+starName+page);
+		System.out.println(dto.getStarName()+dto.getPage()+dto.getVoteNumber());
+		model.addAttribute("starName", starName);
+		model.addAttribute("voteNumber", voteNumber);
+		System.out.println("select:"+biz.selectOneVote(page, starName));
+		
+		if(biz.selectOneVote(page, starName).getStarName() == null) {
+			biz.insertVote(new VoteDto(page,starName,voteNumber));
+			System.out.println("insert");
+		} else if(biz.selectOneVote(page, starName).getStarName() != null){
+			biz.updateVote(new VoteDto(page,starName,voteNumber));
+			System.out.println("update");
+		}
+		
+		return "vote/voteresult";
+	}
+	
+	@RequestMapping("votesave.do")
+	@ResponseBody
+	public void voteSave() {
+		System.out.println("votesave1");
+	}
+	
+//	@RequestMapping("votesave.do")
+//	@ResponseBody
+//	public String voteSave(int voteNumber, String starName, int page) {
+//		System.out.println("??");
+//		biz.insertVote(new VoteDto(page,starName,voteNumber));
+//		System.out.println("votesave1");
+//		return "success";
+//	}
 }

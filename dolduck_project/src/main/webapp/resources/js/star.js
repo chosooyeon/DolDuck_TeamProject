@@ -1,12 +1,18 @@
+var token = $("meta[name='_csrf']").attr("content");
+var header = $("meta[name='_csrf_header']").attr("content");
+	
 $(document).ready(function(){
 	var starChart,
 	start = 0, end = 30
 
 	$(document).on('click', '.girl-group', function(){
 		$('tbody').children().remove();
-		starChart = getStarChart0();
-		start = 0, end = 30
-		paginationOfList0(starChart, start, end)
+		start = 0, end = 30, page = 0
+		starChart = getStarChart(page);
+		// page번호 추가
+		
+		paginationOfList(starChart, start, end, page)
+		
 		$(document).on('click', '.abc', function(){
 			if(end > 100){
 				end = 100
@@ -14,16 +20,16 @@ $(document).ready(function(){
 			}
 			start = end
 			end += 20
-			paginationOfList0(starChart, start, end)
+			paginationOfList(starChart, start, end, page)
 	  	});
 	});
 	
 	$(document).on('click', '.girl-star', function(){
 		$('tbody').children().remove();
-		starChart = getStarChart1();
-		start = 0, end = 30
-		paginationOfList1(starChart, start, end)
-		
+		start = 0, end = 30, page = 1
+		starChart = getStarChart(page);	
+		// page번호 추가
+		paginationOfList(starChart, start, end, page)
 		$(document).on('click', '.abc', function(){
 			if(end > 100){
 				end = 100
@@ -31,16 +37,16 @@ $(document).ready(function(){
 			}
 			start = end
 			end += 20
-			paginationOfList1(starChart, start, end)
+			paginationOfList(starChart, start, end, page)
 	  	});
 	});
 	
 	$(document).on('click', '.new-star', function(){
 		$('tbody').children().remove();
-		starChart = getStarChart2();
-		start = 0, end = 30
-		paginationOfList2(starChart, start, end)
-		
+		start = 0, end = 30, page = 2
+		starChart = getStarChart(page);	
+		// page번호 추가
+		paginationOfList(starChart, start, end, page)
 		$(document).on('click', '.abc', function(){
 			if(end > 100){
 				end = 100
@@ -48,16 +54,16 @@ $(document).ready(function(){
 			}
 			start = end
 			end += 20
-			paginationOfList2(starChart, start, end)
+			paginationOfList(starChart, start, end, page)
 	  	});
 	});
 	
 	$(document).on('click', '.star-star', function(){
 		$('tbody').children().remove();
-		starChart = getStarChart3();
-		start = 0, end = 30
-		paginationOfList3(starChart, start, end)
-		
+		start = 0, end = 30, page = 3
+		starChart = getStarChart(page);	
+		// page번호 추가
+		paginationOfList(starChart, start, end, page)
 		$(document).on('click', '.abc', function(){
 			if(end > 100){
 				end = 100
@@ -65,16 +71,16 @@ $(document).ready(function(){
 			}
 			start = end
 			end += 20
-			paginationOfList3(starChart, start, end)
+			paginationOfList(starChart, start, end, page)
 	  	});
 	});
 	
 	$(document).on('click', '.boy-group', function(){
 		$('tbody').children().remove();
-		starChart = getStarChart4();
-		start = 0, end = 30
-		paginationOfList4(starChart, start, end)
-		
+		start = 0, end = 30, page = 4
+		starChart = getStarChart(page);	
+		// page번호 추가
+		paginationOfList(starChart, start, end, page)
 		$(document).on('click', '.abc', function(){
 			if(end > 100){
 				end = 100
@@ -82,16 +88,16 @@ $(document).ready(function(){
 			}
 			start = end
 			end += 20
-			paginationOfList4(starChart, start, end)
+			paginationOfList(starChart, start, end, page)
 	  	});
 	});
 	
 	$(document).on('click', '.boy-star', function(){
 		$('tbody').children().remove();
-		starChart = getStarChart5();
-		start = 0, end = 30
-		paginationOfList5(starChart, start, end)
-		
+		start = 0, end = 30, page = 5
+		starChart = getStarChart(page);	
+		// page번호 추가
+		paginationOfList(starChart, start, end, page)
 		$(document).on('click', '.abc', function(){
 			if(end > 100){
 				end = 100
@@ -99,193 +105,167 @@ $(document).ready(function(){
 			}
 			start = end
 			end += 20
-			paginationOfList5(starChart, start, end)
+			paginationOfList(starChart, start, end, page)
 	  	});
 	});
 })
 
-function getStarChart0(){
+function paginationOfList(starChart, start, end, page){
+	if(page == 0){
+		for(var i=start ; i<end ; i++){
+			var star = starChart[i]
+			$('tbody').append(`<tr id="tbody-girl-group">
+					  <td scope="row">${star.name}</td>
+					  <td><img class="star-thumbnail" src="${star.img}"></td>
+					  <td><a onclick="voteSetName('${star.name}',0)">pick11</a></td>
+				      </tr>`);
+		}
+	}else if(page == 1){
+		for(var i=start ; i<end ; i++){
+			var star = starChart[i]
+			$('tbody').append(`<tr id="tbody-girl-star">
+					  <td scope="row">${star.name}</td>
+					  <td><img class="star-thumbnail" src="${star.img}"></td>
+					  <td><a href="#">pick</td>
+				      </tr>`);
+		}
+	}else if(page == 2){
+		for(var i=start ; i<end ; i++){
+			var star = starChart[i]
+			$('tbody').append(`<tr id="tbody-new-star">
+					  <td scope="row">${star.name}</td>
+					  <td><img class="star-thumbnail" src="${star.img}"></td>
+					  <td><a href="#">pick</td>
+				      </tr>`);
+		}
+	}else if(page == 3){
+		for(var i=start ; i<end ; i++){
+			var star = starChart[i]
+			$('tbody').append(`<tr id="tbody-star-star">
+					  <td scope="row">${star.name}</td>
+					  <td><img class="star-thumbnail" src="${star.img}"></td>
+					  <td><a href="#">pick</td>
+				      </tr>`);
+		}
+	}else if(page == 4){
+		for(var i=start ; i<end ; i++){
+			var star = starChart[i]
+			$('tbody').append(`<tr id="tbody-boy-group">
+					  <td scope="row">${star.name}</td>
+					  <td><img class="star-thumbnail" src="${star.img}"></td>
+					  <td><a href="#">pick</td>
+				      </tr>`);
+		}
+	}else if(page == 5){
+		for(var i=start ; i<end ; i++){
+			var star = starChart[i]
+			$('tbody').append(`<tr id="tbody-boy-star">
+					  <td scope="row">${star.name}</td>
+					  <td><img class="star-thumbnail" src="${star.img}"></td>
+					  <td><a onclick="votePopup('votepopup.do')">pick222222</td>
+				      </tr>`);
+		}
+	}
+}
+
+
+function getStarChart(page){
 	var list;
+	
 	$.ajax({
 		type : 'POST',
-		url : 'votesearch0.do',
+		url : 'votesearch.do?page='+page,
 		dataType : 'json',
 		async : false,
+		beforeSend: function( xhr ) {
+            xhr.setRequestHeader(header, token);
+       },
 		success : function(data){
 			$('.label-test').text(data.getTime);
 			list = data.starChart;
 		},
 		error : function(){
 			console.log('ajax 통신에러')
-			alert('네트워크 오류!2 새로고침 후 다시 이용해주세요!')
+			alert('ajax 통신에러 (votesearch)')
 		}
 	});
-	
 	return list
 }
 
-function getStarChart1(){
-	var list;
+function voteSetName(starname, page){
+// window.open("votepopup.do","","width=1000, height=300, status=no;");
+		
 	$.ajax({
 		type : 'POST',
-		url : 'votesearch1.do',
+		url : 'votelike.do?starname='+starname+'&page='+page,
 		dataType : 'json',
 		async : false,
+		beforeSend: function( xhr ) {
+            xhr.setRequestHeader(header, token);
+       },
 		success : function(data){
-			$('.label-test').text(data.getTime);
-			list = data.starChart;
+			alert(data.name);
+			votePopup("votepopup.do");
 		},
 		error : function(){
 			console.log('ajax 통신에러')
-			alert('네트워크 오류!2 새로고침 후 다시 이용해주세요!')
+			alert('ajax 통신에러 (votelike)')
 		}
 	});
-	
-	return list
 }
 
-function getStarChart2(){
-	var list;
+function votePopup(popUrl){
+	// var popUrl = "votepopup.do";
+	var popOption = "width=1000, height=300, status=no;";
+	alert(popUrl);
+	window.open(popUrl,"",popOption);
+}
+
+function voteChk(){
+	// 로그인, 보유투표권수 체크
+	// 보유투표권수 db update
+}
+
+function voteSetNum(){
+	alert('투표수:'+$('#voteNum').val());
+	// 보유투표권수 체크
 	$.ajax({
 		type : 'POST',
-		url : 'votesearch2.do',
-		dataType : 'json',
+		url : 'votenumber.do?voteNumber='+$('#voteNum').val(),
+		data : 'json',
 		async : false,
+		beforeSend: function( xhr ) {
+            xhr.setRequestHeader(header, token);
+       },
 		success : function(data){
-			$('.label-test').text(data.getTime);
-			list = data.starChart;
+			alert('234:'+$('#voteNum').val());
+			voteSaveToDB(data);
+			// voteResultPage(data);
+			window.close();
 		},
 		error : function(){
-			console.log('ajax 통신에러')
-			alert('네트워크 오류!2 새로고침 후 다시 이용해주세요!')
+			alert('ajax 통신에러 (votenumber)')
 		}
 	});
-	
-	return list
-}
+};
 
-function getStarChart3(){
-	var list;
+
+function voteSaveToDB(data){
+	
 	$.ajax({
 		type : 'POST',
-		url : 'votesearch3.do',
-		dataType : 'json',
+		url : 'votesave.do',
+		data : 'json',
 		async : false,
-		success : function(data){
-			$('.label-test').text(data.getTime);
-			list = data.starChart;
+		beforeSend: function( xhr ) {
+            xhr.setRequestHeader(header, token);
+       },
+		success : function(){
+			alert('저장성공');
+			votePopup('voteresult.do');
 		},
 		error : function(){
-			console.log('ajax 통신에러')
-			alert('네트워크 오류!2 새로고침 후 다시 이용해주세요!')
+			alert('ajax 통신에러 (voteSaveToDB');
 		}
 	});
-	
-	return list
-}
-
-function getStarChart4(){
-	var list;
-	$.ajax({
-		type : 'POST',
-		url : 'votesearch4.do',
-		dataType : 'json',
-		async : false,
-		success : function(data){
-			$('.label-test').text(data.getTime);
-			list = data.starChart;
-		},
-		error : function(){
-			console.log('ajax 통신에러')
-			alert('네트워크 오류!2 새로고침 후 다시 이용해주세요!')
-		}
-	});
-	
-	return list
-}
-
-function getStarChart5(){
-	var list;
-	$.ajax({
-		type : 'POST',
-		url : 'votesearch5.do',
-		dataType : 'json',
-		async : false,
-		success : function(data){
-			$('.label-test').text(data.getTime);
-			list = data.starChart;
-		},
-		error : function(){
-			console.log('ajax 통신에러')
-			alert('네트워크 오류!2 새로고침 후 다시 이용해주세요!')
-		}
-	});
-	
-	return list
-}
-
-function paginationOfList0(starChart, start, end){
-	for(var i=start ; i<end ; i++){
-		var star = starChart[i]
-		$('tbody').append(`<tr id="tbody-girl-group">
-				  <td scope="row">${star.name}</td>
-				  <td><img class="star-thumbnail" src="${star.img}"></td>
-				  <td><a href="">pick</td>
-			      </tr>`);
-	}
-}
-
-function paginationOfList1(starChart, start, end){
-	for(var i=start ; i<end ; i++){
-		var star = starChart[i]
-		$('tbody').append(`<tr id="tbody-girl-star">
-				  <td scope="row">${star.name}</td>
-				  <td><img class="star-thumbnail" src="${star.img}"></td>
-				  <td><a href="#">pick</td>
-			      </tr>`);
-	}
-}
-
-function paginationOfList2(starChart, start, end){
-	for(var i=start ; i<end ; i++){
-		var star = starChart[i]
-		$('tbody').append(`<tr id="tbody-new-star">
-				  <td scope="row">${star.name}</td>
-				  <td><img class="star-thumbnail" src="${star.img}"></td>
-				  <td><a href="#">pick</td>
-			      </tr>`);
-	}
-}
-
-function paginationOfList3(starChart, start, end){
-	for(var i=start ; i<end ; i++){
-		var star = starChart[i]
-		$('tbody').append(`<tr id="tbody-star-star">
-				  <td scope="row">${star.name}</td>
-				  <td><img class="star-thumbnail" src="${star.img}"></td>
-				  <td><a href="#">pick</td>
-			      </tr>`);
-	}
-}
-
-function paginationOfList4(starChart, start, end){
-	for(var i=start ; i<end ; i++){
-		var star = starChart[i]
-		$('tbody').append(`<tr id="tbody-boy-group">
-				  <td scope="row">${star.name}</td>
-				  <td><img class="star-thumbnail" src="${star.img}"></td>
-				  <td><a href="#">pick</td>
-			      </tr>`);
-	}
-}
-
-function paginationOfList5(starChart, start, end){
-	for(var i=start ; i<end ; i++){
-		var star = starChart[i]
-		$('tbody').append(`<tr id="tbody-boy-star">
-				  <td scope="row">${star.name}</td>
-				  <td><img class="star-thumbnail" src="${star.img}"></td>
-				  <td><a href="#">pick</td>
-			      </tr>`);
-	}
 }
