@@ -46,7 +46,7 @@ public class VoteController {
 		System.out.println();
 		List<Star> list = new ArrayList<Star>();
 		
-		list = star.getStarChart(page);
+		//list = star.getStarChart(page);
 		
 		//JSON타입으로 파싱
 		JSONObject starChart = new JSONObject();
