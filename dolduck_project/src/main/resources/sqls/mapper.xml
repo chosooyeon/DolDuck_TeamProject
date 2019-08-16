@@ -107,21 +107,27 @@
 	<update id="user_delete" parameterType="int">
 		UPDATE LOGIN SET ENABLED='N' WHERE USERSEQ=#{userseq}
 	</update>
-		<insert id="insertVote" parameterType="com.my.test.vote.VoteDto">
+
+	<!-- VOTE -->
+	<insert id="insertVote" parameterType="com.my.test.vote.VoteDto">
 		INSERT INTO VOTE
 		VALUES(#{page}, #{starName}, #{voteNumber})
 	</insert>
 	
 	<select id="selectOneVote" parameterType="com.my.test.vote.VoteDto" resultType="com.my.test.vote.VoteDto">
-		SELECT * FROM VOTE
+		SELECT
+		VOTE_PAGE AS page,
+		VOTE_NAME AS starName,
+		VOTE_TOTAL AS voteName
+		FROM VOTE
 		WHERE VOTE_PAGE=#{page} AND VOTE_NAME=#{starName}
 	</select>
 	
 	<update id="updateVote" parameterType="com.my.test.vote.VoteDto">
 		UPDATE VOTE
-		SET VOTE_TOTAL=((VOTE_TOTAL)+#{voteNumber})
+		SET VOTE_TOTAL=VOTE_TOTAL+#{voteNumber}
 		WHERE VOTE_PAGE=#{page} AND VOTE_NAME=#{starName}
 	</update>
-	
+	<!-- VOTE RESULT -->
 	
 </mapper>

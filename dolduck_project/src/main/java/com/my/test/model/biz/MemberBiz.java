@@ -5,8 +5,8 @@ import java.util.Map;
 
 import com.my.test.dto.MemberDto;
 import com.my.test.dto.MemberJoinDto;
-import com.my.test.dto.SelectDto;
 import com.my.test.vote.VoteDto;
+import com.my.test.dto.SelectDto;
 
 public interface MemberBiz {
 	public List<SelectDto> selectList();

@@ -11,8 +11,10 @@ import org.springframework.stereotype.Repository;
 
 import com.my.test.dto.MemberDto;
 import com.my.test.dto.MemberJoinDto;
-import com.my.test.dto.SelectDto;
+
 import com.my.test.vote.VoteDto;
+import com.my.test.dto.SelectDto;
+
 
 @Repository
 public class MemberDaoImpl implements MemberDao {
@@ -210,7 +212,8 @@ public class MemberDaoImpl implements MemberDao {
 	public int updateRole(MemberDto dto) {
 		return sqlSession.update(namespace+"updateRole",dto);
 	}
-	
+
+	// 투표게시판 db 저장
 	@Override
 	public int insertVote(VoteDto votedto) {
 		int res = 0;
@@ -223,21 +226,23 @@ public class MemberDaoImpl implements MemberDao {
 		
 		return res;
 	}
-	
 	@Override
 	public VoteDto selectOneVote(int page, String starName) {
 		VoteDto dto = new VoteDto();
-		dto = null;
+		System.out.println("dto:"+dto);
 		
 		System.out.println("page:"+page+"starName:"+starName);
 		
 		Map<String, String> map = new HashMap<String, String>();
 		map.put("page", page+"");
 		map.put("starName", starName);
+		dto.setPage(page);
+		dto.setStarName(starName);
 		
 		try {
-			dto = sqlSession.selectOne(namespace+"selectOneVote",new VoteDto(page,starName));
-			System.out.println("dtouu:"+dto);
+			dto = sqlSession.selectOne(namespace+"selectOneVote",dto);
+//			System.out.println("dtouu:"+dto);
+//			System.out.println("dto.getPage():"+dto.getPage());
 		} catch (Exception e) {
 			System.out.println("error");
 			e.printStackTrace();
@@ -245,7 +250,6 @@ public class MemberDaoImpl implements MemberDao {
 		
 		return dto;
 	}
-
 	@Override
 	public int updateVote(VoteDto dto) {
 		int res = 0;
@@ -256,6 +260,17 @@ public class MemberDaoImpl implements MemberDao {
 			e.printStackTrace();
 		}
 		
+		return res;
+	}
+	
+	@Override
+	public int updateRole(MemberDto dto) {
+		int res = 0;
+		res = sqlSession.update(namespace+"updateRole",dto);
+			
+			if(res>0) {
+				sqlSession.commit();
+			}
 		return res;
 	}
 }

@@ -235,8 +235,6 @@ public class HomeController {
 		}
 		return result;
 	}
-
-	
 	
 	/************************* Vote 게시판 ************************************/
 	@RequestMapping("vote.do")
@@ -345,12 +343,4 @@ public class HomeController {
 		System.out.println("votesave1");
 	}
 	
-//	@RequestMapping("votesave.do")
-//	@ResponseBody
-//	public String voteSave(int voteNumber, String starName, int page) {
-//		System.out.println("??");
-//		biz.insertVote(new VoteDto(page,starName,voteNumber));
-//		System.out.println("votesave1");
-//		return "success";
-//	}
 }

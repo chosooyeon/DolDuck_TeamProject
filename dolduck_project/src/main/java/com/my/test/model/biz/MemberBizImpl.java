@@ -90,6 +90,7 @@ public class MemberBizImpl implements MemberBiz {
 	}
 
 	@Override
+
 	public int updateRole(MemberDto dto) {
 		return dao.updateRole(dto);
 	}
@@ -108,5 +109,9 @@ public class MemberBizImpl implements MemberBiz {
 		return dao.updateVote(dto);
 	}
 	
-	
+	public int updateRole(MemberDto dto) {
+		// TODO Auto-generated method stub
+		return 0;
+	}
+
 }

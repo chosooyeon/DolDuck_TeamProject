@@ -31,6 +31,26 @@ SELECT * FROM MEMBER;
 -- 컬럼 값 변경
 ALTER TABLE MEMBER MODIFY(MEMBER_ROLE VARCHAR2(15));
 
+delete from member where member_id='admin';
+
+UPDATE MEMBER SET MEMBER_ROLE='ROLE_ADMIN' WHERE MEMBER_ID='admin';
+
+UPDATE MEMBER SET MEMBER_ROLE='ROLE_ARTIST' WHERE MEMBER_ID='한지수';
+
+select member_heart, member_vote from member where member_id = 'lotus526'
+
+--하트구매
+update member set member_heart = 1000, member_vote = 0 where member_id = 'lotus526'
+
+update member set member_vote = 
+(select member_vote from member where member_id = 'lotus526') + 5
+where member_id = 'lotus526'
+
+--투표권 구매 
+update member 
+set member_vote = ((select member_vote from member where member_id = 'lotus526') + 10),
+member_heart = ((select member_heart from member where member_id = 'lotus526') - 250)
+where member_id = 'lotus526'
 
 /*-------------------------------------		 투표 테이블	-----------------------------------------*/
 -- 투표 테이블 VOTE
@@ -50,7 +70,6 @@ CREATE TABLE VOTE(
 INSERT INTO VOTE VALUES('WINNER', 1, 0);
 
 SELECT * FROM VOTE;
-
 
 /*-------------------------------------	  라이브방송 테이블	-----------------------------------------*/
 -- 라이브방송 테이블 BROADCAST
@@ -84,26 +103,18 @@ SELECT BROADCAST_SEQ, TO_CHAR(BROADCAST_DATE, 'yyyy-mm-dd hh24:mi') as "BROADCAS
 		BROADCAST_CASTER, BROADCAST_TITLE, BROADCAST_CONTENT
 		FROM BROADCAST
 
+UPDATE MEMBER SET MEMBER_PW='$2a$10$WzmejPwX08xRYaKDbB1Ie.NOX5uwfHwSCahrNar1.VC0jWpx/.yiS' WHERE MEMBER_ID='1whtndus'
 
 
+--투표결과 테이블
 
+DROP TABLE VOTE_RESULT;
 
+CREATE TABLE VOTE_RESULT(
+	
+)
 
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
+SELECT * FROM VOTE_RESULT;
 
 
 

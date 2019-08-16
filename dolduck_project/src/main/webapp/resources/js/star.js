@@ -204,6 +204,10 @@ function voteSetName(starname, page){
             xhr.setRequestHeader(header, token);
        },
 		success : function(data){
+//			if(data.loginState == "null"){
+//				alert(data.loginState);
+//				loginN();
+//			}
 			alert(data.name);
 			votePopup("votepopup.do");
 		},
@@ -269,3 +273,7 @@ function voteSaveToDB(data){
 		}
 	});
 }
+
+//function loginN(){
+//	
+//}
