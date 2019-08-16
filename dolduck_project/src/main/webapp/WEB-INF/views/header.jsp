@@ -58,7 +58,7 @@
 					<li><a href="vote.do">Vote</a></li>
 					<li><a href="chart.do">Music Chart</a></li>
 					<li><a href="#">LIVE</a></li>
-					<li><a href="#">Board</a></li>
+					<li><a href="free_list.do">Board</a></li>
 					<li class="dropdown"><a href="heartShop.do"
 						class="dropdown-toggle" data-toggle="dropdown">Market</a>
 						<ul class="dropdown-menu" role="menu">
