@@ -26,21 +26,16 @@ import com.my.test.dto.MemberDto;
 import com.my.test.model.biz.MemberBiz;
 import com.my.test.util.Music;
 import com.my.test.util.WebScrap;
-import com.my.test.vote.Star;
-import com.my.test.vote.StarScrap;
+import com.my.test.vote.VoteCrawlingDto;
+import com.my.test.vote.VoteCrawling;
 import com.my.test.vote.VoteDao;
 import com.my.test.vote.VoteDto;
 
 @Controller
 public class HomeController {
-	private int voteNumber;
-	private String starName;
-	private int page;
 	
 	@Autowired
 	private MemberBiz biz;
-	private StarScrap star = new StarScrap();
-	VoteDto dto = new VoteDto();
 
 	private WebScrap crawling = new WebScrap();
 	

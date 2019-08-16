@@ -128,6 +128,18 @@
 		SET VOTE_TOTAL=VOTE_TOTAL+#{voteNumber}
 		WHERE VOTE_PAGE=#{page} AND VOTE_NAME=#{starName}
 	</update>
+	
+	<select id="selectMemberVote" parameterType="String" resultType="int">
+		SELECT MEMBER_VOTE
+		FROM MEMBER
+		WHERE MEMBER_ID=#{member_id}
+	</select>
+	
+	<update id="updateMemberVote" parameterType="com.my.test.dto.MemberVoteDto">
+		UPDATE MEMBER
+		SET MEMBER_VOTE=MEMBER_VOTE-#{voteNumber}
+		WHERE MEMBER_ID=#{member_id}
+	</update>
 	<!-- VOTE RESULT -->
 	
 </mapper>

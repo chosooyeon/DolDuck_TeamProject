@@ -1,5 +1,6 @@
 package com.my.test;
 
+import java.security.Principal;
 import java.text.SimpleDateFormat;
 import java.util.ArrayList;
 import java.util.Date;
@@ -8,17 +9,17 @@ import java.util.List;
 import org.json.simple.JSONArray;
 import org.json.simple.JSONObject;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.security.core.Authentication;
+import org.springframework.security.core.context.SecurityContextHolder;
+import org.springframework.security.core.userdetails.UserDetails;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.ResponseBody;
 
-import com.my.test.dto.MemberDto;
 import com.my.test.model.biz.MemberBiz;
 import com.my.test.util.WebScrap;
-import com.my.test.vote.Star;
-import com.my.test.vote.StarScrap;
+import com.my.test.vote.VoteCrawlingDto;
+import com.my.test.vote.VoteCrawling;
 import com.my.test.vote.VoteDto;
 
 @Controller
@@ -29,30 +30,28 @@ public class VoteController {
 	
 	@Autowired
 	private MemberBiz biz;
-	private StarScrap star = new StarScrap();
+	private VoteCrawling voteCrawling = new VoteCrawling();
 	VoteDto dto = new VoteDto();
-
-	private WebScrap crawling = new WebScrap();
 	
 	/************************* Vote 게시판 ************************************/
 	@RequestMapping("vote.do")
-	public String showStarChart() {
-		return "vote/star";
+	public String vote() {
+		return "vote/vote";
 	}
 	
-	@RequestMapping("votesearch.do")
+	@RequestMapping("voteCrawling.do")
 	@ResponseBody
-	public JSONObject getStar(int page) {
+	public JSONObject voteCrawling(int page) {
 		System.out.println();
-		List<Star> list = new ArrayList<Star>();
+		List<VoteCrawlingDto> list = new ArrayList<VoteCrawlingDto>();
 		
-		list = star.getStarChart(page);
+		list = voteCrawling.getVoteChart(page);
 		
 		//JSON타입으로 파싱
 		JSONObject starChart = new JSONObject();
 		JSONArray starArr = new JSONArray();
 
-		for(Star starOne : list) {
+		for(VoteCrawlingDto starOne : list) {
 			JSONObject star = new JSONObject();
 			
 			star.put("name", starOne.getName());
@@ -72,7 +71,7 @@ public class VoteController {
 	
 	@RequestMapping("votelike.do")
 	@ResponseBody
-	public JSONObject voteLike(String starname, int page, Authentication auth) {
+	public JSONObject voteLike(String starname, int page, Principal principal) {
 		System.out.println();
 		this.starName = starname;
 		this.page = page;
@@ -82,25 +81,22 @@ public class VoteController {
 		
 		System.out.println(" "+dto.getPage()+" "+dto.getStarName());
 		
+//		Object principal = SecurityContextHolder.getContext().getAuthentication().getPrincipal();
+//		UserDetails userDetails = (UserDetails)principal;
+		System.out.println("principal:"+principal);
+//		UserDetails userDetails = (UserDetails)principal;
+//		String username = userDetails.getUsername();
 		
-		
-
 		JSONObject starChart = new JSONObject();
 		starChart.put("name", starname);
 		
+//		System.out.println("userDetails:"+userDetails);
 		
-		MemberDto memberdto = (MemberDto)auth.getPrincipal();
-		if(memberdto == null) {
-			System.out.println("로그인 필요");
-			starChart.put("loginState", "null");
+		if(principal == null) {
+			starChart.put("loginState", "null");			
 		}
 		
-//		VoteDao dao = new VoteDao();
-//		if(dao.update(starname, page) != 0) {
-//			dao.update(starname, page);
-//		}else {
-//			dao.insert(starname, page);
-//		}
+		System.out.println("loginState:"+starChart.get("loginState"));
 		
 		System.out.println("page:"+page);
 		System.out.println("starname:"+starname);
@@ -120,9 +116,23 @@ public class VoteController {
 		dto.setVoteNumber(voteNumber);
 		System.out.println("votenumber:"+dto.getVoteNumber());
 		this.voteNumber = voteNumber;
+		
+		Object principal = SecurityContextHolder.getContext().getAuthentication().getPrincipal();
+		UserDetails userDetails = (UserDetails)principal;
+		
+		String member_id = userDetails.getUsername();
+		
+		if(biz.selectMemberVote(member_id) < voteNumber) {
+			//보유투표권수<투표수 이면 부족메세지출력
+			obj.put("voteNeed", "need");
+		}else {
+			biz.updateMemberVote(member_id, voteNumber);
+		}
+		
 		obj.put("voteNum", voteNumber);
 		obj.put("starName", starName);
 		obj.put("page", page);
+		
 		System.out.println(obj.get("starName")+"  "+obj.get("voteNum"));
 		return obj;
 	}

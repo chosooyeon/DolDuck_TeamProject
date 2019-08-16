@@ -104,6 +104,16 @@ public class MemberBizImpl implements MemberBiz {
 		return dao.updateVote(dto);
 	}
 	
+	@Override
+	public int selectMemberVote(String member_id) {
+		return dao.selectMemberVote(member_id);
+	}
+
+	@Override
+	public int updateMemberVote(String member_id, int voteNumber) {
+		return dao.updateMemberVote(member_id, voteNumber);
+	}
+	
 //	@Override
 //	public MemberDto login(String id, String pw) {
 //		return dao.login(id, pw);
@@ -113,4 +123,6 @@ public class MemberBizImpl implements MemberBiz {
 		return 0;
 	}
 
+
+	
 }
