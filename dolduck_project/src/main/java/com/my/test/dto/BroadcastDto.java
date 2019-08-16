@@ -1,19 +1,17 @@
 package com.my.test.dto;
 
-import oracle.sql.CLOB;
-
 public class BroadcastDto {
 
 	private int broadcast_seq;
 	private String broadcast_date;
 	private String broadcast_caster;
 	private String broadcast_title;
-	private CLOB broadcast_content;
+	private String broadcast_content;
 	
 	public BroadcastDto() {}
 
 	public BroadcastDto(int broadcast_seq, String broadcast_date, String broadcast_time, String broadcast_caster, String broadcast_title,
-			CLOB broadcast_content) {
+			String broadcast_content) {
 		super();
 		this.broadcast_seq = broadcast_seq;
 		this.broadcast_date = broadcast_date;
@@ -31,7 +29,7 @@ public class BroadcastDto {
 	}
 
 	//Constructor for UPDATE
-	public BroadcastDto(int broadcast_seq, String broadcast_date, String broadcast_title, CLOB broadcast_content) {
+	public BroadcastDto(int broadcast_seq, String broadcast_date, String broadcast_title, String broadcast_content) {
 		super();
 		this.broadcast_seq = broadcast_seq;
 		this.broadcast_date = broadcast_date;
@@ -81,11 +79,11 @@ public class BroadcastDto {
 		this.broadcast_title = broadcast_title;
 	}
 
-	public CLOB getBroadcast_content() {
+	public String getBroadcast_content() {
 		return broadcast_content;
 	}
 
-	public void setBroadcast_content(CLOB broadcast_content) {
+	public void setBroadcast_content(String broadcast_content) {
 		this.broadcast_content = broadcast_content;
 	}
 	
