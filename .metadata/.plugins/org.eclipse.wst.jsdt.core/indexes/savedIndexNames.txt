@@ -1,8 +1,0 @@
-INDEX VERSION 1.4+C:\final08\DolDuck_TeamProject\.metadata\.plugins\org.eclipse.wst.jsdt.core\indexes
-2964702316.index
-615391631.index
-1001090767.index
-3715088804.index
-2073874229.index
-1923140455.index
-4026575672.index
