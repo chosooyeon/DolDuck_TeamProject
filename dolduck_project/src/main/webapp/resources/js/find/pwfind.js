@@ -22,7 +22,10 @@ function sendEmail(){
 				if(data.pwSearch == true){
 					alert("변경된 비밀번호가 메일로 전송되었습니다!");
 				}
-				alert("이메일 전송 완료")
+				$(function(){
+					$('#checkModal').modal("show");
+				})
+
 			},
 			error:function(){
 				

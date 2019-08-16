@@ -25,7 +25,28 @@ function idfind(){
 					var idSearch = data.idSearch
 					var id = data.id
 					if(idSearch == true){
-						$('.result').text(id);
+						$(function(){
+							$('.result').html(`
+							<!-- Modal -->
+							<div class="modal fade" id="checkModal" tableindex="-1" role="dialog" aria-hidden="true">
+								<div class="modal-dialog">
+									<div class="modal-content">
+										<!-- header -->
+										<div class="modal-header">
+											<!-- header title -->
+											<h4 class="modal-title">[DOLDuck]아이디 찾기</h4>
+										</div>
+										<!-- body -->
+										<div class="modal-body">${name} 님의 아이디는 ${id }입니다.</div>
+										<!-- Footer -->
+										<div class="modal-footer">
+											<button type="button" class="btn btn-default" data-dismiss="modal">닫기</button>
+										</div>
+									</div>
+								</div>
+							</div>`);
+							$('#checkModal').modal("show");
+						})
 					}else{
 						alert('이름 또는 이메일을 확인해주세요');
 					}

@@ -31,7 +31,7 @@ SELECT * FROM MEMBER;
 -- 컬럼 값 변경
 ALTER TABLE MEMBER MODIFY(MEMBER_ROLE VARCHAR2(15));
 
-delete from member where member_id='admin';
+delete from member where member_id='조수연';
 
 UPDATE MEMBER SET MEMBER_ROLE='ROLE_ADMIN' WHERE MEMBER_ID='admin';
 
