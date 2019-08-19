@@ -55,9 +55,6 @@ if(principal != null && principal instanceof MemberDto){
 						</li>
 					</sec:authorize>
 					<sec:authorize access="hasRole('ROLE_ADMIN')">
-						<li style="color:white"><%=name %></li>
-						<li><a href="logout.do">Logout</a></li>
-						<li><a href="${pageContext.request.contextPath}/admin.do">Userpage</a></li>
 						<li class="dropdown"><a class="dropdown-toggle" data-toggle="dropdown"><%=name %>님</a>
 							<ul class="dropdown-menu" role="menu">
 								<li class="dropdown-item:hover"><a href="logout.do">Logout</a></li>
