@@ -1,8 +1,9 @@
 package com.my.dolduck.model.dto;
 
+import java.io.Serializable;
 import java.util.Date;
 
-public class SelectDto {
+public class SelectDto implements Serializable{
 	
 	private int member_seq;
 	private String member_id;
