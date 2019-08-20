@@ -55,7 +55,7 @@ public class FreeBoardController {
 //	}
 
 	// 게시글 목록
-	@RequestMapping("/free_list.do")
+	@RequestMapping("free_list.do")
 	public String freeboard_list(Model model) {
 
 		model.addAttribute("list", biz.free_list());
@@ -63,26 +63,26 @@ public class FreeBoardController {
 		return "board/free_list";
 	}
 
-	@RequestMapping("/free_insertform.do")
+	@RequestMapping("free_insertform.do")
 	public String insertform() {
 
 		return "board/free_insert";
 	}
 
 	// 게시글 입력
-	@RequestMapping("/free_insert.do")
+	@RequestMapping("free_insert.do")
 	public String insert(@ModelAttribute FreeboardDto dto) {
 
 		int res = biz.free_insert(dto);
 
 		if (res > 0) {
-			return "redirect:free_list.do";
+			return "board/free_list";
 		}
-		return "redirect:free_insert.do";
+		return "board/free_insert";
 	}
 
 	// 게시글 자세히보기 & 댓글 리스트
-	@RequestMapping("/free_detail.do")
+	@RequestMapping("free_detail.do")
 	public String selectOne(Model model, int freeboard_num) {
 
 		System.out.println("나중에 지우기");
@@ -103,7 +103,7 @@ public class FreeBoardController {
 
 	}
 
-	@RequestMapping("/free_update.do")
+	@RequestMapping("free_update.do")
 	public String update(Model model, int freeboard_num) {
 		model.addAttribute("one", biz.free_detail(freeboard_num));
 
@@ -111,7 +111,7 @@ public class FreeBoardController {
 	}
 
 	// 게시글 수정
-	@RequestMapping("/free_updateform.do")
+	@RequestMapping("free_updateform.do")
 	public String updateform(@ModelAttribute FreeboardDto dto) {
 		int res = biz.free_update(dto);
 		if (res > 0) {
@@ -122,7 +122,7 @@ public class FreeBoardController {
 	}
 
 	// 게시글 삭제
-	@RequestMapping("/free_delete.do")
+	@RequestMapping("free_delete.do")
 	public String delete(@RequestParam("id") String id) {
 		System.out.println(id);
 		int res = biz.free_delete(id);
@@ -135,7 +135,7 @@ public class FreeBoardController {
 	// ====================comment=========================
 
 	// =====댓글 입력
-	@RequestMapping("/freeboard_comment_insert.do")
+	@RequestMapping("freeboard_comment_insert.do")
 	public String free_comment_insert(@ModelAttribute FreeboardCommentDto dto) {
 
 		int res = bizComm.freeboard_comment_insert(dto);
@@ -146,7 +146,7 @@ public class FreeBoardController {
 	}
 
 	// =====댓글 수정
-	@RequestMapping("/freeboard_comment_update.do")
+	@RequestMapping("freeboard_comment_update.do")
 	@ResponseBody
 	public Map<String,Object> free_comment_update(int comm_num,String comm_content) {
 		System.out.println("게시판번호"+comm_num);
@@ -173,7 +173,7 @@ public class FreeBoardController {
 	}
 
 	// =====댓글 삭제
-	@RequestMapping("/freeboard_comment_delete.do")
+	@RequestMapping("freeboard_comment_delete.do")
 	public String free_comment_delete(@RequestParam("Comment_num") int Comment_num, int freeboard_num) {
 
 		int res = bizComm.freeboard_comment_delete(Comment_num);
