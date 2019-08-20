@@ -178,6 +178,7 @@ public class HomeController {
 		}
 		events.put("list", eventArr);
 		
+		
 		return events;
 	}
 	
