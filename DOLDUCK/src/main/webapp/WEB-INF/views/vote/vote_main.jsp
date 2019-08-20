@@ -43,24 +43,24 @@
 			<div class="girl-group">여자 그룹</div>
 		</div>
 		<div class="div-button">
-			<div class="girl-star">여자 아이돌</div>
+			<div class="girl-idol">여자 아이돌</div>
 		</div>
 		<div class="div-button">
-			 <div class="new-star">신인 스타</div>
+			 <div class="new-idol">신인 스타</div>
 		</div>
 		<div class="div-button">
-			<div class="star-star">별별 스타</div>
+			<div class="star-idol">별별 스타</div>
 		</div>		
 		<div class="div-button">
 			<div class="boy-group">남자 그룹</div>
 		</div>
 		<div class="div-button">
-			<div class="boy-star">남자 아이돌</div>
+			<div class="boy-idol">남자 아이돌</div>
 		</div>
 	</div>
 	<div class="container">
 		<div class="center votechart-board">
-			<p>검색시간 : <label class="label-test"></label><p>
+			<p>검색시간 : <label class="current-time"></label><p>
 			<table class="table">
 				<thead>
 					<tr id="">
@@ -71,7 +71,7 @@
 				</thead>
 				<tbody></tbody>
 			</table>
-			<button class="abc">더 보기</button>	
+			<button class="button-pagination">더 보기</button>	
 		</div>
 	</div>
 </body>

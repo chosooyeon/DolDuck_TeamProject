@@ -4,18 +4,29 @@
   
   	<insert id="insertVote" parameterType="VoteDto">
 		INSERT INTO VOTE
-		VALUES(#{page}, #{starName}, #{voteNumber})
+		VALUES(#{item}, #{starName}, #{voteNumber})
 	</insert>
 	
 	<select id="selectOneVote" parameterType="VoteDto" resultType="VoteDto">
 		SELECT * FROM VOTE
-		WHERE VOTE_PAGE=#{page} AND VOTE_NAME=#{starName}
+		WHERE VOTE_ITEM=#{item} AND VOTE_NAME=#{starName}
 	</select>
 	
 	<update id="updateVote" parameterType="VoteDto">
 		UPDATE VOTE
 		SET VOTE_TOTAL=((VOTE_TOTAL)+#{voteNumber})
-		WHERE VOTE_PAGE=#{page} AND VOTE_NAME=#{starName}
+		WHERE VOTE_ITEM=#{item} AND VOTE_NAME=#{starName}
 	</update>
 	
+	<select id="selectMemberVote" parameterType="String" resultType="int">
+		SELECT MEMBER_VOTE
+		FROM MEMBER
+		WHERE MEMBER_ID=#{member_id}
+	</select>
+	
+	<update id="updateMemberVote" parameterType="com.my.dolduck.model.dto.MemberVoteDto">
+		UPDATE MEMBER
+		SET MEMBER_VOTE=MEMBER_VOTE-#{voteNumber}
+		WHERE MEMBER_ID=#{member_id}
+	</update>
 </mapper>

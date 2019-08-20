@@ -22,31 +22,21 @@ import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.ResponseBody;
 
-import com.my.dolduck.model.dto.BroadcastDto;
-import com.my.dolduck.model.dto.MemberDto;
 import com.my.dolduck.model.biz.BroadcastBiz;
 import com.my.dolduck.model.biz.MemberBiz;
+import com.my.dolduck.model.dto.BroadcastDto;
+import com.my.dolduck.model.dto.MemberDto;
 import com.my.dolduck.util.Music;
 import com.my.dolduck.util.WebScrap;
-import com.my.dolduck.model.dto.VoteCrawlingDto;
-import com.my.dolduck.util.VoteCrawling;
-import com.my.dolduck.model.dao.VoteDao;
-import com.my.dolduck.model.dto.VoteDto;
 
 @Controller
 public class HomeController {
-
-	private int voteNumber;
-	private String starName;
-	private int page;
 	
 	@Autowired
 	private MemberBiz biz;
 	
 	@Autowired
 	private BroadcastBiz b_biz;
-	
-	VoteDto dto = new VoteDto();
 	private WebScrap crawling = new WebScrap();
 	
 	private static final Logger logger = LoggerFactory.getLogger(HomeController.class);
