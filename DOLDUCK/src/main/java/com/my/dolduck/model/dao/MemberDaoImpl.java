@@ -29,6 +29,7 @@ public class MemberDaoImpl implements MemberDao {
 		try {
 			list = sqlSession.selectList(namespace+"selectList");
 		} catch (Exception e) {
+			System.out.println(list);
 			System.out.println("error");
 			e.printStackTrace();
 		}
