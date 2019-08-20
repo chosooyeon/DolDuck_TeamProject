@@ -9,16 +9,16 @@
         var calendarEl = document.getElementById('calendar');	
 		
         var calendar = new FullCalendar.Calendar(calendarEl, {
-            plugins: [ 'dayGrid', 'timeGrid', 'interaction', 'bootstrap' ],
+            plugins: [ 'dayGrid', 'interaction', 'bootstrap' ],
             timeZone: 'UTC',
             themeSystem: 'Bootstrap',
             header: {
               left: 'prev,next today',
               center: 'title',
-              right: 'dayGridMonth, timeGridWeek, listMonth'
+              right: 'dayGridMonth, listMonth'
             },
             eventLimit: true , 					// allow "more" link when too many events
-            events : _events , 
+            events : _events, 
             eventClick : function(info){
             	console.log('Id: ' + info.event.id)
             	console.log('Event: ' + info.event.title);
@@ -45,6 +45,7 @@
 		    },
 			success : function(data){
 				list = data.list;
+				console.log(list)
 			}, error : function(){
 				alert('Error in getting Calendar Lists')
 			}

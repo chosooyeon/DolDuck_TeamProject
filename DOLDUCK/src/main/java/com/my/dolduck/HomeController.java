@@ -53,6 +53,7 @@ public class HomeController {
 
 	@RequestMapping(value = "/home.do", method = {RequestMethod.POST, RequestMethod.GET})
 	public String home(Locale locale, Model model) {
+		System.out.println(" ");
 		logger.info("Welcome home! The client locale is {}.", locale);
 		
 		Date date = new Date();
@@ -69,7 +70,7 @@ public class HomeController {
 		return "admin/admin";
 	}
 	
-	/************************** 로그아웃 ***************************/
+	/************************** 濡쒓렇�븘�썐 ***************************/
 	
 	@RequestMapping("logout.do")
 	public String logout(HttpSession session) {
@@ -78,7 +79,7 @@ public class HomeController {
 		return "redirect:home.do";
 	}
 	
-	/************************** Music Chart 게시판 ***************************/
+	/************************** Music Chart 寃뚯떆�뙋 ***************************/
 	@RequestMapping("chart.do")
 	public String showMusicChart() {
 		return "board/music_chart";
@@ -101,9 +102,9 @@ public class HomeController {
 			list = crawling.getGenieChart();
 			break;
 		}
-		//멜론차트 크롤링해서 List로 return 
+		//硫쒕줎李⑦듃 �겕濡ㅻ쭅�빐�꽌 List濡� return 
 				
-		//JSON타입으로 파싱
+		//JSON���엯�쑝濡� �뙆�떛
 		JSONObject chart = new JSONObject();
 		JSONArray songArr = new JSONArray();
 		
@@ -119,7 +120,7 @@ public class HomeController {
 		}
 		chart.put("chart", songArr);
 		
-		////Realtime 시간얻기
+		////Realtime �떆媛꾩뼸湲�
 		long time = System.currentTimeMillis();
 		SimpleDateFormat dayTime = new SimpleDateFormat("yyyy-MM-dd hh:mm:ss");
 		String str = dayTime.format(new Date(time));
@@ -129,13 +130,13 @@ public class HomeController {
 	}
 
 	
-	/************************** Youtube 게시판 ***************************/
+	/************************** Youtube 寃뚯떆�뙋 ***************************/
 	@RequestMapping("youtube.do")
 	public String showYoutubeBoard() {
 		return "board/youtube";
 	}
 	
-	/************************** Live 게시판 ***************************/
+	/************************** Live 寃뚯떆�뙋 ***************************/
 	@RequestMapping("live-home.do")
 	public String liveBoard() {
 		return "live/live-home";
@@ -170,8 +171,10 @@ public class HomeController {
 			String[] DateTime = dto.getBroadcast_date().split(" ");
 			
 			event.put("id", dto.getBroadcast_seq());
-			event.put("title", "["+DateTime[1]+"] " + dto.getBroadcast_caster());
+			event.put("title", dto.getBroadcast_caster() + "-" + dto.getBroadcast_title());
 			event.put("start", DateTime[0]);
+			event.put("end", DateTime[0]);
+			event.put("allDay", false);
 
 			eventArr.add(event);
 		}
@@ -181,6 +184,10 @@ public class HomeController {
 		return events;
 	}
 	
+	private int parseInt(char charAt) {
+		// TODO Auto-generated method stub
+		return 0;
+	}
 	@RequestMapping("live-addpopup.do")
 	public String popupLiveSchedule() {
 		return "live/live-add-schedule";
@@ -228,7 +235,7 @@ public class HomeController {
 		String result;
 		
 		int res = biz.purchaseVote(amount, userId);
-		System.out.println(userId + "님이 " + amount + "개의 투표권을 산다~");
+		System.out.println(userId + "�떂�씠 " + amount + "媛쒖쓽 �닾�몴沅뚯쓣 �궛�떎~");
 		System.err.println("Controller Result => " + res);
 		if(res>0) {
 			result = "succeed";

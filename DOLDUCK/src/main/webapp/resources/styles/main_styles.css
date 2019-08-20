@@ -412,7 +412,13 @@ section
 .dropdown{
 	color: #fff;
 }
+.dropdown-menu.show {
+	position: absolute;
+    top: -198px !important;
+    left: -45px !important;
+    transform: none !important;
 
+}
 .dropdown:hover .dropdown-menu {
 	width: 100%;
 	min-width:7rem;
@@ -1088,16 +1094,29 @@ svg{
 }
 /*  고객센터 1:1채팅  */
 .div-button-chat, .icon-chat-circle{ width: 60px; height: 60px;}
-.icon-chat-ball{z-index: 10; }
 .icon-chat-circle{ 
 	z-index:9;
-	background: #FFA550; 
+	background: #ff99cc; 
 	border-radius: 5em;
 	position: fixed;
     top: 85%;
     right: 3%;
-    line-height: 4em;
+    line-height: 5em;
     text-align: center;
+}
+.dropdown-item.icon-chat-circle {
+    top: -4px;
+    display: block;
+    position: relative;
+    left: 44px;
+    margin: -79px 0 87px 0;
+    padding: 0;
+    line-height: 4.6em;
+}
+.dropdown-item:focus, .dropdown-item:hover {
+    color: #16181b;
+    text-decoration: none;
+    background-color: rgb(255, 153, 204, 0.45);
 }
 .div-modal-chat{ 
 	display : none;
@@ -1456,6 +1475,7 @@ table {
 	  Live
 *******************/
 .calendar-box{ margin-top: 8em; margin-bottom: 10em;}
+.slide_img{ height: -webkit-fill-available;}
 #area-addEvent{ margin-top: 4em; margin-bottom: 4em; float: right;}
 #modified{
 	width: 381px;
