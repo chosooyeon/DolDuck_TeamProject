@@ -27,9 +27,10 @@
          </div>
          <!-- Content -->
          <div class="center live-content">
+          <button id="startLiveBtn">방송시작</button>
         </div>
-
     </div>
+    
     
     <!-- Footer -->
     <%@include file="/WEB-INF/views/footer.jsp" %>
