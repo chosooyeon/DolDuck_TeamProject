@@ -80,6 +80,7 @@
 					
 					<div>
 						<button id="modified" type="submit" value="회원 정보 수정" ></button>
+						<button id="delete" type="button" value="회원 탈퇴" onclick="location.href='delete.do'"></button>
 					</div>
 				
  

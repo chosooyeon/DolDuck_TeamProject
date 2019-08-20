@@ -112,15 +112,14 @@ public class MemberBizImpl implements MemberBiz {
 	public int updateMemberVote(String member_id, int voteNumber) {
 		return dao.updateMemberVote(member_id, voteNumber);
 	}
-	
-//	@Override
-//	public MemberDto login(String id, String pw) {
-//		return dao.login(id, pw);
-//	}
 
 	public int updateRole(MemberDto dto) {
-		// TODO Auto-generated method stub
-		return 0;
+		return dao.updateRole(dto);
+	}
+
+	@Override
+	public int deleteMember(String id) {
+		return dao.deleteMember(id);
 	}
 
 

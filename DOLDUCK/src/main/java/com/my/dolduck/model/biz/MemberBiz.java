@@ -24,6 +24,7 @@ public interface MemberBiz {
 	public SelectDto idSearch(String name, String email);
 	public SelectDto pwSearch(String id, String email);
 	public int changePw(String pw, String id);
+	public int deleteMember(String id);
 	
 	public int purchaseHeart(int amount, String id);
 	public int purchaseVote(int amount, String id);
