@@ -13,6 +13,9 @@
 <title>Insert title here</title>
 </head>
 <body>
+<%@ include file="../header.jsp" %>
+
+	<div class="container freeboard">
 	<h1>상제 보기</h1>
 
 	<table border="1">
@@ -37,7 +40,7 @@
 			<input type="button" value="삭제" onclick="location.href='free_delete.do?id=${one.freeboard_id }'">
 		</tr>
 	</table>
-	</br>
+	<br>
 	<table border="1">
 		<c:forEach items="${commList }" var="comm">
 	<tr>
@@ -68,7 +71,7 @@
 	</tr>
 		</c:forEach>
 	</table>
-	</br>
+	<br>
 	댓글쓰기
 	<form action="freeboard_comment_insert.do" method="post">
 		<input type="hidden" name="freeboard_num" value="${one.freeboard_num }">
@@ -87,5 +90,6 @@
 	</tr>
 	</table>
 	</form>
+</div>
 </body>
 </html>

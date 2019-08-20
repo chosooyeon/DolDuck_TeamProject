@@ -12,5 +12,5 @@ CREATE TABLE FREEBOARD(
 );
 
 INSERT INTO FREEBOARD
-VALUES(FREEBOARD_SEQ.NEXTVAL,'愿�由ъ옄','寃뚯떆�뙋�쓣 �씠�슜 �쟾 瑗� �씫�뼱二쇱꽭�슂.','�궗湲� 移섏� 留먯옄.',SYSDATE);
+VALUES(FREEBOARD_SEQ.NEXTVAL,'조수연','안녕하세요','너무힘들어요',SYSDATE);
 SELECT * FROM FREEBOARD;
