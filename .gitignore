@@ -1,10 +1,10 @@
-ï»¿#ì‹¤í–‰íŒŒì¼ ì œì™¸ 
+#½ÇÇàÆÄÀÏ Á¦¿Ü 
 *.com
 *.exe
 *.o
 *.so
 
-#íŒ¨í‚¤ì§€íŒŒì¼
+#ÆĞÅ°ÁöÆÄÀÏ
 *.7z
 *.dmg
 *.gz
@@ -13,12 +13,12 @@
 *.tar
 *.zip
 
-#ë¡œê·¸íŒŒì¼
+#·Î±×ÆÄÀÏ
 *.log
 upload/
 logs/
 
-#ì´í´ë¦½ìŠ¤ ì„¤ì •íŒŒì¼
+#ÀÌÅ¬¸³½º ¼³Á¤ÆÄÀÏ
 .metadata
 bin/
 tmp/
@@ -41,7 +41,7 @@ local.properties
 .springBeans
 .recommenders/
 
-#ë§¥, ìœˆë„ìš°ìš© ì‹œìŠ¤í…œíŒŒì¼ ì œì™¸ 
+#¸Æ, À©µµ¿ì¿ë ½Ã½ºÅÛÆÄÀÏ Á¦¿Ü 
 .DS_Store
 .DS_Store?
 ._*
@@ -55,5 +55,3 @@ metadata
 target/
 db.properties
 pom.properties
-
-Servers/

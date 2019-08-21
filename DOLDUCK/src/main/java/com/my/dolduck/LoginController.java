@@ -8,6 +8,7 @@ import java.net.HttpURLConnection;
 import java.net.URL;
 import java.nio.file.AccessDeniedException;
 import java.util.HashMap;
+import java.util.List;
 import java.util.Map;
 import java.util.Properties;
 
@@ -30,21 +31,31 @@ import org.springframework.security.authentication.UsernamePasswordAuthenticatio
 import org.springframework.security.core.Authentication;
 import org.springframework.security.core.context.SecurityContext;
 import org.springframework.security.core.context.SecurityContextHolder;
+import org.springframework.security.core.userdetails.UserDetails;
 import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 import org.springframework.security.web.WebAttributes;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
-import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.ResponseBody;
 
-import com.my.dolduck.model.dto.MemberDto;
 import com.my.dolduck.model.biz.MemberBizImpl;
+import com.my.dolduck.model.dto.MemberDto;
 import com.my.dolduck.service.UserAuthenticationService;
-import com.my.dolduck.util.TwitterAPI;
+import com.my.dolduck.util.initalize;
+
+import twitter4j.Paging;
+import twitter4j.Query;
+import twitter4j.QueryResult;
+import twitter4j.Status;
+import twitter4j.Twitter;
+import twitter4j.TwitterException;
+import twitter4j.TwitterFactory;
+import twitter4j.auth.AccessToken;
+import twitter4j.auth.RequestToken;
 
 @Controller
 public class LoginController {
@@ -97,7 +108,22 @@ public class LoginController {
 	public String modified() {
 		return "member/modified";
 	}
-	
+
+	// 회원 탈퇴
+	@RequestMapping(value = "delete.do")
+	public String delete() {
+		Object principal = SecurityContextHolder.getContext().getAuthentication().getPrincipal();
+		UserDetails userDetails = (UserDetails)principal;
+		
+		MemberDto dto = (MemberDto)userDetails;
+		int seq = dto.getMember_seq();
+		System.out.println(seq);
+		int res = biz.deleteMember(seq);
+		System.out.println(res);
+		
+		return "home";
+	}
+
 	/* @RequestMapping(value = "role_update.do", method = {RequestMethod.POST}) */
 	@PostMapping("role_update.do")
 
@@ -116,10 +142,11 @@ public class LoginController {
 	public String Join() {
 		return "member/Join";
 	}
+
 	// 업데이트 페이지로 이동
 	@RequestMapping("modifiedfied.do")
-	public String updateMember(@RequestParam String user_id,@RequestParam String user_pw,@RequestParam String user_email, 
-			@RequestParam String user_phone, @RequestParam String user_addr) {
+	public String updateMember(@RequestParam String user_id, @RequestParam String user_pw,
+			@RequestParam String user_email, @RequestParam String user_phone, @RequestParam String user_addr) {
 		System.out.println("1");
 		Map<String, String> map = new HashMap<String, String>();
 		String encryptPassword = passwordEncoder.encode(user_pw);
@@ -128,18 +155,16 @@ public class LoginController {
 		map.put("member_addr", user_addr);
 		map.put("member_email", user_email);
 		map.put("member_id", user_id);
-		
-		
+
 		int res = biz.updateMember(map);
-		if(res > 0) {
+		if (res > 0) {
 			System.out.println("2");
 			return "member/mypage";
-		}else {
+		} else {
 			System.out.println("3");
 			return "member/modified";
 		}
-		
-		
+
 	}
 
 	// 회원가입 페이지로 이동
@@ -486,28 +511,49 @@ public class LoginController {
 		return "redirect:/";
 	}
 
-	@RequestMapping("twitter.do")
+	// 트위터 로그인
+	@RequestMapping(value = "twitter.do")
+	public String twitter() {
+		return "twitter/twitter_login";
+	}
+
+	// 트위터 로그인
+	@RequestMapping("twitterlogin.do")
 	public String Twitter(HttpServletRequest request, HttpSession session) throws Throwable {
 		boolean idChk = false;
+		int res = 0;
 
-		TwitterAPI twitter = new TwitterAPI();
-		twitter.getRequestToken();
+		String consumerKey = "4jV9n4q6icf312qrcJITlxDBw";
+		String consumerSecret = "7fiKbUjQI11sJlV8LvVfMqGM16qnoMhDzZp9UYBJhmFS9O1GEr";
+		Twitter twitter = new TwitterFactory().getInstance();
+		twitter.setOAuthConsumer(consumerKey, consumerSecret); // 저장된 consumerKey, consumerSecret
+		AccessToken accessToken = null;
 
-		String token = twitter.requestToken.getToken();
-		String tokensecret = twitter.requestToken.getTokenSecret();
-		String authorizationurl = twitter.requestToken.getAuthorizationURL();
+		accessToken = (AccessToken) request.getSession().getAttribute("accessToken");
+		System.out.println(accessToken);
 
-		String oauth_token = request.getParameter("oauth_token");
-		String oauth_verifier = request.getParameter("oauth_verifier");
-		if (token.equals(oauth_token)) {
-			System.out.println("여기로 들어온다아아");
-			twitter.SignIn(token, tokensecret);
+		if (accessToken == null) {
+			String oauth_verifier = request.getParameter("oauth_verifier");
+			System.out.println("oauth_verifier: " + oauth_verifier);
 
-			String id = twitter.twitter.verifyCredentials().getId() + ""; // 사용자 아이디
-			String name = twitter.twitter.verifyCredentials().getScreenName(); // 사용자 이름
-			idChk = true;
+			RequestToken requestToken = (RequestToken) request.getSession().getAttribute("requestToken");
+			System.out.println("requestToken: " + requestToken);
+			if (requestToken != null) {
+				accessToken = twitter.getOAuthAccessToken(requestToken, oauth_verifier);
+				twitter.setOAuthAccessToken(accessToken);
+				request.getSession().setAttribute("accessToken", accessToken);
+			} else {
+				System.out.println("requestToken값이 없습니다.");
+			}
+		}
 
-			int res = 0;
+		if (accessToken != null) {
+			twitter.setOAuthAccessToken(accessToken);
+			System.out.println(accessToken);
+			System.out.println(accessToken.getUserId()); // 트위터의 사용자 아이디
+			System.out.println(accessToken.getScreenName()); // 트워터에 표시되는 사용자명
+
+			String id = accessToken.getUserId() + "";
 
 			Map<String, String> map = new HashMap<String, String>();
 			map.put("member_id", id);
@@ -515,13 +561,12 @@ public class LoginController {
 			String encryptPassword = passwordEncoder.encode(id);
 			System.out.println("비밀번호 암호화" + encryptPassword);
 			map.put("member_pw", encryptPassword);
-			map.put("member_name", name);
+			map.put("member_name", id);
 			map.put("member_phone", "핸드폰 번호를 입력해주세요");
 			map.put("member_addr", "주소를 입력해주세요");
 			map.put("member_email", id + "@naver.com");
 
 			res = biz.insertUser(map);
-
 			if (res > 0) {
 				String loginId = id;
 				idChk = false;
@@ -547,22 +592,63 @@ public class LoginController {
 				session = request.getSession(true);
 				session.setAttribute("SPRING_SECURITY_CONTEXT", securityContext);
 			}
-
+			// twitter.updateStatus("테스트 트위 등록 합니다.");
+//			 List<Status> statuses = twitter.getHomeTimeline();
+//			 System.out.println("Showing home timeline.");
+//			 for (Status status : statuses) {
+//			   System.out.println(status.getUser().getName() + ":" + status.getText());
+//			 }
+		} else {
+			System.out.println("accessToken 값이 없습니다.");
 		}
 		return "redirect:/";
+
+	}
+
+	// 트위터 크롤링
+	@RequestMapping("twits.do")
+	public void twits() throws IOException, TwitterException {
+		Twitter twitter = new initalize().twitter;
+
+		// 강다니엘 검색해서 가져오기
+		Query query = new Query("강다니엘");
+		QueryResult result = null;
+
+		result = twitter.search(query);
+		for (Status status : result.getTweets()) {
+			System.out.println("@" + status.getUser().getScreenName() + ":" + status.getText() + "|||"
+					+ status.getRetweetCount() + "\r\n");
+		}
+
+		// 트윗 가져오기
+		List<Status> statuses;
+
+		Paging page = new Paging();
+		page.count(20);
+		page.setPage(1);
+
+		try {
+			statuses = twitter.getHomeTimeline(page);
+		} catch (TwitterException e) {
+		}
+
+		for (Status status : result.getTweets()) {
+			status.getId();
+			status.getUser().getName();
+			status.getUser().getScreenName();
+			status.getUser().getURL();
+			status.getText();
+			status.getCreatedAt();
+			status.getUser().getProfileImageURL();
+			status.getSource();
+		}
+
+		// 트윗 작성하기
+		// twitter.updateStatus(텍스트, 리플라이할 트윗의 id);
+		Status status = null;
+		try {
+			status = twitter.updateStatus("입력한 텍스트");
+		} catch (TwitterException e) {
+		}
 	}
 }
-//	@RequestMapping("twitter.do")
-//	public void twitter() throws IOException, TwitterException {
-//		Twitter twitter = new initalize().twitter;
-//
-//		Query query = new Query("강다니엘");
-//		QueryResult result = null;
-//		
-//		result = twitter.search(query);
-//		for (Status status : result.getTweets()) {
-//		    System.out.println("@" + status.getUser().getScreenName() + ":"
-//		             + status.getText() + "|||"
-//		             + status.getRetweetCount() + "\r\n");
-//		}
-//	}

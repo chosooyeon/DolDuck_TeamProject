@@ -27,7 +27,7 @@ public interface MemberDao {
 	public SelectDto pwSearch(String id, String email);
 	public int changePw(String pw, String id);
 	public int usersNameCheck(String name);
-	
+	public int deleteMember(int seq);
 	public int purchaseHeart(int amount, String id);
 	public int purchaseVote(int amount, String id);
 	

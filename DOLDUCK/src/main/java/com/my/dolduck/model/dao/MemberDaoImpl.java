@@ -302,4 +302,14 @@ public class MemberDaoImpl implements MemberDao {
 			}
 		return res;
 	}
+	
+	@Override
+	public int deleteMember(int seq) {
+		int res = 0;
+		res = sqlSession.update(namespace+"updateRole",seq);
+			if(res>0) {
+				sqlSession.commit();
+			}
+		return res;
+	}
 }
