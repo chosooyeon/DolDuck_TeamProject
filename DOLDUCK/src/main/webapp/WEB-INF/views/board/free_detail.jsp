@@ -7,8 +7,8 @@
 <script type="text/javascript" src="https://code.jquery.com/jquery-3.4.1.js"></script>
 <script type="text/javascript" src="resources/js/freeboard.js"></script>
 <meta charset="UTF-8">
-<meta name="_csrf" content="${_csrf.token}"/>
-<meta name="_csrf_header" content="${_csrf.headerName}"/>
+<%-- <meta name="_csrf" content="${_csrf.token}"/> --%>
+<%-- <meta name="_csrf_header" content="${_csrf.headerName}"/> --%>
 
 <title>Insert title here</title>
 </head>
@@ -46,10 +46,10 @@
 		<td id="comment_content${comm.freeboard_comment_num }">
 			댓글내용 : ${comm.freeboard_comment_content } 
 		</td>
-		<td>	
+		<td>
 			댓글작성자 : ${comm.freeboard_id }
 		</td>
-		<td>	
+		<td>
 			댓글작성시간 : ${comm.freeboard_comment_regdate }
 		</td>
 		<td id="edit_btn">
@@ -83,6 +83,7 @@
 			</td>
 		<tr>
 			<td id="comment_submit">
+				
 				<input type="submit" value="작성">
 			</td>
 	</tr>

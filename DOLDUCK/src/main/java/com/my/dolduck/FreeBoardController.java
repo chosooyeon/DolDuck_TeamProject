@@ -76,9 +76,9 @@ public class FreeBoardController {
 		int res = biz.free_insert(dto);
 
 		if (res > 0) {
-			return "board/free_list";
+			return "redirect:free_list.do";
 		}
-		return "board/free_insert";
+		return "redirect:free_insertform.do";
 	}
 
 	// 게시글 자세히보기 & 댓글 리스트
