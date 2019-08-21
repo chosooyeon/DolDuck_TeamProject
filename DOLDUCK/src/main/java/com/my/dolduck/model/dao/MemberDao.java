@@ -30,6 +30,7 @@ public interface MemberDao {
 	public int deleteMember(String member_id);
 	public int purchaseHeart(int amount, String id);
 	public int purchaseVote(int amount, String id);
+	public SelectDto selectId(String id);
 	
 	public int insertVote(VoteDto votedto);
 	public VoteDto selectOneVote(int page, String starName);

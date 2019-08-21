@@ -44,6 +44,7 @@ import org.springframework.web.bind.annotation.ResponseBody;
 
 import com.my.dolduck.model.biz.MemberBizImpl;
 import com.my.dolduck.model.dto.MemberDto;
+import com.my.dolduck.model.dto.SelectDto;
 import com.my.dolduck.service.UserAuthenticationService;
 import com.my.dolduck.util.initalize;
 
@@ -99,13 +100,26 @@ public class LoginController {
 
 	// 마이 페이지로 이동
 	@RequestMapping(value = "mypage.do")
-	public String mypage() {
+	public String mypage(Model model,Authentication auth) {
+		MemberDto memberdto = (MemberDto)auth.getPrincipal();
+		String member_id = memberdto.getUsername();
+		
+		System.err.println(member_id);
+		SelectDto dto = biz.selectId(member_id);
+		model.addAttribute("dto",dto);
 		return "member/mypage";
 	}
 
 	// 수정 페이지로 이동
 	@RequestMapping(value = "modified.do")
-	public String modified() {
+	public String modified(Model model,Authentication auth) {
+		MemberDto memberdto = (MemberDto)auth.getPrincipal();
+		String member_id = memberdto.getUsername();
+		
+		System.err.println(member_id);
+		SelectDto dto = biz.selectId(member_id);
+		model.addAttribute("dto",dto);
+		
 		return "member/modified";
 	}
 
