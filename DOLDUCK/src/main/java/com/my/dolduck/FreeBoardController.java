@@ -39,21 +39,6 @@ public class FreeBoardController {
 
 	private static final Logger logger = LoggerFactory.getLogger(FreeBoardController.class);
 
-	/**
-	 * Simply selects the home view to render by returning its name.
-	 */
-//	@RequestMapping(value = "/home.do", method = RequestMethod.GET)
-//	public String home(Locale locale, Model model) {
-//		Date date = new Date();
-//		DateFormat dateFormat = DateFormat.getDateTimeInstance(DateFormat.LONG, DateFormat.LONG, locale);
-//
-//		String formattedDate = dateFormat.format(date);
-//
-//		model.addAttribute("serverTime", formattedDate);
-//
-//		return "home";
-//	}
-
 	// 게시글 목록
 	@RequestMapping("free_list.do")
 	public String freeboard_list(Model model) {
@@ -77,8 +62,14 @@ public class FreeBoardController {
 
 		if (res > 0) {
 			return "redirect:free_list.do";
+		} else {
+			return "redirect:free_insert.do";
 		}
+<<<<<<< HEAD
 		return "redirect:free_insertform.do";
+=======
+		
+>>>>>>> 90219b2927a2dd579bed33599a634421a82f45b1
 	}
 
 	// 게시글 자세히보기 & 댓글 리스트
