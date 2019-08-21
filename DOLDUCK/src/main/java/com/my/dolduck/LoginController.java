@@ -115,10 +115,7 @@ public class LoginController {
 		Object principal = SecurityContextHolder.getContext().getAuthentication().getPrincipal();
 		UserDetails userDetails = (UserDetails)principal;
 		
-		MemberDto dto = (MemberDto)userDetails;
-		int seq = dto.getMember_seq();
-		System.out.println(seq);
-		int res = biz.deleteMember(seq);
+		int res = biz.deleteMember(userDetails.getUsername());
 		System.out.println(res);
 		
 		return "home";

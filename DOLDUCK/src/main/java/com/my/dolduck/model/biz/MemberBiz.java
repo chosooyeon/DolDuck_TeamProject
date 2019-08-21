@@ -37,5 +37,5 @@ public interface MemberBiz {
 	public int updateMemberVote(String member_id, int voteNumber);
 
 
-	public int deleteMember(int seq);
+	public int deleteMember(String member_id);
 }
