@@ -42,9 +42,9 @@
 		<form action="free_insert.do" method="post">
 			<table class="table">
 			<tr align="right">
-				<td colspan="2">
-					<input type="button" onclick="location.href='free_list.do'" value="취소">
-					<input type="submit" value="작성" >
+				<td colspan="2" style="border-top: none; ">
+					<button type="button" onclick="location.href='free_list.do'" >취소</button>
+					<button type="submit">작성</button>
 				</td>
 			</tr>
 			<tr>

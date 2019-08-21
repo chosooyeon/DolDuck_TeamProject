@@ -138,7 +138,7 @@ if(principal != null && principal instanceof MemberDto){
 		<!-- Quick Menu -->
 	<div class="container">
   <div class="dropup icon-chat-circle">
-   <div class="dropdown-toggle " data-toggle="dropdown"><i class="fas fa-bars fa-2x" style="color: white; z-index: 20;"></i></div>
+   <div class="dropdown-toggle quick" data-toggle="dropdown"><i class="fas fa-bars fa-2x" style="color: white; z-index: 20;"></i></div>
     <div class="dropdown-menu">
       <a class="dropdown-item icon-chat-circle" href="live-onair.do"><i class="fas fa-broadcast-tower fa-2x" style="color: white; z-index: 20;"></i></a>
       <a class="dropdown-item icon-chat-circle" href="#"><i class="fas fa-atlas fa-2x" style="color: white; z-index: 20;"></i></a>
@@ -147,6 +147,14 @@ if(principal != null && principal instanceof MemberDto){
     </div>
   </div>
 </div>
+
+<!-- <script type="text/javascript">
+
+	
+$( ".quick" ).click(function() {
+	  $( ".dropdown-menu" ).slideToggle( "slow" );
+	});
+</script> -->
 </body>
 <script type="text/javascript" src="https://code.jquery.com/jquery-3.4.1.min.js"></script>
 <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js"></script>
