@@ -118,8 +118,8 @@ public class MemberBizImpl implements MemberBiz {
 	}
 
 	@Override
-	public int deleteMember(String id) {
-		return dao.deleteMember(id);
+	public int deleteMember(int seq) {
+		return dao.deleteMember(seq);
 	}
 
 

@@ -32,10 +32,10 @@
 		WHERE MEMBER_ID=#{member_id}
 	</update>
 	
-	<update id="deleteMember" parameterType="SelectDto">
+	<update id="deleteMember" parameterType="MemberDto">
 		UPDATE MEMBER SET
 		MEMBER_ENABLED = 0 
-		WHERE MEMBER_ID = #{member_id}
+		WHERE MEMBER_SEQ = #{member_seq}
 	</update>
 	
 	<insert id="insertUser" parameterType="map">

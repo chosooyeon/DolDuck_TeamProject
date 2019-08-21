@@ -304,9 +304,9 @@ public class MemberDaoImpl implements MemberDao {
 	}
 	
 	@Override
-	public int deleteMember(String id) {
+	public int deleteMember(int seq) {
 		int res = 0;
-		res = sqlSession.update(namespace+"updateRole",id);
+		res = sqlSession.update(namespace+"updateRole",seq);
 			if(res>0) {
 				sqlSession.commit();
 			}

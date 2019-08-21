@@ -28,6 +28,9 @@ $(document).ready(function() {
 	});
 </script>
 <body>
+<%@ include file="../header.jsp" %>
+
+	<div class="container freeboard">
 	<h1>수정 하기</h1>
 
 	<form action="free_updateform.do" method="post" >
@@ -54,5 +57,6 @@ $(document).ready(function() {
 			</tr>
 		</table>
 	</form>
+	</div>
 </body>
 </html>
