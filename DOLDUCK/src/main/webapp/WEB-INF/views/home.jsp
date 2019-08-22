@@ -177,34 +177,25 @@
 			</div>
 		</section>
 
-		<!-- 1:1 Contect Chat Center (Fixed Navigator) -->
-		<div class="div-button-chat" onclick="gotoChat()">
-			<div class="icon-chat-ball"></div>
-			<div class="icon-chat-circle">
-				<i class="fas fa-comment-alt-dots"
-					style="color: white; z-index: 20;"></i>
-			</div>
-		</div>
-
-		<div class="div-modal-chat">
+<!-- 		<div class="div-modal-chat">
 			<div class="modal-top">
 				<div id="modal-title">고객센터</div>
 				<span></span>
 			</div>
 			<a href="#" class="button-modal-close" onclick="closeChat()">X</a>
 			<iframe class="iframe-chat" src="http://192.168.10.169:3000/"></iframe>
-		</div>
+		</div> -->
 
 		<!-- Footer  -->
 	</section>
 	<%@include file="footer.jsp"%>
 
-	<script type="http://platform.twitter.com/anywhere.js?id=IXw8Box7vGU37vCslSZRbw&v=1" type="text/javascript"></script>
+	<!-- <script type="http://platform.twitter.com/anywhere.js?id=IXw8Box7vGU37vCslSZRbw&v=1" type="text/javascript"></script>
 	<script type="text/javascript">
 		twttr.anywhere(function(T){
 			T("article").linkifyUsers();
 		});
-	</script>
+	</script> -->
 
 	<script type="text/javascript"
 		src="https://code.jquery.com/jquery-3.4.1.min.js"></script>

@@ -5,15 +5,7 @@
 <%@page import = "org.springframework.security.core.context.SecurityContextHolder" %>
 <%@page import = "org.springframework.security.core.Authentication" %>
 <%@page import = "com.my.dolduck.model.dto.MemberDto" %>
-<%
-Authentication auth = SecurityContextHolder.getContext().getAuthentication();
-Object principal = auth.getPrincipal();
-String name = "";
 
-if(principal != null && principal instanceof MemberDto){
-	name = ((MemberDto)principal).getUsername();
-}
-%>
 <!DOCTYPE html>
 <html>
 <head>
@@ -23,7 +15,7 @@ if(principal != null && principal instanceof MemberDto){
 <title>Insert title here</title>
 </head>
 <body>
-<%-- <%@include file="/WEB-INF/views/header.jsp" %> --%>
+<%@include file="/WEB-INF/views/header.jsp" %>
 <div class="container join">
 	<div class="row">
 		<div class="col-lg-6 offset-lg-3 join_table">
@@ -87,7 +79,8 @@ if(principal != null && principal instanceof MemberDto){
 					</table>
 					
 					<div>
-						<button id="modified" type="submit" value="회원 정보 수정" ></button>
+						<button id="modified" type="submit" >회원 정보 수정</button>
+						<button id="delete" type="button" onclick="location.href='delete.do'">회원 탈퇴</button>
 					</div>
 				
  

@@ -29,6 +29,7 @@ public class MemberDaoImpl implements MemberDao {
 		try {
 			list = sqlSession.selectList(namespace+"selectList");
 		} catch (Exception e) {
+			System.out.println(list);
 			System.out.println("error");
 			e.printStackTrace();
 		}
@@ -216,6 +217,23 @@ public class MemberDaoImpl implements MemberDao {
 			if(res>0) {
 				sqlSession.commit();
 			}
+		return res;
+	}
+	
+	@Override
+	public int deleteMember(String member_id) {
+		int res=0;
+		try {
+			res = sqlSession.update(namespace+"deleteMember",member_id);
+				if(res>0) {
+					sqlSession.commit();
+				}else {
+					sqlSession.rollback();
+				}
+		} catch (Exception e) {
+			e.printStackTrace();
+			System.err.println("에러입니다");
+		}
 		return res;
 	}
 }

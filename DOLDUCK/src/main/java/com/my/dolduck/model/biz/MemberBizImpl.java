@@ -89,16 +89,46 @@ public class MemberBizImpl implements MemberBiz {
 		return dao.purchaseVote(amount, id);
 	}
 
+<<<<<<< HEAD
 	
 	
 //	@Override
 //	public MemberDto login(String id, String pw) {
 //		return dao.login(id, pw);
 //	}
+=======
+	public int insertVote(VoteDto dto) {
+		return dao.insertVote(dto);
+	}
+
+	@Override
+	public VoteDto selectOneVote(int page, String starName) {
+		return dao.selectOneVote(page, starName);
+	}
+
+	@Override
+	public int updateVote(VoteDto dto) {
+		return dao.updateVote(dto);
+	}
+
+	@Override
+	public int selectMemberVote(String member_id) {
+		return dao.selectMemberVote(member_id);
+	}
+
+	@Override
+	public int updateMemberVote(String member_id, int voteNumber) {
+		return dao.updateMemberVote(member_id, voteNumber);
+	}
+>>>>>>> 5c19f11bf179a1711c26818115c6adefcff19901
 
 	public int updateRole(MemberDto dto) {
-		// TODO Auto-generated method stub
-		return 0;
+		return dao.updateRole(dto);
+	}
+
+	@Override
+	public int deleteMember(String member_id) {
+		return dao.deleteMember(member_id);
 	}
 
 

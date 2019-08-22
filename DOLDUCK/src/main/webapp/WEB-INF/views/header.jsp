@@ -55,9 +55,6 @@ if(principal != null && principal instanceof MemberDto){
 						</li>
 					</sec:authorize>
 					<sec:authorize access="hasRole('ROLE_ADMIN')">
-						<li style="color:white"><%=name %></li>
-						<li><a href="logout.do">Logout</a></li>
-						<li><a href="${pageContext.request.contextPath}/admin.do">Userpage</a></li>
 						<li class="dropdown"><a class="dropdown-toggle" data-toggle="dropdown"><%=name %>님</a>
 							<ul class="dropdown-menu" role="menu">
 								<li class="dropdown-item:hover"><a href="logout.do">Logout</a></li>
@@ -138,9 +135,31 @@ if(principal != null && principal instanceof MemberDto){
 			</div>
 		</div>
 	</section>
+		<!-- Quick Menu -->
+	<div class="container">
+  <div class="dropup icon-chat-circle">
+   <div class="dropdown-toggle quick" data-toggle="dropdown"><i class="fas fa-bars fa-2x" style="color: white; z-index: 20;"></i></div>
+    <div class="dropdown-menu">
+      <a class="dropdown-item icon-chat-circle" href="live-onair.do"><i class="fas fa-broadcast-tower fa-2x" style="color: white; z-index: 20;"></i></a>
+      <a class="dropdown-item icon-chat-circle" href="#"><i class="fas fa-atlas fa-2x" style="color: white; z-index: 20;"></i></a>
+      <a class="dropdown-item icon-chat-circle" href="twitter.do"><i class="fab fa-twitter-square fa-2x" style="color: white; z-index: 20;"></i></a>
+      <a class="dropdown-item icon-chat-circle" href="#"><i class="fas fa-comments fa-2x" style="color: white; z-index: 20;"></i></a>
+    </div>
+  </div>
+</div>
+
+<!-- <script type="text/javascript">
+
+	
+$( ".quick" ).click(function() {
+	  $( ".dropdown-menu" ).slideToggle( "slow" );
+	});
+</script> -->
 </body>
+<script type="text/javascript" src="https://code.jquery.com/jquery-3.4.1.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js"></script>
+<script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js"></script>
 <script type="text/javascript" src="resources/js/home.js"></script>
-<script type="text/javascript" src="https://code.jquery.com/jquery-3.4.1.js"></script>
 <script src="resources/styles/bootstrap-4.1.2/popper.js"></script>
 <script src="resources/styles/bootstrap-4.1.2/bootstrap.min.js"></script>
 <script src="resources/plugins/greensock/TweenMax.min.js"></script>

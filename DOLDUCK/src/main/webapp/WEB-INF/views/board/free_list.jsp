@@ -11,39 +11,45 @@
 <title>Insert title here</title>
 </head>
 <body>
-	<h1>전체목록</h1>
+<%@ include file="../header.jsp" %>
+
+	<div class="container freeboard">
+		<div class="center">
+	<h1 class="text-center">처돌이</h1>
+	<button type="button" id="btn-board" onclick="location.href='free_insertform.do'">글작성</button>
 	<c:choose>
 		<c:when test="${empty list }">
 			<h3>게시글이 없습니다....</h3>
 			<input type="button" value="글작성" onclick="location.href='free_insertform.do'">
 		</c:when>
 		<c:otherwise>
-			<table border="1">
+			<table class="table">
 				<col width="70">
 				<col width="400">
 				<col width="150">
 				<col width="150">
-				<tr>
+				<col width="50">
+				<tr align="center">
 					<th>글번호</th>
 					<th>제목</th>
 					<th>글쓴이</th>
 					<th>작성일</th>
+					<th>조회수</th>
 				</tr>
 				<c:forEach items="${list }" var="dto">
-					<tr>
+					<tr align="center">
 						<td>${dto.freeboard_num }</td>
-						<td><a href="free_detail.do?freeboard_num=${dto.freeboard_num}">${dto.freeboard_title }</a></td>
+						<td align="left"><a href="free_detail.do?freeboard_num=${dto.freeboard_num}">${dto.freeboard_title }</a></td>
 						<td>${dto.freeboard_id }</td>
 						<td>${dto.freeboard_regdate }</td>
+						<td>0</td>
 					</tr>
 				</c:forEach>
-				<tr>
-					<td colspan="4">
-					<input type="button" value="글작성" onclick="location.href='free_insertform.do'">
-				</tr>
 			</table>
 		</c:otherwise>
 	</c:choose>
 
+	</div>
+</div>
 </body>
 </html>
