@@ -662,9 +662,15 @@ public class LoginController {
 
 	}
 
-	// 트위터 크롤링
+	// 트위터 크롤링링
 	@RequestMapping("twits.do")
-	public void twits() throws IOException, TwitterException {
+		public String twits() {
+			return "twitter/twits";
+		}
+
+	// 트위터 크롤링
+	@RequestMapping("twitsCrawling.do")
+	public void twitsCrawling() throws IOException, TwitterException {
 		Twitter twitter = new initalize().twitter;
 
 		// 강다니엘 검색해서 가져오기
