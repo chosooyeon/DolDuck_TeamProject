@@ -171,8 +171,10 @@ public class HomeController {
 			String[] DateTime = dto.getBroadcast_date().split(" ");
 			
 			event.put("id", dto.getBroadcast_seq());
-			event.put("title", "["+DateTime[1]+"] " + dto.getBroadcast_caster());
+			event.put("title", dto.getBroadcast_caster() + "-" + dto.getBroadcast_title());
 			event.put("start", DateTime[0]);
+			event.put("end", DateTime[0]);
+			event.put("allDay", false);
 
 			eventArr.add(event);
 		}
@@ -182,6 +184,10 @@ public class HomeController {
 		return events;
 	}
 	
+	private int parseInt(char charAt) {
+		// TODO Auto-generated method stub
+		return 0;
+	}
 	@RequestMapping("live-addpopup.do")
 	public String popupLiveSchedule() {
 		return "live/live-add-schedule";
