@@ -163,8 +163,8 @@ public class LoginController {
 	public String updateMember(@RequestParam String user_id, @RequestParam String user_pw,
 			@RequestParam String user_email, @RequestParam String user_phone, @RequestParam String user_addr,
 			@RequestParam String file, MultipartHttpServletRequest mtfRequest) {
-		System.out.println(user_id+user_pw+user_email+user_phone+user_addr);
-		
+		System.out.println(user_id + user_pw + user_email + user_phone + user_addr);
+
 		List<MultipartFile> fileList = mtfRequest.getFiles("file");
 
 		String path = mtfRequest.getSession().getServletContext().getRealPath("resources/uploadImage");
@@ -510,35 +510,36 @@ public class LoginController {
 			String id = (String) ((JSONObject) result.get("response")).get("id");
 			String name = (String) ((JSONObject) result.get("response")).get("name");
 
-			idChk = true;
+			if (biz.idCheck(id) == null) {
+				idChk = true;
 
-			int res = 0;
+				int res = 0;
 
-			Map<String, String> map = new HashMap<String, String>();
-			map.put("member_id", id);
-			System.out.println("아이디" + id);
-			String encryptPassword = passwordEncoder.encode(id);
-			System.out.println("비밀번호 암호화" + encryptPassword);
-			map.put("member_pw", encryptPassword);
-			map.put("member_name", name);
-			map.put("member_phone", "핸드폰 번호를 입력해주세요");
-			map.put("member_addr", "주소를 입력해주세요");
-			map.put("member_email", id + "@naver.com");
+				Map<String, String> map = new HashMap<String, String>();
+				map.put("member_id", id);
+				System.out.println("아이디" + id);
+				String encryptPassword = passwordEncoder.encode(id);
+				System.out.println("비밀번호 암호화" + encryptPassword);
+				map.put("member_pw", encryptPassword);
+				map.put("member_name", name);
+				map.put("member_phone", "핸드폰 번호를 입력해주세요");
+				map.put("member_addr", "주소를 입력해주세요");
+				map.put("member_email", id + "@naver.com");
 
-			res = biz.insertUser(map);
+				res = biz.insertUser(map);
+				if (res > 0) {
+					String loginId = id;
+					idChk = false;
+					System.err.println("등록~");
+					MemberDto dto = (MemberDto) user.loadUserByUsername(loginId);
+					Authentication authentication = new UsernamePasswordAuthenticationToken(dto, dto.getPassword(),
+							dto.getAuthorities());
 
-			if (res > 0) {
-				String loginId = id;
-				idChk = false;
-				System.err.println("등록~");
-				MemberDto dto = (MemberDto) user.loadUserByUsername(loginId);
-				Authentication authentication = new UsernamePasswordAuthenticationToken(dto, dto.getPassword(),
-						dto.getAuthorities());
-
-				SecurityContext securityContext = SecurityContextHolder.getContext();
-				securityContext.setAuthentication(authentication);
-				session = request.getSession(true);
-				session.setAttribute("SPRING_SECURITY_CONTEXT", securityContext);
+					SecurityContext securityContext = SecurityContextHolder.getContext();
+					securityContext.setAuthentication(authentication);
+					session = request.getSession(true);
+					session.setAttribute("SPRING_SECURITY_CONTEXT", securityContext);
+				}
 			} else { // 아이디가 있으면 로그인
 				System.err.println("로그인~");
 				String loginId = id;
@@ -605,30 +606,36 @@ public class LoginController {
 
 			String id = accessToken.getUserId() + "";
 
-			Map<String, String> map = new HashMap<String, String>();
-			map.put("member_id", id);
-			System.out.println("아이디" + id);
-			String encryptPassword = passwordEncoder.encode(id);
-			System.out.println("비밀번호 암호화" + encryptPassword);
-			map.put("member_pw", encryptPassword);
-			map.put("member_name", id);
-			map.put("member_phone", "핸드폰 번호를 입력해주세요");
-			map.put("member_addr", "주소를 입력해주세요");
-			map.put("member_email", id + "@naver.com");
-
-			res = biz.insertUser(map);
-			if (res > 0) {
+			if (biz.idCheck(id) == null) {
 				String loginId = id;
-				idChk = false;
-				System.err.println("등록~");
-				MemberDto dto = (MemberDto) user.loadUserByUsername(loginId);
-				Authentication authentication = new UsernamePasswordAuthenticationToken(dto, dto.getPassword(),
-						dto.getAuthorities());
+				idChk = true;
 
-				SecurityContext securityContext = SecurityContextHolder.getContext();
-				securityContext.setAuthentication(authentication);
-				session = request.getSession(true);
-				session.setAttribute("SPRING_SECURITY_CONTEXT", securityContext);
+				Map<String, String> map = new HashMap<String, String>();
+				map.put("member_id", id);
+				System.out.println("아이디" + id);
+				String encryptPassword = passwordEncoder.encode(id);
+				System.out.println("비밀번호 암호화" + encryptPassword);
+
+				map.put("member_pw", encryptPassword);
+				map.put("member_name", id);
+				map.put("member_phone", "핸드폰 번호를 입력해주세요");
+				map.put("member_addr", "주소를 입력해주세요");
+				map.put("member_email", id + "@naver.com");
+
+				res = biz.insertUser(map);
+
+				if (res > 0) {
+					System.err.println("등록~");
+					MemberDto dto = (MemberDto) user.loadUserByUsername(loginId);
+					Authentication authentication = new UsernamePasswordAuthenticationToken(dto, dto.getPassword(),
+							dto.getAuthorities());
+
+					SecurityContext securityContext = SecurityContextHolder.getContext();
+					securityContext.setAuthentication(authentication);
+					session = request.getSession(true);
+					session.setAttribute("SPRING_SECURITY_CONTEXT", securityContext);
+
+				}
 			} else { // 아이디가 있으면 로그인
 				System.err.println("로그인~");
 				String loginId = id;

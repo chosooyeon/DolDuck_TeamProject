@@ -10,7 +10,7 @@
 <html>
 <head>
 <meta charset="UTF-8">
-<script type="text/javascript" src="resources/js/register.js"></script>
+<script type="text/javascript" src="resources/js/join.js"></script>
 <script src="http://dmaps.daum.net/map_js_init/postcode.v2.js"></script>
 <title>Insert title here</title>
 </head>
