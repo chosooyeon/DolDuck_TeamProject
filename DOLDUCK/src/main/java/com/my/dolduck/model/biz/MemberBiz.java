@@ -27,6 +27,8 @@ public interface MemberBiz {
 	
 	public int purchaseHeart(int amount, String id);
 	public int purchaseVote(int amount, String id);
+<<<<<<< HEAD
+=======
 
 
 	
@@ -38,4 +40,5 @@ public interface MemberBiz {
 
 
 	public int deleteMember(String member_id);
+>>>>>>> 5c19f11bf179a1711c26818115c6adefcff19901
 }

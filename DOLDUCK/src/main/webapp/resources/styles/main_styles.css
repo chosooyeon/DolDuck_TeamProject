@@ -1100,7 +1100,7 @@ svg{
 	color: #6d6d6d;
 	line-height: 67px;
 }
-/*  고객센터 1:1채팅  */
+/*  Quick menu  */
 .div-button-chat, .icon-chat-circle{ width: 60px; height: 60px;}
 .icon-chat-circle{ 
 	z-index:9;
@@ -1154,9 +1154,7 @@ svg{
 	top: 40%; left: 10%;
 }
 .div-channel{
-	position: absolute;
-	top: 20%; 
-	margin: auto;
+	margin-top: 15%;
 	display: inline-block;
 	text-align : center;
 	width: 100%;
@@ -1215,32 +1213,6 @@ svg{
 #genie{background-image: url("https://yt3.ggpht.com/a/AGF-l780vGwZTRpSXT-Dqz6qVSXM_JyebeomJzC_kQ=s176-c-k-c0x00ffffff-no-rj-mo");}
 #melon{background-image: url("https://www.vpndate.com/wp-content/uploads/2017/06/Melon.png");}
 
-/*******************
-	  Chart
-*******************/
-.chart-thumbnail{ 
-	width: 80px; height: 80px; 
-	background-size:cover;
-	background-repeat: no-repeat;
-}
-.musicchart-board{
-	width: 90%;
-	display: inline-block;
-	margin-top: 25em;
-	color: black;
-}
-.button-pagination{
-	color: darkslategray;
-	width: 100%;
-	height: 50px;
-	background : #fff;
-	border: 1px solid #ccc;
-	box-shadow: 1px 2px 3px #ccc;
-	margin: 30px 0px 30px 0px;
-	text-align: center;
-	line-height: 3.5em;
-	cursor: pointer;
-}
 
 
 
@@ -1483,7 +1455,7 @@ table {
 	  Live
 *******************/
 .calendar-box{ margin-top: 8em; margin-bottom: 10em;}
-.slide_img{ height: -webkit-fill-available;}
+.slide_img{ width:30%; height: -webkit-fill-available;}
 #area-addEvent{ margin-top: 4em; margin-bottom: 4em; float: right;}
 #modified{
 	width: 381px;
@@ -1494,6 +1466,16 @@ table {
     border-radius: .25rem;
     padding: .375rem .75rem;
 }
+.carousel-control-prev{
+	left: 390px;
+}
+.carousel-control-next{
+	right: 390px;
+}
+.btn-slide{
+	position: inherit; 
+}
+
 
 /*******************
 	 정보수정

@@ -1,44 +1,42 @@
 
-$(function(){
+	var chartlist
+	var start = 0, end = 30
 	
-	$('.button-channel').on('click', () => {
-		alert('!!!!!!!!!!!!!!')
+	//Default
+	chartlist = getMusicChart('melon')
+	paginationOfList(chartlist, start, end)
+
+	$(document).on('click', '.button-channel', function(){
+		var site = $(this).children().val()
+		console.log(`Scraping Chart From.... <<${site}>>`)
+		$('tbody').html('')
+		
+		chartlist = getMusicChart(site)
+		paginationOfList(chartlist, start, end)		
+		
+	}).on('click', '.button-pagination', function(){
+		
+		if(end > 100){   
+	         end = 100
+	         $('.button-pagination').attr('disabled', 'disabled');
+	      }
+	      start = end
+	      end += 20
+	      paginationOfList(chartlist, start, end)   
 	})
-	
-})
- 
-/* 
-   var chart,
-   start = 0, end = 30
- 
-   //GET MUSIC CHART 100 FROM MELON USING AJAX
-   chart = getMusicChart()
-   //DEFAULT LIST 1~30
-   paginationOfList(chart, start, end)
-   $(document).on('click','.button-pagination', function(){
-      //If rank is over 100, end become 100 and 'button-pagination' become disabled
-      if(end > 100){   
-         end = 100
-         $('.button-pagination').attr('disabled', 'disabled');
-      }
-      start = end
-      end += 20
-      paginationOfList(chart, start, end)   
-   })  
-*/
 
 
-function getMusicChart(){
+function getMusicChart(site){
 	var token = $("meta[name='_csrf']").attr("content");
 	var header = $("meta[name='_csrf_header']").attr("content");
 
 	var list;
 
-   console.log(token, ' // ' , header); 
+   //console.log(token, ' // ' , header); 
    $.ajax({
       type : 'POST',
       url : 'musicsearch.do',
-      data : { 'site' : 'genie' },
+      data : { 'site' : site },
       dataType : 'json',
       async : false ,
       beforeSend: function( xhr ) {

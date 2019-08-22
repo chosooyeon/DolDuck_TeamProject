@@ -16,147 +16,114 @@ import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.ResponseBody;
 
-import com.my.dolduck.model.biz.MemberBiz;
-import com.my.dolduck.util.WebScrap;
+import com.my.dolduck.model.biz.VoteBiz;
 import com.my.dolduck.model.dto.VoteCrawlingDto;
-import com.my.dolduck.util.VoteCrawling;
 import com.my.dolduck.model.dto.VoteDto;
+import com.my.dolduck.util.WebScrap;
 
 @Controller
 public class VoteController {
-	private int voteNumber;
-	private String starName;
-	private int page;
-	
+
 	@Autowired
-	private MemberBiz biz;
-	private VoteCrawling voteCrawling = new VoteCrawling();
+	private VoteBiz biz;
+	private WebScrap crawling = new WebScrap();
 	VoteDto dto = new VoteDto();
-	
+
 	/************************* Vote 게시판 ************************************/
 	@RequestMapping("vote.do")
 	public String vote() {
-		return "vote/vote";
+		return "vote/vote_main";
 	}
-	
-	@RequestMapping("voteCrawling.do")
+
+	@RequestMapping("vote-crawling.do")
 	@ResponseBody
-	public JSONObject voteCrawling(int page) {
+	public JSONObject voteCrawling(String item) {
 		System.out.println();
+		System.out.println("item:"+item);
 		List<VoteCrawlingDto> list = new ArrayList<VoteCrawlingDto>();
-		
-		list = voteCrawling.getVoteChart(page);
-		
-		//JSON타입으로 파싱
+
+		list = crawling.getVoteChart(item);
+		// JSON타입으로 파싱
 		JSONObject starChart = new JSONObject();
 		JSONArray starArr = new JSONArray();
 
-		for(VoteCrawlingDto starOne : list) {
+		for (VoteCrawlingDto starOne : list) {
 			JSONObject star = new JSONObject();
-			
+
 			star.put("name", starOne.getName());
 			star.put("img", starOne.getImg());
-			
+
 			starArr.add(star);
 		}
-	////Realtime 시간얻기
-			long time = System.currentTimeMillis();
-			SimpleDateFormat dayTime = new SimpleDateFormat("yyyy-MM-dd hh:mm:ss");
-			String str = dayTime.format(new Date(time));
-			starChart.put("getTime", str);
+		// real time 얻기
+		long time = System.currentTimeMillis();
+		SimpleDateFormat dayTime = new SimpleDateFormat("yyyy-MM-dd hh:mm:ss");
+		String str = dayTime.format(new Date(time));
+		starChart.put("getTime", str);
 		starChart.put("starChart", starArr);
-		System.out.println("starChart:"+starChart);
+		System.out.println("starChart:" + starChart);
 		return starChart;
 	}
-	
-	@RequestMapping("votelike.do")
+
+	// pick 버튼 클릭시 VoteDto에 starname, item 저장 + 로그인 체크
+	@RequestMapping("vote-pick.do")
 	@ResponseBody
-	public JSONObject voteLike(String starname, int page, Principal principal) {
+	public JSONObject votePick(String starname, String item, Principal principal) {
 		System.out.println();
-		this.starName = starname;
-		this.page = page;
-		
 		dto.setStarName(starname);
-		dto.setPage(page);
-		
-		System.out.println(" "+dto.getPage()+" "+dto.getStarName());
-		
-//		Object principal = SecurityContextHolder.getContext().getAuthentication().getPrincipal();
-//		UserDetails userDetails = (UserDetails)principal;
-		System.out.println("principal:"+principal);
-//		UserDetails userDetails = (UserDetails)principal;
-//		String username = userDetails.getUsername();
-		
-		JSONObject starChart = new JSONObject();
-		starChart.put("name", starname);
-		
-//		System.out.println("userDetails:"+userDetails);
-		
-		if(principal == null) {
-			starChart.put("loginState", "null");			
+		dto.setItem(item);
+
+		JSONObject loginChk = new JSONObject();
+		if (principal == null) {
+			loginChk.put("loginState", "null");
 		}
-		
-		System.out.println("loginState:"+starChart.get("loginState"));
-		
-		System.out.println("page:"+page);
-		System.out.println("starname:"+starname);
-		System.out.println(starChart);
-		return starChart;
+		return loginChk;
 	}
-	
-	@RequestMapping("votepopup.do")
+
+	// 로그인상태일경우 투표수 선택하는 팝업창 띄우기
+	@RequestMapping("vote-popup.do")
 	public String votePopup() {
-		return "vote/votepopup";
+		return "vote/vote_popup";
 	}
-	
-	@RequestMapping("votenumber.do")
+
+	@RequestMapping("vote-numberchk.do")
 	@ResponseBody
-	public JSONObject voteNumber(int voteNumber) {
-		JSONObject obj = new JSONObject();
+	public JSONObject voteNumberChk(int voteNumber) {
+		JSONObject voteNumberChk = new JSONObject();
 		dto.setVoteNumber(voteNumber);
-		System.out.println("votenumber:"+dto.getVoteNumber());
-		this.voteNumber = voteNumber;
-		
+
 		Object principal = SecurityContextHolder.getContext().getAuthentication().getPrincipal();
-		UserDetails userDetails = (UserDetails)principal;
-		
+		UserDetails userDetails = (UserDetails) principal;
 		String member_id = userDetails.getUsername();
-		
-		if(biz.selectMemberVote(member_id) < voteNumber) {
-			//보유투표권수<투표수 이면 부족메세지출력
-			obj.put("voteNeed", "need");
-		}else {
+
+		if (biz.selectMemberVote(member_id) < voteNumber) {
+			// 보유투표권수 < 투표수 이면 부족메세지출력
+			voteNumberChk.put("voteNeed", "need");
+		} else {
 			biz.updateMemberVote(member_id, voteNumber);
 		}
-		
-		obj.put("voteNum", voteNumber);
-		obj.put("starName", starName);
-		obj.put("page", page);
-		
-		System.out.println(obj.get("starName")+"  "+obj.get("voteNum"));
-		return obj;
+//		obj.put("voteNum", dto.getVoteNumber());
+//		obj.put("starName", dto.getStarName());
+//		obj.put("item", dto.getItem());
+
+		return voteNumberChk;
 	}
-	
-	@RequestMapping("voteresult.do")
+
+	// 투표 성공시 결과창 출력
+	@RequestMapping("vote-result.do")
 	public String voteResult(Model model) {
-		System.out.println(voteNumber+starName+page);
-		System.out.println(dto.getStarName()+dto.getPage()+dto.getVoteNumber());
-		model.addAttribute("starName", starName);
-		model.addAttribute("voteNumber", voteNumber);
-		System.out.println("select:"+biz.selectOneVote(page, starName));
-		if(biz.selectOneVote(page, starName) == null) {
-			biz.insertVote(new VoteDto(page,starName,voteNumber));
+		System.out.println(dto.getStarName() + dto.getItem() + dto.getVoteNumber());
+		model.addAttribute("starName", dto.getStarName());
+		model.addAttribute("voteNumber", dto.getVoteNumber());
+
+		// 투표한후보가 0표이상 가지고있을시 update, 아닐시 insert
+		if (biz.selectOneVote(dto.getItem(), dto.getStarName()) == null) {
+			biz.insertVote(new VoteDto(dto.getItem(), dto.getStarName(), dto.getVoteNumber()));
 			System.out.println("insert");
-		} else if(biz.selectOneVote(page, starName).getStarName() != null){
-			biz.updateVote(new VoteDto(page,starName,voteNumber));
+		} else if (biz.selectOneVote(dto.getItem(), dto.getStarName()).getStarName() != null) {
+			biz.updateVote(new VoteDto(dto.getItem(), dto.getStarName(), dto.getVoteNumber()));
 			System.out.println("update");
 		}
-		return "vote/voteresult";
-	}
-	
-	@RequestMapping("votesave.do")
-	@ResponseBody
-	public void voteSave() {
-		System.out.println("votesave1");
+		return "vote/vote_result";
 	}
 }

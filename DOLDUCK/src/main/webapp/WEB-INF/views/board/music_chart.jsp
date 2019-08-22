@@ -16,32 +16,34 @@
    <!-- Header -->
     <%@include file="/WEB-INF/views/header.jsp" %>
    
-    <!-- Navigator Icon -->
-    <div class="div-channel">
-      <!-- Melon -->
-		<div class="div-button">
-			<div class="button-channel" id="melon">
-				<input type="hidden" class="site" value="melon" >
+   <div class="container ">
+	    <!-- Navigator Icon -->
+	    <div class="div-channel">
+	      <!-- Melon -->
+			<div class="div-button">
+				<div class="button-channel" id="melon">
+					<input type="hidden" class="site" value="melon" >
+				</div>
+				<div class="label-channel">Melon</div>
 			</div>
-			<div class="label-channel">Melon</div>
-		</div>
-      <!-- Bugs-->
-		<div class="div-button"> 
-			<div class="button-channel" id="bugs">
-				<input type="hidden" class="site" value="bugs">
+	      <!-- Bugs-->
+			<div class="div-button"> 
+				<div class="button-channel" id="bugs">
+					<input type="hidden" class="site" value="bugs">
+				</div>
+				<div class="label-channel">Bugs</div>
 			</div>
-			<div class="label-channel">Bugs</div>
-		</div>
-      <!--  Genie 뮤직  -->
-		<div class="div-button">
-			<div class="button-channel" id="genie">
-				<input type="hidden" class="site" value="genie">
+	      <!--  Genie 뮤직  -->
+			<div class="div-button">
+				<div class="button-channel" id="genie">
+					<input type="hidden" class="site" value="genie">
+				</div>
+				 <div class="label-channel">Genie뮤직</div>
 			</div>
-			 <div class="label-channel">Genie뮤직</div>
 		</div>
 	</div>
-
-   <div class="container ">
+	<div class="container">
+		<!-- Chart Area -->
       <div class="center musicchart-board">   
          <p>검색시간 : <label class="label-search"></label><p>
          <table class="table ">
@@ -62,8 +64,8 @@
    </div>
    
 <!-- jQuery library -->
-<script type="text/javascript" src="https://code.jquery.com/jquery-3.4.1.js"></script>
 <script src="//ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
+<script src="https://code.jquery.com/jquery-3.4.1.min.js" type="text/javascript"></script>
 <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js"></script>
 <script src="resources/styles/bootstrap-4.1.2/bootstrap.min.js"></script>
 <script src="resources/js/chart.js" type="text/javascript"></script>

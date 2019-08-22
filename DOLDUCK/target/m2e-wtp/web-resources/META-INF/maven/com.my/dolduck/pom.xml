@@ -119,13 +119,7 @@
 			<artifactId>jstl</artifactId>
 			<version>1.2</version>
 		</dependency>
-				
-		<dependency>
-		    <groupId>org.apache.tomcat.embed</groupId>
-		    <artifactId>tomcat-embed-jasper</artifactId>
-		    <version>9.0.24</version>
-		</dependency>
-
+    
 		<!-- Test -->
 		<dependency>
 			<groupId>junit</groupId>

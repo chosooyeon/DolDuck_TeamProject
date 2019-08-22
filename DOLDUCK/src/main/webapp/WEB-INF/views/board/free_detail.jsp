@@ -16,8 +16,12 @@
 <%@ include file="../header.jsp" %>
 
 	<div class="container freeboard">
-	<h1>상제 보기</h1>
-	<table border="1">
+
+		<div class="center">
+	<h1 class="text-center">상세 보기</h1>
+
+	<table class="table">
+
 		<tr>
 			<th>글쓴이</th>
 			<td>${one.freeboard_id }</td>
@@ -92,6 +96,7 @@
 	</tr>
 	</table>
 	</form>
+	</div>
 </div>
 </body>
 </html>
