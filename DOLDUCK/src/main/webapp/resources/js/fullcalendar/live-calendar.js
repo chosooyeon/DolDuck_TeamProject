@@ -53,19 +53,4 @@
 		return list;
 	}
 	
-	/*  관리자용 '일정추가 버튼' */
-	var btnAddevent = document.getElementById('btn-addevent')
-	
-	btnAddevent.addEventListener('click', function(){
-		window.open('live-addpopup.do', 'Add Live Schedules', 'width=400, height=500, menubar=no, status=no, toolbar=no, top=10%, left=50%')
-	})
-	
-	
-	
-	
-	
-	
-	
-	
-	
 	

@@ -39,9 +39,6 @@ public class HomeController {
 	@Autowired
 	private MemberBiz biz;
 	
-	@Autowired
-	private BroadcastBiz b_biz;
-	
 	VoteDto dto = new VoteDto();
 	private WebScrap crawling = new WebScrap();
 	
@@ -78,7 +75,7 @@ public class HomeController {
 	/************************** Music Chart 寃뚯떆�뙋 ***************************/
 	@RequestMapping("chart.do")
 	public String showMusicChart() {
-		return "board/music_chart";
+		return "utils/music_chart";
 	}
 	
 	
@@ -126,73 +123,12 @@ public class HomeController {
 	}
 
 	
-	/************************** Youtube 寃뚯떆�뙋 ***************************/
+	/************************** Youtube 게시판  ***************************/
 	@RequestMapping("youtube.do")
 	public String showYoutubeBoard() {
-		return "board/youtube";
+		return "utils/youtube";
 	}
 	
-	/************************** Live 寃뚯떆�뙋 ***************************/
-	@RequestMapping("live-home.do")
-	public String liveBoard() {
-		return "live/live-home";
-	}
-	
-	@RequestMapping("live-schedule.do")
-	public String liveSchedule() {
-		return "live/live-schedule";
-	}
-	
-	@RequestMapping("live-onair.do")
-	public String liveOnair() {
-		return "live/live-onair";
-	}
-	
-	@RequestMapping("live-channel.do")
-	public String liveChannel() {
-		return "live/live-channel";
-	}
-	
-	@RequestMapping("/getcalevents.do")
-	@ResponseBody
-	public JSONObject getCalendarEvents() {
-		
-		List<BroadcastDto> list = b_biz.selectList();
-		
-		JSONObject events = new JSONObject();
-		JSONArray eventArr = new JSONArray();
-		
-		for(BroadcastDto dto : list) {
-			JSONObject event = new JSONObject();
-			String[] DateTime = dto.getBroadcast_date().split(" ");
-			
-			event.put("id", dto.getBroadcast_seq());
-			event.put("title", dto.getBroadcast_caster() + "-" + dto.getBroadcast_title());
-			event.put("start", DateTime[0]);
-			event.put("end", DateTime[0]);
-			event.put("allDay", false);
-
-			eventArr.add(event);
-		}
-		events.put("list", eventArr);
-		
-		
-		return events;
-	}
-	
-	private int parseInt(char charAt) {
-		// TODO Auto-generated method stub
-		return 0;
-	}
-	@RequestMapping("live-addpopup.do")
-	public String popupLiveSchedule() {
-		return "live/live-add-schedule";
-	}
-	
-	@RequestMapping( value = "addevent.do", method={RequestMethod.POST})
-	public String addEvent(String caster, String live_date, String live_time) {
-		return "";
-	}
 	
 	/************************* market ************************************/
 	@RequestMapping("heartShop.do")

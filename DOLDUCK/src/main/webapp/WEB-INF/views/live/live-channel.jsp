@@ -10,11 +10,10 @@
     <!-- Header -->
     <%@include file="../header.jsp" %>
     <!-- Slide Caresel  -->
-    <div id="live-slide">
-        슬라이드영역
-    </div>
+    <%@include file="/WEB-INF/views/live/liveroom-slide.jsp" %>
+
+    <!-- Tab Menu -->
     <div id="main" class="container nav-tab-menu">
-        <!-- Tab Menu -->
     	<div class="col-lg-12 offset-lg-4 "> 
             <nav class="nav">
                <ul class="nav nav-tabs">
@@ -25,16 +24,27 @@
                </ul>
             </nav>
          </div>
-         <!-- Content -->
-         <div class="center live-content">
-        </div>
-
     </div>
+    
+    <!-- Title & Banner -->
+    <div class="container">
+    	<div class="live-banner"> 
+         	<h4>아티스트 채널보기</h4>
+			<h5>관심있는 아티스트의 지난 동영상을 챙겨보세요!</h5>
+         </div>
+    </div>
+    
+    <!--  -->
+    <div class="container">
+    	<div class="channel-list"> 
+   	 		아티스트 채널목록 
+    	</div>
+    </div>
+    
     
     <!-- Footer -->
     <%@include file="/WEB-INF/views/footer.jsp" %>
-    
     <script src="https://code.jquery.com/jquery-3.4.1.min.js"></script>
-    <script src="resources/js/live.js"></script>
+    <script src="resources/js/utils/live.js"></script>
 </body>
 </html>
