@@ -30,6 +30,8 @@ $(document).ready(function() {
 	})
 })
 
+
+
 function handleLiveBoard(){
 	$.ajax({
 		type : 'POST', 

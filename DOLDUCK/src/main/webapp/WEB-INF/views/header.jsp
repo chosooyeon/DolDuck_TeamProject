@@ -126,8 +126,8 @@ if(principal != null && principal instanceof MemberDto){
 						<li><a href="youtube.do">You Tube</a></li>
 						<li><a href="vote.do">Vote</a></li>
 						<li><a href="chart.do">Music Chart</a></li>
-						<li><a href="#">LIVE</a></li>
-						<li><a href="#">Board</a></li>
+						<li><a href="live-home.do">LIVE</a></li>
+						<li><a href="free_list.do">Board</a></li>
 						<li><a href="heartShop.do">heartShop</a></li>
 						<li><a href="Goodies.do">Goodies</a></li>
 					</ul>
@@ -138,7 +138,7 @@ if(principal != null && principal instanceof MemberDto){
 		<!-- Quick Menu -->
 	<div class="container">
   <div class="dropup icon-chat-circle">
-   <div class="dropdown-toggle " data-toggle="dropdown"><i class="fas fa-bars fa-2x" style="color: white; z-index: 20;"></i></div>
+   <div class="dropdown-toggle quick" data-toggle="dropdown"><i class="fas fa-bars fa-2x" style="color: white; z-index: 20;"></i></div>
     <div class="dropdown-menu">
       <a class="dropdown-item icon-chat-circle" href="live-onair.do"><i class="fas fa-broadcast-tower fa-2x" style="color: white; z-index: 20;"></i></a>
       <a class="dropdown-item icon-chat-circle" href="#"><i class="fas fa-atlas fa-2x" style="color: white; z-index: 20;"></i></a>
@@ -147,6 +147,7 @@ if(principal != null && principal instanceof MemberDto){
     </div>
   </div>
 </div>
+
 </body>
 <script type="text/javascript" src="https://code.jquery.com/jquery-3.4.1.min.js"></script>
 <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js"></script>
