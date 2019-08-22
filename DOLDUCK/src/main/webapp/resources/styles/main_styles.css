@@ -1100,7 +1100,7 @@ svg{
 	color: #6d6d6d;
 	line-height: 67px;
 }
-/*  고객센터 1:1채팅  */
+/*  Quick menu  */
 .div-button-chat, .icon-chat-circle{ width: 60px; height: 60px;}
 .icon-chat-circle{ 
 	z-index:9;
@@ -1478,13 +1478,6 @@ table {
 /*******************
 	 마이페이지
 *******************/
-
-/*******************
-	  Live
-*******************/
-.calendar-box{ margin-top: 8em; margin-bottom: 10em;}
-.slide_img{ height: -webkit-fill-available;}
-#area-addEvent{ margin-top: 4em; margin-bottom: 4em; float: right;}
 #modified{
 	width: 381px;
     margin: 3px 1px 0px 1px;
@@ -1494,6 +1487,24 @@ table {
     border-radius: .25rem;
     padding: .375rem .75rem;
 }
+/*******************
+	  Live
+*******************/
+.calendar-box{ margin-top: 8em; margin-bottom: 10em;}
+.slide_img{ width:100%; height: -webkit-fill-available;}
+#area-addEvent{ margin-top: 4em; margin-bottom: 4em; float: right;}
+
+.carousel-control-prev{
+	left: 390px;
+}
+.carousel-control-next{
+	right: 390px;
+}
+
+.btn-slide{
+	position: initial; 
+}
+
 
 /*******************
 	 정보수정
@@ -1546,4 +1557,9 @@ table {
 	float: right;
 	width: 53px;
 	margin-top: 44px;
+}
+.comment_tadle{
+    background-color: #f9f9f9;
+    width: -webkit-fill-available;
+    padding: 7px 0 0 22px;
 }
