@@ -3,6 +3,7 @@ package com.my.dolduck.model.dto;
 public class MemberVoteDto {
 	private String member_id;
 	private int voteNumber;
+	
 	public String getMember_id() {
 		return member_id;
 	}

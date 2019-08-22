@@ -9,7 +9,7 @@ import org.jsoup.nodes.Document;
 import org.jsoup.nodes.Element;
 import org.jsoup.select.Elements;
 
-import com.my.dolduck.model.dto.StarDto;
+import com.my.dolduck.model.dto.VoteCrawlingDto;
 
 public class WebScrap{
 
@@ -112,30 +112,39 @@ public class WebScrap{
 		return chart;
 	}
 	
-	public List<StarDto> getStarChart(int page) {
-
-		List<StarDto> starChart = new ArrayList<StarDto>();
-		// String url = "https://www.melon.com/chart/index.htm";
+	public List<VoteCrawlingDto> getVoteChart(String item) {
+		List<VoteCrawlingDto> voteChart = new ArrayList<VoteCrawlingDto>();
+		int page = 0;
+		System.out.println("webitem:"+item);
+		// item -> page 변환 case문
+		switch(item) {
+		case "girl-group": page = 0; break;
+		case "girl-idol": page = 1; break;
+		case "new-idol": page = 2; break;
+		case "star-idol": page = 3; break;
+		case "boy-group": page = 4; break;
+		case "boy-idol": page = 5; break;
+		}
+		System.out.println("page:"+page);
 		try {
-			// boyGroup
 			Document doc = Jsoup.connect("http://idolpick.donga.com/poll.php?p="+page).get();
 			Elements rows = doc.select("li");
 
 			for (int i = 1; i < rows.size(); ++i) {
 				Element ele = rows.get(i);
-				StarDto star = new StarDto();
+				VoteCrawlingDto voteCrawlingDto = new VoteCrawlingDto();
 
 				if (ele.select("img").attr("src") != "" && ele.select("img").attr("alt") != "") {
-					star.setName(ele.select("img").attr("alt"));
-					star.setImg(ele.select("img").attr("src"));
+					voteCrawlingDto.setName(ele.select("img").attr("alt"));
+					voteCrawlingDto.setImg(ele.select("img").attr("src"));
 
-					starChart.add(star);
+					voteChart.add(voteCrawlingDto);
 				}
 			}
 		} catch (IOException e) {
-			System.err.println("JSoup 크롤링 에러");
+			System.err.println("JSoup 크롤링 에러 (VoteCrawling.java)");
 		}
-		return starChart;
+		return voteChart;
 	}
 
 }

@@ -89,6 +89,14 @@ public class MemberBizImpl implements MemberBiz {
 		return dao.purchaseVote(amount, id);
 	}
 
+<<<<<<< HEAD
+	
+	
+//	@Override
+//	public MemberDto login(String id, String pw) {
+//		return dao.login(id, pw);
+//	}
+=======
 	public int insertVote(VoteDto dto) {
 		return dao.insertVote(dto);
 	}
@@ -112,6 +120,7 @@ public class MemberBizImpl implements MemberBiz {
 	public int updateMemberVote(String member_id, int voteNumber) {
 		return dao.updateMemberVote(member_id, voteNumber);
 	}
+>>>>>>> 5c19f11bf179a1711c26818115c6adefcff19901
 
 	public int updateRole(MemberDto dto) {
 		return dao.updateRole(dto);

@@ -47,9 +47,15 @@
          logout-url="/member/logout.do"
          logout-success-url="/member/login.do"
       />
+<<<<<<< HEAD
+      
+<!--   <csrf disabled="true"/> -->
+   
+=======
 
  	  <csrf disabled="false"/> 
 
+>>>>>>> 5c19f11bf179a1711c26818115c6adefcff19901
    </http>
    
    <!-- 권한없을 때, 로그인 성공했을 때, 로그인 실패했을 때 -->
