@@ -126,8 +126,8 @@ if(principal != null && principal instanceof MemberDto){
 						<li><a href="youtube.do">You Tube</a></li>
 						<li><a href="vote.do">Vote</a></li>
 						<li><a href="chart.do">Music Chart</a></li>
-						<li><a href="#">LIVE</a></li>
-						<li><a href="#">Board</a></li>
+						<li><a href="live-home.do">LIVE</a></li>
+						<li><a href="free_list.do">Board</a></li>
 						<li><a href="heartShop.do">heartShop</a></li>
 						<li><a href="Goodies.do">Goodies</a></li>
 					</ul>
@@ -148,13 +148,6 @@ if(principal != null && principal instanceof MemberDto){
   </div>
 </div>
 
-<!-- <script type="text/javascript">
-
-	
-$( ".quick" ).click(function() {
-	  $( ".dropdown-menu" ).slideToggle( "slow" );
-	});
-</script> -->
 </body>
 <script type="text/javascript" src="https://code.jquery.com/jquery-3.4.1.min.js"></script>
 <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js"></script>

@@ -1478,13 +1478,6 @@ table {
 /*******************
 	 마이페이지
 *******************/
-
-/*******************
-	  Live
-*******************/
-.calendar-box{ margin-top: 8em; margin-bottom: 10em;}
-.slide_img{ width:30%; height: -webkit-fill-available;}
-#area-addEvent{ margin-top: 4em; margin-bottom: 4em; float: right;}
 #modified{
 	width: 381px;
     margin: 3px 1px 0px 1px;
@@ -1494,14 +1487,22 @@ table {
     border-radius: .25rem;
     padding: .375rem .75rem;
 }
+/*******************
+	  Live
+*******************/
+.calendar-box{ margin-top: 8em; margin-bottom: 10em;}
+.slide_img{ width:100%; height: -webkit-fill-available;}
+#area-addEvent{ margin-top: 4em; margin-bottom: 4em; float: right;}
+
 .carousel-control-prev{
 	left: 390px;
 }
 .carousel-control-next{
 	right: 390px;
 }
+
 .btn-slide{
-	position: inherit; 
+	position: initial; 
 }
 
 
@@ -1556,4 +1557,9 @@ table {
 	float: right;
 	width: 53px;
 	margin-top: 44px;
+}
+.comment_tadle{
+    background-color: #f9f9f9;
+    width: -webkit-fill-available;
+    padding: 7px 0 0 22px;
 }

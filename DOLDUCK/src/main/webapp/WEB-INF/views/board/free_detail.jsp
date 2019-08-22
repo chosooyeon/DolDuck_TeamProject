@@ -42,7 +42,7 @@
 		</tr>
 	</table>
 	<br>
-	<table border="1">
+	<table class="table">
 		<c:forEach items="${commList }" var="comm">
 	<tr>
 		<td>
@@ -76,13 +76,13 @@
 	댓글쓰기
 	<form action="freeboard_comment_insert.do" method="post">
 		<input type="hidden" name="freeboard_num" value="${one.freeboard_num }">
-	<table>
+	<table class="comment_tadle">
 		<tr>
 			<td id="comment_textarea">
-				<textarea rows="3"cols="60" name="freeboard_comment_content"></textarea>
+				<textarea rows="3"cols="60" name="freeboard_comment_content" style="resize: none;border-style: solid;"></textarea>
 			</td>
 			<td id="comment_input_id">
-				<input type="text" name="freeboard_id">	
+				<input type="hidden" name="freeboard_id">	
 			</td>
 		<tr>
 			<td id="comment_submit">
