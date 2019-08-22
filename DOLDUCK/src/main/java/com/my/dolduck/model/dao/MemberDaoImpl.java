@@ -296,10 +296,7 @@ public class MemberDaoImpl implements MemberDao {
 	public int updateRole(MemberDto dto) {
 		int res = 0;
 		res = sqlSession.update(namespace+"updateRole",dto);
-			
-			if(res>0) {
-				sqlSession.commit();
-			}
+		
 		return res;
 	}
 	
@@ -308,15 +305,15 @@ public class MemberDaoImpl implements MemberDao {
 		int res=0;
 		try {
 			res = sqlSession.update(namespace+"deleteMember",member_id);
-				if(res>0) {
-					sqlSession.commit();
-				}else {
-					sqlSession.rollback();
-				}
 		} catch (Exception e) {
 			e.printStackTrace();
 			System.err.println("에러입니다");
 		}
 		return res;
+	}
+
+	@Override
+	public SelectDto selectId(String id) {
+		return sqlSession.selectOne(namespace+"selectId", id);
 	}
 }

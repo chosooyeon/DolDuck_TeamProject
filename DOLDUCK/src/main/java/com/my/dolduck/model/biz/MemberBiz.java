@@ -38,4 +38,5 @@ public interface MemberBiz {
 
 
 	public int deleteMember(String member_id);
+	public SelectDto selectId(String id);
 }
