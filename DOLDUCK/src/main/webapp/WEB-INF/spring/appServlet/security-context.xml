@@ -47,12 +47,11 @@
          logout-url="/member/logout.do"
          logout-success-url="/member/login.do"
       />
-      
-<<<<<<< HEAD
+
 	<csrf disabled="true"/>
-=======
+
    <!-- <csrf disabled="true"/> -->
->>>>>>> 90219b2927a2dd579bed33599a634421a82f45b1
+
    
    </http>
    

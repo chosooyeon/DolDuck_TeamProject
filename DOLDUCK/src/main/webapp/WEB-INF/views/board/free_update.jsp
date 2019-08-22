@@ -49,7 +49,7 @@ $(document).ready(function() {
 			<tr>
 				<th>내용</th>
 				<td colspan="3"><textarea id="summernote"rows="10" cols="60" name="freeboard_content">${one.freeboard_content }</textarea></td>
-			</tr> 
+			</tr>
 			<tr>
 				<td colspan="4" align="right">
 				<input type="button" onclick="location.href='free_list.do'" value="취소"> 

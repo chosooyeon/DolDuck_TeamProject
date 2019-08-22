@@ -65,11 +65,7 @@ public class FreeBoardController {
 		} else {
 			return "redirect:free_insert.do";
 		}
-<<<<<<< HEAD
-		return "redirect:free_insertform.do";
-=======
-		
->>>>>>> 90219b2927a2dd579bed33599a634421a82f45b1
+
 	}
 
 	// 게시글 자세히보기 & 댓글 리스트
@@ -173,4 +169,16 @@ public class FreeBoardController {
 		}
 		return "redirect:free_detail.do?freeboard_num=" + freeboard_num;
 	}
+	
+	// =====대댓글 입력
+	@RequestMapping("freeboard_co_comment_insert")
+	public String freeboard_co_comment_insert(@ModelAttribute FreeboardCommentDto dto){
+		int res = bizComm.freeboard_co_comment_insert(dto);
+		
+		if(res > 0) {
+			return "redirect:free_detail.do?freeboard_num=" + dto.getFreeboard_num();
+		}
+	return "redirect:free_detail.do?freeboard_num=" + dto.getFreeboard_num();
+	}
+	
 }

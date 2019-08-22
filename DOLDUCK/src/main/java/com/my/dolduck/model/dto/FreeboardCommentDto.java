@@ -6,7 +6,9 @@ public class FreeboardCommentDto {
 
 	private int freeboard_num;
 	private int freeboard_comment_num;
-	private int freeboard_co_comment_num;
+	private int freeboard_groupseq;
+	private int freeboard_groupno;
+	private int freeboard_titletap;
 	private String freeboard_comment_content;
 	private Date freeboard_comment_regdate;
 	private String freeboard_id;
@@ -15,11 +17,14 @@ public class FreeboardCommentDto {
 
 	}
 
-	public FreeboardCommentDto(int freeboard_num, int freeboard_comment_num,int freeboard_co_comment_num ,String freeboard_comment_content,
+	public FreeboardCommentDto(int freeboard_num, int freeboard_comment_num,int freeboard_groupseq,
+			int freeboard_groupno, int freeboard_titletap,String freeboard_comment_content,
 			Date freeboard_commnet_regdate, String freeboard_id) {
 		this.freeboard_num = freeboard_num;
 		this.freeboard_comment_num = freeboard_comment_num;
-		this.setFreeboard_co_comment_num(freeboard_co_comment_num);
+		this.freeboard_groupseq = freeboard_groupseq;
+		this.freeboard_groupno = freeboard_groupno;
+		this.freeboard_titletap = freeboard_titletap;
 		this.freeboard_comment_content = freeboard_comment_content;
 		this.freeboard_comment_regdate = freeboard_commnet_regdate;
 		this.freeboard_id = freeboard_id;
@@ -65,12 +70,27 @@ public class FreeboardCommentDto {
 		this.freeboard_id = freeboard_id;
 	}
 
-	public int getFreeboard_co_comment_num() {
-		return freeboard_co_comment_num;
+	public int getFreeboard_groupseq() {
+		return freeboard_groupseq;
 	}
 
-	public void setFreeboard_co_comment_num(int freeboard_co_comment_num) {
-		this.freeboard_co_comment_num = freeboard_co_comment_num;
+	public void setFreeboard_groupseq(int freeboard_groupseq) {
+		this.freeboard_groupseq = freeboard_groupseq;
 	}
 
+	public int getFreeboard_groupno() {
+		return freeboard_groupno;
+	}
+
+	public void setFreeboard_groupno(int freeboard_groupno) {
+		this.freeboard_groupno = freeboard_groupno;
+	}
+
+	public int getFreeboard_titletap() {
+		return freeboard_titletap;
+	}
+
+	public void setFreeboard_titletap(int freeboard_titletap) {
+		this.freeboard_titletap = freeboard_titletap;
+	}
 }

@@ -13,21 +13,30 @@ $(function(){
 						<input type="text" name="co-comment-content" >
                   	</td>
                   	<td>
-                     	<input type="text" name="co-comment-id" >
+                     	<input type="text" id="co-comment-id" >
                   	</td>
                   	<td>
                      	댓글작성시간 : ${comm_reg}
                   	</td>
-                       <td id=reply_reply_btn>
-                           <input type="button" id="co-comment-btn" value="작성" onclick="co_comment_run(${comm_num});">
-                        </td>
-                        <td>
-                           <input type="button" id="co-comment-cancle-btn" value="취소">
-                        </td>
-                     </tr>`
+                    <td id=reply_reply_btn>
+                         <input type="button" id="co-comment-btn" value="작성" onclick="co_comment_run(${comm_num});">
+                    </td>
+                    <td>
+                         <input type="button" id="co-comment-cancle-btn" onclick="history.go();" value="취소">
+                    </td>
+                   </tr>`
 		$(this).parent().parent().after(ele);		
 	})
 })
+
+function co_comment_run(num){
+
+	var co_comment_content = document.getElementsByName("co-comment-content")[0].value;
+	var co_comment_id = document.getElementById("co-comment-id").value;
+
+	alert(co_comment_content)
+	alert(co_comment_id)
+}
 
 
 
