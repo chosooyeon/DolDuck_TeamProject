@@ -1146,9 +1146,7 @@ svg{
 	top: 40%; left: 10%;
 }
 .div-channel{
-	position: absolute;
-	top: 20%; 
-	margin: auto;
+	margin-top: 15%;
 	display: inline-block;
 	text-align : center;
 	width: 100%;
@@ -1207,32 +1205,6 @@ svg{
 #genie{background-image: url("https://yt3.ggpht.com/a/AGF-l780vGwZTRpSXT-Dqz6qVSXM_JyebeomJzC_kQ=s176-c-k-c0x00ffffff-no-rj-mo");}
 #melon{background-image: url("https://www.vpndate.com/wp-content/uploads/2017/06/Melon.png");}
 
-/*******************
-	  Chart
-*******************/
-.chart-thumbnail{ 
-	width: 80px; height: 80px; 
-	background-size:cover;
-	background-repeat: no-repeat;
-}
-.musicchart-board{
-	width: 90%;
-	display: inline-block;
-	margin-top: 25em;
-	color: black;
-}
-.button-pagination{
-	color: darkslategray;
-	width: 100%;
-	height: 50px;
-	background : #fff;
-	border: 1px solid #ccc;
-	box-shadow: 1px 2px 3px #ccc;
-	margin: 30px 0px 30px 0px;
-	text-align: center;
-	line-height: 3.5em;
-	cursor: pointer;
-}
 
 
 
