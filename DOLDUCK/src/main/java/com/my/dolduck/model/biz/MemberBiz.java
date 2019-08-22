@@ -35,4 +35,7 @@ public interface MemberBiz {
 	public int updateVote(VoteDto voteDto);
 	public int selectMemberVote(String member_id);
 	public int updateMemberVote(String member_id, int voteNumber);
+
+
+	public int deleteMember(String member_id);
 }

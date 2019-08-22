@@ -190,12 +190,12 @@
 	</section>
 	<%@include file="footer.jsp"%>
 
-	<script type="http://platform.twitter.com/anywhere.js?id=IXw8Box7vGU37vCslSZRbw&v=1" type="text/javascript"></script>
+	<!-- <script type="http://platform.twitter.com/anywhere.js?id=IXw8Box7vGU37vCslSZRbw&v=1" type="text/javascript"></script>
 	<script type="text/javascript">
 		twttr.anywhere(function(T){
 			T("article").linkifyUsers();
 		});
-	</script>
+	</script> -->
 
 	<script type="text/javascript"
 		src="https://code.jquery.com/jquery-3.4.1.min.js"></script>

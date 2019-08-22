@@ -28,6 +28,13 @@
 	font-family: 'Futura';
 	src: url('../fonts/FuturaLT-Book.ttf')  format('truetype');
 }
+@font-face 
+{ 
+	font-family: 'NIXGONM-Vb'; 
+	src: url('https://cdn.jsdelivr.net/gh/projectnoonnu/noonfonts_six@1.2/NIXGONM-Vb.woff') format('woff'); 
+	font-weight: normal; 
+	font-style: normal; 
+}
 
 /*********************************
 2. Body and some general stuff
@@ -43,7 +50,8 @@
 }
 body
 {
-	font-family: 'Futura', sans-serif;
+	width: 100%;
+	font-family: 'Futura', 'NIXGONM-Vb';
 	font-size: 14px;
 	font-weight: 400;
 	background: #FFFFFF;
@@ -62,7 +70,7 @@ ul
 	list-style: none;
 	margin-bottom: 0px;
 }
-p
+p, li
 {
 	margin: 0;
     padding: 0;
@@ -135,7 +143,7 @@ h4{font-size: 18px;}
 h5{font-size: 14px;}
 h1, h2, h3, h4, h5, h6
 {
-	font-family: 'Futura', sans-serif;
+	font-family: 'Futura', 'NIXGONM-Vb';
 	-webkit-font-smoothing: antialiased;
 	-webkit-text-shadow: rgba(0,0,0,.01) 0 0 1px;
 	text-shadow: rgba(0,0,0,.01) 0 0 1px;
@@ -430,13 +438,13 @@ section
 	background-color:#000000;
 }
 .has-search{
-	margin-top: -0.5rem;
-	margin-left: 1rem;
+	margin-top: -0.5rem!important;
+	margin-left: 1rem!important;
 }
 
 .has-search .form-control {
-    padding-left: 2rem;
-    width: 78%;
+    padding-left: 2rem!important;
+    width: 78% !important;
 }
 
 .has-search .form-control-feedback {
@@ -1092,7 +1100,7 @@ svg{
 	color: #6d6d6d;
 	line-height: 67px;
 }
-/*  고객센터 1:1채팅  */
+/*  Quick menu  */
 .div-button-chat, .icon-chat-circle{ width: 60px; height: 60px;}
 .icon-chat-circle{ 
 	z-index:9;
@@ -1447,7 +1455,7 @@ table {
 	  Live
 *******************/
 .calendar-box{ margin-top: 8em; margin-bottom: 10em;}
-.slide_img{ height: -webkit-fill-available;}
+.slide_img{ width:30%; height: -webkit-fill-available;}
 #area-addEvent{ margin-top: 4em; margin-bottom: 4em; float: right;}
 #modified{
 	width: 381px;
@@ -1458,6 +1466,16 @@ table {
     border-radius: .25rem;
     padding: .375rem .75rem;
 }
+.carousel-control-prev{
+	left: 390px;
+}
+.carousel-control-next{
+	right: 390px;
+}
+.btn-slide{
+	position: inherit; 
+}
+
 
 /*******************
 	 정보수정
@@ -1499,3 +1517,15 @@ table {
     padding: .375rem .75rem;
 }
 
+/*******************
+	 계시판
+*******************/
+
+.freeboard{
+	margin-top: 200px;
+}
+#btn-board{
+	float: right;
+	width: 53px;
+	margin-top: 44px;
+}

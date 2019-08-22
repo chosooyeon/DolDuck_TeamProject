@@ -79,7 +79,8 @@
 					</table>
 					
 					<div>
-						<button id="modified" type="submit" value="회원 정보 수정" ></button>
+						<button id="modified" type="submit" >회원 정보 수정</button>
+						<button id="delete" type="button" onclick="location.href='delete.do'">회원 탈퇴</button>
 					</div>
 				
  

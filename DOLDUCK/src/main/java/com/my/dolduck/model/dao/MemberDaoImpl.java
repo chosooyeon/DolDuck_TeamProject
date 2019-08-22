@@ -302,4 +302,21 @@ public class MemberDaoImpl implements MemberDao {
 			}
 		return res;
 	}
+	
+	@Override
+	public int deleteMember(String member_id) {
+		int res=0;
+		try {
+			res = sqlSession.update(namespace+"deleteMember",member_id);
+				if(res>0) {
+					sqlSession.commit();
+				}else {
+					sqlSession.rollback();
+				}
+		} catch (Exception e) {
+			e.printStackTrace();
+			System.err.println("에러입니다");
+		}
+		return res;
+	}
 }

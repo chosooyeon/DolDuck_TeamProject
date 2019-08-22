@@ -19,39 +19,49 @@
 <script src="https://cdnjs.cloudflare.com/ajax/libs/summernote/0.8.11/summernote-bs4.js"></script>
 
 <script>
-$(document).ready(function() {
-	  $('#summernote').summernote({
-	    	placeholder: 'content',
-	        minHeight: 370,
-	        maxHeight: null,
-	        focus: true, 
-	        lang : 'ko-KR'
-	  });
-	});
+(function($){
+	$(document).ready(function() {
+		$('#summernote').summernote({
+		    	placeholder: 'content',
+		        minHeight: 370,
+		        maxHeight: null,
+		        focus: true, 
+		        lang : 'ko-KR'
+		  });
+		});
+	
+})(jQuery);
 </script>
 <body>
-<h1>글 작성</h1>
+<%@ include file="../header.jsp" %>
 
-	<form action="free_insert.do" method="post">
-		<table border="1">
+	<div class="container freeboard">
+		<div class="center">
+		<h1 class="text-center">글작성</h1>
+
+		<form action="free_insert.do" method="post">
+			<table class="table">
+			<tr align="right">
+				<td colspan="2" style="border-top: none; ">
+					<button type="button" onclick="location.href='free_list.do'" >취소</button>
+					<button type="submit">작성</button>
+				</td>
+			</tr>
 			<tr>
 				<th>글쓴이</th>
-				<td><input type="text" name="freeboard_id"></td>
+				<td><input type="text" name="freeboard_id" style="width: 100%"></td>
 			</tr>
 			<tr>
 				<th>제목</th>
-				<td><input type="text" name="freeboard_title"></td>
+				<td><input type="text" name="freeboard_title" style="width: 100%"></td>
 			</tr>
 			<tr>
 				<th>내용</th>
 				<td><textarea name="freeboard_content" id="summernote"></textarea></td>
 			</tr>
-			<tr>
-				<td colspan="2" align="right">
-				<input type="button" onclick="location.href='free_list.do'" value="취소">
-				 <input type="submit" value="작성" >
-			</tr>
-		</table>
-	</form>
+			</table>
+		</form>
+		</div>
+	</div>
 </body>
 </html>
