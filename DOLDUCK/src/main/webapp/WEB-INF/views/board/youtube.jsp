@@ -35,65 +35,69 @@ body{ color : black; }
 <!-- Header -->
 <%@include file="../header.jsp" %>
 
-	<div id="getVideo"></div>
-	<div class="div-channel">
-		<div class="div-button">
-			<div class="button-channel" id="musicbank">
-				<!-- KBS 뮤직뱅크직캠 -->
-				<input type="hidden" class="videoId" name="musicbank" value="PLK8rVA0_KzOc-Trk-kz1sQijhADYXLY6C" >
+	<div class="container">
+		<div class="div-channel">
+			<div class="div-button">
+				<div class="button-channel" id="musicbank">
+					<!-- KBS 뮤직뱅크직캠 -->
+					<input type="hidden" class="videoId" name="musicbank" value="PLK8rVA0_KzOc-Trk-kz1sQijhADYXLY6C" >
+				</div>
+				<div class="label-channel">뮤직뱅크</div>
 			</div>
-			<div class="label-channel">뮤직뱅크</div>
+			<div class="div-button"> 
+				<div class="button-channel" id="showjung">
+					<!-- MBC 예능연구소 직캠-->
+					<input type="hidden" class="videoId" name="showjung" value="PLoE9F5MjfXCCvYGvHR0iJOeeaMEvBv191">
+				</div>
+				<div class="label-channel">쇼 음악중심</div>
+			</div>
+			<div class="div-button">
+				<div class="button-channel" id="mcount">
+					<!--  M2 직캠  -->
+					<input type="hidden" class="videoId" name="mcount" value="PLQv1U2oSD8oB_M-Pk8gVuDB8MA65a9UBm">
+				</div>
+				 <div class="label-channel">M2</div>
+			</div>
+			<div class="div-button">
+				<div class="button-channel" id="showchamp">
+					<!-- 쇼챔 TWO캠 -->
+					<input type="hidden" class="videoId" name="showchamp" value="PLHhwBCdvOkY_xmNMDkl4i6pZO69wxnO_4">
+				</div>
+				<div class="label-channel">쇼챔피언</div>
+			</div>		
+			<div class="div-button">
+				<div class="button-channel" id="dingo">
+					<!-- 100초 ZIP -->
+					<!-- 이슬라이브 : PLmxVF8ick5cS8ywQrE-4l6871ZfRxSDj_ -->
+					<input type="hidden" class="videoId" name="dingo" value="PLmxVF8ick5cQIHKYYsuOKWOOMUaJxyJP1">
+				</div>
+				<div class="label-channel">딩고 뮤직</div>
+			</div>
+			<div class="div-button">
+				<div class="button-channel" id="onethek">
+					<!-- NewRelase MV -->
+					<input type="hidden" class="videoId" name="1thek" value="PLID4CZACkMJTQGYm6R0Gc4yk_CKZIZKdv">
+				</div>
+				<div class="label-channel">1theK</div>
+			</div>
+			<div class="div-button">
+				<div class="button-channel" id="bugs">
+					<!-- NewRelase MV -->
+					<input type="hidden" class="videoId" name="bugs" value="PLI2cIPYd2LzznFwSKJqY0QdgYw-nT4-qh">
+				</div>
+				<div class="label-channel">Bugs뮤직</div>
+			</div>
+			<div class="div-button">
+				<div class="button-channel" id="genie">
+					<!-- Genie Music playlist -->
+					<input type="hidden" class="videoId" name="genie" value="PLp-UtpGZ6JhFKePnL14NUOYOKN7_qurMx">
+				</div>
+				<div class="label-channel">Genie뮤직</div>
+			</div>
 		</div>
-		<div class="div-button"> 
-			<div class="button-channel" id="showjung">
-				<!-- MBC 예능연구소 직캠-->
-				<input type="hidden" class="videoId" name="showjung" value="PLoE9F5MjfXCCvYGvHR0iJOeeaMEvBv191">
-			</div>
-			<div class="label-channel">쇼 음악중심</div>
-		</div>
-		<div class="div-button">
-			<div class="button-channel" id="mcount">
-				<!--  M2 직캠  -->
-				<input type="hidden" class="videoId" name="mcount" value="PLQv1U2oSD8oB_M-Pk8gVuDB8MA65a9UBm">
-			</div>
-			 <div class="label-channel">M2</div>
-		</div>
-		<div class="div-button">
-			<div class="button-channel" id="showchamp">
-				<!-- 쇼챔 TWO캠 -->
-				<input type="hidden" class="videoId" name="showchamp" value="PLHhwBCdvOkY_xmNMDkl4i6pZO69wxnO_4">
-			</div>
-			<div class="label-channel">쇼챔피언</div>
-		</div>		
-		<div class="div-button">
-			<div class="button-channel" id="dingo">
-				<!-- 100초 ZIP -->
-				<!-- 이슬라이브 : PLmxVF8ick5cS8ywQrE-4l6871ZfRxSDj_ -->
-				<input type="hidden" class="videoId" name="dingo" value="PLmxVF8ick5cQIHKYYsuOKWOOMUaJxyJP1">
-			</div>
-			<div class="label-channel">딩고 뮤직</div>
-		</div>
-		<div class="div-button">
-			<div class="button-channel" id="onethek">
-				<!-- NewRelase MV -->
-				<input type="hidden" class="videoId" name="1thek" value="PLID4CZACkMJTQGYm6R0Gc4yk_CKZIZKdv">
-			</div>
-			<div class="label-channel">1theK</div>
-		</div>
-		<div class="div-button">
-			<div class="button-channel" id="bugs">
-				<!-- NewRelase MV -->
-				<input type="hidden" class="videoId" name="bugs" value="PLI2cIPYd2LzznFwSKJqY0QdgYw-nT4-qh">
-			</div>
-			<div class="label-channel">Bugs뮤직</div>
-		</div>
-		<div class="div-button">
-			<div class="button-channel" id="genie">
-				<!-- Genie Music playlist -->
-				<input type="hidden" class="videoId" name="genie" value="PLp-UtpGZ6JhFKePnL14NUOYOKN7_qurMx">
-			</div>
-			<div class="label-channel">Genie뮤직</div>
-		</div>
+	</div>
+	<div class="container">
+		<div id="getVideo"></div>
 	</div>
 	
 <script type="text/javascript" src="https://code.jquery.com/jquery-3.4.1.min.js"></script>

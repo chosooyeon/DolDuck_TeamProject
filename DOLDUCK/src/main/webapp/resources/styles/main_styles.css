@@ -1141,9 +1141,9 @@ svg{
 
 /* Youtube 게시판 */
 #getVideo{
-	width: 80%;
-	position: absolute;
-	top: 40%; left: 10%;
+	width: 100%;
+	margin-top: 7em;
+	padding: 0;
 }
 .div-channel{
 	margin-top: 15%;
@@ -1162,7 +1162,7 @@ svg{
     width : 350px;
     height : 360px;
  	display: inline-block;
- 	margin: 8px 8px 15px 8px;
+ 	margin: 8px 8px 50px 8px;
 }
 .div-player-content{
 	width: 100%;

@@ -36,10 +36,6 @@ import com.my.dolduck.model.dto.VoteDto;
 @Controller
 public class HomeController {
 
-	private int voteNumber;
-	private String starName;
-	private int page;
-	
 	@Autowired
 	private MemberBiz biz;
 	
