@@ -97,10 +97,6 @@ public class MemberDaoImpl implements MemberDao {
 	public int updateMember(Map<String, String> map) {
 		int res = 0;
 		res = sqlSession.update(namespace + "updateMember", map);
-			
-			if(res>0) {
-				sqlSession.commit();
-			}
 		
 		return res;
 	}
@@ -109,9 +105,6 @@ public class MemberDaoImpl implements MemberDao {
 	public int updateUserPw(MemberDto dto) {
 		int res = 0;
 		res = sqlSession.update(namespace + "updateUserPw", dto);
-			if(res>0) {
-				sqlSession.commit();
-			}
 		
 		return res;
 	}

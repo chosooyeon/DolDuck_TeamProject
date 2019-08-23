@@ -162,7 +162,7 @@ public class LoginController {
 	@RequestMapping("modifiedfied.do")
 	public String updateMember(@RequestParam String user_id, @RequestParam String user_pw,
 			@RequestParam String user_email, @RequestParam String user_phone, @RequestParam String user_addr,
-			@RequestParam String file, MultipartHttpServletRequest mtfRequest) {
+			MultipartHttpServletRequest mtfRequest) {
 		System.out.println(user_id + user_pw + user_email + user_phone + user_addr);
 
 		List<MultipartFile> fileList = mtfRequest.getFiles("file");
