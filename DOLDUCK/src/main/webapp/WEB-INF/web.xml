@@ -71,7 +71,7 @@
     <location>/login</location>
   </error-page>
   <session-config>
-    <session-timeout>200</session-timeout>
+    <session-timeout>30</session-timeout>
   </session-config>
   <servlet>
     <description></description>

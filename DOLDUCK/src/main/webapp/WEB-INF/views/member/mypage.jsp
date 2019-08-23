@@ -10,7 +10,7 @@
 <html>
 <head>
 <meta charset="UTF-8">
-<script type="text/javascript" src="resources/js/register.js"></script>
+<script type="text/javascript" src="resources/js/join.js"></script>
 <script src="http://dmaps.daum.net/map_js_init/postcode.v2.js"></script>
 <title>Insert title here</title>
 </head>
@@ -24,20 +24,9 @@
               <input type="hidden" name="${_csrf.parameterName}" value="${_csrf.token }">			
 					
 					<table class="join_form">
-					<c:choose>
-							<c:when test="${empty userImage }">
-								<div>
-									<img id="profileImg" src="/displayFile?fileName=/lion.gif"
-										style="border-radius: 0%; padding-top: 10px; height: 100px; width: 100px;">
-								</div>
-							</c:when>
-							<c:otherwise>
-								<div>
-									<img id="profileImg" src="/displayFile?fileName=${userImage }"
-										style="border-radius: 0%; padding-top: 10px; height: 100px; width: 100px;">
-								</div>
-							</c:otherwise>
-						</c:choose>
+						<tr>
+						<td><img width="250px" height="250px" src="${pageContext.request.contextPath }/resources/uploadImage/${dto.member_img}"></td>
+						</tr>
 						<tr>
 							<th>이름</th>
 						</tr>
