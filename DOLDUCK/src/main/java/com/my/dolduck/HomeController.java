@@ -121,16 +121,6 @@ public class HomeController {
 		return chart;
 	}
 	
-	/************************** Live ***************************/
-	@RequestMapping("live-home.do")
-	public String liveBoard() {
-		return "live/live-home";
-	}
-	
-	@RequestMapping("live-schedule.do")
-	public String liveSchedule() {
-		return "live/live-schedule";
-
 	/************************** Youtube 게시판  ***************************/
 	@RequestMapping("youtube.do")
 	public String showYoutubeBoard() {

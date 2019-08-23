@@ -31,14 +31,10 @@ $(document).ready(function() {
 	})
 })
 
-<<<<<<< HEAD:DOLDUCK/src/main/webapp/resources/js/live.js
-
-=======
 startLiveBtn.addEventListener('click', function(){
 	$('#liveinfo-form').submit()
 	//$('#liveInfoModal').hide()	
 })
->>>>>>> origin/HanJS:DOLDUCK/src/main/webapp/resources/js/utils/live.js
 
 function handleLiveBoard(){
 	$.ajax({
