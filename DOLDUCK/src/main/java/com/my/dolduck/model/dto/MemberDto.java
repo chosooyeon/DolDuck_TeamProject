@@ -19,6 +19,7 @@ public class MemberDto extends User{
 	private String member_role;
 	private int member_heart;
 	private int member_vote;
+	private String member_img;
 
 	
 	public MemberDto(String username, String password, boolean enabled, 
@@ -124,6 +125,14 @@ public class MemberDto extends User{
 
 	public void setMember_vote(int member_vote) {
 		this.member_vote = member_vote;
+	}
+
+	public String getMember_img() {
+		return member_img;
+	}
+
+	public void setMember_img(String member_img) {
+		this.member_img = member_img;
 	}
 
 	@Override

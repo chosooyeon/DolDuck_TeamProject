@@ -26,7 +26,7 @@
   </ul>
 
   <!-- 슬라이드 이미지 -->
-  <div class="carousel-inner">
+  <div class="carousel-inner live-main">
 	    <div class="carousel-item active">
 	      <img class="slide_img" src="http://www.bloter.net/wp-content/uploads/2019/05/BTS-World-800x450.jpg" alt="BTS">
 	    </div>
@@ -48,13 +48,14 @@
   </div>
 
   <!-- Left and right controls -->
+	<div class="btn-slide">
   <a class="carousel-control-prev" href="#demo" data-slide="prev">
     <span class="carousel-control-prev-icon"></span>
   </a>
   <a class="carousel-control-next" href="#demo" data-slide="next">
     <span class="carousel-control-next-icon"></span>
   </a>
-
+	</div>
 </div>
    </div>
    <!-- 슬라이드 영역끝 -->

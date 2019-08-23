@@ -7,6 +7,15 @@
 	</select>
 	<cache></cache>
 	
+	<select id="selectId" resultType="SelectDto">
+		SELECT * FROM MEMBER 
+		<where>
+			<if test="value != null">
+				MEMBER_ID = '${value}'
+			</if>
+		</where>
+	</select>
+	
 	<select id="selectUser" resultType="java.util.Map">
 		SELECT
 		MEMBER_ID as username,
@@ -32,7 +41,7 @@
 		WHERE MEMBER_ID=#{member_id}
 	</update>
 	
-	<update id="deleteMember" parameterType="SelectDto">
+	<update id="deleteMember" parameterType="MemberDto">
 		UPDATE MEMBER SET
 		MEMBER_ENABLED = 0 
 		WHERE MEMBER_ID = #{member_id}
@@ -72,8 +81,8 @@
 	</select>
 
 	<update id="updateMember" parameterType="map">
-		UPDATE MEMBER SET PW=#{pw}, PHONE=#{phone}, ADDR=#{addr},
-		ZONECODE=#{zonecode} WHERE MEMBER_ID=#{id}
+		UPDATE MEMBER SET MEMBER_PW=#{member_pw}, MEMBER_PHONE=#{member_phone}, MEMBER_ADDR=#{member_addr},
+		MEMBER_EMAIL=#{member_email}, MEMBER_IMG=#{member_img} WHERE MEMBER_ID=#{member_id}
 	</update>
 	
 	<update id="updateUserPw" parameterType="memberDto">

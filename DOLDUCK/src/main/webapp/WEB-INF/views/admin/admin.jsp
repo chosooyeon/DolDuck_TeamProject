@@ -51,12 +51,27 @@
 										<td scope="col">${dto.member_addr }</td>
 										<td scope="col">${dto.member_heart }</td>
 										<td scope="col">${dto.member_vote }</td>
-
+									<c:if test="${dto.member_role eq 'ROLE_USER' || dto.member_role eq 'ROLE_ARTIST' || dto.member_role eq 'ROLE_ADMIN'}">
+									
+									<c:if test="${dto.member_role eq 'ROLE_USER'}">
 										<td scope="col"><select name="item">
 												<option>${dto.member_role }</option>
-												<option>'ROLE_ARTIST'</option>
+												<option>ROLE_ARTIST</option>
 										</select>
 										</td>
+									</c:if>
+									<c:if test="${dto.member_role eq 'ROLE_ARTIST'}">
+										<td scope="col"><select name="item">
+												<option>${dto.member_role }</option>
+												<option>ROLE_USER</option>
+										</select>
+										</td>
+									</c:if>
+									<c:if test="${dto.member_role eq 'ROLE_ADMIN'">
+										<td scope="col">${dto.member_role }</td>
+									</c:if>
+									
+									</c:if>
 										<td scope="col">${dto.member_enabled }</td>
 										<td scope="col"><fmt:formatDate pattern="yyyy-MM-dd"
 												value="${dto.member_regdate }" /></td>

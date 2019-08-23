@@ -24,7 +24,6 @@ public interface MemberBiz {
 	public SelectDto idSearch(String name, String email);
 	public SelectDto pwSearch(String id, String email);
 	public int changePw(String pw, String id);
-	public int deleteMember(String id);
 	
 	public int purchaseHeart(int amount, String id);
 	public int purchaseVote(int amount, String id);
@@ -36,4 +35,8 @@ public interface MemberBiz {
 	public int updateVote(VoteDto voteDto);
 	public int selectMemberVote(String member_id);
 	public int updateMemberVote(String member_id, int voteNumber);
+
+
+	public int deleteMember(String member_id);
+	public SelectDto selectId(String id);
 }
