@@ -1,4 +1,4 @@
-<%@ page language="java" contentType="text/html; charset=UTF-8" pageEncoding="UTF-8"%>
+﻿<%@ page language="java" contentType="text/html; charset=UTF-8" pageEncoding="UTF-8"%>
 <%@taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <!DOCTYPE html>
 <html>
@@ -11,8 +11,6 @@
     <!-- Header -->
     <%@include file="/WEB-INF/views/header.jsp" %>
     <!-- Slide Caresel  -->
-    
-
     <div id="live-slide" class="container-field">
        <div id="demo" class="carousel slide" data-ride="carousel">
 
@@ -59,8 +57,7 @@
 </div>
    </div>
    <!-- 슬라이드 영역끝 -->
-   
-   
+    <%@include file="/WEB-INF/views/live/liveroom-slide.jsp" %>
     <div id="main" class="container nav-tab-menu">
         <!-- Tab Menu -->
     	<div class="col-lg-12 offset-lg-4 "> 
@@ -83,6 +80,6 @@
     <%@include file="/WEB-INF/views/footer.jsp" %>
     
     <script src="https://code.jquery.com/jquery-3.4.1.min.js"></script>
-    <script src="resources/js/live.js"></script>
+    <script src="resources/js/utils/live.js"></script>
 </body>
 </html>
