@@ -29,7 +29,8 @@
 		MEMBER_ADDR,
 		MEMBER_REGDATE,
 		MEMBER_HEART,
-		MEMBER_VOTE
+		MEMBER_VOTE,
+		MEMBER_IMG
 		FROM MEMBER
 		WHERE MEMBER_ID=#{member_id}
 	</select>
@@ -50,14 +51,7 @@
 	<insert id="insertUser" parameterType="map">
 		INSERT INTO MEMBER
 		VALUES(MEMBERSEQ.NEXTVAL,#{member_id},#{member_pw},#{member_name},#{member_phone},#{member_addr},#{member_email},SYSDATE,
-		0, 1,'ROLE_USER',1)
-	</insert>
-
-	<!-- 회원가입 및 체크 -->
-	<insert id="memberRegister" parameterType="MemberDto">
-		INSERT INTO MEMBER
-		VALUES(MEMBERSEQ.NEXTVAL,#{member_id},#{member_pw},#{member_name},#{member_phone},#{member_addr},#{member_email},
-		SYSDATE, 0, 1, 'ROLE_USER',1)
+		0, 1,'ROLE_USER',1,'이미지')
 	</insert>
 
 	<select id="loginChk" parameterType="map" resultType="memberDto">

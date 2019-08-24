@@ -1,6 +1,18 @@
 /*******************
 	Live 게시판
 *******************/
+.calendar-box{ margin-top: 6em; margin-bottom: 10em;}
+.slide_img{ height: -webkit-fill-available;}
+#area-addEvent{ margin-top: 2em; float: right;}
+#modified{
+	width: 381px;
+    margin: 3px 1px 0px 1px;
+    color: #ffffff;
+    background: #ffa550;
+    border: 5px solid #ffa550;
+    border-radius: .25rem;
+    padding: .375rem .75rem;
+}
 #live-slide{
 	height: 300px; 
 	position: relative; 
@@ -37,4 +49,24 @@
 	border : 1px solid;
 	height :  800px;
 }
+.live-banner{
+	border: 1px solid red;
+	margin-top:3em;
+}
 
+
+/*******************
+	Live onair
+*******************/
+.channel-list{ 
+	min-height: 700px;
+	margin-top: 6em;
+	margin-bottom: 6em;
+	border:1px solid darkgreen;
+}
+
+.onair-body {
+    min-height: 800px;
+    margin-top: 2em;
+    margin-bottom: 5em;
+}
