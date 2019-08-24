@@ -97,7 +97,7 @@ INSERT INTO BROADCAST VALUES(BROADCASTSEQ.NEXTVAL, TO_DATE('2019-07-08 16:30','y
 INSERT INTO BROADCAST VALUES(BROADCASTSEQ.NEXTVAL, TO_DATE('2019-08-16 09:00','yyyy-mm-dd hh24:mi'), 'Zsoo', 'AllDayAlongWithYou' , 'Just two of us');
 INSERT INTO BROADCAST VALUES(BROADCASTSEQ.NEXTVAL, TO_DATE('2019-08-02 09:00','yyyy-mm-dd hh24:mi'), 'Zsoo', 'test' , 'Just two of us');
 INSERT INTO BROADCAST VALUES(BROADCASTSEQ.NEXTVAL, TO_DATE('2019-10-15 09:00','yyyy-mm-dd hh24:mi'), 'Zsoo', 'test' , 'Just two of us');
-INSERT INTO BROADCAST VALUES(BROADCASTSEQ.NEXTVAL, TO_DATE('2019-09-02 09:00','yyyy-mm-dd hh24:mi'), 'Zsoo', 'test' , 'Just two of us');
+INSERT INTO BROADCAST VALUES(BROADCASTSEQ.NEXTVAL, TO_DATE('2019-09-02 09:00','yyyy-mm-dd hh24:mi'), 'Zsoo', 'test' , null);
 
 select * from broadcast
 delete from broadcast

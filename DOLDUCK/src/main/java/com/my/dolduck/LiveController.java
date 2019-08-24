@@ -1,6 +1,7 @@
 package com.my.dolduck;
 
 import java.util.List;
+import java.util.Map;
 
 import org.json.simple.JSONArray;
 import org.json.simple.JSONObject;
@@ -57,6 +58,8 @@ public class LiveController {
 			event.put("title", dto.getBroadcast_caster() + "-" + dto.getBroadcast_title());
 			event.put("start", DateTime[0]);
 			event.put("end", DateTime[0]);
+			event.put("startTime", DateTime[1]);
+			event.put("endTime", "23:00");
 			event.put("allDay", false);
 			
 			eventArr.add(event);
@@ -69,8 +72,24 @@ public class LiveController {
 	
 	//일정 추가(+)
 	@RequestMapping( value = "addevent.do", method={RequestMethod.POST})
-	public String addEvent() {
-		return "";
+	@ResponseBody
+	public String addEvent(@RequestParam Map<String,Object> item) {
+		String result = "";
+		BroadcastDto event = new BroadcastDto();
+		event.setBroadcast_caster((String) item.get("caster"));
+		event.setBroadcast_title((String) item.get("title"));
+		String date = (String)(item.get("start_date")+" "+item.get("start_hour")+":"+item.get("start_min"));
+		System.err.println("date : " + date);
+		event.setBroadcast_date(date);
+		
+		int res = b_biz.insert(event);
+		System.err.println("insert res : " + res);
+		if(res>0) {
+			result = "succeed";
+		}else {
+			result = "failed";
+		}
+		return result;
 	}
 	
 	//일정 삭제(-)
@@ -88,7 +107,7 @@ public class LiveController {
 	//온에어- 입장(Caster)
 	@RequestMapping("start-onair.do")
 	public String startLive(@RequestParam String live_title) {
-		System.err.println("title: " + live_title);
+		System.out.println(live_title + "으로 입장!");
 		return "live/live-onair-caster";
 	}
 	
