@@ -1,4 +1,4 @@
-var socket = io.connect()
+//var socket = io.connect()
 
 var startLiveBtn = document.getElementById('startLiveBtn')
 var channelList = document.getElementById('channel-list')
