@@ -295,7 +295,7 @@ section
 	left: 0;
 	top: 0;
 	width: 100%;
-	background: #000000;
+	background: #785FB3;
 	z-index: 100;
 	-webkit-transition: all 400ms ease;
 	-moz-transition: all 400ms ease;
@@ -1107,7 +1107,7 @@ svg{
 .div-button-chat, .icon-chat-circle{ width: 60px; height: 60px;}
 .icon-chat-circle{ 
 	z-index:9;
-	background: #ff99cc; 
+	background: #ffa550; 
 	border-radius: 5em;
 	position: fixed;
     top: 85%;
@@ -1127,7 +1127,7 @@ svg{
 .dropdown-item:focus, .dropdown-item:hover {
     color: #16181b;
     text-decoration: none;
-    background-color: rgb(255, 153, 204, 0.45);
+    background-color: rgb(255, 165, 80, 0.45);
 }
 .div-modal-chat{ 
 	display : none;
@@ -1524,13 +1524,45 @@ table {
 .freeboard{
 	margin-top: 200px;
 }
+.table_comment{
+	 background-color: #f9f9f9;
+	 width: -webkit-fill-available;
+
+}
+#comment_edit_btn, #reply_btn{ margin: 0 -14px 0px 0;}
+#comment_delete_btn{margin: 0 -11px 0 0px;}
+
 #btn-board{
 	float: right;
 	width: 53px;
 	margin-top: 44px;
 }
+
 .comment_tadle{
     background-color: #f9f9f9;
     width: -webkit-fill-available;
-    padding: 7px 0 0 22px;
+    padding: 15px 27px 11px 26px;
+    margin-bottom: 100px;
+}
+#comment_textarea{
+	margin:0;
+	padding: 0;
+}
+#comment_submit{
+	position: relative;
+    width: 89px;
+    text-align: right;
+    vertical-align: bottom;
+}
+#comment_textarea_css{
+	resize: none;
+    width: -webkit-fill-available;
+    border-style: solid;
+    padding: 13px;
+}
+.comment_btn{
+    width: 81px;
+    height: 70px;
+    margin: 0 0 6px 6px;
+    padding: 0;
 }
