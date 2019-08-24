@@ -46,14 +46,14 @@
   </div>
 
   <!-- Left and right controls -->
-	<div class="btn-slide">
+	<!-- <div class="btn-slide"> -->
   <a class="carousel-control-prev" href="#demo" data-slide="prev">
     <span class="carousel-control-prev-icon"></span>
   </a>
   <a class="carousel-control-next" href="#demo" data-slide="next">
     <span class="carousel-control-next-icon"></span>
   </a>
-	</div>
+	<!-- </div> -->
 </div>
    </div>
    <!-- 슬라이드 영역끝 -->

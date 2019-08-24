@@ -33,11 +33,16 @@
    <!-- Home -->
    <section class="home">
       <div class="home_video">
-      <!-- video -->
-            <div class="embed-responsive embed-responsive-16by9">
-            <!-- resources/videos/index.mp4 -->
-               <iframe class="embed-responsive-item" src="resources/videos/index.mp4"></iframe>
-            </div>
+      <!-- 
+      video 속성      
+      controls: 재생,시간,.. 컨트롤 화면 
+      autoplay: 자동 재생
+      loop: 무한반복
+      muted:음소거
+      -->   
+            <video controls autoplay loop muted="muted">
+            	<source src="resources/videos/index.mp4" type="video/mp4">
+            </video>
       </div>  
    </section>
    
