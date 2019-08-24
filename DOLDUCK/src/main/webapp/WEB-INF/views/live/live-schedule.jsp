@@ -87,12 +87,25 @@
 	        <div class="modal-body">
 	          <form action="start-onair.do" id="liveinfo-form">
 	          	<table style="width: 100%;">
+	          		<tr><td>방송진행자</td></tr>
+	          		<tr><td>강다니엘</td></tr>
 					<tr><td>방 송 제 목</td></tr>
 					<tr>
+						<td><input type="text" class="form-control" name="live_title"  style="width:100%;"></td>
+					</tr>         
+					<tr><td>방 송 일 정</td></tr> 	
+					<tr>
 						<td>
-							<input type="text" class="form-control" name="live_title">
+							<input type="date" name="live_start_date" style="width: 100%;">
 						</td>
-					</tr>          	
+					</tr>
+					<tr><td>방 송 시 </td></tr>
+					<tr>
+						<td>
+							<input type="number" name="live_start_hour"  style="width:40%;">&nbsp;시&nbsp;
+							<input type="number" name="live_start_ming"  style="width:40%;">분 
+						</td>
+					</tr>
 	          	</table>
 	          </form>
 	        </div>
