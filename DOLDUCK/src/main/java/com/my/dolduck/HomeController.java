@@ -133,11 +133,6 @@ public class HomeController {
 	public String heartShop() {
 		return "market/heartShop";
 	}
-	
-	@RequestMapping("Goodies.do")
-	public String Goodies() {
-		return "market/Goodies";
-	}
 
 	@RequestMapping("buy-heart.do")
 	@ResponseBody

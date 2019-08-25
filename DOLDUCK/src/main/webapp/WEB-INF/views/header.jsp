@@ -79,7 +79,7 @@ if(principal != null && principal instanceof MemberDto){
 
 						<ul class="dropdown-menu" role="menu">
 							<li class="dropdown-item:hover"><a href="heartShop.do">heartShop</a></li>
-							<li class="dropdown-item:hover"><a href="Goodies.do">Goodies</a></li>
+							<li class="dropdown-item:hover"><a href="market_list.do">Goodies</a></li>
 							
 						</ul>
 					</li>
@@ -130,7 +130,7 @@ if(principal != null && principal instanceof MemberDto){
 						<li><a href="live-home.do">LIVE</a></li>
 						<li><a href="free_list.do">Board</a></li>
 						<li><a href="heartShop.do">heartShop</a></li>
-						<li><a href="Goodies.do">Goodies</a></li>
+						<li><a href="market_list.do">Goodies</a></li>
 					</ul>
 				</nav>
 			</div>
