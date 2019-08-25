@@ -341,8 +341,23 @@
     text-align: justify;
     vertical-align: bottom;
 }
+
+ul.vote-button li {
+    position: relative;
+    display: inline-block;
+    padding: 19px;
+    margin: 11px;
+    font-family: 'NIXGONM-Vb';
+    font-weight: bold;
+    background: #f2ecf5;
+    font-size: 16px;
+    width: 122px;
+    text-align: center;
 }
 
+.vote_board{
+	margin-top: 100px; 
+}
 
 /************
 11. 575px

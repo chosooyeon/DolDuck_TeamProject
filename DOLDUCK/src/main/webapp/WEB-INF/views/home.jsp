@@ -129,19 +129,18 @@
 		<!-- youtube -->
 		<section class="channel">
 			<div class="container">
-				<div class="row">
+				
 					<div class="col-lg-6 offset-lg-3">
 						<!-- youtube -->
 						<p class="dol_now">나의 DOL은 지금</p>
 					</div>
-				</div>
-				<div class="row ">
+				
+				
 					<div class="channel_button">
 						<a href="youtube.do">Channel More</a>
 					</div>
 					<!-- 채널 영상 넣기 -->
-					<div class="home_channel"></div>
-				</div>
+					<div id="getVideo"></div>			
 			</div>
 		</section>
 
@@ -222,5 +221,6 @@
 	<script src="resources/js/custom.js"></script>
 	<script src="resources/js/d3.min.js"></script>
 	<script src="https://kit.fontawesome.com/c1455fa856.js"></script>
+	<script src="resources/js/utils/youtube.js"></script>
 </body>
 </html>
