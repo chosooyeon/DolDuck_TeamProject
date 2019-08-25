@@ -38,7 +38,7 @@ delete from member where member_id='admin';
 
 UPDATE MEMBER SET MEMBER_ROLE='ROLE_ADMIN' WHERE MEMBER_ID='admin';
 
-UPDATE MEMBER SET MEMBER_ROLE='ROLE_ARTIST' WHERE MEMBER_ID='lotus526';
+UPDATE MEMBER SET MEMBER_ROLE='ROLE_ARTIST' WHERE MEMBER_ID='한지수';
 
 select member_heart, member_vote from member where member_id = 'lotus526'
 
