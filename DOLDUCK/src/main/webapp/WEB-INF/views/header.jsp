@@ -143,7 +143,7 @@ if(principal != null && principal instanceof MemberDto){
     <div class="dropdown-menu">
       <a class="dropdown-item icon-chat-circle" href="live-onair.do"><i class="fas fa-broadcast-tower fa-2x" style="color: white; z-index: 20;"></i></a>
       <a class="dropdown-item icon-chat-circle" href="#"><i class="fas fa-atlas fa-2x" style="color: white; z-index: 20;"></i></a>
-      <a class="dropdown-item icon-chat-circle" href="twitter.do"><i class="fab fa-twitter-square fa-2x" style="color: white; z-index: 20;"></i></a>
+      <a class="dropdown-item icon-chat-circle" href="twits.do"><i class="fab fa-twitter-square fa-2x" style="color: white; z-index: 20;"></i></a>
       <a class="dropdown-item icon-chat-circle" href="#"><i class="fas fa-comments fa-2x" style="color: white; z-index: 20;"></i></a>
     </div>
   </div>
