@@ -18,7 +18,7 @@ public class UserLoginFailureHandler implements AuthenticationFailureHandler {
 		System.out.println("UserLoginFailureHandler : 3");
 		
 		request.setAttribute("errMsg", "아이디 또는 비밀번호가 일치하지않습니다");
-		request.getRequestDispatcher("/member/login.do").forward(request, response);	
+		request.getRequestDispatcher("login.do").forward(request, response);	
 		
 	
 	}

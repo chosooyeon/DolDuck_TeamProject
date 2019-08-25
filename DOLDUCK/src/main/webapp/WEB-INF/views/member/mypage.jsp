@@ -22,7 +22,7 @@
 			<h1 class="text-center">마이페이지</h1>
 			<form method="post" action="modified.do">
               <input type="hidden" name="${_csrf.parameterName}" value="${_csrf.token }">			
-					
+
 					<table class="join_form">
 						<tr>
 						<td><img width="250px" height="250px" src="${pageContext.request.contextPath }/resources/uploadImage/${dto.member_img}"></td>
@@ -70,6 +70,7 @@
 							<td><div id="member_vote">${dto.member_vote}</div></td>
 						</tr>
 					</table>
+					
 					
 					<div>
 						<button id="modified" type="submit" >회원 정보 수정</button>
