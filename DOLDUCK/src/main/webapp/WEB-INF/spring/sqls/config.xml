@@ -5,7 +5,8 @@
 		<typeAlias type="com.my.dolduck.model.dto.MemberDto"	alias="MemberDto" />
 		<typeAlias type="com.my.dolduck.model.dto.FreeboardDto" alias="FreeboardDto" />
 		<typeAlias type="com.my.dolduck.model.dto.FreeboardCommentDto" alias="FreeboardCommentDto" />
-
+		<typeAlias type="com.my.dolduck.model.dto.MarketDto" alias="MarketDto" />
+		<typeAlias type="com.my.dolduck.model.dto.MarketCommentDto" alias="MarketCommentDto" />
 		<typeAlias type="com.my.dolduck.model.dto.SelectDto" alias="SelectDto"/>
 		<typeAlias type="com.my.dolduck.model.dto.BroadcastDto" alias="BroadcastDto"/>
 		<typeAlias type="com.my.dolduck.model.dto.VoteDto" alias="VoteDto"/>
@@ -17,7 +18,8 @@
 		<mapper resource="/sqls/mapper.xml" />
 		<mapper resource="/sqls/freeboard_mapper.xml" />
 		<mapper resource="/sqls/comment_mapper.xml" />
-
+		<mapper resource="/sqls/market_mapper.xml" />
+		<mapper resource="/sqls/market_comment_mapper.xml" />
 		<mapper resource="/sqls/broadcast-mapper.xml"/>
 		<mapper resource="/sqls/vote-mapper.xml"/>
 	</mappers>
