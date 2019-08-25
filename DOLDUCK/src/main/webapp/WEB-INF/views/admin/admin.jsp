@@ -42,6 +42,7 @@
 							</c:when>
 							<c:otherwise>
 								<c:forEach items="${list}" var="dto">
+								<c:if test="${dto.member_role eq 'ROLE_USER' || dto.member_role eq 'ROLE_ARTIST'}">
 									<tr>
 										<td scope="col">${dto.member_seq }</td>
 										<td scope="col">${dto.member_name }</td>
@@ -51,7 +52,7 @@
 										<td scope="col">${dto.member_addr }</td>
 										<td scope="col">${dto.member_heart }</td>
 										<td scope="col">${dto.member_vote }</td>
-									<c:if test="${dto.member_role eq 'ROLE_USER' || dto.member_role eq 'ROLE_ARTIST' || dto.member_role eq 'ROLE_ADMIN'}">
+									<c:if test="${dto.member_role eq 'ROLE_USER' || dto.member_role eq 'ROLE_ARTIST'}">
 									
 									<c:if test="${dto.member_role eq 'ROLE_USER'}">
 										<td scope="col"><select name="item">
@@ -67,16 +68,14 @@
 										</select>
 										</td>
 									</c:if>
-									<c:if test="${dto.member_role eq 'ROLE_ADMIN'">
-										<td scope="col">${dto.member_role }</td>
 									</c:if>
 									
-									</c:if>
 										<td scope="col">${dto.member_enabled }</td>
 										<td scope="col"><fmt:formatDate pattern="yyyy-MM-dd"
 												value="${dto.member_regdate }" /></td>
 										<td scope="col"><button>등급 변경하기</button></td>
 									</tr>
+									</c:if>
 								</c:forEach>
 							</c:otherwise>
 						</c:choose>

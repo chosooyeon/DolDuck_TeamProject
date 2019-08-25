@@ -295,7 +295,7 @@ section
 	left: 0;
 	top: 0;
 	width: 100%;
-	background: #785FB3;
+	background: #c0aded;
 	z-index: 100;
 	-webkit-transition: all 400ms ease;
 	-moz-transition: all 400ms ease;
@@ -987,79 +987,11 @@ svg{
 
 .footer
 {
-	background: #000000;
+	background: #c0aded;
 	padding-left: 50px;
 	padding-right: 51px;
 }
-.newsletter_container
-{
-	width: 604px;
-	padding-top: 103px;
-}
-.newsletter_title
-{
 
-}
-.newsletter_form
-{
-	display: block;
-	position: relative;
-	width: 100%;
-	margin-top: 30px;
-}
-.newsletter_input
-{
-	width: 100%;
-	height: 50px;
-	background: #545454;
-	border: none;
-	outline: none;
-	padding-left: 23px;
-}
-.newsletter_input::-webkit-input-placeholder
-{
-	font-size: 12px !important;
-	font-style: italic;
-	color: #FFFFFF !important;
-}
-.newsletter_input:-moz-placeholder
-{
-	font-size: 12px !important;
-	font-style: italic;
-	color: #FFFFFF !important;
-}
-.newsletter_input::-moz-placeholder
-{
-	font-size: 12px !important;
-	font-style: italic;
-	color: #FFFFFF !important;
-} 
-.newsletter_input:-ms-input-placeholder
-{ 
-	font-size: 12px !important;
-	font-style: italic;
-	color: #FFFFFF !important;
-}
-.newsletter_input::input-placeholder
-{
-	font-size: 12px !important;
-	font-style: italic;
-	color: #FFFFFF !important;
-}
-.newsletter_button
-{
-	position: absolute;
-	top: 0;
-	right: 0;
-	width: 139px;
-	height: 50px;
-	background: #de4f32;
-	border: none;
-	outline: none;
-	cursor: pointer;
-	color: #FFFFFF;
-	font-size: 14px;
-}
 .footer_lists
 {
 	width: 575px;
@@ -1095,7 +1027,6 @@ svg{
 {
 	width: 100%;
 	height: 67px;
-	background: #000000;
 }
 .copyright_bar span
 {
@@ -1104,31 +1035,25 @@ svg{
 	line-height: 67px;
 }
 /*  Quick menu  */
-.div-button-chat, .icon-chat-circle{ width: 60px; height: 60px;}
+.quick_icon{
+    position: fixed;
+    top: 31%;
+    right: 3%;
+    z-index: 9
+}
+
 .icon-chat-circle{ 
-	z-index:9;
+	display:block;
+	width: 60px; 
+	height: 60px;
 	background: #ffa550; 
 	border-radius: 5em;
-	position: fixed;
-    top: 85%;
-    right: 3%;
     line-height: 5em;
     text-align: center;
+    z-index:9;
+    margin-bottom: 7px;
 }
-.dropdown-item.icon-chat-circle {
-    top: -4px;
-    display: block;
-    position: relative;
-    left: 44px;
-    margin: -79px 0 87px 0;
-    padding: 0;
-    line-height: 4.6em;
-}
-.dropdown-item:focus, .dropdown-item:hover {
-    color: #16181b;
-    text-decoration: none;
-    background-color: rgb(255, 165, 80, 0.45);
-}
+
 .div-modal-chat{ 
 	display : none;
 	border: 1px solid #ccc;
@@ -1454,6 +1379,15 @@ table {
 	 마이페이지
 *******************/
 #modified{
+	width: 381px;
+    margin: 3px 1px 0px 1px;
+    color: #ffffff;
+    background: #ffa550;
+    border: 5px solid #ffa550;
+    border-radius: .25rem;
+    padding: .375rem .75rem;
+}
+#delete{
 	width: 381px;
     margin: 3px 1px 0px 1px;
     color: #ffffff;
