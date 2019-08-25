@@ -1405,7 +1405,7 @@ table {
 
 .carousel-control-next, .carousel-control-prev{
 	width: 50%;
-}
+	opacity: .9;}
 
 .btn-slide{
 	position: initial; 
