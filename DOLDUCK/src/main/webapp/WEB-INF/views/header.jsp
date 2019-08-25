@@ -137,6 +137,7 @@ if(principal != null && principal instanceof MemberDto){
 		</div>
 	</section>
 		<!-- Quick Menu -->
+
 		<aside class="quick_icon">
 			<ul>
 				<li><a class="icon-chat-circle" href="live-onair.do"><i class="fas fa-broadcast-tower fa-2x" style="color: white; z-index: 20;"></i></a></li>
