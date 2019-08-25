@@ -42,21 +42,22 @@
 		</tr>
 	</table>
 	<br>
-	<table class="table">
+	<table class="table_comment">
 		<c:forEach items="${commList }" var="comm">
 	<tr>
 		<td>
 			댓글번호 : ${comm.freeboard_comment_num }
 		</td>
+				<td>	
+			댓글작성자 : ${comm.freeboard_id }
+		</td>
 		<td id="comment_content${comm.freeboard_comment_num }">
 			댓글내용 : ${comm.freeboard_comment_content } 
 		</td>
 		<td>	
-			댓글작성자 : ${comm.freeboard_id }
-		</td>
-		<td>	
 			댓글작성시간 : ${comm.freeboard_comment_regdate }
 		</td>
+		
 		<td id="edit_btn">
 			<input type="hidden" name="comm-num" value="${comm.freeboard_comment_num }">	
 			<input type="hidden" name="comm-content" value="${comm.freeboard_comment_content}">
@@ -78,20 +79,19 @@
 		<input type="hidden" name="freeboard_num" value="${one.freeboard_num }">
 	<table class="comment_tadle">
 		<tr>
-			<td id="comment_textarea">
-				<textarea rows="3"cols="60" name="freeboard_comment_content" style="resize: none;border-style: solid;"></textarea>
-			</td>
 			<td id="comment_input_id">
-				<input type="hidden" name="freeboard_id">	
+				<input type="text" name="freeboard_id">	
 			</td>
-		<tr>
+			<td id="comment_textarea">
+					<textarea id="comment_textarea_css" rows="2"cols="50" name="freeboard_comment_content"></textarea>
+			</td>
 			<td id="comment_submit">
-				<input type="submit" value="작성">
+				<button class="comment_btn" type="submit">작성</button>
 			</td>
-	</tr>
 	</table>
 	</form>
 	</div>
 </div>
+<%@ include file="../footer.jsp" %>
 </body>
 </html>

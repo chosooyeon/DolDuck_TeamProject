@@ -105,7 +105,6 @@ public class MemberDaoImpl implements MemberDao {
 	public int updateUserPw(MemberDto dto) {
 		int res = 0;
 		res = sqlSession.update(namespace + "updateUserPw", dto);
-
 		return res;
 	}
 

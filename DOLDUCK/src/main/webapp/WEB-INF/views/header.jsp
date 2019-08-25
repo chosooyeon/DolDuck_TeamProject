@@ -80,6 +80,7 @@ if(principal != null && principal instanceof MemberDto){
 						<ul class="dropdown-menu" role="menu">
 							<li class="dropdown-item:hover"><a href="heartShop.do">heartShop</a></li>
 							<li class="dropdown-item:hover"><a href="Goodies.do">Goodies</a></li>
+							
 						</ul>
 					</li>
 					<li class="form-group has-search">
