@@ -137,6 +137,7 @@ if(principal != null && principal instanceof MemberDto){
 		</div>
 	</section>
 		<!-- Quick Menu -->
+<<<<<<< HEAD
 		<aside class="quick_icon">
 			<ul>
 				<li><a class="icon-chat-circle" href="live-onair.do"><i class="fas fa-broadcast-tower fa-2x" style="color: white; z-index: 20;"></i></a></li>
@@ -146,6 +147,19 @@ if(principal != null && principal instanceof MemberDto){
 				<li><a class="icon-chat-circle" onclick="$('html').animate({scrollTop : 0})"><i class="fas fa-arrow-up fa-2x" style="color: white; z-index: 20;"></i></a></li>
 			</ul>
 		</aside>
+=======
+	<div class="container">
+  <div class="dropup icon-chat-circle">
+   <div class="dropdown-toggle quick" data-toggle="dropdown"><i class="fas fa-bars fa-2x" style="color: white; z-index: 20;"></i></div>
+    <div class="dropdown-menu">
+      <a class="dropdown-item icon-chat-circle" href="live-onair.do"><i class="fas fa-broadcast-tower fa-2x" style="color: white; z-index: 20;"></i></a>
+      <a class="dropdown-item icon-chat-circle" href="#"><i class="fas fa-atlas fa-2x" style="color: white; z-index: 20;"></i></a>
+      <a class="dropdown-item icon-chat-circle" href="twits.do"><i class="fab fa-twitter-square fa-2x" style="color: white; z-index: 20;"></i></a>
+      <a class="dropdown-item icon-chat-circle" href="#"><i class="fas fa-comments fa-2x" style="color: white; z-index: 20;"></i></a>
+    </div>
+  </div>
+</div>
+>>>>>>> master
 
 </body>
 <script type="text/javascript" src="https://code.jquery.com/jquery-3.4.1.min.js"></script>

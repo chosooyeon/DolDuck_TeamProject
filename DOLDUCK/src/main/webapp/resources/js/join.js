@@ -13,6 +13,20 @@
 	    });
 	}
 	
+	function fregister_submit(f) {
+		var agree1 = document.getElementsByName("agree");
+		if (!agree1[0].checked) {
+			alert("회원가입약관의 내용에 동의하셔야 회원가입 하실 수 있습니다.");
+			agree1[0].focus();
+		}
+
+		var agree2 = document.getElementsByName("agree2");
+		if (!agree2[0].checked) {
+			alert("개인정보취급방침의 내용에 동의하셔야 회원가입 하실 수 있습니다.");
+			agree2[0].focus();
+		}
+	}
+	
 	function sendEmail(){
 
 		var user_email = $("input[name=user_email]").val();
