@@ -4,11 +4,9 @@
 <html>
 <head>
 <meta charset="utf-8">
-<meta name="_csrf" content="${_csrf.token}"/>
-<meta name="_csrf_header" content="${_csrf.headerName}"/>
 <title>Insert title here</title>
 <script src="//ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
-<script src="resources/js/vote.js" type="text/javascript"></script>
+<script src="resources/js/utils/vote_popup.js" type="text/javascript"></script>
 </head>
 <body>
 	<table>

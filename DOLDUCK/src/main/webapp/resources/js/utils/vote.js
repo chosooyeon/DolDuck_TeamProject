@@ -1,5 +1,3 @@
-var token = $("meta[name='_csrf']").attr("content");
-var header = $("meta[name='_csrf_header']").attr("content");
 
 $(document).ready(function(){
 	var voteChart, start = 0, end = 100
@@ -125,9 +123,6 @@ function voteCrawling(item){
 		url : 'vote-crawling.do?item='+item,
 		dataType : 'json',
 		async : false,
-		beforeSend: function( xhr ) {
-            xhr.setRequestHeader(header, token);
-       },
 		success : function(data){
 			$('.current-time').text(data.getTime);
 			list = data.starChart;
@@ -147,9 +142,6 @@ function voteClickPickBtn(starname, item){
 		url : 'vote-pick.do?starname='+starname+'&item='+item,
 		dataType : 'json',
 		async : false,
-		beforeSend: function( xhr ) {
-            xhr.setRequestHeader(header, token);
-       },
 		success : function(data){
 			if(data.loginState == "null"){
 				// 로그인상태가 아닐경우
@@ -180,9 +172,6 @@ function voteNumberChk(){
 		url : 'vote-numberchk.do?voteNumber='+$('#voteNum').val(),
 		data : 'json',
 		async : false,
-		beforeSend: function( xhr ) {
-            xhr.setRequestHeader(header, token);
-       },
 		success : function(data){
 			if(data.voteNeed == "need"){
 				alert('투표권이 부족합니다');
