@@ -41,7 +41,7 @@ if(principal != null && principal instanceof MemberDto){
 				<a href="home.do"><img id="logo" alt="logo" src="resources/images/logo.png"></a>
 			</div>
 			<div class="log_reg">
-				<ul class="d-flex flex-row align-items-start justify-content-start">
+				<ul class="d-flex flex-row align-items-start justify-content-start" style="margin-bottom: 10px;">
 					<sec:authorize access="isAnonymous()">
 						<li><a href="${pageContext.request.contextPath}/login.do">Login</a></li>
 					</sec:authorize>
@@ -65,22 +65,27 @@ if(principal != null && principal instanceof MemberDto){
 					</sec:authorize>
 				</ul>
 			</div>
-
+<!-- <script type="text/javascript">
+$(function(){
+	var menu = $(".skfk > li");
+	menu.add("a").cilck(function(){
+		menu.removeClass("active");
+		$(this).parent().addClass("active");
+	})
+})
+</script> -->
 			<nav class="main_nav">
-				<ul class="d-flex flex-row align-items-start justify-content-start">
+				<ul class="d-flex">
 					<li class="active"><a href="home.do">HOME</a></li>
 					<li><a href="youtube.do">YouTube</a></li>
 					<li><a href="vote.do">Vote</a></li>
 					<li><a href="chart.do">Music Chart</a></li>
-
 					<li><a href="live-home.do">LIVE</a></li>
 					<li><a href="free_list.do">Board</a></li>
 					<li class="dropdown"><a class="dropdown-toggle" data-toggle="dropdown">Market</a>
-
 						<ul class="dropdown-menu" role="menu">
 							<li class="dropdown-item:hover"><a href="heartShop.do">heartShop</a></li>
 							<li class="dropdown-item:hover"><a href="market_list.do">Goodies</a></li>
-							
 						</ul>
 					</li>
 					<li class="form-group has-search">
