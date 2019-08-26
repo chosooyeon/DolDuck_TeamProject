@@ -2,110 +2,63 @@ var token = $("meta[name='_csrf']").attr("content");
 var header = $("meta[name='_csrf_header']").attr("content");
 
 $(document).ready(function(){
-	var voteChart, start = 0, end = 30
+	var voteChart, start = 0, end = 100
+
+	$('tbody').children().remove();
+	item = 'girl-group';
+	voteChart = voteCrawling(item);
+	
+	paginationOfList(voteChart, start, end, item)
+})
 
 	$(document).on('click', '.girl-group', function(){
 		$('tbody').children().remove();
-		start = 0, end = 30, item = 'girl-group';
+		start = 0, end = 100, item = 'girl-group';
 		voteChart = voteCrawling(item);
 		
 		paginationOfList(voteChart, start, end, item)
-		$(document).on('click', '.button-pagination', function(){
-			if(end > 100){
-				end = 100
-				$('.button-pagination').attr('disabled', 'disabled');
-			}
-			start = end
-			end += 20
-			paginationOfList(voteChart, start, end, item)
-	  	});
 	});
-	
+
 	$(document).on('click', '.girl-idol', function(){
 		$('tbody').children().remove();
-		start = 0, end = 30, item = 'girl-idol';
+		start = 0, end = 100, item = 'girl-idol';
 		voteChart = voteCrawling(item);
 		
 		paginationOfList(voteChart, start, end, item)
-		$(document).on('click', '.button-pagination', function(){
-			if(end > 100){
-				end = 100
-				$('.button-pagination').attr('disabled', 'disabled');
-			}
-			start = end
-			end += 20
-			paginationOfList(voteChart, start, end, item)
-	  	});
 	});
 	
 	$(document).on('click', '.new-idol', function(){
 		$('tbody').children().remove();
-		start = 0, end = 30, item = 'new-idol';
+		start = 0, end = 100, item = 'new-idol';
 		voteChart = voteCrawling(item);
 		
 		paginationOfList(voteChart, start, end, item)
-		$(document).on('click', '.button-pagination', function(){
-			if(end > 100){
-				end = 100
-				$('.button-pagination').attr('disabled', 'disabled');
-			}
-			start = end
-			end += 20
-			paginationOfList(voteChart, start, end, item)
-	  	});
 	});
 	
 	$(document).on('click', '.star-idol', function(){
 		$('tbody').children().remove();
-		start = 0, end = 30, item = 'star-idol';
+		start = 0, end = 100, item = 'star-idol';
 		voteChart = voteCrawling(item);
 		
 		paginationOfList(voteChart, start, end, item)
-		$(document).on('click', '.button-pagination', function(){
-			if(end > 100){
-				end = 100
-				$('.button-pagination').attr('disabled', 'disabled');
-			}
-			start = end
-			end += 20
-			paginationOfList(voteChart, start, end, item)
-	  	});
 	});
 	
 	$(document).on('click', '.boy-group', function(){
 		$('tbody').children().remove();
-		start = 0, end = 30, item = 'boy-group';
+		start = 0, end = 100, item = 'boy-group';
 		voteChart = voteCrawling(item);	
 
 		paginationOfList(voteChart, start, end, item)
-		$(document).on('click', '.button-pagination', function(){
-			if(end > 100){
-				end = 100
-				$('.button-pagination').attr('disabled', 'disabled');
-			}
-			start = end
-			end += 20
-			paginationOfList(voteChart, start, end, item)
-	  	});
 	});
 	
 	$(document).on('click', '.boy-idol', function(){
 		$('tbody').children().remove();
-		start = 0, end = 30, item = 'boy-idol'
+		start = 0, end = 100, item = 'boy-idol'
 		voteChart = voteCrawling(item);	
 
 		paginationOfList(voteChart, start, end, item)
-		$(document).on('click', '.button-pagination', function(){
-			if(end > 100){
-				end = 100
-				$('.button-pagination').attr('disabled', 'disabled');
-			}
-			start = end
-			end += 20
-			paginationOfList(voteChart, start, end, item)
-	  	});
 	});
-})
+
 
 function paginationOfList(voteChart, start, end, item){
 	if(item == 'girl-group'){
@@ -245,22 +198,3 @@ function voteNumberChk(){
 		}
 	});
 };
-
-function voteSaveToDB(data){
-	$.ajax({
-		type : 'POST',
-		url : 'votesave.do',
-		data : 'json',
-		async : false,
-		beforeSend: function( xhr ) {
-            xhr.setRequestHeader(header, token);
-       },
-		success : function(){
-			alert('저장성공');
-			votePopup('vote-result.do');
-		},
-		error : function(){
-			alert('ajax 통신에러 (voteSaveToDB');
-		}
-	});
-}
