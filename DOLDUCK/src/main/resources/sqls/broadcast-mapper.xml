@@ -15,5 +15,25 @@
 		WHERE BROADCAST_SEQ = #{seq}
 	</select>
 	
+	<insert id="insert_broadcast" parameterType="BroadcastDto">
+		INSERT INTO BROADCAST
+		VALUES(BROADCASTSEQ.NEXTVAL, TO_DATE(#{broadcast_date},'yyyy-mm-dd hh24:mi'),
+		#{broadcast_caster}, #{broadcast_title}, null)	
+	</insert>
+	
+	<!-- 일정변경 -->
+	<update id="update_broadcast_event" parameterType="BroadcastDto">
+		UPDATE BROADCAST
+		SET BROADCAST_TITLE = #{broadcast_title},
+		BROADCAST_DATE = TO_DATE(#{broadcast_date},'yyyy-mm-dd hh24:mi')
+		WHERE BROADCAST_SEQ = #{broadcast_seq}		
+	</update>
+	
+	<!--  라이브방송 종료후 동영상 첨부 -->
+	
+	<!-- 일정 삭제 -->
+	<delete id="delete_broadcast_event">
+		DELETE BROADCAST WHERE BROADCAST = #{seq}
+	</delete>
 	
 </mapper>

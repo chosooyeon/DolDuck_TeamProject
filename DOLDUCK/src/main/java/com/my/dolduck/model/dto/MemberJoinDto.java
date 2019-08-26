@@ -1,6 +1,8 @@
 package com.my.dolduck.model.dto;
 
-public class MemberJoinDto {
+import java.io.Serializable;
+
+public class MemberJoinDto implements Serializable{
 	private String member_id;
 	private String member_phone;
 	private String member_addr;

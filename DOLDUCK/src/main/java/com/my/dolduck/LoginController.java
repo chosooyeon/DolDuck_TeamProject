@@ -1,6 +1,7 @@
 package com.my.dolduck;
 
 import java.io.BufferedReader;
+import java.io.File;
 import java.io.IOException;
 import java.io.InputStreamReader;
 import java.io.UnsupportedEncodingException;
@@ -36,14 +37,18 @@ import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 import org.springframework.security.web.WebAttributes;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
+import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.ResponseBody;
+import org.springframework.web.multipart.MultipartFile;
+import org.springframework.web.multipart.MultipartHttpServletRequest;
 
 import com.my.dolduck.model.biz.MemberBizImpl;
 import com.my.dolduck.model.dto.MemberDto;
+import com.my.dolduck.model.dto.SelectDto;
 import com.my.dolduck.service.UserAuthenticationService;
 import com.my.dolduck.util.initalize;
 
@@ -99,13 +104,26 @@ public class LoginController {
 
 	// 마이 페이지로 이동
 	@RequestMapping(value = "mypage.do")
-	public String mypage() {
+	public String mypage(Model model, Authentication auth) {
+		MemberDto memberdto = (MemberDto) auth.getPrincipal();
+		String member_id = memberdto.getUsername();
+
+		System.err.println(member_id);
+		SelectDto dto = biz.selectId(member_id);
+		model.addAttribute("dto", dto);
 		return "member/mypage";
 	}
 
 	// 수정 페이지로 이동
 	@RequestMapping(value = "modified.do")
-	public String modified() {
+	public String modified(Model model, Authentication auth) {
+		MemberDto memberdto = (MemberDto) auth.getPrincipal();
+		String member_id = memberdto.getUsername();
+
+		System.err.println(member_id);
+		SelectDto dto = biz.selectId(member_id);
+		model.addAttribute("dto", dto);
+
 		return "member/modified";
 	}
 
@@ -113,11 +131,11 @@ public class LoginController {
 	@RequestMapping(value = "delete.do")
 	public String delete() {
 		Object principal = SecurityContextHolder.getContext().getAuthentication().getPrincipal();
-		UserDetails userDetails = (UserDetails)principal;
-		
+		UserDetails userDetails = (UserDetails) principal;
+
 		int res = biz.deleteMember(userDetails.getUsername());
 		System.out.println(res);
-		
+
 		return "home";
 	}
 
@@ -143,24 +161,59 @@ public class LoginController {
 	// 업데이트 페이지로 이동
 	@RequestMapping("modifiedfied.do")
 	public String updateMember(@RequestParam String user_id, @RequestParam String user_pw,
-			@RequestParam String user_email, @RequestParam String user_phone, @RequestParam String user_addr) {
-		System.out.println("1");
-		Map<String, String> map = new HashMap<String, String>();
-		String encryptPassword = passwordEncoder.encode(user_pw);
-		map.put("member_pw", encryptPassword);
-		map.put("member_phone", user_phone);
-		map.put("member_addr", user_addr);
-		map.put("member_email", user_email);
-		map.put("member_id", user_id);
+			@RequestParam String user_email, @RequestParam String user_phone, @RequestParam String user_addr,
+			MultipartHttpServletRequest mtfRequest) {
+		System.out.println(user_id + user_pw + user_email + user_phone + user_addr);
 
-		int res = biz.updateMember(map);
-		if (res > 0) {
-			System.out.println("2");
-			return "member/mypage";
-		} else {
-			System.out.println("3");
-			return "member/modified";
+		List<MultipartFile> fileList = mtfRequest.getFiles("file");
+
+		String path = mtfRequest.getSession().getServletContext().getRealPath("resources/uploadImage");
+		File dir = new File(path);
+		if (!dir.isDirectory()) {
+			dir.mkdirs();
 		}
+
+		for (MultipartFile mf : fileList) {
+			String originFileName = mf.getOriginalFilename(); // 원본 파일 명
+			long fileSize = mf.getSize(); // 파일 사이즈
+			String member_img_path = path + "/" + originFileName; // 경로
+			System.out.println("경로 " + member_img_path);
+			String member_img = originFileName; // 파일 이름
+
+			System.out.println("1");
+			Map<String, String> map = new HashMap<String, String>();
+			String encryptPassword = passwordEncoder.encode(user_pw);
+			map.put("member_pw", encryptPassword);
+			map.put("member_phone", user_phone);
+			map.put("member_addr", user_addr);
+			map.put("member_email", user_email);
+			map.put("member_id", user_id);
+			map.put("member_img", member_img);
+
+			System.out.println(member_img);
+			System.out.println("originFileName : " + originFileName);
+			System.out.println("fileSize : " + fileSize);
+			int res = 0;
+			try {
+				mf.transferTo(new File(member_img_path)); // 파일 집어넣는다
+
+			} catch (IllegalStateException e) {
+
+				e.printStackTrace();
+			} catch (IOException e) {
+
+				e.printStackTrace();
+			}
+			res = biz.updateMember(map);
+			if (res > 0) {
+				System.out.println("2");
+				return "mypage.do";
+			} else {
+				System.out.println("3");
+				return "modified.do";
+			}
+		}
+		return "";
 
 	}
 
@@ -457,35 +510,36 @@ public class LoginController {
 			String id = (String) ((JSONObject) result.get("response")).get("id");
 			String name = (String) ((JSONObject) result.get("response")).get("name");
 
-			idChk = true;
+			if (biz.idCheck(id) == null) {
+				idChk = true;
 
-			int res = 0;
+				int res = 0;
 
-			Map<String, String> map = new HashMap<String, String>();
-			map.put("member_id", id);
-			System.out.println("아이디" + id);
-			String encryptPassword = passwordEncoder.encode(id);
-			System.out.println("비밀번호 암호화" + encryptPassword);
-			map.put("member_pw", encryptPassword);
-			map.put("member_name", name);
-			map.put("member_phone", "핸드폰 번호를 입력해주세요");
-			map.put("member_addr", "주소를 입력해주세요");
-			map.put("member_email", id + "@naver.com");
+				Map<String, String> map = new HashMap<String, String>();
+				map.put("member_id", id);
+				System.out.println("아이디" + id);
+				String encryptPassword = passwordEncoder.encode(id);
+				System.out.println("비밀번호 암호화" + encryptPassword);
+				map.put("member_pw", encryptPassword);
+				map.put("member_name", name);
+				map.put("member_phone", "핸드폰 번호를 입력해주세요");
+				map.put("member_addr", "주소를 입력해주세요");
+				map.put("member_email", id + "@naver.com");
 
-			res = biz.insertUser(map);
+				res = biz.insertUser(map);
+				if (res > 0) {
+					String loginId = id;
+					idChk = false;
+					System.err.println("등록~");
+					MemberDto dto = (MemberDto) user.loadUserByUsername(loginId);
+					Authentication authentication = new UsernamePasswordAuthenticationToken(dto, dto.getPassword(),
+							dto.getAuthorities());
 
-			if (res > 0) {
-				String loginId = id;
-				idChk = false;
-				System.err.println("등록~");
-				MemberDto dto = (MemberDto) user.loadUserByUsername(loginId);
-				Authentication authentication = new UsernamePasswordAuthenticationToken(dto, dto.getPassword(),
-						dto.getAuthorities());
-
-				SecurityContext securityContext = SecurityContextHolder.getContext();
-				securityContext.setAuthentication(authentication);
-				session = request.getSession(true);
-				session.setAttribute("SPRING_SECURITY_CONTEXT", securityContext);
+					SecurityContext securityContext = SecurityContextHolder.getContext();
+					securityContext.setAuthentication(authentication);
+					session = request.getSession(true);
+					session.setAttribute("SPRING_SECURITY_CONTEXT", securityContext);
+				}
 			} else { // 아이디가 있으면 로그인
 				System.err.println("로그인~");
 				String loginId = id;
@@ -552,30 +606,36 @@ public class LoginController {
 
 			String id = accessToken.getUserId() + "";
 
-			Map<String, String> map = new HashMap<String, String>();
-			map.put("member_id", id);
-			System.out.println("아이디" + id);
-			String encryptPassword = passwordEncoder.encode(id);
-			System.out.println("비밀번호 암호화" + encryptPassword);
-			map.put("member_pw", encryptPassword);
-			map.put("member_name", id);
-			map.put("member_phone", "핸드폰 번호를 입력해주세요");
-			map.put("member_addr", "주소를 입력해주세요");
-			map.put("member_email", id + "@naver.com");
-
-			res = biz.insertUser(map);
-			if (res > 0) {
+			if (biz.idCheck(id) == null) {
 				String loginId = id;
-				idChk = false;
-				System.err.println("등록~");
-				MemberDto dto = (MemberDto) user.loadUserByUsername(loginId);
-				Authentication authentication = new UsernamePasswordAuthenticationToken(dto, dto.getPassword(),
-						dto.getAuthorities());
+				idChk = true;
 
-				SecurityContext securityContext = SecurityContextHolder.getContext();
-				securityContext.setAuthentication(authentication);
-				session = request.getSession(true);
-				session.setAttribute("SPRING_SECURITY_CONTEXT", securityContext);
+				Map<String, String> map = new HashMap<String, String>();
+				map.put("member_id", id);
+				System.out.println("아이디" + id);
+				String encryptPassword = passwordEncoder.encode(id);
+				System.out.println("비밀번호 암호화" + encryptPassword);
+
+				map.put("member_pw", encryptPassword);
+				map.put("member_name", id);
+				map.put("member_phone", "핸드폰 번호를 입력해주세요");
+				map.put("member_addr", "주소를 입력해주세요");
+				map.put("member_email", id + "@naver.com");
+
+				res = biz.insertUser(map);
+
+				if (res > 0) {
+					System.err.println("등록~");
+					MemberDto dto = (MemberDto) user.loadUserByUsername(loginId);
+					Authentication authentication = new UsernamePasswordAuthenticationToken(dto, dto.getPassword(),
+							dto.getAuthorities());
+
+					SecurityContext securityContext = SecurityContextHolder.getContext();
+					securityContext.setAuthentication(authentication);
+					session = request.getSession(true);
+					session.setAttribute("SPRING_SECURITY_CONTEXT", securityContext);
+
+				}
 			} else { // 아이디가 있으면 로그인
 				System.err.println("로그인~");
 				String loginId = id;
@@ -602,9 +662,15 @@ public class LoginController {
 
 	}
 
-	// 트위터 크롤링
+	// 트위터 크롤링링
 	@RequestMapping("twits.do")
-	public void twits() throws IOException, TwitterException {
+		public String twits() {
+			return "twitter/twits";
+		}
+
+	// 트위터 크롤링
+	@RequestMapping("twitsCrawling.do")
+	public void twitsCrawling() throws IOException, TwitterException {
 		Twitter twitter = new initalize().twitter;
 
 		// 강다니엘 검색해서 가져오기
@@ -648,4 +714,5 @@ public class LoginController {
 		} catch (TwitterException e) {
 		}
 	}
+
 }

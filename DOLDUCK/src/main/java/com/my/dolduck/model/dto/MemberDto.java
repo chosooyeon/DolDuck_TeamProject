@@ -19,12 +19,13 @@ public class MemberDto extends User{
 	private String member_role;
 	private int member_heart;
 	private int member_vote;
+	private String member_img;
 
 	
 	public MemberDto(String username, String password, boolean enabled, 
 			boolean accountNonExpired, boolean credentialsNonExpired, boolean accountNonLocked,
 			Collection<? extends GrantedAuthority> authorities, int member_seq, String member_id, String member_phone, String member_addr,
-			String member_email, String member_role, int member_heart, int member_vote ){
+			String member_email, String member_role, int member_heart, int member_vote, String member_img ){
 		//userClass에 보내는 코드
 		super(username, password, enabled, accountNonExpired, credentialsNonExpired, accountNonLocked, authorities);
 		
@@ -36,7 +37,7 @@ public class MemberDto extends User{
 		this.member_role = member_role;
 		this.member_heart = member_heart;
 		this.member_vote = member_vote;
-
+		this.member_img = member_img;
 	}
 
 	@Override
@@ -124,6 +125,14 @@ public class MemberDto extends User{
 
 	public void setMember_vote(int member_vote) {
 		this.member_vote = member_vote;
+	}
+
+	public String getMember_img() {
+		return member_img;
+	}
+
+	public void setMember_img(String member_img) {
+		this.member_img = member_img;
 	}
 
 	@Override

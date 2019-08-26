@@ -44,21 +44,29 @@
 		</tr>
 	</table>
 	<br>
-	<table border="1">
+	<table class="table_comment">
 		<c:forEach items="${commList }" var="comm">
 	<tr>
 		<td id="comment_num${comm.freeboard_comment_num }">
 			댓글번호 : ${comm.freeboard_comment_num }
 		</td>
+				<td>	
+			댓글작성자 : ${comm.freeboard_id }
+		</td>
 		<td id="comment_content${comm.freeboard_comment_num }">
 			댓글내용 : ${comm.freeboard_comment_content } 
 		</td>
+<<<<<<< HEAD
 		<td>
 			댓글작성자 : ${comm.freeboard_id }
 		</td>
 		<td>
+=======
+		<td>	
+>>>>>>> cbbff12325b748e07fe3c2402507faf0782e314c
 			댓글작성시간 : ${comm.freeboard_comment_regdate }
 		</td>
+		
 		<td id="edit_btn">
 			<input type="hidden" name="comm-num" value="${comm.freeboard_comment_num }">	
 			<input type="hidden" name="comm-content" value="${comm.freeboard_comment_content}">
@@ -80,23 +88,26 @@
 	댓글쓰기
 	<form action="freeboard_comment_insert.do" method="post">
 		<input type="hidden" name="freeboard_num" value="${one.freeboard_num }">
-	<table>
+	<table class="comment_tadle">
 		<tr>
-			<td id="comment_textarea">
-				<textarea rows="3"cols="60" name="freeboard_comment_content"></textarea>
-			</td>
 			<td id="comment_input_id">
 				<input type="text" name="freeboard_id">	
 			</td>
-		<tr>
+			<td id="comment_textarea">
+					<textarea id="comment_textarea_css" rows="2"cols="50" name="freeboard_comment_content"></textarea>
+			</td>
 			<td id="comment_submit">
+<<<<<<< HEAD
 				
 				<input type="submit" value="작성">
+=======
+				<button class="comment_btn" type="submit">작성</button>
+>>>>>>> cbbff12325b748e07fe3c2402507faf0782e314c
 			</td>
-	</tr>
 	</table>
 	</form>
 	</div>
 </div>
+<%@ include file="../footer.jsp" %>
 </body>
 </html>

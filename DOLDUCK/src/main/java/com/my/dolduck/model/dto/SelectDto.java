@@ -16,6 +16,7 @@ public class SelectDto implements Serializable{
 	private String member_role;
 	private int member_heart;
 	private int member_vote;
+	private String member_img;
 	
 	public SelectDto() {
 		super();
@@ -111,4 +112,12 @@ public class SelectDto implements Serializable{
 		this.member_vote = member_vote;
 	}
 
+	public String getMember_img() {
+		return member_img;
+	}
+
+	public void setMember_img(String member_img) {
+		this.member_img = member_img;
+	}
+	
 }
