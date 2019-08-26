@@ -23,7 +23,7 @@
 				<a class="nav-link market_link" href="heartShop.do">HeartShop</a>
 			</li>
 			<li class="nav-item">
-				<a class="nav-link market_link" href="Goodies.do">Goodies</a>
+				<a class="nav-link market_link" href="market_list.do">Goodies</a>
 			</li>
 
 		</ul>

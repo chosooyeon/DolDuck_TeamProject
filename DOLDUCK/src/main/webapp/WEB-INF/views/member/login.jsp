@@ -65,6 +65,9 @@ img#kakao-login-btn {
 					<div id="kakao-profile"></div>
 					<p></p>
 					<%@ include file="./naver.jsp"%>
+					<p></p>
+					<%@ include file="../twitter/twitter_login.jsp"%>
+					
 				</form>
 			</div>
 		</div>

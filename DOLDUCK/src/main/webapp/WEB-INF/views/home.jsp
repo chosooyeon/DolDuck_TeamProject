@@ -33,11 +33,16 @@
    <!-- Home -->
    <section class="home">
       <div class="home_video">
-      <!-- video -->
-            <div class="embed-responsive embed-responsive-16by9">
-            <!-- resources/videos/index.mp4 -->
-               <iframe class="embed-responsive-item" src="resources/videos/index.mp4"></iframe>
-            </div>
+      <!-- 
+      video 속성      
+      controls: 재생,시간,.. 컨트롤 화면 
+      autoplay: 자동 재생
+      loop: 무한반복
+      muted:음소거
+      -->   
+            <video controls autoplay loop muted="muted">
+            	<source src="resources/videos/index.mp4" type="video/mp4">
+            </video>
       </div>  
    </section>
    
@@ -124,19 +129,18 @@
 		<!-- youtube -->
 		<section class="channel">
 			<div class="container">
-				<div class="row">
+				
 					<div class="col-lg-6 offset-lg-3">
 						<!-- youtube -->
 						<p class="dol_now">나의 DOL은 지금</p>
 					</div>
-				</div>
-				<div class="row ">
+				
+				
 					<div class="channel_button">
 						<a href="youtube.do">Channel More</a>
 					</div>
 					<!-- 채널 영상 넣기 -->
-					<div class="home_channel"></div>
-				</div>
+					<div id="getVideo"></div>			
 			</div>
 		</section>
 
@@ -190,12 +194,12 @@
 	</section>
 	<%@include file="footer.jsp"%>
 
-	<script type="http://platform.twitter.com/anywhere.js?id=IXw8Box7vGU37vCslSZRbw&v=1" type="text/javascript"></script>
+	<!-- <script type="http://platform.twitter.com/anywhere.js?id=IXw8Box7vGU37vCslSZRbw&v=1" type="text/javascript"></script>
 	<script type="text/javascript">
 		twttr.anywhere(function(T){
 			T("article").linkifyUsers();
 		});
-	</script>
+	</script> -->
 
 	<script type="text/javascript"
 		src="https://code.jquery.com/jquery-3.4.1.min.js"></script>
@@ -217,5 +221,6 @@
 	<script src="resources/js/custom.js"></script>
 	<script src="resources/js/d3.min.js"></script>
 	<script src="https://kit.fontawesome.com/c1455fa856.js"></script>
+	<script src="resources/js/utils/youtube.js"></script>
 </body>
 </html>

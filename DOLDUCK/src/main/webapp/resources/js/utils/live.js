@@ -2,13 +2,11 @@
 var token = $("meta[name='_csrf']").attr("content");
 var header = $("meta[name='_csrf_header']").attr("content");
 
-//buttons
 var contentArea = document.getElementById('live-content')
-var startLiveBtn = document.getElementById('btn-startlive')
 
 $(document).ready(function() {
 	
-	$('.nav > li > a').on('click', function() {
+	$(document).on('click','.nav > li > a', function() {
 		var tab = $('.nav > li > a').val()
 		console.log(tab);
 		
@@ -27,27 +25,13 @@ $(document).ready(function() {
 				break;
 			default : break;
 		}
-		
 	})
+	
 })
 
-startLiveBtn.addEventListener('click', function(){
-	$('#liveinfo-form').submit()
-	//$('#liveInfoModal').hide()	
-})
 
-function handleLiveBoard(){
-	$.ajax({
-		type : 'POST', 
-		url : '',
-		dataType : 'json',
-		beforeSend : function(xhr){
-			xhr.setRequestHeader(header, token)
-		}, success : function(data){
-			console.log(`Success to get ${data}`)
-		}, error: function(e){
-			console.log(`Error: ${e}`)
-		}
-	})
-}
+/***********************	라이브 대기 플랫폼	************************/
+
+
+
 

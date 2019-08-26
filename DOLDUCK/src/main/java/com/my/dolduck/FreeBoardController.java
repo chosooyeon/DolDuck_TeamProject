@@ -1,11 +1,7 @@
 package com.my.dolduck;
 
-import java.text.DateFormat;
-import java.util.ArrayList;
-import java.util.Date;
 import java.util.HashMap;
 import java.util.List;
-import java.util.Locale;
 import java.util.Map;
 
 import org.slf4j.Logger;
@@ -13,10 +9,8 @@ import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
-import org.springframework.ui.ModelMap;
 import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.ResponseBody;
 
@@ -38,21 +32,6 @@ public class FreeBoardController {
 	private FreeboardCommentBiz bizComm;
 
 	private static final Logger logger = LoggerFactory.getLogger(FreeBoardController.class);
-
-	/**
-	 * Simply selects the home view to render by returning its name.
-	 */
-//	@RequestMapping(value = "/home.do", method = RequestMethod.GET)
-//	public String home(Locale locale, Model model) {
-//		Date date = new Date();
-//		DateFormat dateFormat = DateFormat.getDateTimeInstance(DateFormat.LONG, DateFormat.LONG, locale);
-//
-//		String formattedDate = dateFormat.format(date);
-//
-//		model.addAttribute("serverTime", formattedDate);
-//
-//		return "home";
-//	}
 
 	// 게시글 목록
 	@RequestMapping("/free_list.do")
@@ -77,8 +56,10 @@ public class FreeBoardController {
 
 		if (res > 0) {
 			return "redirect:free_list.do";
+		} else {
+			return "redirect:free_insert.do";
 		}
-		return "redirect:free_insert.do";
+		
 	}
 
 	// 게시글 자세히보기 & 댓글 리스트
