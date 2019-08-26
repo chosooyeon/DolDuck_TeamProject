@@ -30,7 +30,17 @@ $(document).ready(function() {
 })
 
 
-/***********************	라이브 대기 플랫폼	************************/
+/*********************** 라이브 대기 홈 ************************/
+
+$(document).on('click', '.video-item-thumb', function(){
+	var video_seq = $(this).children('input[name=video_seq]').val()
+	console.log(video_seq)
+	
+	//location.href = `live-detail.do?video_seq=${video_seq}`
+})
+
+
+/*********************** 라이브 대기 플랫폼	************************/
 
 
 

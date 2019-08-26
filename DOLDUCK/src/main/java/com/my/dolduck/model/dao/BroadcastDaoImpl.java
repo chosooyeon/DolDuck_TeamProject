@@ -24,6 +24,15 @@ public class BroadcastDaoImpl implements BroadcastDao {
 		
 		return list;
 	}
+	
+	@Override
+	public List<BroadcastDto> selectListHavingVideo() {
+		
+		List<BroadcastDto> list = new ArrayList<BroadcastDto>();
+		list = sqlSession.selectList(namespace+"selectList_havingVideo");
+
+		return list;
+	}
 
 	@Override
 	public BroadcastDto selectOne(int broadcast_seq) {
@@ -56,5 +65,7 @@ public class BroadcastDaoImpl implements BroadcastDao {
 	public int saveVideo(BroadcastDto dto) {
 		return sqlSession.update(namespace+"update_broadcast_saveVideo", dto);
 	}
+
+	
 
 }

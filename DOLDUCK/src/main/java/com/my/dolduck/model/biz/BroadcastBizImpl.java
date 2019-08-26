@@ -20,6 +20,11 @@ public class BroadcastBizImpl implements BroadcastBiz {
 	}
 
 	@Override
+	public List<BroadcastDto> selectListHavingVideo(){
+		return dao.selectListHavingVideo();
+	}
+	
+	@Override
 	public BroadcastDto selectOne(int broadcast_seq) {
 		return dao.selectOne(broadcast_seq);
 	}

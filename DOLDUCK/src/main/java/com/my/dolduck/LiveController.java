@@ -9,6 +9,7 @@ import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
+import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RequestParam;
@@ -30,7 +31,27 @@ public class LiveController {
 	
 	//홈
 	@RequestMapping("live-home.do")
-	public String liveBoard() {
+	public String liveBoard(Model model) {
+		
+		List<BroadcastDto> list = b_biz.selectListHavingVideo();
+		
+		JSONObject videos = new JSONObject();
+		JSONArray videoArr = new JSONArray();
+		
+		for(BroadcastDto dto : list) {
+			JSONObject video = new JSONObject();
+			
+			video.put("seq", dto.getBroadcast_seq());
+			video.put("title", dto.getBroadcast_title());
+			video.put("date", dto.getBroadcast_date());
+			video.put("thumb", "C:\\Users\\user1\\Downloads\\"+dto.getBroadcast_content()+".jpg");
+			
+			videoArr.add(video);
+		}
+		//videos.put("list", videoArr);
+		model.addAttribute("list", videoArr);
+				
+		//C:\Workspace_finalProject\.metadata\.plugins\org.eclipse.wst.server.core\tmp0\wtpwebapps\DOLDUCK\resources\videos
 		return "live/live-home";
 	}
 	
@@ -56,13 +77,12 @@ public class LiveController {
 			
 			event.put("id", dto.getBroadcast_seq());
 			event.put("title", dto.getBroadcast_caster() + "-" + dto.getBroadcast_title());
-			event.put("start", DateTime[0]);
-			event.put("end", DateTime[0]);
-			event.put("startTime", DateTime[1]);
-			event.put("endTime", "23:00");
+			event.put("start", DateTime[0]+"T"+DateTime[1]);
+			event.put("end", DateTime[0]+"T"+"23:00");
 			event.put("allDay", false);
 			
 			eventArr.add(event);
+			
 		}
 		events.put("list", eventArr);
 		
@@ -79,8 +99,11 @@ public class LiveController {
 		event.setBroadcast_caster((String) item.get("caster"));
 		event.setBroadcast_title((String) item.get("title"));
 		String date = (String)(item.get("start_date")+" "+item.get("start_hour")+":"+item.get("start_min"));
-		System.err.println("date : " + date);
 		event.setBroadcast_date(date);
+		
+		System.err.println(event.getBroadcast_caster());
+		System.err.println(event.getBroadcast_title());
+		System.err.println("date : " + date);
 		
 		int res = b_biz.insert(event);
 		System.err.println("insert res : " + res);
@@ -96,6 +119,16 @@ public class LiveController {
 	@RequestMapping("deleteEvent.do")
 	public String deleteEvent() {
 		return "";
+	}
+	
+	//온에서 - 디테일 
+	@RequestMapping("live-detail.do")
+	public String liveDetail(String video_seq, Model model) {
+
+		BroadcastDto dto = b_biz.selectOne(Integer.parseInt(video_seq));
+		model.addAttribute("dto", dto);
+				
+		return "live/live-detail";
 	}
 	
 	//온에어 - 대기실

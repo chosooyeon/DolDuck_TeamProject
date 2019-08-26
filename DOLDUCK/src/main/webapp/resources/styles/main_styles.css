@@ -506,6 +506,37 @@ section
 	width: 100%;
 }
 
+
+/*********************************
+3-1, Quick menu
+*********************************/
+
+.quick-menu-frame{
+	width: 450px;
+    height: 700px;
+    position: fixed;
+    bottom: 3%;
+    right: 3%;
+    background-color: #c0aded;  /*  #f2ecf5 */
+    z-index: 10;
+    border-radius: 0.7em;
+    cursor: pointer;
+}
+#quickframe-close-btn{
+	width: 100%;
+	height: 5%;
+}
+#quickframe-frame-area{
+	width: 100%;
+	height: 93%;
+}
+#quickframe-frame-area iframe{
+	width: 100%;
+	height: 100%;
+}
+
+
+
 /*********************************
 4. Menu
 *********************************/
@@ -1399,7 +1430,7 @@ table {
 *******************/
 .calendar-box{ margin-top: 8em; margin-bottom: 10em;}
 .slide_img{ height: -webkit-fill-available;}
-#area-addEvent{ margin-top: 4em; margin-bottom: 4em; float: right;}
+#area-addEvent{ margin-top: 2em; margin-bottom: 2em; float: right;}
 
 .carousel-control-next, .carousel-control-prev{
 	width: 50%;

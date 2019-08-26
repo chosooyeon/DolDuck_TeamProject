@@ -32,6 +32,7 @@
           calendar.render();
       });
 
+	//일정 가져오기
 	function getEventList(){
 		
 		var list;
@@ -52,10 +53,10 @@
 		return list;
 	}
 	
+	
+
 	//일정추가
 	var addLiveInfoBtn = document.getElementById('btn-addLiveInfo')
-
-
 
 	addLiveInfoBtn.addEventListener('click', function(){
 		var caster = $('input[name=live_caster]').val(),

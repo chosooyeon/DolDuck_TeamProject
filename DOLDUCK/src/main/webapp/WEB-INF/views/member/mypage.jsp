@@ -25,7 +25,12 @@
 
 					<table class="join_form">
 						<tr>
-						<td><img width="250px" height="250px" src="${pageContext.request.contextPath }/resources/uploadImage/${dto.member_img}"></td>
+						<td>
+							<div style="margin: -60px 0px 47px 73px;">
+								<img width="250px" height="250px" src="${pageContext.request.contextPath }/resources/uploadImage/${dto.member_img}" 
+								style="border-radius: 50%; height: 100px; width: 100px;">
+							</div>
+						</td>
 						</tr>
 						<tr>
 							<th>이름</th>
