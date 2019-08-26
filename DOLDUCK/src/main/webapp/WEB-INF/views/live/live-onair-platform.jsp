@@ -66,12 +66,12 @@
 	        <div class="modal-body">
 	          <form action="start-onair.do" id="liveinfo-form">
 	          	<table style="width: 100%;">
-					<tr><td>방 송 제 목</td></tr>
+	          		<tr><td>방 송 제 목</td></tr>
 					<tr>
 						<td>
 							<input type="text" class="form-control" name="live_title">
 						</td>
-					</tr>          	
+					</tr>       	
 	          	</table>
 	          </form>
 	        </div>

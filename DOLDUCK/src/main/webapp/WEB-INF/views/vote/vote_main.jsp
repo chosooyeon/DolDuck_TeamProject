@@ -1,10 +1,8 @@
-<%@ page language="java" contentType="text/html; charset=UTF-8" pageEncoding="UTF-8"%>
+﻿<%@ page language="java" contentType="text/html; charset=UTF-8" pageEncoding="UTF-8"%>
 <!DOCTYPE html>
 <html>
 <head>
 <meta charset="UTF-8">
-<meta name="_csrf" content="${_csrf.token}"/>
-<meta name="_csrf_header" content="${_csrf.headerName}"/>
 <title>All About K-POP! DD - Star</title>
 <!-- Bootstdap 4 -->
 <link rel="stylesheet" type="text/css" href="resources/styles/bootstrap-4.1.2/bootstrap.min.css">
@@ -17,7 +15,7 @@
 <script src="//ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
 <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js"></script>
 <script src="resources/styles/bootstrap-4.1.2/bootstrap.min.js"></script>
-<script src="resources/js/vote.js?ver=1" type="text/javascript"></script>
+<script src="resources/js/utils/vote.js?ver=1" type="text/javascript"></script>
 
 </head>
 <body>
@@ -28,15 +26,15 @@
 			<div class="div-star">
 				<ul class="vote-button">
 					<li class="girl-group">여자 그룹</li>
-					<li class="girl-star">여자 아이돌</li>
-					<li class="new-star">신인 스타</li>
-					<li class="star-star">별별 스타</li>
+					<li class="girl-idol">여자 아이돌</li>
+					<li class="new-idol">신인 스타</li>
+					<li class="star-idol">별별 스타</li>
 					<li class="boy-group">남자 그룹</li>
-					<li class="boy-star">남자 아이돌</li>
+					<li class="boy-idol">남자 아이돌</li>
 				</ul>
 			</div>
 			<div class="votechart-board">
-				<p>검색시간 : <label class="label-test"></label>
+				<p>검색시간 : <label class="current-time"></label>
 				<table class="table">
 					<thead>
 						<tr id="">
@@ -47,10 +45,9 @@
 					</thead>
 				<tbody></tbody>
 				</table>
-				<button class="abc">더 보기</button>	
 			</div>
-		</div>
-	</div>
+			</div>
+			</div>
 	
 </body>
 </html>
