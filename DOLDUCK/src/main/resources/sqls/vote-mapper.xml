@@ -29,4 +29,5 @@
 		SET MEMBER_VOTE=MEMBER_VOTE-#{voteNumber}
 		WHERE MEMBER_ID=#{member_id}
 	</update>
+	
 </mapper>
