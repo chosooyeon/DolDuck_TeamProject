@@ -2,19 +2,19 @@
 <!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
 <mapper namespace="member">
 
-	<!-- <resultMap type="MemberDto" id="MemberMap"> <result column="MEMBER_SEQ" 
-		property="seq" /> <result column="MEMBER_ID" property="id" /> <result column="MEMBER_PW" 
-		property="pw" /> <result column="MEMBER_NAME" property="name" /> <result 
-		column="MEMBER_PHONE" property="phone" /> <result column="MEMBER_ADDR" property="addr" 
-		/> <result column="MEMBER_EMAIL" property="email" /> <result column="MEMBER_REGDATE" 
-		property="regdate" /> <result column="MEMBER_ENABLED" property="enabled" 
-		/> <result column="MEMBER_ROLE" property="role" /> <result column="MEMBER_VOTE" 
-		property="vote" /> </resultMap> -->
-
 	<select id="selectList" resultType="SelectDto">
 		SELECT * FROM MEMBER
 	</select>
 	<cache></cache>
+	
+	<select id="selectId" resultType="SelectDto">
+		SELECT * FROM MEMBER 
+		<where>
+			<if test="value != null">
+				MEMBER_ID = '${value}'
+			</if>
+		</where>
+	</select>
 	
 	<select id="selectUser" resultType="java.util.Map">
 		SELECT
@@ -29,31 +29,29 @@
 		MEMBER_ADDR,
 		MEMBER_REGDATE,
 		MEMBER_HEART,
-		MEMBER_VOTE
+		MEMBER_VOTE,
+		MEMBER_IMG
 		FROM MEMBER
 		WHERE MEMBER_ID=#{member_id}
 	</select>
 	
 	<!-- 등급변경 -->
-	
 	<update id="updateRole" parameterType="MemberDto">
 		UPDATE MEMBER SET
 		MEMBER_ROLE=#{member_role} 
 		WHERE MEMBER_ID=#{member_id}
 	</update>
 	
-
+	<update id="deleteMember" parameterType="MemberDto">
+		UPDATE MEMBER SET
+		MEMBER_ENABLED = 0 
+		WHERE MEMBER_ID = #{member_id}
+	</update>
+	
 	<insert id="insertUser" parameterType="map">
 		INSERT INTO MEMBER
 		VALUES(MEMBERSEQ.NEXTVAL,#{member_id},#{member_pw},#{member_name},#{member_phone},#{member_addr},#{member_email},SYSDATE,
-		0, 1,'ROLE_USER',1)
-	</insert>
-
-	<!-- 회원가입 및 체크 -->
-	<insert id="memberRegister" parameterType="MemberDto">
-		INSERT INTO MEMBER
-		VALUES(MEMBERSEQ.NEXTVAL,#{member_id},#{member_pw},#{member_name},#{member_phone},#{member_addr},#{member_email},
-		SYSDATE, 0, 1, 'ROLE_USER',1)
+		0, 1,'ROLE_USER',1,'이미지')
 	</insert>
 
 	<select id="loginChk" parameterType="map" resultType="memberDto">
@@ -77,8 +75,8 @@
 	</select>
 
 	<update id="updateMember" parameterType="map">
-		UPDATE MEMBER SET PW=#{pw}, PHONE=#{phone}, ADDR=#{addr},
-		ZONECODE=#{zonecode} WHERE MEMBER_ID=#{id}
+		UPDATE MEMBER SET MEMBER_PW=#{member_pw}, MEMBER_PHONE=#{member_phone}, MEMBER_ADDR=#{member_addr},
+		MEMBER_EMAIL=#{member_email}, MEMBER_IMG=#{member_img} WHERE MEMBER_ID=#{member_id}
 	</update>
 	
 	<update id="updateUserPw" parameterType="memberDto">
@@ -101,10 +99,6 @@
 
 	<update id="changePw" parameterType="SelectDto">
 		UPDATE MEMBER SET MEMBER_PW=#{pw} WHERE MEMBER_ID=#{id}
-	</update>
-	
-	<update id="user_delete" parameterType="int">
-		UPDATE LOGIN SET ENABLED='N' WHERE USERSEQ=#{userseq}
 	</update>
 
 	<!-- VOTE -->

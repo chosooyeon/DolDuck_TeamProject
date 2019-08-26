@@ -1,4 +1,4 @@
-package com.my.dolduck.model.dao;
+﻿package com.my.dolduck.model.dao;
 
 import java.util.ArrayList;
 import java.util.HashMap;
@@ -97,10 +97,6 @@ public class MemberDaoImpl implements MemberDao {
 	public int updateMember(Map<String, String> map) {
 		int res = 0;
 		res = sqlSession.update(namespace + "updateMember", map);
-			
-			if(res>0) {
-				sqlSession.commit();
-			}
 		
 		return res;
 	}
@@ -109,10 +105,6 @@ public class MemberDaoImpl implements MemberDao {
 	public int updateUserPw(MemberDto dto) {
 		int res = 0;
 		res = sqlSession.update(namespace + "updateUserPw", dto);
-			if(res>0) {
-				sqlSession.commit();
-			}
-		
 		return res;
 	}
 
@@ -296,10 +288,24 @@ public class MemberDaoImpl implements MemberDao {
 	public int updateRole(MemberDto dto) {
 		int res = 0;
 		res = sqlSession.update(namespace+"updateRole",dto);
-			
-			if(res>0) {
-				sqlSession.commit();
-			}
+		
 		return res;
+	}
+	
+	@Override
+	public int deleteMember(String member_id) {
+		int res=0;
+		try {
+			res = sqlSession.update(namespace+"deleteMember",member_id);
+		} catch (Exception e) {
+			e.printStackTrace();
+			System.err.println("에러입니다");
+		}
+		return res;
+	}
+
+	@Override
+	public SelectDto selectId(String id) {
+		return sqlSession.selectOne(namespace+"selectId", id);
 	}
 }

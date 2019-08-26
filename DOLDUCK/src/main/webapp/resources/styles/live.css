@@ -17,7 +17,7 @@
 	height: 300px; 
 	position: relative; 
 	margin-top: 100px;
-	background-color: cornflowerblue; 
+	background-color: #f2ecf5; 
 	text-align: center;
 	font-size: 35px;
 	color: white;
@@ -28,6 +28,7 @@
     border-top-left-radius: .25rem;
     border-top-right-radius: .25rem;
     color: #000;
+    font-family: 'Futura', 'NIXGONM-Vb';
     font-size: 15px;
     font-weight: 600;
 }
@@ -45,6 +46,7 @@
 .nav-tab-menu{ border-bottom : 1px solid #ddd; }
 .live-content{ 
 	margin-top: 30px;
+	margin-bottom: 6em;
 	border : 1px solid;
 	height :  800px;
 }

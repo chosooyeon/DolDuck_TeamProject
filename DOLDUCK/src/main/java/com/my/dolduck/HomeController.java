@@ -1,4 +1,4 @@
-package com.my.dolduck;
+﻿package com.my.dolduck;
 
 import java.text.DateFormat;
 import java.text.SimpleDateFormat;
@@ -63,7 +63,7 @@ public class HomeController {
 		return "admin/admin";
 	}
 	
-	/************************** 濡쒓렇�븘�썐 ***************************/
+	/************************** 로그아웃 ***************************/
 	
 	@RequestMapping("logout.do")
 	public String logout(HttpSession session) {
@@ -72,7 +72,7 @@ public class HomeController {
 		return "redirect:home.do";
 	}
 	
-	/************************** Music Chart 寃뚯떆�뙋 ***************************/
+	/************************** Music Chart ***************************/
 	@RequestMapping("chart.do")
 	public String showMusicChart() {
 		return "utils/music_chart";
@@ -94,10 +94,9 @@ public class HomeController {
 		case "genie":
 			list = crawling.getGenieChart();
 			break;
-		}
-		//硫쒕줎李⑦듃 �겕濡ㅻ쭅�빐�꽌 List濡� return 
+		} 
 				
-		//JSON���엯�쑝濡� �뙆�떛
+		//JSON Object
 		JSONObject chart = new JSONObject();
 		JSONArray songArr = new JSONArray();
 		
@@ -113,7 +112,7 @@ public class HomeController {
 		}
 		chart.put("chart", songArr);
 		
-		////Realtime �떆媛꾩뼸湲�
+		////Realtime
 		long time = System.currentTimeMillis();
 		SimpleDateFormat dayTime = new SimpleDateFormat("yyyy-MM-dd hh:mm:ss");
 		String str = dayTime.format(new Date(time));
@@ -121,7 +120,6 @@ public class HomeController {
 		
 		return chart;
 	}
-
 	
 	/************************** Youtube 게시판  ***************************/
 	@RequestMapping("youtube.do")
@@ -134,11 +132,6 @@ public class HomeController {
 	@RequestMapping("heartShop.do")
 	public String heartShop() {
 		return "market/heartShop";
-	}
-	
-	@RequestMapping("Goodies.do")
-	public String Goodies() {
-		return "market/Goodies";
 	}
 
 	@RequestMapping("buy-heart.do")
@@ -167,7 +160,7 @@ public class HomeController {
 		String result;
 		
 		int res = biz.purchaseVote(amount, userId);
-		System.out.println(userId + "�떂�씠 " + amount + "媛쒖쓽 �닾�몴沅뚯쓣 �궛�떎~");
+		System.out.println(userId + "님이  " + amount + "구매합니다~");
 		System.err.println("Controller Result => " + res);
 		if(res>0) {
 			result = "succeed";

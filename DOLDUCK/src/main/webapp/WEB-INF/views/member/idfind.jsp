@@ -47,6 +47,8 @@
 	</form>
 	</div>
 	</div>
+	<div class="modal fade" id="checkModal" tableindex="-1" role="dialog" aria-hidden="true">
+	</div>
 </div>
 </body>
 </html>

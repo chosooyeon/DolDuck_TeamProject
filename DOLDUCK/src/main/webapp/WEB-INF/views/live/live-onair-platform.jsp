@@ -95,5 +95,9 @@
     
     <script src="https://code.jquery.com/jquery-3.4.1.min.js"></script>
     <script src="resources/js/utils/live.js"></script>
+    <script src="resources/js/ioConnectException.js"></script>
+    <script src="https://192.168.10.107:5571/socket.io/socket.io.js"></script>
+    <script src=""></script>
+    <script src="resources/js/broadcast/js/main.js"></script>
 </body>
 </html>

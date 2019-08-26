@@ -34,7 +34,7 @@
     <!-- Slide Caresel  -->
     <%@include file="/WEB-INF/views/live/liveroom-slide.jsp" %>
     
-    
+   
     <div id="main" class="container nav-tab-menu">
         <!-- Tab Menu -->
     	<div class="col-lg-12 offset-lg-4 "> 
@@ -56,11 +56,14 @@
          
         <!-- Add button for Events on calendar -->
         <!-- If the role of session(User) is 'ROLE_ARTIST', SHOW FOLLOWING 'BUTTON' -->
-        <sec:authorize access="hasAnyRole('ROLE_USER','ROLE_ARTIST')">
+       <%--  <sec:authorize access="hasAnyRole('ROLE_USER','ROLE_ARTIST')">
 	        <div id="area-addEvent">
 	        	<button type="button" class="btn btn-warning" id="btn-addevent" data-toggle="modal" data-target="#addEventModal">일정추가</button>
 	        </div> 
-        </sec:authorize>
+        </sec:authorize> --%>
+        <div id="area-addEvent">
+	        	<button type="button" class="btn btn-warning" id="btn-addevent" data-toggle="modal" data-target="#addEventModal">일정추가</button>
+	    </div> 
      </div>  
      
      <!-- Calendar Area-->
@@ -87,30 +90,35 @@
 	        <div class="modal-body">
 	          <form action="start-onair.do" id="liveinfo-form">
 	          	<table style="width: 100%;">
-					<tr><td>캐스터이름</td></tr>
+	          		<tr><td>방송진행자</td></tr>
 	          		<tr><td>강다니엘</td></tr>
+	          		<tr><td></td></tr>
 					<tr><td>방 송 제 목</td></tr>
 					<tr>
-						<td><input type="text" class="form-control" name="live_title"></td>
-					</tr>
-					<tr><td>방 송 일 정</td></tr>
-					<tr>
-						<td colspan=""><input type="date" class="" name="" style="width: 100%;"></td>
-					</tr>
+						<td><input type="text" class="form-control" name="live_title"  style="width:100%;"></td>
+					</tr>         
+					<tr><td></td></tr>
+					<tr><td>방 송 일 정</td></tr> 	
 					<tr>
 						<td>
-							<input type="number" class="form-control" name="live_start_hour" style="width: 40%; display: inline;">시&nbsp;
-							<input type="number" class="form-control" name="live_start_min" style="width: 40%; display: inline;">분
+							<input type="date" name="live_start_date" style="width: 100%;">
 						</td>
-					</tr>    
+					</tr>
+					<tr><td></td></tr>
+					<tr><td>방 송 시 작</td></tr>
+					<tr>
+						<td>
+							<input type="number" name="live_start_hour"  style="width:40%;">&nbsp;시&nbsp;
+							<input type="number" name="live_start_min"  style="width:40%;">분 
+						</td>
 	          	</table>
 	          </form>
 	        </div>
 	        
 	        <!-- Modal footer -->
 	        <div class="modal-footer">
-		      <button type="button" class="btn btn-danger" id="btn-startlive">저  장</button>
-	          <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+		      <button type="button" class="btn btn-danger" id="btn-addLiveInfo">저 장</button>
+            <button type="button" class="btn btn-secondary" data-dismiss="modal">취 소</button>
 	        </div>
 	        
 	      </div>

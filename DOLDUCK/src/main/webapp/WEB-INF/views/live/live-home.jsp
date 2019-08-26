@@ -1,4 +1,4 @@
-<%@ page language="java" contentType="text/html; charset=UTF-8" pageEncoding="UTF-8"%>
+﻿<%@ page language="java" contentType="text/html; charset=UTF-8" pageEncoding="UTF-8"%>
 <%@taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <!DOCTYPE html>
 <html>
@@ -11,10 +11,8 @@
     <!-- Header -->
     <%@include file="/WEB-INF/views/header.jsp" %>
     <!-- Slide Caresel  -->
-    <%@include file="/WEB-INF/views/live/liveroom-slide.jsp" %>
 
-   
-   
+    <%@include file="/WEB-INF/views/live/liveroom-slide.jsp" %>
     <div id="main" class="container nav-tab-menu">
         <!-- Tab Menu -->
     	<div class="col-lg-12 offset-lg-4 "> 

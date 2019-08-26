@@ -1,4 +1,4 @@
-@charset "utf-8";
+﻿@charset "utf-8";
 /* CSS Document */
 
 /******************************
@@ -28,6 +28,13 @@
 	font-family: 'Futura';
 	src: url('../fonts/FuturaLT-Book.ttf')  format('truetype');
 }
+@font-face 
+{ 
+	font-family: 'NIXGONM-Vb'; 
+	src: url('https://cdn.jsdelivr.net/gh/projectnoonnu/noonfonts_six@1.2/NIXGONM-Vb.woff') format('woff'); 
+	font-weight: normal; 
+	font-style: normal; 
+}
 
 /*********************************
 2. Body and some general stuff
@@ -43,7 +50,8 @@
 }
 body
 {
-	font-family: 'Futura', sans-serif;
+	width: 100%;
+	font-family: 'Futura', 'NIXGONM-Vb';
 	font-size: 14px;
 	font-weight: 400;
 	background: #FFFFFF;
@@ -62,7 +70,7 @@ ul
 	list-style: none;
 	margin-bottom: 0px;
 }
-p
+p, li
 {
 	margin: 0;
     padding: 0;
@@ -135,7 +143,7 @@ h4{font-size: 18px;}
 h5{font-size: 14px;}
 h1, h2, h3, h4, h5, h6
 {
-	font-family: 'Futura', sans-serif;
+	font-family: 'Futura', 'NIXGONM-Vb';
 	-webkit-font-smoothing: antialiased;
 	-webkit-text-shadow: rgba(0,0,0,.01) 0 0 1px;
 	text-shadow: rgba(0,0,0,.01) 0 0 1px;
@@ -287,7 +295,7 @@ section
 	left: 0;
 	top: 0;
 	width: 100%;
-	background: #000000;
+	background: #c0aded;
 	z-index: 100;
 	-webkit-transition: all 400ms ease;
 	-moz-transition: all 400ms ease;
@@ -430,13 +438,13 @@ section
 	background-color:#000000;
 }
 .has-search{
-	margin-top: -0.5rem;
-	margin-left: 1rem;
+	margin-top: -0.5rem!important;
+	margin-left: 1rem!important;
 }
 
 .has-search .form-control {
-    padding-left: 2rem;
-    width: 78%;
+    padding-left: 2rem!important;
+    width: 78% !important;
 }
 
 .has-search .form-control-feedback {
@@ -695,8 +703,11 @@ section
 }
 .embed-responsive
 {
-	width: 100%;
+	width: -webkit-fill-available;
 	height: 100%;
+}
+video{
+	width:inherit;
 }
 
 
@@ -915,9 +926,7 @@ svg{
 .channel_button a {
     color: #ffff;
 }
-.home_channer{
-	border: 
-}
+
 /*********************************
 9. Extra
 *********************************/
@@ -976,79 +985,11 @@ svg{
 
 .footer
 {
-	background: #000000;
+	background: #c0aded;
 	padding-left: 50px;
 	padding-right: 51px;
 }
-.newsletter_container
-{
-	width: 604px;
-	padding-top: 103px;
-}
-.newsletter_title
-{
 
-}
-.newsletter_form
-{
-	display: block;
-	position: relative;
-	width: 100%;
-	margin-top: 30px;
-}
-.newsletter_input
-{
-	width: 100%;
-	height: 50px;
-	background: #545454;
-	border: none;
-	outline: none;
-	padding-left: 23px;
-}
-.newsletter_input::-webkit-input-placeholder
-{
-	font-size: 12px !important;
-	font-style: italic;
-	color: #FFFFFF !important;
-}
-.newsletter_input:-moz-placeholder
-{
-	font-size: 12px !important;
-	font-style: italic;
-	color: #FFFFFF !important;
-}
-.newsletter_input::-moz-placeholder
-{
-	font-size: 12px !important;
-	font-style: italic;
-	color: #FFFFFF !important;
-} 
-.newsletter_input:-ms-input-placeholder
-{ 
-	font-size: 12px !important;
-	font-style: italic;
-	color: #FFFFFF !important;
-}
-.newsletter_input::input-placeholder
-{
-	font-size: 12px !important;
-	font-style: italic;
-	color: #FFFFFF !important;
-}
-.newsletter_button
-{
-	position: absolute;
-	top: 0;
-	right: 0;
-	width: 139px;
-	height: 50px;
-	background: #de4f32;
-	border: none;
-	outline: none;
-	cursor: pointer;
-	color: #FFFFFF;
-	font-size: 14px;
-}
 .footer_lists
 {
 	width: 575px;
@@ -1084,7 +1025,6 @@ svg{
 {
 	width: 100%;
 	height: 67px;
-	background: #000000;
 }
 .copyright_bar span
 {
@@ -1092,32 +1032,26 @@ svg{
 	color: #6d6d6d;
 	line-height: 67px;
 }
-/*  고객센터 1:1채팅  */
-.div-button-chat, .icon-chat-circle{ width: 60px; height: 60px;}
-.icon-chat-circle{ 
-	z-index:9;
-	background: #ff99cc; 
-	border-radius: 5em;
-	position: fixed;
-    top: 85%;
+/*  Quick menu  */
+.quick_icon{
+    position: fixed;
+    top: 31%;
     right: 3%;
+    z-index: 9
+}
+
+.icon-chat-circle{ 
+	display:block;
+	width: 60px; 
+	height: 60px;
+	background: #ffa550; 
+	border-radius: 5em;
     line-height: 5em;
     text-align: center;
+    z-index:9;
+    margin-bottom: 7px;
 }
-.dropdown-item.icon-chat-circle {
-    top: -4px;
-    display: block;
-    position: relative;
-    left: 44px;
-    margin: -79px 0 87px 0;
-    padding: 0;
-    line-height: 4.6em;
-}
-.dropdown-item:focus, .dropdown-item:hover {
-    color: #16181b;
-    text-decoration: none;
-    background-color: rgb(255, 153, 204, 0.45);
-}
+
 .div-modal-chat{ 
 	display : none;
 	border: 1px solid #ccc;
@@ -1442,7 +1376,38 @@ table {
 /*******************
 	 마이페이지
 *******************/
+#modified{
+	width: 381px;
+    margin: 3px 1px 0px 1px;
+    color: #ffffff;
+    background: #ffa550;
+    border: 5px solid #ffa550;
+    border-radius: .25rem;
+    padding: .375rem .75rem;
+}
+#delete{
+	width: 381px;
+    margin: 3px 1px 0px 1px;
+    color: #ffffff;
+    background: #ffa550;
+    border: 5px solid #ffa550;
+    border-radius: .25rem;
+    padding: .375rem .75rem;
+}
+/*******************
+	  Live
+*******************/
+.calendar-box{ margin-top: 8em; margin-bottom: 10em;}
+.slide_img{ height: -webkit-fill-available;}
+#area-addEvent{ margin-top: 4em; margin-bottom: 4em; float: right;}
 
+.carousel-control-next, .carousel-control-prev{
+	width: 50%;
+	opacity: .9;}
+
+.btn-slide{
+	position: initial; 
+}
 
 /*******************
 	 정보수정
@@ -1484,3 +1449,52 @@ table {
     padding: .375rem .75rem;
 }
 
+/*******************
+	 계시판
+*******************/
+
+.freeboard{
+	margin-top: 200px;
+}
+.table_comment{
+	 background-color: #f9f9f9;
+	 width: -webkit-fill-available;
+
+}
+#comment_edit_btn, #reply_btn{ margin: 0 -14px 0px 0;}
+#comment_delete_btn{margin: 0 -11px 0 0px;}
+
+#btn-board{
+	float: right;
+	width: 53px;
+	margin-top: 44px;
+}
+
+.comment_tadle{
+    background-color: #f9f9f9;
+    width: -webkit-fill-available;
+    padding: 15px 27px 11px 26px;
+    margin-bottom: 100px;
+}
+#comment_textarea{
+	margin:0;
+	padding: 0;
+}
+#comment_submit{
+	position: relative;
+    width: 89px;
+    text-align: right;
+    vertical-align: bottom;
+}
+#comment_textarea_css{
+	resize: none;
+    width: -webkit-fill-available;
+    border-style: solid;
+    padding: 13px;
+}
+.comment_btn{
+    width: 81px;
+    height: 70px;
+    margin: 0 0 6px 6px;
+    padding: 0;
+}
