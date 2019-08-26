@@ -4,6 +4,7 @@
 <html>
 <head>
 <meta charset="UTF-8">
+<meta http-equiv="X-Frame-Options" content="sameorigin" />
 <title>Insert title here</title>
 <style type="text/css">
 #twitter {

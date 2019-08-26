@@ -6,6 +6,43 @@
 <meta charset="UTF-8">
 <title>All About K-POP! DD - Live</title>
 <link rel="stylesheet" type="text/css" href="resources/styles/live.css">
+<style>
+	div.video-container{
+        border : 1px solid #ddd;
+        display: inline-block;
+        width: 230px;	
+        height: 250px; 
+        margin: 15px 25px;
+    }
+    div.video-item-thumb{
+    	width: 100%;
+    	margin:0;
+    	padding: 0;
+    	cursor: pointer;
+    }
+    div.video-item-thumb img{
+    	width: 100%;
+    	height: 150px;
+    }
+    div.video-item-info{
+    	margin-left: 10px;
+    }
+    a.video-title{
+        margin: 6px;
+        margin-left: 10px;	
+        font-size: 17px;
+        text-decoration: none;
+        border-bottom: none;
+        cursor: pointer;
+    }
+    a.video-title:hover{ background-color: #c0aded; }
+    p.video-info{
+        font-size: 12px;
+        color: #444;
+        display: inline-block;
+    }
+
+</style>
 </head>
 <body>
     <!-- Header -->
@@ -25,8 +62,38 @@
                </ul>
             </nav>
          </div>
-         <!-- Content -->
+         
+         <!-- Title & Banner -->
+	   	<div class="container"> 
+	         <div class="live-banner" > 
+	         	<h4>D.Live - Home</h4>
+				<h5>최신 업데이트된 스타의 라이브를 확인하세요!</h5>
+	         </div>
+	    </div>
+	    
+	     <!-- Home - 동영상 목록 -->
          <div class="center live-content">
+         	<c:choose>
+         		<c:when test="${empty list}">
+         			<div><h4>동영상이 없습니다!</h4></div>
+         		</c:when>
+         		<c:otherwise>
+         			<c:forEach items="${list}" var="item">
+         				<div class="video-container">
+					        <div class="video-item-thumb">
+						        <img src="${item.thumb}">
+						       	<input type="hidden" name="video_seq" value="${item.seq}">
+							    <p class="video-title">${item.title}</p>
+						    </div>
+					        <div class="video-item-info">
+					        	<p class="video-info">좋아요</p>&nbsp;
+					        	<p class="video-info">재생수</p><br>
+					        	<p class="video-info">${item.date}</p>
+					        </div>
+					    </div>
+         			</c:forEach>
+         		</c:otherwise>
+         	</c:choose>
         </div>
 
     </div>
@@ -36,5 +103,6 @@
     
     <script src="https://code.jquery.com/jquery-3.4.1.min.js"></script>
     <script src="resources/js/utils/live.js"></script>
+    
 </body>
 </html>

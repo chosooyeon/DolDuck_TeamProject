@@ -47,8 +47,8 @@
 .live-content{ 
 	margin-top: 30px;
 	margin-bottom: 6em;
-	border : 1px solid;
-	height :  800px;
+	min-height :  800px;
+	height: auto;
 }
 .live-banner{
 	border: 1px solid red;
