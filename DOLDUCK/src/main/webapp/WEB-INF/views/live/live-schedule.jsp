@@ -111,7 +111,6 @@
 							<input type="number" name="live_start_hour"  style="width:40%;">&nbsp;시&nbsp;
 							<input type="number" name="live_start_min"  style="width:40%;">분 
 						</td>
-					</tr>
 	          	</table>
 	          </form>
 	        </div>
@@ -119,7 +118,7 @@
 	        <!-- Modal footer -->
 	        <div class="modal-footer">
 		      <button type="button" class="btn btn-danger" id="btn-addLiveInfo">저 장</button>
-	          <button type="button" class="btn btn-secondary" data-dismiss="modal">취 소</button>
+            <button type="button" class="btn btn-secondary" data-dismiss="modal">취 소</button>
 	        </div>
 	        
 	      </div>
@@ -127,21 +126,6 @@
 	  </div>
 	</div>
      
-      <!-- Popover Modal Area -->
-     <!--   <div class="popover-modal">
-		    	<div class="popover-header">
-		    		<span class="currentDate"></span>
-		    		<span class="icon-x" onclick="closePopover()"><i class="far fa-times" style="color:#ccc;"></i></span>
-		    	</div>
-		    	<div class="popover-content">
-		    		
-		    	</div>
-		    	<div class="popover-btns">
-		    		<span><a>공유하기</a></span>
-		    		<span><a> 찜하기 </a></span>
-		    	</div>
-		</div>
- -->
 
     <!-- Footer -->
     <%@include file="/WEB-INF/views/footer.jsp" %>
