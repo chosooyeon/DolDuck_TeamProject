@@ -56,13 +56,12 @@ public class LiveController {
 			
 			event.put("id", dto.getBroadcast_seq());
 			event.put("title", dto.getBroadcast_caster() + "-" + dto.getBroadcast_title());
-			event.put("start", DateTime[0]);
-			event.put("end", DateTime[0]);
-			event.put("startTime", DateTime[1]);
-			event.put("endTime", "23:00");
+			event.put("start", DateTime[0]+"T"+DateTime[1]);
+			event.put("end", DateTime[0]+"T"+"23:00");
 			event.put("allDay", false);
 			
 			eventArr.add(event);
+			
 		}
 		events.put("list", eventArr);
 		
@@ -79,8 +78,11 @@ public class LiveController {
 		event.setBroadcast_caster((String) item.get("caster"));
 		event.setBroadcast_title((String) item.get("title"));
 		String date = (String)(item.get("start_date")+" "+item.get("start_hour")+":"+item.get("start_min"));
-		System.err.println("date : " + date);
 		event.setBroadcast_date(date);
+		
+		System.err.println(event.getBroadcast_caster());
+		System.err.println(event.getBroadcast_title());
+		System.err.println("date : " + date);
 		
 		int res = b_biz.insert(event);
 		System.err.println("insert res : " + res);
