@@ -13,7 +13,6 @@ public interface MemberDao {
 	String namespace = "member.";
 	
 	public List<SelectDto> selectList();
-	
 	public int insertUser(Map<String, String> map);
 	public Map<String, Object> selectUser(String user_id);
 	public MemberDto loginDo(String id, String pw);
@@ -27,16 +26,10 @@ public interface MemberDao {
 	public SelectDto pwSearch(String id, String email);
 	public int changePw(String pw, String id);
 	public int usersNameCheck(String name);
+
 	public int deleteMember(String member_id);
 	public int purchaseHeart(int amount, String id);
 	public int purchaseVote(int amount, String id);
 	public SelectDto selectId(String id);
-	
-	public int insertVote(VoteDto votedto);
-	public VoteDto selectOneVote(int page, String starName);
-	public int updateVote(VoteDto dto);
 
-	public int selectMemberVote(String member_id);
-
-	public int updateMemberVote(String member_id, int voteNumber);
 }

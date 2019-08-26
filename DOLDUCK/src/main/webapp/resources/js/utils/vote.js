@@ -1,216 +1,185 @@
-var token = $("meta[name='_csrf']").attr("content");
-var header = $("meta[name='_csrf_header']").attr("content");
-	
+
 $(document).ready(function(){
-	var starChart,
-	start = 0, end = 30
+	var voteChart, start = 0, end = 100
+
+	$('tbody').children().remove();
+	item = 'girl-group';
+	voteChart = voteCrawling(item);
+	
+	paginationOfList(voteChart, start, end, item)
+})
 
 	$(document).on('click', '.girl-group', function(){
 		$('tbody').children().remove();
-		start = 0, end = 30, page = 0
-		starChart = getStarChart(page);
-		// page번호 추가
+		start = 0, end = 100, item = 'girl-group';
+		voteChart = voteCrawling(item);
 		
-		paginationOfList(starChart, start, end, page)
+		paginationOfList(voteChart, start, end, item)
+	});
+
+	$(document).on('click', '.girl-idol', function(){
+		$('tbody').children().remove();
+		start = 0, end = 100, item = 'girl-idol';
+		voteChart = voteCrawling(item);
 		
-		$(document).on('click', '.abc', function(){
-			if(end > 100){
-				end = 100
-				$('.abc').attr('disabled', 'disabled');
-			}
-			start = end
-			end += 20
-			paginationOfList(starChart, start, end, page)
-	  	});
+		paginationOfList(voteChart, start, end, item)
 	});
 	
-	$(document).on('click', '.girl-star', function(){
+	$(document).on('click', '.new-idol', function(){
 		$('tbody').children().remove();
-		start = 0, end = 30, page = 1
-		starChart = getStarChart(page);	
-		// page번호 추가
-		paginationOfList(starChart, start, end, page)
-		$(document).on('click', '.abc', function(){
-			if(end > 100){
-				end = 100
-				$('.abc').attr('disabled', 'disabled');
-			}
-			start = end
-			end += 20
-			paginationOfList(starChart, start, end, page)
-	  	});
+		start = 0, end = 100, item = 'new-idol';
+		voteChart = voteCrawling(item);
+		
+		paginationOfList(voteChart, start, end, item)
 	});
 	
-	$(document).on('click', '.new-star', function(){
+	$(document).on('click', '.star-idol', function(){
 		$('tbody').children().remove();
-		start = 0, end = 30, page = 2
-		starChart = getStarChart(page);	
-		// page번호 추가
-		paginationOfList(starChart, start, end, page)
-		$(document).on('click', '.abc', function(){
-			if(end > 100){
-				end = 100
-				$('.abc').attr('disabled', 'disabled');
-			}
-			start = end
-			end += 20
-			paginationOfList(starChart, start, end, page)
-	  	});
-	});
-	
-	$(document).on('click', '.star-star', function(){
-		$('tbody').children().remove();
-		start = 0, end = 30, page = 3
-		starChart = getStarChart(page);	
-		// page번호 추가
-		paginationOfList(starChart, start, end, page)
-		$(document).on('click', '.abc', function(){
-			if(end > 100){
-				end = 100
-				$('.abc').attr('disabled', 'disabled');
-			}
-			start = end
-			end += 20
-			paginationOfList(starChart, start, end, page)
-	  	});
+		start = 0, end = 100, item = 'star-idol';
+		voteChart = voteCrawling(item);
+		
+		paginationOfList(voteChart, start, end, item)
 	});
 	
 	$(document).on('click', '.boy-group', function(){
 		$('tbody').children().remove();
-		start = 0, end = 30, page = 4
-		starChart = getStarChart(page);	
-		// page번호 추가
-		paginationOfList(starChart, start, end, page)
-		$(document).on('click', '.abc', function(){
-			if(end > 100){
-				end = 100
-				$('.abc').attr('disabled', 'disabled');
-			}
-			start = end
-			end += 20
-			paginationOfList(starChart, start, end, page)
-	  	});
+		start = 0, end = 100, item = 'boy-group';
+		voteChart = voteCrawling(item);	
+
+		paginationOfList(voteChart, start, end, item)
 	});
 	
-	$(document).on('click', '.boy-star', function(){
+	$(document).on('click', '.boy-idol', function(){
 		$('tbody').children().remove();
-		start = 0, end = 30, page = 5
-		starChart = getStarChart(page);	
-		// page번호 추가
-		paginationOfList(starChart, start, end, page)
-		$(document).on('click', '.abc', function(){
-			if(end > 100){
-				end = 100
-				$('.abc').attr('disabled', 'disabled');
-			}
-			start = end
-			end += 20
-			paginationOfList(starChart, start, end, page)
-	  	});
-	});
-})
+		start = 0, end = 100, item = 'boy-idol'
+		voteChart = voteCrawling(item);	
 
-function paginationOfList(starChart, start, end, page){
-	if(page == 0){
+		paginationOfList(voteChart, start, end, item)
+	});
+
+
+function paginationOfList(voteChart, start, end, item){
+	if(item == 'girl-group'){
 		for(var i=start ; i<end ; i++){
-			var star = starChart[i]
+			var star = voteChart[i];
 			$('tbody').append(`<tr id="tbody-girl-group">
-					  <td scope="row">${star.name}</td>
+					  <td scope="row" style="line-height:8.5em; text-align: center;">${star.name}</td>
 					  <td><img class="star-thumbnail" src="${star.img}"></td>
-					  <td><a onclick="voteSetName('${star.name}',0)">pick11</a></td>
+					  <td>
+					  	<div class="progress">
+					  		<div class="progress-bar" style="width:40%"></div>
+					  	</div>
+					  </td>
+					  <td><a onclick="voteClickPickBtn('${star.name}','girl-group')">pick</a></td>
 				      </tr>`);
 		}
-	}else if(page == 1){
+	}else if(item == 'girl-idol'){
 		for(var i=start ; i<end ; i++){
-			var star = starChart[i]
-			$('tbody').append(`<tr id="tbody-girl-star">
+			var star = voteChart[i]
+			$('tbody').append(`<tr id="tbody-girl-idol">
 					  <td scope="row">${star.name}</td>
 					  <td><img class="star-thumbnail" src="${star.img}"></td>
-					  <td><a href="#">pick</td>
+					  <td>
+					  	<div class="progress">
+					  		<div class="progress-bar" style="width:40%"></div>
+					  	</div>
+					  </td>
+					  <td><a onclick="voteClickPickBtn('${star.name}','girl-idol')">pick</a></td>
 				      </tr>`);
 		}
-	}else if(page == 2){
+	}else if(item == 'new-idol'){
 		for(var i=start ; i<end ; i++){
-			var star = starChart[i]
-			$('tbody').append(`<tr id="tbody-new-star">
+			var star = voteChart[i]
+			$('tbody').append(`<tr id="tbody-new-idol">
 					  <td scope="row">${star.name}</td>
 					  <td><img class="star-thumbnail" src="${star.img}"></td>
-					  <td><a href="#">pick</td>
+					  <td>
+					  	<div class="progress">
+					  		<div class="progress-bar" style="width:40%"></div>
+					  	</div>
+					  </td>
+					  <td><a onclick="voteClickPickBtn('${star.name}','new-idol')">pick</a></td>
 				      </tr>`);
 		}
-	}else if(page == 3){
+	}else if(item == 'star-idol'){
 		for(var i=start ; i<end ; i++){
-			var star = starChart[i]
-			$('tbody').append(`<tr id="tbody-star-star">
+			var star = voteChart[i]
+			$('tbody').append(`<tr id="tbody-star-idol">
 					  <td scope="row">${star.name}</td>
 					  <td><img class="star-thumbnail" src="${star.img}"></td>
-					  <td><a href="#">pick</td>
+					  <td>
+					  	<div class="progress">
+					  		<div class="progress-bar" style="width:40%"></div>
+					  	</div>
+					  </td>
+					  <td><a onclick="voteClickPickBtn('${star.name}','star-idol')">pick</a></td>
 				      </tr>`);
 		}
-	}else if(page == 4){
+	}else if(item == 'boy-group'){
 		for(var i=start ; i<end ; i++){
-			var star = starChart[i]
+			var star = voteChart[i]
 			$('tbody').append(`<tr id="tbody-boy-group">
 					  <td scope="row">${star.name}</td>
 					  <td><img class="star-thumbnail" src="${star.img}"></td>
-					  <td><a href="#">pick</td>
+					  <td>
+					  	<div class="progress">
+					  		<div class="progress-bar" style="width:40%"></div>
+					  	</div>
+					  </td>
+					  <td><a onclick="voteClickPickBtn('${star.name}','boy-group')">pick</a></td>
 				      </tr>`);
 		}
-	}else if(page == 5){
+	}else if(item == 'boy-idol'){
 		for(var i=start ; i<end ; i++){
-			var star = starChart[i]
-			$('tbody').append(`<tr id="tbody-boy-star">
+			var star = voteChart[i]
+			$('tbody').append(`<tr id="tbody-boy-idol">
 					  <td scope="row">${star.name}</td>
 					  <td><img class="star-thumbnail" src="${star.img}"></td>
-					  <td><a onclick="votePopup('votepopup.do')">pick222222</td>
+					  <td>
+					  	<div class="progress">
+					  		<div class="progress-bar" style="width:40%"></div>
+					  	</div>
+					  </td>
+					  <td><a onclick="voteClickPickBtn('${star.name}','boy-idol')">pick</a></td>
 				      </tr>`);
 		}
 	}
 }
 
-
-function getStarChart(page){
+function voteCrawling(item){
 	var list;
-	
 	$.ajax({
 		type : 'POST',
-		url : 'voteCrawling.do?page='+page,
+		url : 'vote-crawling.do?item='+item,
 		dataType : 'json',
 		async : false,
-		beforeSend: function( xhr ) {
-            xhr.setRequestHeader(header, token);
-       },
 		success : function(data){
-			$('.label-test').text(data.getTime);
+			$('.current-time').text(data.getTime);
 			list = data.starChart;
 		},
 		error : function(){
 			console.log('ajax 통신에러')
-			alert('ajax 통신에러 (voteCrawling)')
+			alert('ajax 통신에러 (vote_crawling)')
 		}
 	});
 	return list
 }
 
-function voteSetName(starname, page){
-// window.open("votepopup.do","","width=1000, height=300, status=no;");
-		
+// pick 버튼 클릭시 VoteDto에 starname, item 저장 + 로그인 체크
+function voteClickPickBtn(starname, item){
 	$.ajax({
 		type : 'POST',
-		url : 'votelike.do?starname='+starname+'&page='+page,
+		url : 'vote-pick.do?starname='+starname+'&item='+item,
 		dataType : 'json',
 		async : false,
-		beforeSend: function( xhr ) {
-            xhr.setRequestHeader(header, token);
-       },
 		success : function(data){
-			alert(data.loginState);
 			if(data.loginState == "null"){
-				alert(data.loginState);
-				loginN();
+				// 로그인상태가 아닐경우
+				alert('로그인이 필요한 서비스입니다.');
+				location.href="login.do";
 			}else{
-				alert(data.name+"2");
-				votePopup("votepopup.do");
+				// 로그인상태일경우 투표수 선택하는 팝업창 띄우기
+				votePopup("vote-popup.do");
 			}
 		},
 		error : function(){
@@ -220,36 +189,26 @@ function voteSetName(starname, page){
 	});
 }
 
+// 로그인상태일경우 투표수 선택하는 팝업창 띄우기
 function votePopup(popUrl){
-	// var popUrl = "votepopup.do";
 	var popOption = "width=1000, height=300, status=no;";
-	alert(popUrl);
 	window.open(popUrl,"",popOption);
 }
 
-function voteChk(){
-	// 로그인, 보유투표권수 체크
-	// 보유투표권수 db update
-}
-
-function voteSetNum(){
-	alert('투표수:'+$('#voteNum').val());
-	// 보유투표권수 체크
+// 보유투표권수 체크
+function voteNumberChk(){
 	$.ajax({
 		type : 'POST',
-		url : 'votenumber.do?voteNumber='+$('#voteNum').val(),
+		url : 'vote-numberchk.do?voteNumber='+$('#voteNum').val(),
 		data : 'json',
 		async : false,
-		beforeSend: function( xhr ) {
-            xhr.setRequestHeader(header, token);
-       },
 		success : function(data){
-			alert('234:'+$('#voteNum').val());
 			if(data.voteNeed == "need"){
 				alert('투표권이 부족합니다');
+				location.href="heartShop.do";
 			}else{
-				voteSaveToDB(data);
-//				voteResultPage(data);
+				alert('저장성공');
+				votePopup('vote-result.do');
 			}
 			window.close();
 		},
@@ -258,32 +217,3 @@ function voteSetNum(){
 		}
 	});
 };
-
-
-function voteSaveToDB(data){
-	
-	$.ajax({
-		type : 'POST',
-		url : 'votesave.do',
-		data : 'json',
-		async : false,
-		beforeSend: function( xhr ) {
-            xhr.setRequestHeader(header, token);
-       },
-		success : function(){
-			alert('저장성공');
-			votePopup('voteresult.do');
-		},
-		error : function(){
-			alert('ajax 통신에러 (voteSaveToDB');
-		}
-	});
-}
-
-function loginN(){
-	location.href="login.do";
-}
-
-function voteN(){
-	location.href="heartShop.do";
-}

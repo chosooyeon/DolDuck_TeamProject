@@ -28,15 +28,7 @@ public interface MemberBiz {
 	public int purchaseHeart(int amount, String id);
 	public int purchaseVote(int amount, String id);
 
-
-	
-	public int insertVote(VoteDto dto);
-	public VoteDto selectOneVote(int page, String starName);
-	public int updateVote(VoteDto voteDto);
-	public int selectMemberVote(String member_id);
-	public int updateMemberVote(String member_id, int voteNumber);
-
-
 	public int deleteMember(String member_id);
 	public SelectDto selectId(String id);
+
 }

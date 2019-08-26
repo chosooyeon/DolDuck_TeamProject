@@ -2,32 +2,31 @@ package com.my.dolduck.model.dto;
 
 public class VoteDto {
 	
-	private int page;
+	private String item;
 	private String starName;
 	private int voteNumber;
 	
 	public VoteDto() {
 	}
-	
-	public VoteDto(int page, String starName) {
+	public VoteDto(String item, String starName) {
 		super();
-		this.page = page;
+		this.item = item;
 		this.starName = starName;
 	}
-	public VoteDto(int page, String starName, int voteNumber) {
+	public VoteDto(String item, String starName, int voteNumber) {
 		super();
-		this.page = page;
+		this.item = item;
 		this.starName = starName;
 		this.voteNumber = voteNumber;
 	}
 	
 	
-	public int getPage() {
-		return page;
+	public String getItem() {
+		return item;
 	}
 	
-	public void setPage(int page) {
-		this.page = page;
+	public void setItem(String item) {
+		this.item = item;
 	}
 	
 	public String getStarName() {
@@ -48,6 +47,6 @@ public class VoteDto {
 	
 	@Override
 	public String toString() {
-		return "VoteDto [page=" + page + ", starName=" + starName + ", voteNumber=" + voteNumber + "]";
+		return "VoteDto [item=" + item + ", starName=" + starName + ", voteNumber=" + voteNumber + "]";
 	}
 }

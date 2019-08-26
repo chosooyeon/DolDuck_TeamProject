@@ -144,8 +144,8 @@
         </div>
       </div>
       
-      
       <script src="" type="text/javascript"></script>
+
       <script src="resources/js/utils/shop.js" type="text/javascript"></script>   
       <script type="text/javascript" src="https://cdn.iamport.kr/js/iamport.payment-1.1.5.js"></script>
    </div>
