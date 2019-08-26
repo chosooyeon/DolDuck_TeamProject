@@ -36,10 +36,10 @@
 			<div class="votechart-board">
 				<p>검색시간 : <label class="current-time"></label>
 				<table class="table">
-					<col width="50">
-					<col width="100">
-					<col width="400">
-					<col width="50">
+					<col width="10%">
+					<col width="10%">
+					<col width="60%">
+					<col width="10%">
 					<thead>
 						<tr align="center">
 							<th>Star</th>
@@ -53,6 +53,6 @@
 			</div>
 			</div>
 			</div>
-	
 </body>
+<script type="text/javascript"></script>
 </html>
