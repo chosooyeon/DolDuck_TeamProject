@@ -12,7 +12,7 @@
 <body>
 
    <!-- Footer -->
-
+ 
    <footer class="footer">
       <div class="footer_container d-flex flex-xl-row flex-column align-items-start justify-content-start">
          <div class="footer_lists d-flex flex-sm-row  flex-column align-items-start justify-content-start ml-xl-auto">
