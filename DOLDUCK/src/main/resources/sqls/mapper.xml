@@ -7,6 +7,15 @@
 	</select>
 	<cache></cache>
 	
+	<select id="selectId" resultType="SelectDto">
+		SELECT * FROM MEMBER 
+		<where>
+			<if test="value != null">
+				MEMBER_ID = '${value}'
+			</if>
+		</where>
+	</select>
+	
 	<select id="selectUser" resultType="java.util.Map">
 		SELECT
 		MEMBER_ID as username,
@@ -20,7 +29,8 @@
 		MEMBER_ADDR,
 		MEMBER_REGDATE,
 		MEMBER_HEART,
-		MEMBER_VOTE
+		MEMBER_VOTE,
+		MEMBER_IMG
 		FROM MEMBER
 		WHERE MEMBER_ID=#{member_id}
 	</select>
@@ -41,14 +51,7 @@
 	<insert id="insertUser" parameterType="map">
 		INSERT INTO MEMBER
 		VALUES(MEMBERSEQ.NEXTVAL,#{member_id},#{member_pw},#{member_name},#{member_phone},#{member_addr},#{member_email},SYSDATE,
-		0, 1,'ROLE_USER',1)
-	</insert>
-
-	<!-- 회원가입 및 체크 -->
-	<insert id="memberRegister" parameterType="MemberDto">
-		INSERT INTO MEMBER
-		VALUES(MEMBERSEQ.NEXTVAL,#{member_id},#{member_pw},#{member_name},#{member_phone},#{member_addr},#{member_email},
-		SYSDATE, 0, 1, 'ROLE_USER',1)
+		0, 1,'ROLE_USER',1,'이미지')
 	</insert>
 
 	<select id="loginChk" parameterType="map" resultType="memberDto">
@@ -72,8 +75,8 @@
 	</select>
 
 	<update id="updateMember" parameterType="map">
-		UPDATE MEMBER SET PW=#{pw}, PHONE=#{phone}, ADDR=#{addr},
-		ZONECODE=#{zonecode} WHERE MEMBER_ID=#{id}
+		UPDATE MEMBER SET MEMBER_PW=#{member_pw}, MEMBER_PHONE=#{member_phone}, MEMBER_ADDR=#{member_addr},
+		MEMBER_EMAIL=#{member_email}, MEMBER_IMG=#{member_img} WHERE MEMBER_ID=#{member_id}
 	</update>
 	
 	<update id="updateUserPw" parameterType="memberDto">

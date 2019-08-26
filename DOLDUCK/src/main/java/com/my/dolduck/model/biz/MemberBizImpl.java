@@ -88,39 +88,10 @@ public class MemberBizImpl implements MemberBiz {
 	public int purchaseVote(int amount, String id) {
 		return dao.purchaseVote(amount, id);
 	}
-
-<<<<<<< HEAD
-	
-	
 //	@Override
 //	public MemberDto login(String id, String pw) {
 //		return dao.login(id, pw);
 //	}
-=======
-	public int insertVote(VoteDto dto) {
-		return dao.insertVote(dto);
-	}
-
-	@Override
-	public VoteDto selectOneVote(int page, String starName) {
-		return dao.selectOneVote(page, starName);
-	}
-
-	@Override
-	public int updateVote(VoteDto dto) {
-		return dao.updateVote(dto);
-	}
-
-	@Override
-	public int selectMemberVote(String member_id) {
-		return dao.selectMemberVote(member_id);
-	}
-
-	@Override
-	public int updateMemberVote(String member_id, int voteNumber) {
-		return dao.updateMemberVote(member_id, voteNumber);
-	}
->>>>>>> 5c19f11bf179a1711c26818115c6adefcff19901
 
 	public int updateRole(MemberDto dto) {
 		return dao.updateRole(dto);
@@ -129,6 +100,11 @@ public class MemberBizImpl implements MemberBiz {
 	@Override
 	public int deleteMember(String member_id) {
 		return dao.deleteMember(member_id);
+	}
+
+	@Override
+	public SelectDto selectId(String id) {
+		return dao.selectId(id);
 	}
 
 

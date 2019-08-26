@@ -1,4 +1,4 @@
-@charset "utf-8";
+﻿@charset "utf-8";
 /* CSS Document */
 
 /******************************
@@ -295,7 +295,7 @@ section
 	left: 0;
 	top: 0;
 	width: 100%;
-	background: #000000;
+	background: #c0aded;
 	z-index: 100;
 	-webkit-transition: all 400ms ease;
 	-moz-transition: all 400ms ease;
@@ -703,8 +703,11 @@ section
 }
 .embed-responsive
 {
-	width: 100%;
+	width: -webkit-fill-available;
 	height: 100%;
+}
+video{
+	width:inherit;
 }
 
 
@@ -923,9 +926,7 @@ svg{
 .channel_button a {
     color: #ffff;
 }
-.home_channer{
-	border: 
-}
+
 /*********************************
 9. Extra
 *********************************/
@@ -984,79 +985,11 @@ svg{
 
 .footer
 {
-	background: #000000;
+	background: #c0aded;
 	padding-left: 50px;
 	padding-right: 51px;
 }
-.newsletter_container
-{
-	width: 604px;
-	padding-top: 103px;
-}
-.newsletter_title
-{
 
-}
-.newsletter_form
-{
-	display: block;
-	position: relative;
-	width: 100%;
-	margin-top: 30px;
-}
-.newsletter_input
-{
-	width: 100%;
-	height: 50px;
-	background: #545454;
-	border: none;
-	outline: none;
-	padding-left: 23px;
-}
-.newsletter_input::-webkit-input-placeholder
-{
-	font-size: 12px !important;
-	font-style: italic;
-	color: #FFFFFF !important;
-}
-.newsletter_input:-moz-placeholder
-{
-	font-size: 12px !important;
-	font-style: italic;
-	color: #FFFFFF !important;
-}
-.newsletter_input::-moz-placeholder
-{
-	font-size: 12px !important;
-	font-style: italic;
-	color: #FFFFFF !important;
-} 
-.newsletter_input:-ms-input-placeholder
-{ 
-	font-size: 12px !important;
-	font-style: italic;
-	color: #FFFFFF !important;
-}
-.newsletter_input::input-placeholder
-{
-	font-size: 12px !important;
-	font-style: italic;
-	color: #FFFFFF !important;
-}
-.newsletter_button
-{
-	position: absolute;
-	top: 0;
-	right: 0;
-	width: 139px;
-	height: 50px;
-	background: #de4f32;
-	border: none;
-	outline: none;
-	cursor: pointer;
-	color: #FFFFFF;
-	font-size: 14px;
-}
 .footer_lists
 {
 	width: 575px;
@@ -1092,7 +1025,6 @@ svg{
 {
 	width: 100%;
 	height: 67px;
-	background: #000000;
 }
 .copyright_bar span
 {
@@ -1101,31 +1033,25 @@ svg{
 	line-height: 67px;
 }
 /*  Quick menu  */
-.div-button-chat, .icon-chat-circle{ width: 60px; height: 60px;}
-.icon-chat-circle{ 
-	z-index:9;
-	background: #ff99cc; 
-	border-radius: 5em;
-	position: fixed;
-    top: 85%;
+.quick_icon{
+    position: fixed;
+    top: 31%;
     right: 3%;
+    z-index: 9
+}
+
+.icon-chat-circle{ 
+	display:block;
+	width: 60px; 
+	height: 60px;
+	background: #ffa550; 
+	border-radius: 5em;
     line-height: 5em;
     text-align: center;
+    z-index:9;
+    margin-bottom: 7px;
 }
-.dropdown-item.icon-chat-circle {
-    top: -4px;
-    display: block;
-    position: relative;
-    left: 44px;
-    margin: -79px 0 87px 0;
-    padding: 0;
-    line-height: 4.6em;
-}
-.dropdown-item:focus, .dropdown-item:hover {
-    color: #16181b;
-    text-decoration: none;
-    background-color: rgb(255, 153, 204, 0.45);
-}
+
 .div-modal-chat{ 
 	display : none;
 	border: 1px solid #ccc;
@@ -1149,9 +1075,9 @@ svg{
 
 /* Youtube 게시판 */
 #getVideo{
-	width: 80%;
-	position: absolute;
-	top: 40%; left: 10%;
+	width: 100%;
+	margin-top: 7em;
+	padding: 0;
 }
 .div-channel{
 	margin-top: 15%;
@@ -1170,7 +1096,7 @@ svg{
     width : 350px;
     height : 360px;
  	display: inline-block;
- 	margin: 8px 8px 15px 8px;
+ 	margin: 8px 8px 50px 8px;
 }
 .div-player-content{
 	width: 100%;
@@ -1450,13 +1376,6 @@ table {
 /*******************
 	 마이페이지
 *******************/
-
-/*******************
-	  Live
-*******************/
-.calendar-box{ margin-top: 8em; margin-bottom: 10em;}
-.slide_img{ width:30%; height: -webkit-fill-available;}
-#area-addEvent{ margin-top: 4em; margin-bottom: 4em; float: right;}
 #modified{
 	width: 381px;
     margin: 3px 1px 0px 1px;
@@ -1466,16 +1385,29 @@ table {
     border-radius: .25rem;
     padding: .375rem .75rem;
 }
-.carousel-control-prev{
-	left: 390px;
+#delete{
+	width: 381px;
+    margin: 3px 1px 0px 1px;
+    color: #ffffff;
+    background: #ffa550;
+    border: 5px solid #ffa550;
+    border-radius: .25rem;
+    padding: .375rem .75rem;
 }
-.carousel-control-next{
-	right: 390px;
-}
-.btn-slide{
-	position: inherit; 
-}
+/*******************
+	  Live
+*******************/
+.calendar-box{ margin-top: 8em; margin-bottom: 10em;}
+.slide_img{ height: -webkit-fill-available;}
+#area-addEvent{ margin-top: 4em; margin-bottom: 4em; float: right;}
 
+.carousel-control-next, .carousel-control-prev{
+	width: 50%;
+	opacity: .9;}
+
+.btn-slide{
+	position: initial; 
+}
 
 /*******************
 	 정보수정
@@ -1524,8 +1456,45 @@ table {
 .freeboard{
 	margin-top: 200px;
 }
+.table_comment{
+	 background-color: #f9f9f9;
+	 width: -webkit-fill-available;
+
+}
+#comment_edit_btn, #reply_btn{ margin: 0 -14px 0px 0;}
+#comment_delete_btn{margin: 0 -11px 0 0px;}
+
 #btn-board{
 	float: right;
 	width: 53px;
 	margin-top: 44px;
+}
+
+.comment_tadle{
+    background-color: #f9f9f9;
+    width: -webkit-fill-available;
+    padding: 15px 27px 11px 26px;
+    margin-bottom: 100px;
+}
+#comment_textarea{
+	margin:0;
+	padding: 0;
+}
+#comment_submit{
+	position: relative;
+    width: 89px;
+    text-align: right;
+    vertical-align: bottom;
+}
+#comment_textarea_css{
+	resize: none;
+    width: -webkit-fill-available;
+    border-style: solid;
+    padding: 13px;
+}
+.comment_btn{
+    width: 81px;
+    height: 70px;
+    margin: 0 0 6px 6px;
+    padding: 0;
 }
