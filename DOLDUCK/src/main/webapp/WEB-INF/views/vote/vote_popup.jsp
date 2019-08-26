@@ -15,7 +15,7 @@
 		<tr>
 			<td>투표수</td>
 			<td><input id="voteNum" type="number" min="1" max="100"></td>
-			<td><input type="button" value="투표하기" onclick="voteSetNum()"></td>
+			<td><input type="button" value="투표하기" onclick="voteNumberChk()"></td>
 		</tr>
 	</table>
 </body>
