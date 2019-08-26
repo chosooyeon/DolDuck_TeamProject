@@ -87,19 +87,29 @@
 	        <div class="modal-body">
 	          <form action="start-onair.do" id="liveinfo-form">
 	          	<table style="width: 100%;">
+					<tr><td>캐스터이름</td></tr>
+	          		<tr><td>강다니엘</td></tr>
 					<tr><td>방 송 제 목</td></tr>
 					<tr>
+						<td><input type="text" class="form-control" name="live_title"></td>
+					</tr>
+					<tr><td>방 송 일 정</td></tr>
+					<tr>
+						<td colspan=""><input type="date" class="" name="" style="width: 100%;"></td>
+					</tr>
+					<tr>
 						<td>
-							<input type="text" class="form-control" name="live_title">
+							<input type="number" class="form-control" name="live_start_hour" style="width: 40%; display: inline;">시&nbsp;
+							<input type="number" class="form-control" name="live_start_min" style="width: 40%; display: inline;">분
 						</td>
-					</tr>          	
+					</tr>    
 	          	</table>
 	          </form>
 	        </div>
 	        
 	        <!-- Modal footer -->
 	        <div class="modal-footer">
-		      <button type="button" class="btn btn-danger" id="btn-startlive">시 작</button>
+		      <button type="button" class="btn btn-danger" id="btn-startlive">저  장</button>
 	          <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
 	        </div>
 	        
@@ -108,21 +118,6 @@
 	  </div>
 	</div>
      
-      <!-- Popover Modal Area -->
-     <!--   <div class="popover-modal">
-		    	<div class="popover-header">
-		    		<span class="currentDate"></span>
-		    		<span class="icon-x" onclick="closePopover()"><i class="far fa-times" style="color:#ccc;"></i></span>
-		    	</div>
-		    	<div class="popover-content">
-		    		
-		    	</div>
-		    	<div class="popover-btns">
-		    		<span><a>공유하기</a></span>
-		    		<span><a> 찜하기 </a></span>
-		    	</div>
-		</div>
- -->
 
     <!-- Footer -->
     <%@include file="/WEB-INF/views/footer.jsp" %>
