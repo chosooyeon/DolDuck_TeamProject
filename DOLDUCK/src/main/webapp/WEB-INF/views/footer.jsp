@@ -12,7 +12,7 @@
 <body>
 
    <!-- Footer -->
-
+ 
    <footer class="footer">
       <div class="footer_container d-flex flex-xl-row flex-column align-items-start justify-content-start">
          <div class="newsletter_container">
