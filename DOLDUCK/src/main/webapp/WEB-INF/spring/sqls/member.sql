@@ -92,10 +92,10 @@ CREATE TABLE BROADCAST(
 );
 
 --examples
-INSERT INTO BROADCAST VALUES(BROADCASTSEQ.NEXTVAL, TO_DATE('2019-07-08 16:30','yyyy-mm-dd hh24:mi'), 'WeeBin', 'FirstDay' , 'Just two of us');
-INSERT INTO BROADCAST VALUES(BROADCASTSEQ.NEXTVAL, TO_DATE('2019-08-16 09:00','yyyy-mm-dd hh24:mi'), 'Zsoo', 'AllDayAlongWithYou' , 'Just two of us');
-INSERT INTO BROADCAST VALUES(BROADCASTSEQ.NEXTVAL, TO_DATE('2019-08-02 09:00','yyyy-mm-dd hh24:mi'), 'Zsoo', 'test' , 'Just two of us');
-INSERT INTO BROADCAST VALUES(BROADCASTSEQ.NEXTVAL, TO_DATE('2019-10-15 09:00','yyyy-mm-dd hh24:mi'), 'Zsoo', 'test' , 'Just two of us');
+INSERT INTO BROADCAST VALUES(BROADCASTSEQ.NEXTVAL, TO_DATE('2019-07-08 16:30','yyyy-mm-dd hh24:mi'), 'WeeBin', 'FirstDay' , 'index');
+INSERT INTO BROADCAST VALUES(BROADCASTSEQ.NEXTVAL, TO_DATE('2019-08-16 09:00','yyyy-mm-dd hh24:mi'), 'Zsoo', 'AllDayAlongWithYou' , 'index');
+INSERT INTO BROADCAST VALUES(BROADCASTSEQ.NEXTVAL, TO_DATE('2019-08-02 09:00','yyyy-mm-dd hh24:mi'), 'Zsoo', 'test' , 'index');
+INSERT INTO BROADCAST VALUES(BROADCASTSEQ.NEXTVAL, TO_DATE('2019-10-15 09:00','yyyy-mm-dd hh24:mi'), 'Zsoo', 'test' , 'index');
 INSERT INTO BROADCAST VALUES(BROADCASTSEQ.NEXTVAL, TO_DATE('2019-09-02 09:00','yyyy-mm-dd hh24:mi'), 'Zsoo', 'test' , null);
 
 select * from broadcast
@@ -104,7 +104,8 @@ delete from broadcast
 
 SELECT BROADCAST_SEQ, TO_CHAR(BROADCAST_DATE, 'yyyy-mm-dd hh24:mi') as "BROADCAST_DATE",
 		BROADCAST_CASTER, BROADCAST_TITLE, BROADCAST_CONTENT
-		FROM BROADCAST
+		FROM BROADCAST 
+		where broadcast_content is not null
 
 UPDATE MEMBER SET MEMBER_PW='$2a$10$WzmejPwX08xRYaKDbB1Ie.NOX5uwfHwSCahrNar1.VC0jWpx/.yiS' WHERE MEMBER_ID='1whtndus'
 
