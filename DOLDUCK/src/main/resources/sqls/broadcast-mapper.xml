@@ -15,6 +15,8 @@
 		WHERE BROADCAST_SEQ = #{seq}
 	</select>
 	
+	<!-- 일정추가 -->
+	<!-- INSERT INTO BROADCAST VALUES(BROADCASTSEQ.NEXTVAL, TO_DATE('2019-09-02 09:00','yyyy-mm-dd hh24:mi'), 'Zsoo', 'test' , null); -->
 	<insert id="insert_broadcast" parameterType="BroadcastDto">
 		INSERT INTO BROADCAST
 		VALUES(BROADCASTSEQ.NEXTVAL, TO_DATE(#{broadcast_date},'yyyy-mm-dd hh24:mi'),

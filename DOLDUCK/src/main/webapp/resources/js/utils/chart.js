@@ -27,8 +27,9 @@
 
 
 function getMusicChart(site){
-	var token = $("meta[name='_csrf']").attr("content");
-	var header = $("meta[name='_csrf_header']").attr("content");
+	//var token = $("meta[name='_csrf']").attr("content");
+	//var header = $("meta[name='_csrf_header']").attr("content");
+	//console.log(`token : ${token} / header :  ${header}`)
 
 	var list;
 
@@ -39,9 +40,9 @@ function getMusicChart(site){
       data : { 'site' : site },
       dataType : 'json',
       async : false ,
-      beforeSend: function( xhr ) {
-         xhr.setRequestHeader(header, token);
-      },
+//      beforeSend: function( xhr ) {
+//         xhr.setRequestHeader(header, token);
+//      },
       success : function(data){
          $('.label-search').text(data.getTime);
          list = data.chart;

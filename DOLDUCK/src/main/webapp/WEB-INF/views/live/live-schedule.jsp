@@ -17,16 +17,6 @@
 <link rel="stylesheet" href="resources/js/fullcalendar/bootstrap/main.css">
 <link href='https://use.fontawesome.com/releases/v5.0.6/css/all.css' rel='stylesheet'>
 <link href='https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css' rel='stylesheet' />
-<style type="text/css">
-.popover-modal{
-	width: 200px; height: 130px;
-	border: 1px solid #ddd;
-	box-shadow: 0 2px 6px rgba(0,0,0,.15);
-	background-color: #fff;
-	position: absolute;
-	z-index: 90;
-}
-</style>
 </head>
 <body>
     <!-- Header -->
@@ -56,14 +46,11 @@
          
         <!-- Add button for Events on calendar -->
         <!-- If the role of session(User) is 'ROLE_ARTIST', SHOW FOLLOWING 'BUTTON' -->
-       <%--  <sec:authorize access="hasAnyRole('ROLE_USER','ROLE_ARTIST')">
+        <sec:authorize access="hasAnyRole('ROLE_USER','ROLE_ARTIST')">
 	        <div id="area-addEvent">
 	        	<button type="button" class="btn btn-warning" id="btn-addevent" data-toggle="modal" data-target="#addEventModal">일정추가</button>
 	        </div> 
-        </sec:authorize> --%>
-        <div id="area-addEvent">
-	        	<button type="button" class="btn btn-warning" id="btn-addevent" data-toggle="modal" data-target="#addEventModal">일정추가</button>
-	    </div> 
+        </sec:authorize> 
      </div>  
      
      <!-- Calendar Area-->
@@ -91,7 +78,7 @@
 	          <form action="start-onair.do" id="liveinfo-form">
 	          	<table style="width: 100%;">
 	          		<tr><td>방송진행자</td></tr>
-	          		<tr><td>강다니엘</td></tr>
+	          		<tr><td><input type="text" class="form-control" name="live_caster"  value="<sec:authentication property="principal.member_id"/>" style="width:100%;" readonly="readonly"></td></tr>
 	          		<tr><td></td></tr>
 					<tr><td>방 송 제 목</td></tr>
 					<tr>
