@@ -122,6 +122,11 @@ public class MemberBizImpl implements MemberBiz {
 		return dao.deleteMember(member_id);
 	}
 
+	@Override
+	public SelectDto selectId(String id) {
+		return dao.selectId(id);
+	}
+
 
 	
 }

@@ -1,0 +1,23 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="market_comment">
+
+  	<select id="market_comment_list" parameterType="map" resultType="MarketCommentDto">
+	SELECT MARKET_NUM, MARKET_COMMENT_NUM, MARKET_COMMENT_CONTENT, MARKET_COMMENT_REGDATE,MARKET_ID
+		FROM MARKET_COMMENT 
+		WHERE MARKET_NUM = (SELECT MARKET_NUM FROM MARKET WHERE MARKET_NUM = #{market_num})
+		ORDER BY MARKET_COMMENT_NUM
+	</select>
+	<insert id="market_comment_insert" parameterType="MarketCommentDto">
+		INSERT INTO MARKET_COMMENT
+		VALUES(#{market_num},MARKET_COMMENT_SEQ.NEXTVAL,#{market_comment_content},SYSDATE,#{market_id})
+	</insert>
+	<update id="market_comment_update" parameterType="MarketCommentDto">
+		UPDATE MARKET_COMMENT SET MARKET_COMMENT_CONTENT = #{market_comment_content}
+		WHERE MARKET_COMMENT_NUM = #{market_comment_num}
+	</update>
+	<delete id="market_comment_delete" parameterType="map">
+		DELETE FROM MARKET_COMMENT WHERE MARKET_COMMENT_NUM = #{market_comment_num}
+	</delete>
+	
+</mapper>
