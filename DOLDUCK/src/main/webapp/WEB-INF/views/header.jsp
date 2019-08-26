@@ -137,23 +137,43 @@ if(principal != null && principal instanceof MemberDto){
 		</div>
 	</section>
 		<!-- Quick Menu -->
-
 		<aside class="quick_icon">
 			<ul>
-				<li><a class="icon-chat-circle" href="live-onair.do"><i class="fas fa-broadcast-tower fa-2x" style="color: white; z-index: 20;"></i></a></li>
-				<li><a class="icon-chat-circle" href="#"><i class="fas fa-atlas fa-2x" style="color: white; z-index: 20;"></i></a></li>
-				<li><a class="icon-chat-circle" href="twitter.do"><i class="fab fa-twitter-square fa-2x" style="color: white; z-index: 20;"></i></a></li>
-				<li><a class="icon-chat-circle" href="#"><i class="fas fa-comments fa-2x" style="color: white; z-index: 20;"></i></a></li>
-				<li><a class="icon-chat-circle" onclick="$('html').animate({scrollTop : 0})"><i class="fas fa-arrow-up fa-2x" style="color: white; z-index: 20;"></i></a></li>
+				<li>
+					<a class="icon-chat-circle"><i class="fas fa-broadcast-tower fa-2x" style="color: white; z-index: 20;"></i></a>
+					<input type="hidden" name="quick-menu" value="onair">
+				</li>
+				<li>
+					<a class="icon-chat-circle" href="void:0;"><i class="fas fa-atlas fa-2x" style="color: white; z-index: 20;"></i></a>
+					<input type="hidden" name="quick-menu" value="translate">
+				</li>
+				<li>
+					<a class="icon-chat-circle" href="void:0;"><i class="fab fa-twitter-square fa-2x" style="color: white; z-index: 20;"></i></a>
+					<input type="hidden" name="quick-menu" value="twits">
+				</li>
+				<li>
+					<a class="icon-chat-circle" href="void:0;"><i class="fas fa-comments fa-2x" style="color: white; z-index: 20;"></i></a>
+					<input type="hidden" name="quick-menu" value="chat">
+				</li>
+				<li>
+					<a class="icon-chat-circle" onclick="$('html').animate({scrollTop : 0})"><i class="fas fa-arrow-up fa-2x" style="color: white; z-index: 20;"></i></a>
+				</li>
 			</ul>
 		</aside>
+		
+		<!-- Quick Menu iFrame -->
+		
+		<div class="quick-menu-frame" style="display: none;">
+			<div id="quickframe-close-btn"><i class="fas fa-times fa-2x" style="color: #fff; padding:8px; float:right;"></i></div>
+			<div id="quickframe-frame-area"><iframe id="qucik-iframe" src=""></iframe></div>
+		</div>
 
 
 </body>
-<script type="text/javascript" src="https://code.jquery.com/jquery-3.4.1.min.js"></script>
+<script src="https://code.jquery.com/jquery-3.4.1.min.js"></script>
+<script src="resources/js/home.js" ></script>
 <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js"></script>
 <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js"></script>
-<script type="text/javascript" src="resources/js/home.js"></script>
 <script src="resources/styles/bootstrap-4.1.2/popper.js"></script>
 <script src="resources/styles/bootstrap-4.1.2/bootstrap.min.js"></script>
 <script src="resources/plugins/greensock/TweenMax.min.js"></script>
@@ -170,5 +190,6 @@ if(principal != null && principal instanceof MemberDto){
 <script src="resources/js/custom.js"></script>
 <script src="https://d3js.org/d3.v4.min.js"></script>
 <script src="https://kit.fontawesome.com/c1455fa856.js"></script>
+
 
 </html>
