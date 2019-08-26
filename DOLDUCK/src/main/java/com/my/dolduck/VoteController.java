@@ -52,6 +52,7 @@ public class VoteController {
 
 			star.put("name", starOne.getName());
 			star.put("img", starOne.getImg());
+			star.put("voteNumber", biz.selectVoteNumber(starOne.getName()));
 
 			starArr.add(star);
 		}

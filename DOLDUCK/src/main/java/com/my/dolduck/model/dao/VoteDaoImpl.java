@@ -34,18 +34,23 @@ public class VoteDaoImpl implements VoteDao{
 
 	@Override
 	public VoteDto selectOneVote(String item, String starName) {
+		VoteDto dto = null;
+		System.out.println("itemm:"+item);
 		Map<String, String> map = new HashMap<String, String>();
-//		map.put("item", item + "");
-//		map.put("starName", starName);
-		dto.setItem(item);
-		dto.setStarName(starName);
+		map.put("item", item);
+		map.put("starName", starName);
+//		dto.setItem(item);
+//		dto.setStarName(starName);
+		//VoteDto voteDto = new VoteDto(item, starName);
+//		System.out.println("voteDto:"+voteDto);
 
 		try {
-			dto = sqlSession.selectOne(namespace + "selectOneVote", dto);
+			dto = sqlSession.selectOne(namespace + "selectOneVote", map);
 		} catch (Exception e) {
 			System.out.println("selectOneVote error");
 			e.printStackTrace();
 		}
+		System.out.println("voteDto2:"+dto);
 		return dto;
 	}
 
@@ -87,6 +92,19 @@ public class VoteDaoImpl implements VoteDao{
 		try {
 			res = sqlSession.update(namespace + "updateMemberVote", memberVoteDto);
 			System.out.println("updateMemberVote:" + memberVoteDto);
+		} catch (Exception e) {
+			System.out.println("error");
+			e.printStackTrace();
+		}
+		return res;
+	}
+
+	@Override
+	public int selectVoteNumber(String starName) {
+		int res = 0;
+		
+		try {
+			res = sqlSession.selectOne(namespace + "selectVoteNumber", starName);
 		} catch (Exception e) {
 			System.out.println("error");
 			e.printStackTrace();

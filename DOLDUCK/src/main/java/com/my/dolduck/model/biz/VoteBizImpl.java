@@ -31,4 +31,8 @@ public class VoteBizImpl implements VoteBiz{
 	public int updateMemberVote(String member_id, int voteNumber) {
 		return dao.updateMemberVote(member_id, voteNumber);
 	}
+	@Override
+	public int selectVoteNumber(String starName) {
+		return dao.selectVoteNumber(starName);
+	}
 }

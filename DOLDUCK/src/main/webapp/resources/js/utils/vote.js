@@ -65,6 +65,7 @@ function paginationOfList(voteChart, start, end, item){
 			$('tbody').append(`<tr id="tbody-girl-group">
 					  <td scope="row">${star.name}</td>
 					  <td><img class="star-thumbnail" src="${star.img}"></td>
+					  <td></td>
 					  <td><a onclick="voteClickPickBtn('${star.name}','girl-group')">pick</a></td>
 				      </tr>`);
 		}

@@ -40,6 +40,7 @@
 						<tr id="">
 							<th scope="col">Star</th>
 							<th scope="col">Img</th>
+							<th scope="col">득표수</th>
 							<th scope="col">투표하기</th>
 						</tr>
 					</thead>

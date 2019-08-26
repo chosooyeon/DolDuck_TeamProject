@@ -20,3 +20,8 @@ function voteNumberChk(){
 		}
 	});
 };
+
+function votePopup(popUrl){
+	var popOption = "width=1000, height=300, status=no;";
+	window.open(popUrl,"",popOption);
+}
