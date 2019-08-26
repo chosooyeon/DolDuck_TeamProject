@@ -24,17 +24,13 @@ import org.springframework.web.bind.annotation.ResponseBody;
 
 import com.my.dolduck.model.biz.BroadcastBiz;
 import com.my.dolduck.model.biz.MemberBiz;
-import com.my.dolduck.model.dto.BroadcastDto;
 import com.my.dolduck.model.dto.MemberDto;
+import com.my.dolduck.model.dto.VoteDto;
 import com.my.dolduck.util.Music;
 import com.my.dolduck.util.WebScrap;
 
 @Controller
 public class HomeController {
-	@Autowired
-	private MemberBiz biz;
-	
-	VoteDto dto = new VoteDto();
 	@Autowired
 	private MemberBiz biz;
 	
