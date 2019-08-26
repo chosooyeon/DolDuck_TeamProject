@@ -21,7 +21,7 @@ $(function(){
 		
 	}).on('click', '.btn-purchase', function(){
 		
-		if(sessionVerify()){
+		
 			//Purchase Process
 			if(kindOf == 'heart'){
 				var IMP = window.IMP; 
@@ -42,10 +42,7 @@ $(function(){
 			}else if(kindOf == 'vote'){
 				ajaxPurchase('buy-vote.do', amount, price)
 			}
-		}else{
-			var conf = confirm('로그인이 필요한 페이지입니다! 로그인페이지로 이동하시겠습니까?')
-			if(conf) location.href = 'login.do'
-		}
+		
 	})
 	
 })
