@@ -175,6 +175,26 @@ function voteCrawling(item){
    return list
 }
 
+function appendBody(start, end, item){
+	for(var i=start ; i<end ; i++){
+		var star = voteChart[i];
+		$('tbody').append(`<tr id="tbody-${item}">
+				  <td scope="row" style="line-height:8.5em; text-align: center; font-weight: bold;">${star.name}</td>
+				  <td><img class="star-thumbnail" src="${star.img}"></td>
+				  <td>
+				  	<div class="progress" style="margin-top: 36px;height: 50px;">
+				  		<div class="progress-bar" style="width:40%; background-color:#c0aded;"></div>
+				  	</div>
+				  </td>
+				  <td style="text-align: center;"><button onclick="voteClickPickBtn('${star.name}','girl-group')"style="width: 60px; height: 60px; border-radius: 5em; border: none; margin-top: 30px; background-color: #f2ecf5;" >pick</button></td>
+			      <td><a id="kakao-link-btn" href="javascript:sendLink()"> 
+					<img src="//developers.kakao.com/assets/img/about/logos/kakaolink/kakaolink_btn_medium.png" style="width:25px; float:center;" />
+					</a>
+				  </td>
+			      </tr>`);
+	}
+}
+
 // pick 버튼 클릭시 VoteDto에 starname, item 저장 + 로그인 체크
 function voteClickPickBtn(starname, item){
    $.ajax({
