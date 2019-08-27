@@ -36,11 +36,16 @@
 			<div class="votechart-board">
 				<p>검색시간 : <label class="current-time"></label>
 				<table class="table">
+					<col width="10%">
+					<col width="10%">
+					<col width="60%">
+					<col width="10%">
 					<thead>
-						<tr id="">
-							<th scope="col">Star</th>
-							<th scope="col">Img</th>
-							<th scope="col">투표하기</th>
+						<tr align="center">
+							<th>Star</th>
+							<th>Img</th>
+							<th>투표값</th>
+							<th>투표하기</th>
 						</tr>
 					</thead>
 				<tbody></tbody>
@@ -48,6 +53,6 @@
 			</div>
 			</div>
 			</div>
-	
 </body>
+<script type="text/javascript"></script>
 </html>

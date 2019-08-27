@@ -13,11 +13,11 @@ $(document).on('click', '#quickframe-close-btn', function(){
 			$('.quick-menu-frame').show()
 			break;
 		case 'twits':
-			$('#qucik-iframe').attr('src','https://192.168.10.169:8443/dolduck/twits.do')
+			$('#qucik-iframe').attr('src','http://192.168.10.169:8787/dolduck/twits.do')
 			$('.quick-menu-frame').show()
 			break;
 		case 'chat':
-			$('#qucik-iframe').attr('src','https://192.168.10.169:8443/dolduck/chat.do')
+			$('#qucik-iframe').attr('src','http://192.168.10.169:8787/dolduck/chat.do')
 			$('.quick-menu-frame').show()
 			break;
 		}

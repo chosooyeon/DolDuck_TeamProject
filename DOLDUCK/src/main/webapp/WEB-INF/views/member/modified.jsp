@@ -22,13 +22,13 @@
 							<c:when test="${empty dto.member_img }">
 								<div>
 									<img id="profileImg" src="${pageContext.request.contextPath }/resources/profileImage/profile.jpg"
-										style="border-radius: 0%; padding-top: 10px; height: 100px; width: 100px;">
+										style="border-radius: 50%; height: 100px; width: 100px; margin-top: 13px;">
 								</div>
 							</c:when>
 							<c:otherwise>
 								<div>
 									<img id="profileImg" src="${pageContext.request.contextPath }/resources/uploadImage/${dto.member_img}"
-										style="border-radius: 0%; padding-top: 10px; height: 100px; width: 100px;">
+										style="border-radius: 50%; height: 100px; width: 100px; margin-top: 13px;">
 								</div>
 							</c:otherwise>
 						</c:choose>

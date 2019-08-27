@@ -7,6 +7,7 @@
 		FREEBOARD_ID, FREEBOARD_TITLE, FREEBOARD_CONTENT, FREEBOARD_REGDATE
 		FROM
 		FREEBOARD
+		ORDER BY FREEBOARD_NUM DESC
 	</select>
 	
 	<select id="selectOne" resultType="FreeboardDto" parameterType="int">

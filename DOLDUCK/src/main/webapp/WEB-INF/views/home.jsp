@@ -40,7 +40,7 @@
       loop: 무한반복
       muted:음소거
       -->   
-            <video controls autoplay loop muted="muted">
+            <video autoplay loop muted="muted">
             	<source src="resources/videos/index.mp4" type="video/mp4">
             </video>
       </div>  
