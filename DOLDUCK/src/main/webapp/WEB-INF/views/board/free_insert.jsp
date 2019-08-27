@@ -4,8 +4,8 @@
 <html>
 <head>
 <meta charset="UTF-8">
-<meta name="_csrf" content="${_csrf.token}"/>
-<meta name="_csrf_header" content="${_csrf.headerName}"/>
+<%-- <meta name="_csrf" content="${_csrf.token}"/> --%>
+<%-- <meta name="_csrf_header" content="${_csrf.headerName}"/> --%>
 
 
 <title>Insert title here</title>
@@ -39,7 +39,7 @@
 		<div class="center">
 		<h1 class="text-center">글작성</h1>
 
-		<form action="free_insert.do" method="post">
+		<form action="free_insert.do" method="post" enctype="multipart/form-data">
 			<table class="table">
 			<tr align="right">
 				<td colspan="2" style="border-top: none; ">
@@ -49,7 +49,7 @@
 			</tr>
 			<tr>
 				<th>글쓴이</th>
-				<td><input type="text" name="freeboard_id" style="width: 100%"></td>
+				<td><input type="text" readonly="readonly" style="width: 100%" value="${ member_id}"></td>
 			</tr>
 			<tr>
 				<th>제목</th>
@@ -57,7 +57,9 @@
 			</tr>
 			<tr>
 				<th>내용</th>
-				<td><textarea name="freeboard_content" id="summernote"></textarea></td>
+				<td><textarea name="freeboard_content" id="summernote"></textarea>
+					<input type="file" name="file">
+				</td>
 			</tr>
 			</table>
 		</form>

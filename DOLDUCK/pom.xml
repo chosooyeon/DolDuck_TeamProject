@@ -93,7 +93,7 @@
 			</exclusions>
 			<scope>runtime</scope>
 		</dependency>
-		
+
 		<!-- Java Thumbnail (jcodec) -->
 		<dependency>
 			<groupId>org.jcodec</groupId>
@@ -105,10 +105,10 @@
 			<artifactId>jcodec-javase</artifactId>
 			<version>0.1.9</version>
 		</dependency>
-		<dependency> 
-			<groupId>org.imgscalr</groupId> 
-			<artifactId>imgscalr-lib</artifactId> 
-			<version>4.2</version> 
+		<dependency>
+			<groupId>org.imgscalr</groupId>
+			<artifactId>imgscalr-lib</artifactId>
+			<version>4.2</version>
 		</dependency>
 
 
@@ -136,6 +136,12 @@
 			<groupId>javax.servlet</groupId>
 			<artifactId>jstl</artifactId>
 			<version>1.2</version>
+		</dependency>
+
+		<dependency>
+			<groupId>org.apache.tomcat.embed</groupId>
+			<artifactId>tomcat-embed-jasper</artifactId>
+			<version>9.0.24</version>
 		</dependency>
 
 		<!-- Test -->
@@ -335,6 +341,9 @@
 				<artifactId>maven-eclipse-plugin</artifactId>
 				<version>2.9</version>
 				<configuration>
+					<warSourceDirectory>src/main/webapp</warSourceDirectory>
+					<warName>sample</warName>
+					<failOnMissingWebXml>false</failOnMissingWebXml>
 					<additionalProjectnatures>
 						<projectnature>org.springframework.ide.eclipse.core.springnature</projectnature>
 					</additionalProjectnatures>
