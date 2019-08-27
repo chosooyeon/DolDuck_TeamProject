@@ -28,7 +28,7 @@
 	</select>
 	
 	<select id="delete" parameterType="map">
-		DELETE FROM FREEBOARD WHERE FREEBOARD_ID = #{freeboard_id}
+		DELETE FROM FREEBOARD WHERE FREEBOARD_NUM = #{freeboard_num}
 	</select>
 	
 </mapper>
