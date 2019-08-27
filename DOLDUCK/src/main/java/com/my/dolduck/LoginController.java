@@ -138,10 +138,7 @@ public class LoginController {
 
 	@ResponseBody
 	public Map<String, Boolean> roleUpdate(String role) {
-		Boolean rolechk = false;
 		Map<String, Boolean> map = new HashMap<String, Boolean>();
-		int res = 0;
-
 		return map;
 
 	}
@@ -190,18 +187,15 @@ public class LoginController {
 			int res = 0;
 			try {
 				mf.transferTo(new File(member_img_path)); // 파일 집어넣는다
-
 			} catch (IllegalStateException e) {
-
 				e.printStackTrace();
 			} catch (IOException e) {
-
 				e.printStackTrace();
 			}
 			res = biz.updateMember(map);
 			if (res > 0) {
 				System.out.println("2");
-				return "mypage.do";
+				return "redirect:mypage.do";
 			} else {
 				System.out.println("3");
 				return "modified.do";
