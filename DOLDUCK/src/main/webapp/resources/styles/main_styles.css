@@ -534,6 +534,7 @@ section
 #quickframe-frame-area iframe{
 	width: 100%;
 	height: 100%;
+	border: none;
 }
 
 
@@ -884,7 +885,7 @@ video{
 	width: 161px;
 	height: 46px;
 	line-height: 46px;
-	background: #000000;
+	background: #c0aded;
 	text-align: center;
 	margin: 38px 0 52px 881px;
 }
@@ -950,7 +951,7 @@ svg{
 	width: 161px;
 	height: 46px;
 	line-height: 46px;
-	background: #000000;
+	background: #c0aded;
 	text-align: center;
 	margin: 38px 0 52px 881px;
 }

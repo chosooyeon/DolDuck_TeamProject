@@ -162,7 +162,7 @@ if(principal != null && principal instanceof MemberDto){
 		
 		<div class="quick-menu-frame" style="display: none;">
 			<div id="quickframe-close-btn"><i class="fas fa-times fa-2x" style="color: #fff; padding:8px; float:right;"></i></div>
-			<div id="quickframe-frame-area"><iframe id="qucik-iframe" src=""></iframe></div>
+			<div id="quickframe-frame-area"><iframe id="qucik-iframe"></iframe></div>
 		</div>
 
 
