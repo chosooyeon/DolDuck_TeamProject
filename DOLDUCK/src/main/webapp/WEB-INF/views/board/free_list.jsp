@@ -19,9 +19,7 @@
 	<button type="button" id="btn-board" onclick="location.href='free_insertform.do'">글작성</button>
 	<c:choose>
 		<c:when test="${empty list }">
-			<h3>게시글이 없습니다....</h3>
-			<input type="button" value="글작성" onclick="location.href='free_insertform.do'">
-		</c:when>
+			<h3>게시글이 없습니다....</h3>		</c:when>
 		<c:otherwise>
 			<table class="table">
 				<col width="70">

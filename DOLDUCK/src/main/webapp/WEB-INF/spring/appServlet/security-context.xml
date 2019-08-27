@@ -11,7 +11,7 @@
    http://www.springframework.org/schema/security/spring-security.xsd ">
 
    <context:component-scan base-package="com.my.dolduck"/>
-      <!-- 정적 리소스 파일들에는 보안 설정을 하지않음 css img등 -->
+      <!-- 정적 리소스 파일들에는 보안 설정을 하지않음 css img등 --> 
    <http pattern="/resources/**" security="none"></http>
    <http pattern="/include/**" security="none"/>
    
