@@ -36,7 +36,7 @@
 		</tr>
 		<tr>
 			<td colspan="4" align="right">
-			<input type="button" onclick="location.href='free_list.do'" value="취소">
+			<input type="button" onclick="location.href='free_list.do'" value="목록">
 			<input type="button" value="수정" onclick="location.href='free_update.do?freeboard_num=${one.freeboard_num }'">
 			<input type="button" value="삭제" onclick="location.href='free_delete.do?id=${one.freeboard_id }'">
 		</tr>

@@ -144,43 +144,6 @@
 			</div>
 		</section>
 
-		<!-- twitter -->
-		<section class="twitter">
-			<div class="twitter_container">
-				<input type="button" value="twitter" onclick="location.href='twitter.do'"/>
-				<article>
-					@Outsideris hello
-				</article>
-			</div>
-		</section>
-		<!-- Extra -->
-		<section class="extra">
-			<div class="extra_container">
-				<div class="background_image"
-					style="background-image: url(images/extra.jpg)"></div>
-				<div class="container">
-					<div class="row">
-						<div class="col-lg-9">
-							<div
-								class="extra_content d-flex flex-column align-items-start justify-content-center">
-								<div class="extra_title">
-									<h1>Get your tickets now!</h1>
-								</div>
-								<div class="extra_text">
-									<p>In vitae nisi aliquam, scelerisque leo a, volutpat sem.
-										Vivamus rutrum dui fermentum eros hendrerit, id lobortis leo
-										volutpat. Maecenas sollicitudin est in libero pretium interdum</p>
-								</div>
-								<div class="extra_button">
-									<a href="#">Buy Now</a>
-								</div>
-							</div>
-						</div>
-					</div>
-				</div>
-			</div>
-		</section>
-
 <!-- 		<div class="div-modal-chat">
 			<div class="modal-top">
 				<div id="modal-title">고객센터</div>
@@ -216,8 +179,6 @@
 	<script src="resources/plugins/easing/easing.js"></script>
 	<script src="resources/plugins/progressbar/progressbar.min.js"></script>
 	<script src="resources/plugins/parallax-js-master/parallax.min.js"></script>
-	<script src="resources/plugins/jPlayer/jquery.jplayer.min.js"></script>
-	<script src="resources/plugins/jPlayer/jplayer.playlist.min.js"></script>
 	<script src="resources/js/custom.js"></script>
 	<script src="resources/js/d3.min.js"></script>
 	<script src="https://kit.fontawesome.com/c1455fa856.js"></script>
