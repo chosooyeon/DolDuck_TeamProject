@@ -2,10 +2,15 @@ package com.my.dolduck;
 
 import java.io.File;
 import java.io.IOException;
+import java.security.Principal;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
 
+<<<<<<< HEAD
+=======
+import org.json.simple.JSONObject;
+>>>>>>> 44d3330ca2a6572acf7eaf1edd1e59600381d891
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -209,6 +214,28 @@ public class FreeBoardController {
 		}
 		return "redirect:free_list.do";
 	}
+	
+	// 게시글 입력 + 로그인체크
+	   @RequestMapping("/free_insert_login.do")
+	   @ResponseBody
+	   public JSONObject insertLogin(Principal principal) {
+	      JSONObject loginChk = new JSONObject();
+	      if(principal == null) {
+	         loginChk.put("loginState", "null");
+	      }
+	      return loginChk;
+	   }
+	   
+	   // 게시글 입력 + 로그인체크
+	   @RequestMapping("/free_detail_login.do")
+	   @ResponseBody
+	   public JSONObject detailLogin(Principal principal) {
+	      JSONObject loginChk = new JSONObject();
+	      if(principal == null) {
+	         loginChk.put("loginState", "null");
+	      }
+	      return loginChk;
+	   }
 
 	// ====================comment=========================
 
