@@ -1,10 +1,9 @@
-#실행파일 제외 
+
 *.com
 *.exe
 *.o
 *.so
 
-#패키지파일
 *.7z
 *.dmg
 *.gz
@@ -13,12 +12,10 @@
 *.tar
 *.zip
 
-#로그파일
 *.log
 upload/
 logs/
 
-#이클립스 설정파일
 .metadata
 bin/
 tmp/
@@ -39,8 +36,6 @@ local.properties
 .tern-project
 .springBeans
 .recommenders/
-
-#맥, 윈도우용 시스템파일 제외 
 .DS_Store
 .DS_Store?
 ._*
@@ -48,11 +43,8 @@ local.properties
 .Trashes
 ehthumbs.db
 Thumbs.db
-
-metadata
-/
+metadata/
 target/
 db.properties
 pom.properties
-
 Servers

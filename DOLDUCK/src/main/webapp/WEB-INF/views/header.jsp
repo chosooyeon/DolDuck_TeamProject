@@ -65,21 +65,13 @@ if(principal != null && principal instanceof MemberDto){
 					</sec:authorize>
 				</ul>
 			</div>
-<!-- <script type="text/javascript">
-$(function(){
-	var menu = $(".skfk > li");
-	menu.add("a").cilck(function(){
-		menu.removeClass("active");
-		$(this).parent().addClass("active");
-	})
-})
-</script> -->
+
 			<nav class="main_nav">
-				<ul class="d-flex">
+				<ul class="d-flex skfk" >
 					<li class="active"><a href="home.do">HOME</a></li>
 					<li><a href="youtube.do">YouTube</a></li>
 					<li><a href="vote.do">Vote</a></li>
-					<li><a href="chart.do">Music Chart</a></li>
+					<li><a href="void:0;">Music Chart</a></li>
 					<li><a href="live-home.do">LIVE</a></li>
 					<li><a href="free_list.do">Board</a></li>
 					<li class="dropdown"><a class="dropdown-toggle" data-toggle="dropdown">Market</a>
@@ -190,11 +182,22 @@ $(function(){
 <script src="resources/plugins/easing/easing.js"></script>
 <script src="resources/plugins/progressbar/progressbar.min.js"></script>
 <script src="resources/plugins/parallax-js-master/parallax.min.js"></script>
-<script src="resources/plugins/jPlayer/jquery.jplayer.min.js"></script>
-<script src="resources/plugins/jPlayer/jplayer.playlist.min.js"></script>
 <script src="resources/js/custom.js"></script>
 <script src="https://d3js.org/d3.v4.min.js"></script>
 <script src="https://kit.fontawesome.com/c1455fa856.js"></script>
+<script type="text/javascript">
 
+	/* var menu = $(".skfk > li");
+	menu.find("a").cilck(function(){
+		menu.removeClass("active");
+		$(this).parent().addClass("active");
+	}) */
+	
+	$('.skfk > li').on('click', function(){
+		
+		$(this).addClass('active')
+	})
+
+</script>
 
 </html>

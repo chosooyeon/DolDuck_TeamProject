@@ -1,9 +1,5 @@
 
 function idfind(){
-	var token = $("meta[name='_csrf']").attr("content");
-	var header = $("meta[name='_csrf_header']").attr("content");
-
-	console.log(`token: ${token} / header : ${header}`)
 		
 		var name = $('#name').val();
 		var email = $('#email').val();
@@ -18,9 +14,6 @@ function idfind(){
 				type : "post",
 				url : "idSearch.do",	
 				data : "name=" + name + "&email=" + email,
-				beforeSend: function( xhr ) {
-		            xhr.setRequestHeader(header, token);
-				},
 				success : function(data){
 					var idSearch = data.idSearch
 					var id = data.id
