@@ -37,7 +37,7 @@
     <!--  -->
     <div class="container">
     	<div class="channel-list"> 
-   	 		아티스트 채널목록 
+   	 		
     	</div>
     </div>
     

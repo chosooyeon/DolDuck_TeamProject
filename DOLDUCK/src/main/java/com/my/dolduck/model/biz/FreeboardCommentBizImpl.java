@@ -45,4 +45,10 @@ public class FreeboardCommentBizImpl implements FreeboardCommentBiz {
 		return dao.freeboard_comment_delete(Comment_num);
 	}
 
+	@Override
+	public int freeboard_co_comment_insert(FreeboardCommentDto dto) {
+		System.out.println("CommentBizImpl : co_comment_insert");
+		return dao.freeboard_co_comment_insert(dto);
+	}
+
 }

@@ -1,4 +1,4 @@
-
+﻿
 /*-------------------------------------		회원 테이블	-----------------------------------------*/
 -- 회원테이블 MEMBER
 -- 회원번호용 시퀀스 MEMBERSEQ
@@ -66,7 +66,7 @@ DROP TABLE VOTE;
 CREATE TABLE VOTE(
 	VOTE_ITEM VARCHAR2(1000) NOT NULL,
 	VOTE_NAME VARCHAR2(1000) NOT NULL,
-	VOTE_TOTAL NUMBER NOT NULL
+	VOTE_TOTAL NUMBER DEFAULT 0 NOT NULL
 );
 
 SELECT * FROM VOTE;

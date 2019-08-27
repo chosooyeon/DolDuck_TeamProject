@@ -118,12 +118,12 @@ public class WebScrap{
 		System.out.println("webitem:"+item);
 		// item -> page 변환 case문
 		switch(item) {
-		case "girl-group": page = 0; break;
-		case "girl-idol": page = 1; break;
-		case "new-idol": page = 2; break;
 		case "star-idol": page = 3; break;
+		case "girl-idol": page = 1; break;
+		case "girl-group": page = 0; break;
 		case "boy-group": page = 4; break;
 		case "boy-idol": page = 5; break;
+		case "new-idol": page = 2; break;
 		}
 		System.out.println("page:"+page);
 		try {
