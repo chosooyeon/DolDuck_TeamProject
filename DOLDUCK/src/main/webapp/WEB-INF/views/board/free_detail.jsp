@@ -34,7 +34,9 @@
 		</tr>
 		<tr>
 			<th height="200">내용</th>
-			<td colspan="3">${one.freeboard_content }</td>
+			<td colspan="3">${one.freeboard_content }
+				<img src="${pageContext.request.contextPath }/resources/uploadImage/${one.freeboard_file }">
+			</td>
 		</tr>
 		<tr>
 			<td colspan="4" align="right">
@@ -47,21 +49,23 @@
 	<table class="table_comment">
 		<c:forEach items="${commList }" var="comm">
 	<tr>
-		<td id="comment_num${comm.freeboard_comment_num }">
-			댓글번호 : ${comm.freeboard_comment_num }
-		</td>
 				<td>	
 			댓글작성자 : ${comm.freeboard_id }
 		</td>
 		<td id="comment_content${comm.freeboard_comment_num }">
 			댓글내용 : ${comm.freeboard_comment_content } 
 		</td>
+<<<<<<< HEAD
 
 		<td>
 			댓글작성자 : ${comm.freeboard_id }
 		</td>
 		<td>
 		<td>	
+=======
+		<td>	
+
+>>>>>>> 44d3330ca2a6572acf7eaf1edd1e59600381d891
 			댓글작성시간 : ${comm.freeboard_comment_regdate }
 		</td>
 		
@@ -86,21 +90,25 @@
 	댓글쓰기
 	<form action="freeboard_comment_insert.do" method="post">
 		<input type="hidden" name="freeboard_num" value="${one.freeboard_num }">
+		<input type="hidden" name="freeboard_id" value="${one.freeboard_id }">
 	<table class="comment_tadle">
 		<tr>
-			<td id="comment_input_id">
-				<input type="text" name="freeboard_id">	
-			</td>
 			<td id="comment_textarea">
-					<textarea id="comment_textarea_css" rows="2"cols="50" name="freeboard_comment_content"></textarea>
+					<textarea id="comment_textarea_css" rows="2"cols="50" name="freeboard_comment_content"></textarea>	
 			</td>
+<<<<<<< HEAD
 			<td id="comment_submit">
 				
 				<input type="submit" value="작성">
 
 				<button class="comment_btn" type="submit">작성</button>
 
+=======
+			<td id="comment_submit">				
+				<button class="comment_btn" type="submit">작성</button>
+>>>>>>> 44d3330ca2a6572acf7eaf1edd1e59600381d891
 			</td>
+			</tr>
 	</table>
 	</form>
 	</div>

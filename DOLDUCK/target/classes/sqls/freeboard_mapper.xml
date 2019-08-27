@@ -11,7 +11,7 @@
 	
 	<select id="selectOne" resultType="FreeboardDto" parameterType="int">
 		SELECT FREEBOARD_NUM, FREEBOARD_ID, FREEBOARD_TITLE,
-		FREEBOARD_CONTENT, FREEBOARD_REGDATE
+		FREEBOARD_CONTENT, FREEBOARD_FILE, FREEBOARD_REGDATE
 		FROM FREEBOARD
 		WHERE FREEBOARD_NUM =
 		#{freeboard_num}
@@ -19,16 +19,16 @@
 	
 	<select id="insert" resultType="FreeboardDto">
 		INSERT INTO FREEBOARD
-		VALUES(FREEBOARD_SEQ.NEXTVAL,#{freeboard_id},#{freeboard_title},#{freeboard_content},SYSDATE)
+		VALUES(FREEBOARD_SEQ.NEXTVAL,#{freeboard_id},#{freeboard_title},#{freeboard_content},#{freeboard_file},SYSDATE)
 	</select>
 
 	<select id="update" parameterType="FreeboardDto">
-		UPDATE FREEBOARD SET FREEBOARD_TITLE = #{freeboard_title}, FREEBOARD_CONTENT = #{freeboard_content}
+		UPDATE FREEBOARD SET FREEBOARD_TITLE = #{freeboard_title}, FREEBOARD_CONTENT = #{freeboard_content} , FREEBOARD_FILE = #{freeboard_file}
 		WHERE FREEBOARD_ID = #{freeboard_id}
 	</select>
 	
 	<select id="delete" parameterType="map">
-		DELETE FROM FREEBOARD WHERE FREEBOARD_ID = #{freeboard_id}
+		DELETE FROM FREEBOARD WHERE FREEBOARD_NUM = #{freeboard_num}
 	</select>
 	
 </mapper>

@@ -16,7 +16,7 @@ public class VoteBizImpl implements VoteBiz{
 		return dao.insertVote(dto);
 	}
 	@Override
-	public VoteDto selectOneVote(String item, String starName) {
+	public String selectOneVote(String item, String starName) {
 		return dao.selectOneVote(item, starName);
 	}
 	@Override
@@ -30,5 +30,9 @@ public class VoteBizImpl implements VoteBiz{
 	@Override
 	public int updateMemberVote(String member_id, int voteNumber) {
 		return dao.updateMemberVote(member_id, voteNumber);
+	}
+	@Override
+	public int selectVoteNumber(String starName) {
+		return dao.selectVoteNumber(starName);
 	}
 }

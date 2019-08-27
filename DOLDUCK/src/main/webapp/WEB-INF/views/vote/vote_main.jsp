@@ -19,47 +19,45 @@
 
 </head>
 <body>
-	<!-- Header -->
-	 <%@include file="../header.jsp" %>
-	<h1> BoyGroup Chart</h1>
-	<hr><br><br><br><br><br>
-	
-	<div class="div-star">
-		<div class="div-button">
-			<div class="girl-group">여자 그룹</div>
-		</div>
-		<div class="div-button">
-			<div class="girl-idol">여자 아이돌</div>
-		</div>
-		<div class="div-button">
-			 <div class="new-idol">신인 스타</div>
-		</div>
-		<div class="div-button">
-			<div class="star-idol">별별 스타</div>
-		</div>		
-		<div class="div-button">
-			<div class="boy-group">남자 그룹</div>
-		</div>
-		<div class="div-button">
-			<div class="boy-idol">남자 아이돌</div>
-		</div>
-	</div>
-	<div class="container">
-		<div class="center votechart-board">
-			<p>검색시간 : <label class="current-time"></label><p>
-			<table class="table">
-				<thead>
-					<tr id="">
-						<th scope="col">Star</th>
-						<th scope="col">Img</th>
-						<th scope="col">투표하기</th>
-					</tr>
-				</thead>
-				<tbody></tbody>
-			</table>
-			<button class="button-pagination">더 보기</button>	
-		</div>
-	</div>
+   <!-- Header -->
+    <%@include file="../header.jsp" %>
+
+   <div class="container vote_board">
+      <div class="center">   
+   <div class="div-star">
+            <ul class="vote-button">
+            	<li class="star-idol">별별 스타</li>
+               <li class="girl-group">여자 그룹</li>
+               <li class="girl-idol">여자 아이돌</li>
+               <li class="boy-group">남자 그룹</li>
+               <li class="boy-idol">남자 아이돌</li>
+               <li class="new-idol">신인 스타</li>
+            </ul>
+         </div>
+
+      <div class="center votechart-board">
+         <p>검색시간 : <label class="current-time"></label><p>
+         <table class="table">
+               <col width="10%">
+               <col width="10%">
+               <col width="55%">
+               <col width="10%">
+               <col width="10%">
+            <thead>
+               <tr align="center">
+                  <th>Star</th>
+                  <th>Img</th>
+                  <th>그래프</th>
+                  <th>투표값</th>
+                  <th>투표하기</th>
+               </tr>
+            </thead>
+            <tbody></tbody>
+         </table>
+      </div>
+
+   </div>
+         </div>
 </body>
 <script type="text/javascript"></script>
 </html>

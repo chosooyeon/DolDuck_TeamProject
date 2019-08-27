@@ -16,12 +16,12 @@
 	<div class="container freeboard">
 		<div class="center">
 	<h1 class="text-center">처돌이</h1>
-	<button type="button" id="btn-board" onclick="location.href='free_insertform.do'">글작성</button>
+	<button type="button" id="btn-board" onclick="freeInsertLogin()">글작성</button>
 	<c:choose>
 		<c:when test="${empty list }">
-			<h3>게시글이 없습니다....</h3>
-			<input type="button" value="글작성" onclick="location.href='free_insertform.do'">
-		</c:when>
+			<h3>게시글이 없습니다....</h3>		
+			<button type="button" id="btn-board" onclick="freeInsertLogin()">글작성</button>
+			</c:when>
 		<c:otherwise>
 			<table class="table">
 				<col width="70">
@@ -39,7 +39,7 @@
 				<c:forEach items="${list }" var="dto">
 					<tr align="center">
 						<td>${dto.freeboard_num }</td>
-						<td align="left"><a href="free_detail.do?freeboard_num=${dto.freeboard_num}">${dto.freeboard_title }</a></td>
+						<td align="left"><a href="javascript:void(0);" onclick="freeDetailLogin(${dto.freeboard_num})">${dto.freeboard_title }</a></td>
 						<td>${dto.freeboard_id }</td>
 						<td>${dto.freeboard_regdate }</td>
 						<td>0</td>
@@ -51,5 +51,6 @@
 
 	</div>
 </div>
+<script src="resources/js/freeboard_login.js" type="text/javascript"></script>
 </body>
 </html>
