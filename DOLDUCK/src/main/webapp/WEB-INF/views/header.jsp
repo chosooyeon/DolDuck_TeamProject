@@ -68,12 +68,12 @@ if(principal != null && principal instanceof MemberDto){
 
 			<nav class="main_nav">
 				<ul class="d-flex skfk" >
-					<li class="active"><a href="home.do">HOME</a></li>
-					<li><a href="youtube.do">YouTube</a></li>
-					<li><a href="vote.do">Vote</a></li>
-					<li><a href="void:0;">Music Chart</a></li>
-					<li><a href="live-home.do">LIVE</a></li>
-					<li><a href="free_list.do">Board</a></li>
+					<li class="active"><a id="dd" href="home.do">HOME</a></li>
+					<li><a id="dd" href="youtube.do">YouTube</a></li>
+					<li><a id="dd" href="vote.do">Vote</a></li>
+					<li><a id="dd" href="chart.do">MusicChart</a></li>
+					<li><a id="dd" href="live-home.do">LIVE</a></li>
+					<li><a id="dd" href="free_list.do">Board</a></li>
 					<li class="dropdown"><a class="dropdown-toggle" data-toggle="dropdown">Market</a>
 						<ul class="dropdown-menu" role="menu">
 							<li class="dropdown-item:hover"><a href="heartShop.do">heartShop</a></li>
@@ -123,7 +123,7 @@ if(principal != null && principal instanceof MemberDto){
 						<li><a href="home.do">HOME</a></li>
 						<li><a href="youtube.do">You Tube</a></li>
 						<li><a href="vote.do">Vote</a></li>
-						<li><a href="chart.do">Music Chart</a></li>
+						<li><a href="chart.do">MusicChart</a></li>
 						<li><a href="live-home.do">LIVE</a></li>
 						<li><a href="free_list.do">Board</a></li>
 						<li><a href="heartShop.do">heartShop</a></li>
@@ -186,18 +186,14 @@ if(principal != null && principal instanceof MemberDto){
 <script src="https://d3js.org/d3.v4.min.js"></script>
 <script src="https://kit.fontawesome.com/c1455fa856.js"></script>
 <script type="text/javascript">
-
-	/* var menu = $(".skfk > li");
-	menu.find("a").cilck(function(){
-		menu.removeClass("active");
+$(function(){
+	var menu = $(".skfk > li");
+	menu.find("#dd").click(function(){
 		$(this).parent().addClass("active");
-	}) */
-	
-	$('.skfk > li').on('click', function(){
-		
-		$(this).addClass('active')
-	})
 
+
+	})
+})
 </script>
 
 </html>

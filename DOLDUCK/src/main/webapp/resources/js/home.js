@@ -22,3 +22,5 @@ $(document).on('click', '#quickframe-close-btn', function(){
 			break;
 		}
 	})
+
+	
