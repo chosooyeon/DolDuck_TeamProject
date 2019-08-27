@@ -60,89 +60,17 @@ $(document).ready(function(){
 
 function paginationOfList(voteChart, start, end, item){
 	if(item == 'girl-group'){
-		for(var i=start ; i<end ; i++){
-			var star = voteChart[i];
-			$('tbody').append(`<tr id="tbody-girl-group">
-					  <td scope="row" style="line-height:8.5em; text-align: center; font-weight: bold;">${star.name}</td>
-					  <td><img class="star-thumbnail" src="${star.img}"></td>
-					  <td>
-					  	<div class="progress" style="margin-top: 36px;height: 50px;">
-					  		<div class="progress-bar" style="width:40%; background-color:#c0aded;"></div>
-					  	</div>
-					  </td>
-					  <td style="text-align: center;"><button onclick="voteClickPickBtn('${star.name}','girl-group')"style="width: 60px; height: 60px; border-radius: 5em; border: none; margin-top: 30px; background-color: #f2ecf5;" >pick</button></td>
-				      </tr>`);
-		}
+		appendBody(start, end, item)
 	}else if(item == 'girl-idol'){
-		for(var i=start ; i<end ; i++){
-			var star = voteChart[i]
-			$('tbody').append(`<tr id="tbody-girl-idol">
-					  <td scope="row" style="line-height:8.5em; text-align: center; font-weight: bold;">${star.name}</td>
-					  <td><img class="star-thumbnail" src="${star.img}"></td>
-					  <td>
-					  	<div class="progress" style="margin-top: 36px;height: 50px;">
-					  		<div class="progress-bar" style="width:40%; background-color:#c0aded;"></div>
-					  	</div>
-					  </td>
-					  <td style="text-align: center;"><button onclick="voteClickPickBtn('${star.name}','girl-idol')"style="width: 60px; height: 60px; border-radius: 5em; border: none; margin-top: 30px; background-color: #f2ecf5;" >pick</button></td>
-				      </tr>`);
-		}
+		appendBody(start, end, item)
 	}else if(item == 'new-idol'){
-		for(var i=start ; i<end ; i++){
-			var star = voteChart[i]
-			$('tbody').append(`<tr id="tbody-new-idol">
-					  <td scope="row" style="line-height:8.5em; text-align: center; font-weight: bold;">${star.name}</td>
-					  <td><img class="star-thumbnail" src="${star.img}"></td>
-					  <td>
-					  	<div class="progress" style="margin-top: 36px;height: 50px;">
-					  		<div class="progress-bar" style="width:40%; background-color:#c0aded;"></div>
-					  	</div>
-					  </td>
-					  <td style="text-align: center;"><button onclick="voteClickPickBtn('${star.name}','new-idol')"style="width: 60px; height: 60px; border-radius: 5em; border: none; margin-top: 30px; background-color: #f2ecf5;" >pick</button></td>
-				      </tr>`);
-		}
+		appendBody(start, end, item)
 	}else if(item == 'star-idol'){
-		for(var i=start ; i<end ; i++){
-			var star = voteChart[i]
-			$('tbody').append(`<tr id="tbody-star-idol">
-					  <td scope="row" style="line-height:8.5em; text-align: center; font-weight: bold;">${star.name}</td>
-					  <td><img class="star-thumbnail" src="${star.img}"></td>
-					  <td>
-					  	<div class="progress" style="margin-top: 36px;height: 50px;">
-					  		<div class="progress-bar" style="width:40%; background-color:#c0aded;"></div>
-					  	</div>
-					  </td>
-					  <td style="text-align: center;"><button onclick="voteClickPickBtn('${star.name}','star-idol')"style="width: 60px; height: 60px; border-radius: 5em; border: none; margin-top: 30px; background-color: #f2ecf5;" >pick</button></td>
-				      </tr>`);
-		}
+		appendBody(start, end, item)
 	}else if(item == 'boy-group'){
-		for(var i=start ; i<end ; i++){
-			var star = voteChart[i]
-			$('tbody').append(`<tr id="tbody-boy-group">
-					  <td scope="row" style="line-height:8.5em; text-align: center; font-weight: bold;">${star.name}</td>
-					  <td><img class="star-thumbnail" src="${star.img}"></td>
-					  <td>
-					  	<div class="progress" style="margin-top: 36px;height: 50px;">
-					  		<div class="progress-bar" style="width:40%; background-color:#c0aded;"></div>
-					  	</div>
-					  </td>
-					 <td style="text-align: center;"><button onclick="voteClickPickBtn('${star.name}','boy-group')"style="width: 60px; height: 60px; border-radius: 5em; border: none; margin-top: 30px; background-color: #f2ecf5;" >pick</button></td>
-				      </tr>`);
-		}
+		appendBody(start, end, item)
 	}else if(item == 'boy-idol'){
-		for(var i=start ; i<end ; i++){
-			var star = voteChart[i]
-			$('tbody').append(`<tr id="tbody-boy-idol">
-					  <td scope="row" style="line-height:8.5em; text-align: center; font-weight: bold;">${star.name}</td>
-					  <td><img class="star-thumbnail" src="${star.img}"></td>
-					  <td>
-					  	<div class="progress" style="margin-top: 36px;height: 50px;">
-					  		<div class="progress-bar" style="width:40%; background-color:#c0aded;"></div>
-					  	</div>
-					  </td>
-					  <td style="text-align: center;"><button onclick="voteClickPickBtn('${star.name}','boy-idol')"style="width: 60px; height: 60px; border-radius: 5em; border: none; margin-top: 30px; background-color: #f2ecf5;" >pick</button></td>
-				      </tr>`);
-		}
+		appendBody(start, end, item)
 	}
 }
 
@@ -163,6 +91,26 @@ function voteCrawling(item){
 		}
 	});
 	return list
+}
+
+function appendBody(start, end, item){
+	for(var i=start ; i<end ; i++){
+		var star = voteChart[i];
+		$('tbody').append(`<tr id="tbody-${item}">
+				  <td scope="row" style="line-height:8.5em; text-align: center; font-weight: bold;">${star.name}</td>
+				  <td><img class="star-thumbnail" src="${star.img}"></td>
+				  <td>
+				  	<div class="progress" style="margin-top: 36px;height: 50px;">
+				  		<div class="progress-bar" style="width:40%; background-color:#c0aded;"></div>
+				  	</div>
+				  </td>
+				  <td style="text-align: center;"><button onclick="voteClickPickBtn('${star.name}','girl-group')"style="width: 60px; height: 60px; border-radius: 5em; border: none; margin-top: 30px; background-color: #f2ecf5;" >pick</button></td>
+			      <td><a id="kakao-link-btn" href="javascript:sendLink()"> 
+					<img src="//developers.kakao.com/assets/img/about/logos/kakaolink/kakaolink_btn_medium.png" style="width:25px; float:center;" />
+					</a>
+				  </td>
+			      </tr>`);
+	}
 }
 
 // pick 버튼 클릭시 VoteDto에 starname, item 저장 + 로그인 체크

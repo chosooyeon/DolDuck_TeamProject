@@ -10,12 +10,6 @@
 <link rel="stylesheet" type="text/css" href="resources/styles/main_styles.css">
 <link rel="stylesheet" type="text/css" href="resources/styles/vote.css">
 
-<!-- jQuery library -->
-<script type="text/javascript" src="https://code.jquery.com/jquery-3.4.1.js"></script>
-<script src="//ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
-<script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js"></script>
-<script src="resources/styles/bootstrap-4.1.2/bootstrap.min.js"></script>
-<script src="resources/js/utils/vote.js?ver=1" type="text/javascript"></script>
 
 </head>
 <body>
@@ -33,8 +27,10 @@
 					<li class="boy-idol">남자 아이돌</li>
 				</ul>
 			</div>
-			<div class="votechart-board">
+			<div>
 				<p>검색시간 : <label class="current-time"></label>
+			</div>
+			<div class="votechart-board">
 				<table class="table">
 					<col width="10%">
 					<col width="10%">
@@ -46,6 +42,7 @@
 							<th>Img</th>
 							<th>투표값</th>
 							<th>투표하기</th>
+							<th>공유</th>
 						</tr>
 					</thead>
 				<tbody></tbody>
@@ -54,5 +51,14 @@
 			</div>
 			</div>
 </body>
-<script type="text/javascript"></script>
+
+<!-- jQuery library -->
+<script type="text/javascript" src="https://code.jquery.com/jquery-3.4.1.js"></script>
+<script src="//ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js"></script>
+<script src="resources/styles/bootstrap-4.1.2/bootstrap.min.js"></script>
+<script src="resources/js/utils/vote.js?ver=1" type="text/javascript"></script>
+<script src="//developers.kakao.com/sdk/js/kakao.min.js"></script>
+<script src="resources/js/utils/kakaoshare.js" type="text/javascript"></script>
+ 
 </html>

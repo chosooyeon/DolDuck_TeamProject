@@ -166,4 +166,8 @@ public class HomeController {
 		return result;
 	}
 	
+	
+	public String chatDo() {
+		return "";
+	}
 }
