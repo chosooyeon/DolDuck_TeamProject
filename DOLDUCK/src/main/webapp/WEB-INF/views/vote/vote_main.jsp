@@ -13,43 +13,45 @@
 
 </head>
 <body>
-	<!-- Header -->
-	 <%@include file="../header.jsp" %>
-	<div class="container vote_board">
-		<div class="center">
-			<div class="div-star">
-				<ul class="vote-button">
-					<li class="girl-group">여자 그룹</li>
-					<li class="girl-idol">여자 아이돌</li>
-					<li class="new-idol">신인 스타</li>
-					<li class="star-idol">별별 스타</li>
-					<li class="boy-group">남자 그룹</li>
-					<li class="boy-idol">남자 아이돌</li>
-				</ul>
-			</div>
-			<div>
-				<p>검색시간 : <label class="current-time"></label>
-			</div>
-			<div class="votechart-board">
-				<table class="table">
-					<col width="10%">
-					<col width="10%">
-					<col width="60%">
-					<col width="10%">
-					<thead>
-						<tr align="center">
-							<th>Star</th>
-							<th>Img</th>
-							<th>투표값</th>
-							<th>투표하기</th>
-							<th>공유</th>
-						</tr>
-					</thead>
-				<tbody></tbody>
-				</table>
-			</div>
-			</div>
-			</div>
+   <!-- Header -->
+    <%@include file="../header.jsp" %>
+
+   <div class="container vote_board">
+      <div class="center">   
+   <div class="div-star">
+            <ul class="vote-button">
+            	<li class="star-idol">별별 스타</li>
+               <li class="girl-group">여자 그룹</li>
+               <li class="girl-idol">여자 아이돌</li>
+               <li class="boy-group">남자 그룹</li>
+               <li class="boy-idol">남자 아이돌</li>
+               <li class="new-idol">신인 스타</li>
+            </ul>
+         </div>
+
+      <div class="center votechart-board">
+         <p>검색시간 : <label class="current-time"></label><p>
+         <table class="table">
+               <col width="10%">
+               <col width="10%">
+               <col width="55%">
+               <col width="10%">
+               <col width="10%">
+            <thead>
+               <tr align="center">
+                  <th>Star</th>
+                  <th>Img</th>
+                  <th>그래프</th>
+                  <th>투표값</th>
+                  <th>투표하기</th>
+               </tr>
+            </thead>
+            <tbody></tbody>
+         </table>
+      </div>
+
+   </div>
+         </div>
 </body>
 
 <!-- jQuery library -->
