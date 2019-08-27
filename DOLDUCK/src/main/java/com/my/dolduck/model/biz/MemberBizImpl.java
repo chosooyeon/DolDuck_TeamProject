@@ -88,10 +88,6 @@ public class MemberBizImpl implements MemberBiz {
 	public int purchaseVote(int amount, String id) {
 		return dao.purchaseVote(amount, id);
 	}
-//	@Override
-//	public MemberDto login(String id, String pw) {
-//		return dao.login(id, pw);
-//	}
 
 	public int updateRole(MemberDto dto) {
 		return dao.updateRole(dto);

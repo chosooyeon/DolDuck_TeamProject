@@ -1,6 +1,3 @@
-var token = $("meta[name='_csrf']").attr("content");
-var header = $("meta[name='_csrf_header']").attr("content");
-
 function sendEmail(){
 
 	var id = $('#id').val();
@@ -15,9 +12,6 @@ function sendEmail(){
 			url:"pwSearch.do",
 			type:"post",
 			data:"id=" + id + "&email=" + email,
-			beforeSend: function( xhr ) {
-	            xhr.setRequestHeader(header, token);
-			},
 			success:function(data){
 				if(data.pwSearch == true){
 					$(function(){
