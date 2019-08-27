@@ -144,15 +144,6 @@
 			</div>
 		</section>
 
-		<!-- twitter -->
-		<section class="twitter">
-			<div class="twitter_container">
-				<input type="button" value="twitter" onclick="location.href='twitter.do'"/>
-				<article>
-					@Outsideris hello
-				</article>
-			</div>
-		</section>
 		<!-- Extra -->
 		<section class="extra">
 			<div class="extra_container">
@@ -181,34 +172,9 @@
 			</div>
 		</section>
 
-<!-- 		<div class="div-modal-chat">
-			<div class="modal-top">
-				<div id="modal-title">고객센터</div>
-				<span></span>
-			</div>
-			<a href="#" class="button-modal-close" onclick="closeChat()">X</a>
-			<iframe class="iframe-chat" src="http://192.168.10.169:3000/"></iframe>
-		</div> -->
-
 		<!-- Footer  -->
 	</section>
 	<%@include file="footer.jsp"%>
-
-<<<<<<< HEAD
-<!-- 	<script type="http://platform.twitter.com/anywhere.js?id=IXw8Box7vGU37vCslSZRbw&v=1" type="text/javascript"></script> -->
-<!-- 	<script type="text/javascript"> -->
-// 		twttr.anywhere(function(T){
-// 			T("article").linkifyUsers();
-// 		});
-<!-- 	</script> -->
-=======
-	<!-- <script type="http://platform.twitter.com/anywhere.js?id=IXw8Box7vGU37vCslSZRbw&v=1" type="text/javascript"></script>
-	<script type="text/javascript">
-		twttr.anywhere(function(T){
-			T("article").linkifyUsers();
-		});
-	</script> -->
->>>>>>> 90219b2927a2dd579bed33599a634421a82f45b1
 
 	<script type="text/javascript"
 		src="https://code.jquery.com/jquery-3.4.1.min.js"></script>
