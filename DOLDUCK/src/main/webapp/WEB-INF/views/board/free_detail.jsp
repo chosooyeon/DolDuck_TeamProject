@@ -55,8 +55,17 @@
 		<td id="comment_content${comm.freeboard_comment_num }">
 			댓글내용 : ${comm.freeboard_comment_content } 
 		</td>
+<<<<<<< HEAD
+
+		<td>
+			댓글작성자 : ${comm.freeboard_id }
+		</td>
+		<td>
+		<td>	
+=======
 		<td>	
 
+>>>>>>> 44d3330ca2a6572acf7eaf1edd1e59600381d891
 			댓글작성시간 : ${comm.freeboard_comment_regdate }
 		</td>
 		
@@ -87,8 +96,17 @@
 			<td id="comment_textarea">
 					<textarea id="comment_textarea_css" rows="2"cols="50" name="freeboard_comment_content"></textarea>	
 			</td>
+<<<<<<< HEAD
+			<td id="comment_submit">
+				
+				<input type="submit" value="작성">
+
+				<button class="comment_btn" type="submit">작성</button>
+
+=======
 			<td id="comment_submit">				
 				<button class="comment_btn" type="submit">작성</button>
+>>>>>>> 44d3330ca2a6572acf7eaf1edd1e59600381d891
 			</td>
 			</tr>
 	</table>
