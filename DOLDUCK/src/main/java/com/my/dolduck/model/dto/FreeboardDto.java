@@ -11,17 +11,19 @@ public class FreeboardDto {
 	private String freeboard_id;
 	private String freeboard_title;
 	private String freeboard_content;
+	private String freeboard_file;
 	private Date freeboard_regdate;
 
 	public FreeboardDto() {
 
 	}
 
-	public FreeboardDto(String freeboard_id, String freeboard_title, String freeboard_content,int freeboard_num,Date freeboard_regdate) {
+	public FreeboardDto(String freeboard_id, String freeboard_title, String freeboard_content,String freeboard_file, int freeboard_num,Date freeboard_regdate) {
 		this.freeboard_num = freeboard_num;
 		this.freeboard_id = freeboard_id;
 		this.freeboard_title = freeboard_title;
 		this.freeboard_content = freeboard_content;
+		this.freeboard_file = freeboard_file;
 		this.freeboard_regdate = freeboard_regdate;
 	}
 
@@ -63,6 +65,14 @@ public class FreeboardDto {
 
 	public void setFreeboard_regdate(Date freeboard_regdate) {
 		this.freeboard_regdate = freeboard_regdate;
+	}
+
+	public String getFreeboard_file() {
+		return freeboard_file;
+	}
+
+	public void setFreeboard_file(String freeboard_file) {
+		this.freeboard_file = freeboard_file;
 	}
 
 }

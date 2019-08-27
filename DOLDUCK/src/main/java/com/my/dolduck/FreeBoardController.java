@@ -1,23 +1,30 @@
 package com.my.dolduck;
 
+import java.io.File;
+import java.io.IOException;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
 
+
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.security.core.Authentication;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.ResponseBody;
+import org.springframework.web.multipart.MultipartFile;
+import org.springframework.web.multipart.MultipartHttpServletRequest;
 
 import com.my.dolduck.model.biz.FreeboardBiz;
 import com.my.dolduck.model.biz.FreeboardCommentBiz;
 import com.my.dolduck.model.dto.FreeboardCommentDto;
 import com.my.dolduck.model.dto.FreeboardDto;
+import com.my.dolduck.model.dto.MemberDto;
 
 /**
  * Handles requests for the application home page.
@@ -43,40 +50,83 @@ public class FreeBoardController {
 	}
 
 	@RequestMapping("free_insertform.do")
-	public String insertform() {
-
+	public String insertform(Model model,Authentication auth) {
+		MemberDto dto = (MemberDto) auth.getPrincipal();
+		String M_id = dto.getUsername();
+		model.addAttribute("member_id",M_id);
+		
 		return "board/free_insert";
 	}
 
 	// 게시글 입력
 	@RequestMapping("free_insert.do")
-	public String insert(@ModelAttribute FreeboardDto dto) {
+	public String insert(@ModelAttribute FreeboardDto dto, MultipartHttpServletRequest mtfRequest, Authentication auth) {
 
-		int res = biz.free_insert(dto);
+		MemberDto Mdto = (MemberDto) auth.getPrincipal();
+		String member_id = Mdto.getUsername();
+		dto.setFreeboard_id(member_id);
+		
+		List<MultipartFile> fileList = mtfRequest.getFiles("file");
+		   
+	      String path = mtfRequest.getSession().getServletContext().getRealPath("resources/uploadImage");
+	      File dir = new File(path);
+	      if (!dir.isDirectory()) {
+	         dir.mkdirs();
+	      }
 
-		if (res > 0) {
-			return "redirect:free_list.do";
-		} else {
-			return "redirect:free_insert.do";
-		}
+	      for (MultipartFile mf : fileList) {
+	         String originFileName = mf.getOriginalFilename(); // 원본 파일 명
+	         long fileSize = mf.getSize(); // 파일 사이즈
+	         String class_img_path = path + "/" + originFileName; // 경로
+	         System.out.println("경로 " + class_img_path);
+	         String feeboard_file = originFileName; // 파일 이름
+	         dto.setFreeboard_file(feeboard_file);
+	         System.out.println(feeboard_file);
+	         System.out.println("originFileName : " + originFileName);
+	         System.out.println("fileSize : " + fileSize);
+	         int res = 0;
+	         try {
+	            mf.transferTo(new File(class_img_path)); // 파일 집어넣는다
 
+	            res = biz.free_insert(dto);
+	            if (res > 0) {
+	                System.out.println("성공");
+	                return "redirect:free_list.do";
+	             } 
+	        
+	         } catch (IllegalStateException e) {
+
+	            e.printStackTrace();
+	         } catch (IOException e) {
+
+	            e.printStackTrace();
+	         }
+	      }
+	  
+              System.out.println("실패");
+              return "redirect:free_insert.do";
+	      
 	}
 
 	// 게시글 자세히보기 & 댓글 리스트
 	@RequestMapping("free_detail.do")
-	public String selectOne(Model model, int freeboard_num) {
-
+	public String selectOne(Model model, int freeboard_num, FreeboardDto dto, Authentication auth) {
+		
+		MemberDto Mdto = (MemberDto) auth.getPrincipal();
+		String member_id = Mdto.getUsername();
+		dto.setFreeboard_id(member_id);
+		
 		System.out.println("나중에 지우기");
 		System.out.println("선택된 메소드 : selectOne");
 		System.out.println("선택된 게시글 번호 : " + freeboard_num);
 
 		// 게시글
-		FreeboardDto dto = biz.free_detail(freeboard_num);
+		FreeboardDto Fdto = biz.free_detail(freeboard_num);
 		// 댓글
 		List<FreeboardCommentDto> list = bizComm.freeboard_comment_list(freeboard_num);
 
 		// 게시글
-		model.addAttribute("one", dto);
+		model.addAttribute("one", Fdto);
 		// 댓글
 		model.addAttribute("commList", list);
 
