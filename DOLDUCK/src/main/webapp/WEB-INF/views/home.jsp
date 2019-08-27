@@ -144,6 +144,16 @@
 			</div>
 		</section>
 
+<<<<<<< HEAD
+<!-- 		<div class="div-modal-chat">
+			<div class="modal-top">
+				<div id="modal-title">고객센터</div>
+				<span></span>
+			</div>
+			<a href="#" class="button-modal-close" onclick="closeChat()">X</a>
+			<iframe class="iframe-chat" src="http://192.168.10.169:3000/"></iframe>
+		</div> -->
+=======
 		<!-- Extra -->
 		<section class="extra">
 			<div class="extra_container">
@@ -171,6 +181,7 @@
 				</div>
 			</div>
 		</section>
+>>>>>>> d09b87b101a19fc93b015b56fdc58d9824d2ac7d
 
 		<!-- Footer  -->
 	</section>
@@ -191,8 +202,6 @@
 	<script src="resources/plugins/easing/easing.js"></script>
 	<script src="resources/plugins/progressbar/progressbar.min.js"></script>
 	<script src="resources/plugins/parallax-js-master/parallax.min.js"></script>
-	<script src="resources/plugins/jPlayer/jquery.jplayer.min.js"></script>
-	<script src="resources/plugins/jPlayer/jplayer.playlist.min.js"></script>
 	<script src="resources/js/custom.js"></script>
 	<script src="resources/js/d3.min.js"></script>
 	<script src="https://kit.fontawesome.com/c1455fa856.js"></script>
