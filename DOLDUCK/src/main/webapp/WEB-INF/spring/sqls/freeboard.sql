@@ -12,8 +12,19 @@ CREATE TABLE FREEBOARD(
 );
 
 INSERT INTO FREEBOARD
+<<<<<<< HEAD
 VALUES(FREEBOARD_SEQ.NEXTVAL,'이영한','테스트중입니다..','�궗湲� 移섏� 留먯옄.',SYSDATE);
 VALUES(FREEBOARD_SEQ.NEXTVAL,'조수연','안녕하세요','너무힘들어요',SYSDATE);
+=======
+
+VALUES(FREEBOARD_SEQ.NEXTVAL,'이영한','하하하하하하.','하하하하.',SYSDATE);
+
+VALUES(FREEBOARD_SEQ.NEXTVAL,'조수연','안녕하세요','너무힘들어요',SYSDATE);
+
+VALUES(FREEBOARD_SEQ.NEXTVAL,'이영한','테스트중입니다..','�궗湲� 移섏� 留먯옄.',SYSDATE);
+
+VALUES(FREEBOARD_SEQ.NEXTVAL,'조수연','안녕하세요','너무힘들어요',SYSDATE);
+
 SELECT * FROM FREEBOARD;
 
 --market
@@ -34,4 +45,8 @@ CREATE TABLE MARKET(
 INSERT INTO MARKET
 VALUES(MARKET_SEQ.NEXTVAL,'조수연','안녕하세요','너무힘들어요',SYSDATE);
 SELECT * FROM MARKET;
+<<<<<<< HEAD
 SELECT * FROM FREEBOARD;
+=======
+>>>>>>> cbbff12325b748e07fe3c2402507faf0782e314c
+>>>>>>> origin/LeeYH

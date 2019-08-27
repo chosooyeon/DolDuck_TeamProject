@@ -77,5 +77,14 @@ public class FreeboardCommentDaoImpl implements FreeboardCommentDao {
 		
 		return 0;
 	}
+
+	@Override
+	public int freeboard_co_comment_insert(FreeboardCommentDto dto) {
+		System.out.println("CommDaoImpl : co_comment_insert");
+		int res = 0;
+		res = sqlSession.insert(namespace+"freeboard_co_comment_insert",dto);
+		
+		return res;
+	}
 	
 }
