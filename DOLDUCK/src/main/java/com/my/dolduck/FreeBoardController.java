@@ -88,7 +88,11 @@ public class FreeBoardController {
 			System.out.println("fileSize : " + fileSize);
 			int res = 0;
 			try {
-				mf.transferTo(new File(class_img_path)); // 파일 집어넣는다
+				if(mf.getSize() == 0) {
+					System.out.println("없음");
+				}else {
+					mf.transferTo(new File(class_img_path)); // 파일 집어넣는다					
+				}
 
 				res = biz.free_insert(dto);
 				if (res > 0) {
@@ -178,8 +182,12 @@ public class FreeBoardController {
 
 			int res = 0;
 			try {
-				mf.transferTo(new File(class_img_path)); // 파일 집어넣는다
-
+				
+				if(mf.getSize() == 0) {
+					System.out.println("없음");
+				}else {
+					mf.transferTo(new File(class_img_path)); // 파일 집어넣는다					
+				}
 				res = biz.free_update(dto);
 				if (res > 0) {
 					System.out.println("성공");
@@ -194,8 +202,6 @@ public class FreeBoardController {
 				e.printStackTrace();
 			}
 		}
-
-		System.out.println("실패");
 
 		return "redirect:free_update.do";
 
