@@ -29,7 +29,6 @@
 			</otherwise>
 		</choose>
 		,SYSDATE)
-		
 	</select>
 
 	<select id="update" parameterType="FreeboardDto">
