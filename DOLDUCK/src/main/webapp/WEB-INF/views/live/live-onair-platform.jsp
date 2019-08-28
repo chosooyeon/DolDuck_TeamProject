@@ -91,16 +91,14 @@
 	        <div class="modal-footer">
 		      <button type="button" class="btn btn-danger" id="btn-startlive">시 작</button>
 	          <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+	          <script src="resources/js/live/live-start.js"></script>
 	        </div>
-	        
 	      </div>
 	    </div>
 	  </div>
 	</div>
 	</sec:authorize>
-	
 
-    
     
     <!-- Footer -->
     <%@include file="/WEB-INF/views/footer.jsp" %>
@@ -111,6 +109,8 @@
     <!-- <script src="https://192.168.10.107:5571/socket.io/socket.io.js"></script> -->
     <!-- 윈도우  -->
     <script src="https://192.168.10.169:5571/socket.io/socket.io.js"></script>
+    
+    
     <script src="resources/js/broadcast/js/main.js"></script>
 </body>
 </html>

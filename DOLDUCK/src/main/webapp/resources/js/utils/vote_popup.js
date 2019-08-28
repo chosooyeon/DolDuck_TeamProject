@@ -22,6 +22,6 @@ function voteNumberChk(){
 };
 
 function votePopup(popUrl){
-	var popOption = "width=1000, height=300, status=no;";
+	var popOption = "width=500, height=500, status=no;";
 	window.open(popUrl,"",popOption);
 }

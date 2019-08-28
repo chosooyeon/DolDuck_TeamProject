@@ -96,8 +96,7 @@
 					<li><a href="chart.do">Music Chart</a></li>
 					<li><a href="live-home.do">LIVE</a></li>
 					<li><a href="free_list.do">Board</a></li>
-					<li class="dropdown"><a class="dropdown-toggle"
-						data-toggle="dropdown">Market</a>
+					<li class="dropdown"><a class="dropdown-toggle" data-toggle="dropdown">Market</a>
 						<ul class="dropdown-menu" role="menu">
 							<li class="dropdown-item:hover"><a href="heartShop.do">heartShop</a></li>
 							<li class="dropdown-item:hover"><a href="market_list.do">Goodies</a></li>
@@ -201,10 +200,8 @@
 </body>
 <script src="https://code.jquery.com/jquery-3.4.1.min.js"></script>
 <script src="resources/js/home.js"></script>
-<script
-	src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js"></script>
-<script
-	src="https://maxcdn.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js"></script>
+<script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js"></script>
 <script src="resources/styles/bootstrap-4.1.2/popper.js"></script>
 <script src="resources/styles/bootstrap-4.1.2/bootstrap.min.js"></script>
 <script src="resources/plugins/greensock/TweenMax.min.js"></script>

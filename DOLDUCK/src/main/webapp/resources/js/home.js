@@ -9,6 +9,7 @@ $(document).on('click', ".icon-chat-circle", function(){
 			location.href = 'live-onair.do'
 			break;
 		case 'translate':
+			$('#qucik-iframe').attr('src','')
 			$('.quick-menu-frame').show()
 			break;
 		case 'twits':

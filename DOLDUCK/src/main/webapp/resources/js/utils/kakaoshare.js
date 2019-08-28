@@ -1,6 +1,6 @@
 
 window.onload = function(){
-	var url = loaction.href
+	var url = location.href
 
 	Kakao.init('a9ef9a318deb5784906e6e394fb3c4e1');
 	
