@@ -30,20 +30,20 @@
          </div>
 
       <div class="center votechart-board">
-         <p>검색시간 : <label class="current-time"></label><p>
          <table class="table">
                <col width="10%">
                <col width="10%">
                <col width="55%">
                <col width="10%">
                <col width="10%">
+               <col width="5%">
             <thead>
                <tr align="center">
-                  <th>Star</th>
-                  <th>Img</th>
-                  <th>그래프</th>
+                  <th colspan="2">아이돌</th>
+                  <th>결과 그래프</th>
                   <th>투표값</th>
                   <th>투표하기</th>
+                  <th>공유</th>
                </tr>
             </thead>
             <tbody></tbody>
