@@ -11,4 +11,5 @@ public interface FreeboardBiz {
 	public int free_update(FreeboardDto dto);
 	public int free_delete(String id);
 	public List<FreeboardDto> find_list(String Searchtext);
+	public int free_delete(int num);
 }

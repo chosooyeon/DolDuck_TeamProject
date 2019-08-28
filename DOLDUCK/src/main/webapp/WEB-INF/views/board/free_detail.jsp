@@ -42,22 +42,21 @@
 			<td colspan="4" align="right">
 			<input type="button" onclick="location.href='free_list.do'" value="목록">
 			<input type="button" value="수정" onclick="location.href='free_update.do?freeboard_num=${one.freeboard_num }'">
-			<input type="button" value="삭제" onclick="location.href='free_delete.do?id=${one.freeboard_id }'">
+			<input type="button" value="삭제" onclick="location.href='free_delete.do?num=${one.freeboard_num }'">
 		</tr>
 	</table>
 	<br>
 	<table class="table_comment">
 		<c:forEach items="${commList }" var="comm">
 	<tr>
-				<td>	
-			댓글작성자 : ${comm.freeboard_id }
+		<td>	
+			ID : ${comm.freeboard_id }
 		</td>
 		<td id="comment_content${comm.freeboard_comment_num }">
-			댓글내용 : ${comm.freeboard_comment_content } 
+				 ${comm.freeboard_comment_content } 
 		</td>
 		<td>	
-
-			댓글작성시간 : ${comm.freeboard_comment_regdate }
+			작성시간 : ${comm.freeboard_comment_regdate }
 		</td>
 		
 		<td id="edit_btn">

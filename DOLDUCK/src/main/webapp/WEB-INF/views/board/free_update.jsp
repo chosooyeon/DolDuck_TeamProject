@@ -37,8 +37,8 @@
 	<div class="center">
 	<h1 class="text-center">수정 하기</h1>
 
-	<form action="free_updateform.do" method="post" >
-		<input type="hidden" name="freeboard_id" value="${one.freeboard_id }">
+	<form action="free_updateform.do" method="post" enctype="multipart/form-data">
+		<input type="hidden" name="freeboard_num" value="${one.freeboard_num }">
 		<table class="table">
 			<tr align="right">
 				<td colspan="4" style="border-top: none; ">
@@ -48,17 +48,19 @@
 			</tr>
 			<tr>
 				<th>글쓴이</th>
-				<td>${one.freeboard_id }</td>
+				<td>${one. freeboard_id }</td>
 				<th>작성일</th>
 				<td>${one.freeboard_regdate }</td>
 			</tr>
 			<tr>
 				<th>제목</th>
-				<td colspan="3"><input type="text" name="freeboard_title" value=${one.freeboard_title } style="width: 100%" ></td>
+				<td colspan="3"><input type="text" name="freeboard_title" value="${one.freeboard_title }" style="width: 100%" ></td>
 			</tr>
 			<tr>
 				<th>내용</th>
-				<td colspan="3"><textarea id="summernote"rows="10" cols="60" name="freeboard_content">${one.freeboard_content }</textarea></td>
+				<td colspan="3"><textarea id="summernote"rows="10" cols="60" name="freeboard_content">${one.freeboard_content }</textarea>
+						<input type="file" name="file">
+				</td>
 
 			</tr> 
 
