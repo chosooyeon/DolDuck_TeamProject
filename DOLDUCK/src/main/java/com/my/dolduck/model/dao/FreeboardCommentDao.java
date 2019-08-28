@@ -13,4 +13,7 @@ public interface FreeboardCommentDao {
 	public int freeboard_comment_insert(FreeboardCommentDto dto);
 	public int freeboard_comment_update(FreeboardCommentDto dto);
 	public int freeboard_comment_delete(int Comment_num);
+	
+	//대댓글
+	public int freeboard_co_comment_insert(FreeboardCommentDto dto);
 }

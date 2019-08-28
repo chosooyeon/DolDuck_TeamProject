@@ -16,7 +16,7 @@ public class VoteBizImpl implements VoteBiz{
 		return dao.insertVote(dto);
 	}
 	@Override
-	public VoteDto selectOneVote(String item, String starName) {
+	public String selectOneVote(String item, String starName) {
 		return dao.selectOneVote(item, starName);
 	}
 	@Override

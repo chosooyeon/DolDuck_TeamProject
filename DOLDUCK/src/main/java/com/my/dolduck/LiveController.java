@@ -9,6 +9,7 @@ import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
+import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RequestParam;
@@ -30,7 +31,27 @@ public class LiveController {
 	
 	//홈
 	@RequestMapping("live-home.do")
-	public String liveBoard() {
+	public String liveBoard(Model model) {
+		
+		List<BroadcastDto> list = b_biz.selectListHavingVideo();
+		
+		JSONObject videos = new JSONObject();
+		JSONArray videoArr = new JSONArray();
+		
+		for(BroadcastDto dto : list) {
+			JSONObject video = new JSONObject();
+			
+			video.put("seq", dto.getBroadcast_seq());
+			video.put("title", dto.getBroadcast_title());
+			video.put("date", dto.getBroadcast_date());
+			video.put("thumb", "C:\\Users\\user1\\Downloads\\"+dto.getBroadcast_content()+".jpg");
+			
+			videoArr.add(video);
+		}
+		//videos.put("list", videoArr);
+		model.addAttribute("list", videoArr);
+				
+		//C:\Workspace_finalProject\.metadata\.plugins\org.eclipse.wst.server.core\tmp0\wtpwebapps\DOLDUCK\resources\videos
 		return "live/live-home";
 	}
 	
@@ -100,6 +121,16 @@ public class LiveController {
 		return "";
 	}
 	
+	//온에서 - 디테일 
+	@RequestMapping("live-detail.do")
+	public String liveDetail(String video_seq, Model model) {
+
+		BroadcastDto dto = b_biz.selectOne(Integer.parseInt(video_seq));
+		model.addAttribute("dto", dto);
+				
+		return "live/live-detail";
+	}
+	
 	//온에어 - 대기실
 	@RequestMapping("live-onair.do")
 	public String liveOnair() {
@@ -108,9 +139,19 @@ public class LiveController {
 	
 	//온에어- 입장(Caster)
 	@RequestMapping("start-onair.do")
-	public String startLive(@RequestParam String live_title) {
-		System.out.println(live_title + "으로 입장!");
-		return "live/live-onair-caster";
+	public String startLive(String live_caster, String live_title, String startingTime) {
+		System.out.println("["+live_caster+"]님이 "+startingTime+"에 "+ live_title + "으로 방송시작!");
+		BroadcastDto dto = new BroadcastDto();
+		dto.setBroadcast_caster(live_caster);
+		dto.setBroadcast_title(live_title);
+		dto.setBroadcast_date(startingTime);
+		int res = b_biz.insert(dto);
+		System.err.println("라이브 시작! 일정추가하기 : " + res);
+		if(res>0) {
+			return "live/live-onair-caster";
+		}else {
+			return "redirect:live-onair.do";
+		}
 	}
 	
 	//온에어 - 입장(User)

@@ -7,6 +7,7 @@ import com.my.dolduck.model.dto.BroadcastDto;
 public interface BroadcastBiz {
 
 	public List<BroadcastDto> selectList();
+	public List<BroadcastDto> selectListHavingVideo();
 	public BroadcastDto selectOne(int broadcast_seq);
 	public int insert(BroadcastDto dto);
 	public int update(BroadcastDto dto);

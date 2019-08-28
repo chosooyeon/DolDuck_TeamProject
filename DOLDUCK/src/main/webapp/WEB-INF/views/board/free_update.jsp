@@ -4,8 +4,8 @@
 <html>
 <head>
 <meta charset="UTF-8">
-<meta name="_csrf" content="${_csrf.token}"/>
-<meta name="_csrf_header" content="${_csrf.headerName}"/>
+<%-- <meta name="_csrf" content="${_csrf.token}"/> --%>
+<%-- <meta name="_csrf_header" content="${_csrf.headerName}"/> --%>
 
 <title>Insert title here</title>
 </head>
@@ -59,7 +59,9 @@
 			<tr>
 				<th>내용</th>
 				<td colspan="3"><textarea id="summernote"rows="10" cols="60" name="freeboard_content">${one.freeboard_content }</textarea></td>
+
 			</tr> 
+
 		</table>
 	</form>
 	</div>

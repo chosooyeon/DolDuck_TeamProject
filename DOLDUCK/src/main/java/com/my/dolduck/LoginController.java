@@ -81,25 +81,19 @@ public class LoginController {
 	// 로그인 페이지로 이동
 	@RequestMapping(value = "login.do")
 	public String loginform() {
-		return "member/login";
-	}
-
-	// 로그인 페이지로 이동
-	@RequestMapping(value = "/member/login.do")
-	public String login() {
-		return "member/login";
+		return "member/member_login";
 	}
 
 	// 아이디 찾기 페이지로 이동
 	@RequestMapping(value = "idfind.do")
 	public String idfind() {
-		return "member/idfind";
+		return "member/member_idfind";
 	}
 
 	// 비밀번호 찾기 페이지로 이동
 	@RequestMapping(value = "pwfind.do")
 	public String pwfind() {
-		return "member/pwfind";
+		return "member/member_pwfind";
 	}
 
 	// 마이 페이지로 이동
@@ -111,7 +105,7 @@ public class LoginController {
 		System.err.println(member_id);
 		SelectDto dto = biz.selectId(member_id);
 		model.addAttribute("dto", dto);
-		return "member/mypage";
+		return "member/member_mypage";
 	}
 
 	// 수정 페이지로 이동
@@ -124,7 +118,7 @@ public class LoginController {
 		SelectDto dto = biz.selectId(member_id);
 		model.addAttribute("dto", dto);
 
-		return "member/modified";
+		return "member/member_modified";
 	}
 
 	// 회원 탈퇴
@@ -144,10 +138,7 @@ public class LoginController {
 
 	@ResponseBody
 	public Map<String, Boolean> roleUpdate(String role) {
-		Boolean rolechk = false;
 		Map<String, Boolean> map = new HashMap<String, Boolean>();
-		int res = 0;
-
 		return map;
 
 	}
@@ -155,7 +146,7 @@ public class LoginController {
 	// 회원가입 페이지로 이동
 	@RequestMapping("join.do")
 	public String Join() {
-		return "member/Join";
+		return "member/member_join";
 	}
 
 	// 업데이트 페이지로 이동
@@ -196,18 +187,15 @@ public class LoginController {
 			int res = 0;
 			try {
 				mf.transferTo(new File(member_img_path)); // 파일 집어넣는다
-
 			} catch (IllegalStateException e) {
-
 				e.printStackTrace();
 			} catch (IOException e) {
-
 				e.printStackTrace();
 			}
 			res = biz.updateMember(map);
 			if (res > 0) {
 				System.out.println("2");
-				return "mypage.do";
+				return "redirect:mypage.do";
 			} else {
 				System.out.println("3");
 				return "modified.do";
@@ -235,7 +223,7 @@ public class LoginController {
 
 		biz.insertUser(map);
 
-		return "member/login";
+		return "member/member_login";
 	}
 
 	// 에러페이지로 이동

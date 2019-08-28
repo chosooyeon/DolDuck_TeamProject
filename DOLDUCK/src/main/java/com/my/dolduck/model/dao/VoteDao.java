@@ -6,7 +6,7 @@ public interface VoteDao {
 	String namespace = "vote.";
 	
 	public int insertVote(VoteDto votedto);
-	public VoteDto selectOneVote(String item, String starName);
+	public String selectOneVote(String item, String starName);
 	public int updateVote(VoteDto dto);
 	public int selectMemberVote(String member_id);
 	public int updateMemberVote(String member_id, int voteNumber);

@@ -36,6 +36,7 @@ public class HomeController {
 	
 	@Autowired
 	private BroadcastBiz b_biz;
+
 	private WebScrap crawling = new WebScrap();
 	
 	private static final Logger logger = LoggerFactory.getLogger(HomeController.class);
@@ -166,4 +167,8 @@ public class HomeController {
 		return result;
 	}
 	
+	
+	public String chatDo() {
+		return "";
+	}
 }

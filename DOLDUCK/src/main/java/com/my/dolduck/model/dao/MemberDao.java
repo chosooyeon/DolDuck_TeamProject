@@ -32,4 +32,5 @@ public interface MemberDao {
 	public int purchaseVote(int amount, String id);
 	public SelectDto selectId(String id);
 
+
 }

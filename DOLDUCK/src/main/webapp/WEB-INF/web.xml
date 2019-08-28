@@ -2,8 +2,9 @@
 <web-app xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns="http://java.sun.com/xml/ns/javaee" xsi:schemaLocation="http://java.sun.com/xml/ns/javaee https://java.sun.com/xml/ns/javaee/web-app_2_5.xsd" version="2.5">
   <context-param>
     <param-name>contextConfigLocation</param-name>
-    <param-value>/WEB-INF/spring/appServlet/applicationContext.xml
-		/WEB-INF/spring/appServlet/security-context.xml
+    <param-value>
+    /WEB-INF/spring/appServlet/security-context.xml
+    /WEB-INF/spring/appServlet/applicationContext.xml
 		</param-value>
   </context-param>
   <listener>
@@ -64,6 +65,20 @@
   </filter>
   <filter-mapping>
     <filter-name>springSecurityFilterChain</filter-name>
+    <url-pattern>/*</url-pattern>
+  </filter-mapping>
+  
+  <!-- HttpHeaderSecurity -->
+   <filter>
+    <filter-name>httpHeaderSecurity</filter-name>
+    <filter-class>org.apache.catalina.filters.HttpHeaderSecurityFilter</filter-class>
+    <init-param>
+      <param-name>antiClickJackingOption</param-name>
+      <param-value>SAMEORIGIN</param-value>
+    </init-param>
+  </filter>
+  <filter-mapping>
+    <filter-name>httpHeaderSecurity</filter-name>
     <url-pattern>/*</url-pattern>
   </filter-mapping>
 <!--   <error-page>

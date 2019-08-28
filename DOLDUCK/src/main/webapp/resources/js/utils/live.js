@@ -30,8 +30,63 @@ $(document).ready(function() {
 })
 
 
-/***********************	라이브 대기 플랫폼	************************/
+/*********************** 라이브 대기 홈 ************************/
+
+$(document).on('click', '.video-item-thumb', function(){
+	var video_seq = $(this).children('input[name=video_seq]').val()
+	console.log(video_seq)
+	
+	//location.href = `live-detail.do?video_seq=${video_seq}`
+})
 
 
+/*********************** 라이브 대기 플랫폼	************************/
+
+$(document).on('click', '#btn-startlive', function(){
+	$('input[name=startingTime]').val(getTime())
+	$('#liveinfo-form').submit()
+})
 
 
+function getTime(){
+	
+	var date = new Date()
+	var now = date.getFullYear() + '-' 
+			+ handleTimeFormat('month',date.getMonth()) + '-'
+			+ date.getDate() + ' '
+			+ handleTimeFormat('hour',date.getHours()) + ':'
+			+ handleTimeFormat('minute',date.getMinutes())
+	return now
+}
+
+
+function handleTimeFormat(type, data){
+		
+		switch(type){
+		case 'month':
+				if(data<10){
+					return '0'+data
+				}else{
+					return data
+				}
+		case 'hour':
+				if(data >24){
+					return '00'
+				}else if(data >= 0 && data <10){
+					return '0'+data
+				}else{
+					return data
+				}
+				break;
+		case 'minute':
+				if(data > 60){
+					return '00'
+				}else if(data >= 0 && data <10){
+					return '0'+data
+				}else{
+					return data
+				}
+				break;
+		}
+
+}

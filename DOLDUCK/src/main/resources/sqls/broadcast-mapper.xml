@@ -8,6 +8,15 @@
 		FROM BROADCAST
 	</select>
 	
+	<!-- Live-Home 동영상가져오기  -->
+	<select id="selectList_havingVideo" resultType="BroadcastDto">
+		SELECT BROADCAST_SEQ, TO_CHAR(BROADCAST_DATE, 'yyyy-mm-dd hh24:mi') AS "BROADCAST_DATE", 
+		BROADCAST_CASTER, BROADCAST_TITLE, BROADCAST_CONTENT
+		FROM BROADCAST
+		WHERE BROADCAST_CONTENT IS NOT NULL
+		ORDER BY BROADCAST_DATE DESC
+	</select>
+	
 	<select id="selectOne_broadcast" parameterType="map">
 		SELECT BROADCAST_SEQ, TO_CHAR(BROADCAST_DATE, 'yyyy-mm-dd hh24:mi'), 
 		BRODACAST_CASTER, BROADCAST_TITLE, BROADCAST_CONTENT

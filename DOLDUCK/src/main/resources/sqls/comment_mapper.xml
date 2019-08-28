@@ -10,7 +10,7 @@
 	</select>
 	<insert id="freeboard_comment_insert" parameterType="FreeboardCommentDto">
 		INSERT INTO FREEBOARD_COMMENT
-		VALUES(#{freeboard_num},FREEBOARD_COMMENT_SEQ.NEXTVAL,#{freeboard_comment_content},SYSDATE,#{freeboard_id})
+		VALUES(#{freeboard_num},FREEBOARD_COMMENT_SEQ.NEXTVAL,FREEBOARD_GROUPSEQ.NEXTVAL,#{freeboard_groupno},#{freeboard_titletap},#{freeboard_comment_content},SYSDATE,#{freeboard_id})
 	</insert>
 	<update id="freeboard_comment_update" parameterType="FreeboardCommentDto">
 		UPDATE FREEBOARD_COMMENT SET FREEBOARD_COMMENT_CONTENT = #{freeboard_comment_content}
@@ -20,4 +20,11 @@
 		DELETE FROM FREEBOARD_COMMENT WHERE FREEBOARD_COMMENT_NUM = #{freeboard_comment_num}
 	</delete>
 	
+	<!-- 대댓글 -->
+	<insert id="freeboard_co_comment_insert" parameterType="FreeboardCommentDto">
+	INSERT INTO FREEBOARD_COMMENT
+		VALUES(${freeboard_num},FREEBOARD_COMMENT_SEQ.NEXTVAL,(SELECT FREEBOARD_GROUPSEQ FROM 
+		FREEBOARD_COMMENT WHERE FREEBOARD_COMMENT_NUM=#{freeboard_comment_num})+1,(SELECT FREEBOARD_GROUPNO FROM FREEBOARD_COMMENT WHERE FREEBOARD_COMMENT_NUM=#{freeboard_comment_num}),1,
+		#{freeboard_comment_content},SYSDATE,#{freeboard_id})
+	</insert>
 </mapper>
