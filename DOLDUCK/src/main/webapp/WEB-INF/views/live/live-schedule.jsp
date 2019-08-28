@@ -24,7 +24,7 @@
     <!-- Slide Caresel  -->
     <%@include file="/WEB-INF/views/live/liveroom-slide.jsp" %>
     
-   
+   	
     <div id="main" class="container nav-tab-menu">
         <!-- Tab Menu -->
     	<div class="col-lg-12 offset-lg-4 "> 
@@ -50,6 +50,7 @@
 	        <div id="area-addEvent">
 	        	<button type="button" class="btn btn-warning" id="btn-addevent" data-toggle="modal" data-target="#addEventModal">일정추가</button>
 	        </div> 
+	        <script src="resources/js/fullcalendar/live-add-event.js"></script>
         </sec:authorize> 
      </div>  
      
@@ -62,6 +63,7 @@
      
      
      <!-- AddEvent Modal -->
+    <sec:authorize access="hasAnyRole('ROLE_USER','ROLE_ARTIST')">
 	<div class="modal-area container">
 	  <div class="modal fade" id="addEventModal">
 	    <div class="modal-dialog modal-sm modal-dialog-centered">
@@ -112,8 +114,10 @@
 	    </div>
 	  </div>
 	</div>
-     
-
+	</sec:authorize>
+     	
+   
+   
     <!-- Footer -->
     <%@include file="/WEB-INF/views/footer.jsp" %>
     
