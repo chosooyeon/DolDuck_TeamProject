@@ -60,7 +60,8 @@
 <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js"></script>
 <script src="resources/styles/bootstrap-4.1.2/bootstrap.min.js"></script>
 <script src="resources/js/utils/vote.js?ver=1" type="text/javascript"></script>
+
 <script src="//developers.kakao.com/sdk/js/kakao.min.js"></script>
 <script src="resources/js/utils/kakaoshare.js" type="text/javascript"></script>
- 
+
 </html>

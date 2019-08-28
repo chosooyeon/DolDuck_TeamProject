@@ -25,8 +25,8 @@ import org.springframework.web.bind.annotation.ResponseBody;
 import com.my.dolduck.model.biz.BroadcastBiz;
 import com.my.dolduck.model.biz.MemberBiz;
 import com.my.dolduck.model.dto.MemberDto;
-import com.my.dolduck.model.dto.VoteDto;
 import com.my.dolduck.util.Music;
+import com.my.dolduck.util.Translate;
 import com.my.dolduck.util.WebScrap;
 
 @Controller
@@ -170,5 +170,24 @@ public class HomeController {
 	
 	public String chatDo() {
 		return "";
+	}
+	
+	// 번역기페이지로 이동
+	@RequestMapping("/translate-form.do")
+	public String translate() {
+		return "utils/translate";
+	}
+	
+	// 번역실행
+	@RequestMapping(value = "/translate.do")
+	public String translate(Model model, String inputQuery) {
+		System.out.println("inputQuery:"+inputQuery);
+		Translate translate = new Translate();
+		translate.Translate(inputQuery);
+		String outputQuery = translate.Translate(inputQuery);
+		System.out.println("outputQuery:"+outputQuery);
+		model.addAttribute("outputQuery",outputQuery);
+		
+		return "utils/translate";
 	}
 }

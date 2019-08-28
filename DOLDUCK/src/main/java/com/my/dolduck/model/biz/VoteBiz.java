@@ -9,5 +9,4 @@ public interface VoteBiz {
 	public int selectMemberVote(String member_id);
 	public int updateMemberVote(String member_id, int voteNumber);
 	public int selectVoteNumber(String starName);
-
 }

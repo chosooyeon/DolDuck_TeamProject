@@ -1,4 +1,4 @@
-
+﻿
 $(document).ready(function(){
    var voteChart, start = 0, end = 100
 
