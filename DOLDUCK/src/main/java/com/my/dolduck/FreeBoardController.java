@@ -7,10 +7,8 @@ import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
 
-<<<<<<< HEAD
-=======
+
 import org.json.simple.JSONObject;
->>>>>>> 44d3330ca2a6572acf7eaf1edd1e59600381d891
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;

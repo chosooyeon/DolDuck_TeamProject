@@ -41,13 +41,11 @@
 			</tr>
 				<c:forEach items="${list }" var="dto">
 					<tr align="center">
-<<<<<<< HEAD
+
 						<td>${dto.freeboard_num }</td>						
 						<td align="left"><a href="free_detail.do?freeboard_num=${dto.freeboard_num}">${dto.freeboard_title }</a></td>
-=======
-						<td>${dto.freeboard_num }</td>
-						<td align="left"><a href="javascript:void(0);" onclick="freeDetailLogin(${dto.freeboard_num})">${dto.freeboard_title }</a></td>
->>>>>>> 44d3330ca2a6572acf7eaf1edd1e59600381d891
+
+
 						<td>${dto.freeboard_id }</td>
 						<td>${dto.freeboard_regdate }</td>
 						<td>0</td>
