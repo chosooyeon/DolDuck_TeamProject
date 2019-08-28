@@ -13,4 +13,5 @@ public interface FreeboardDao {
 	public int free_insert(FreeboardDto dto);
 	public int free_update(FreeboardDto dto);
 	public int free_delete(String id);
+	public List<FreeboardDto> find_list(String Searchtext);
 }
