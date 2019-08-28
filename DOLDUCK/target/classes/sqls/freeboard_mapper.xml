@@ -19,12 +19,31 @@
 	
 	<select id="insert" resultType="FreeboardDto">
 		INSERT INTO FREEBOARD
-		VALUES(FREEBOARD_SEQ.NEXTVAL,#{freeboard_id},#{freeboard_title},#{freeboard_content},#{freeboard_file},SYSDATE)
+		VALUES(FREEBOARD_SEQ.NEXTVAL,#{freeboard_id},#{freeboard_title},#{freeboard_content},
+		<choose>
+			<when test="freeboard_file != null">
+				#{freeboard_file}
+			</when>
+			<otherwise>
+				null
+			</otherwise>
+		</choose>
+		,SYSDATE)
+		
 	</select>
 
 	<select id="update" parameterType="FreeboardDto">
-		UPDATE FREEBOARD SET FREEBOARD_TITLE = #{freeboard_title}, FREEBOARD_CONTENT = #{freeboard_content} , FREEBOARD_FILE = #{freeboard_file}
-		WHERE FREEBOARD_ID = #{freeboard_id}
+		UPDATE FREEBOARD
+		SET FREEBOARD_TITLE = #{freeboard_title}, FREEBOARD_CONTENT = #{freeboard_content}, FREEBOARD_FILE = 		
+		<choose>
+			<when test="freeboard_file != null">
+				#{freeboard_file}
+			</when>
+			<otherwise>
+				null
+			</otherwise>
+		</choose>
+		WHERE FREEBOARD_NUM = #{freeboard_num}
 	</select>
 	
 	<select id="delete" parameterType="map">
