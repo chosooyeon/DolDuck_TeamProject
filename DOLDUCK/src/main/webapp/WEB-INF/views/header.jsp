@@ -71,7 +71,7 @@ if(principal != null && principal instanceof MemberDto){
 					<li class="active"><a href="home.do">HOME</a></li>
 					<li><a href="youtube.do">YouTube</a></li>
 					<li><a href="vote.do">Vote</a></li>
-					<li><a href="void:0;">Music Chart</a></li>
+					<li><a href="chart.do">Music Chart</a></li>
 					<li><a href="live-home.do">LIVE</a></li>
 					<li><a href="free_list.do">Board</a></li>
 					<li class="dropdown"><a class="dropdown-toggle" data-toggle="dropdown">Market</a>
