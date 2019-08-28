@@ -1,5 +1,5 @@
-<%@ page language="java" contentType="text/html; charset=UTF-8"
-    pageEncoding="UTF-8"%>
+<%@ page language="java" contentType="text/html; charset=UTF-8" pageEncoding="UTF-8"%>
+<%@ taglib prefix="sec" uri="http://www.springframework.org/security/tags" %>
 <!DOCTYPE html>
 <html>
 <head>
@@ -20,8 +20,8 @@
          <li class="nav-item">
             <a class="nav-link market_link" href="market_list.do">Goodies</a>
          </li>
-
       </ul>
+      
       <div class="col-lg-12 market_border">
          <div class="heartShop">
             <div class="heartShop-item-title"><span>하트존</span></div>
@@ -143,12 +143,15 @@
           </div>
         </div>
       </div>
-      
-      <script src="" type="text/javascript"></script>
-
-      <script src="resources/js/utils/shop.js" type="text/javascript"></script>   
-      <script type="text/javascript" src="https://cdn.iamport.kr/js/iamport.payment-1.1.5.js"></script>
    </div>
+   
+   
+      <script src="resources/js/utils/shop.js" type="text/javascript"></script>   
+      <script type="text/javascript" src="https://code.jquery.com/jquery-3.4.1.min.js"></script>
+	  <script src="resources/js/jquery-3.2.1.min.js"></script>
+	  <script src="resources/styles/bootstrap-4.1.2/popper.js"></script>
+	  <script src="resources/styles/bootstrap-4.1.2/bootstrap.min.js"></script>
+      <script type="text/javascript" src="https://cdn.iamport.kr/js/iamport.payment-1.1.5.js"></script>
 <%@include file="../footer.jsp" %>
 </body>
 </html>

@@ -140,6 +140,8 @@ public class HomeController {
 		String result = "";
 		
 		int res = biz.purchaseHeart(amount, userId);
+		System.err.println("하트구매 Result: " + res);
+		
 		if(res>0) {
 			result = "succeed";
 		}else {
