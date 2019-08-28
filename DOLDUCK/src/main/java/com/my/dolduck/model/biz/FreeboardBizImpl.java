@@ -47,4 +47,5 @@ public class FreeboardBizImpl implements FreeboardBiz {
 	public List<FreeboardDto> find_list(String Searchtext) {
 		return dao.find_list(Searchtext);
 	}
+
 }

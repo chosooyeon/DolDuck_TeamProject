@@ -306,6 +306,6 @@ public class FreeBoardController {
 
 		return "board/find_list";
 	}
-	}
+	
 
 }
