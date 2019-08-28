@@ -38,13 +38,14 @@ public class FreeboardBizImpl implements FreeboardBiz {
 	}
 
 	@Override
-	public int free_delete(String id) {
+	public int free_delete(int num) {
 		// TODO Auto-generated method stub
-		return dao.free_delete(id);
+		return dao.free_delete(num);
 	}
 
 	@Override
 	public List<FreeboardDto> find_list(String Searchtext) {
 		return dao.find_list(Searchtext);
 	}
+
 }

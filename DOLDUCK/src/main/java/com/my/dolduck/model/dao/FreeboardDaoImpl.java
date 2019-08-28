@@ -61,13 +61,13 @@ public class FreeboardDaoImpl implements FreeboardDao {
 	}
 
 	@Override
-	public int free_delete(String id) {
+	public int free_delete(int num) {
 
 		System.out.println("FreeboardDaoImpl : free_delete");
 
 		int res = 0;
-		Map<String, String> map = new HashMap<String, String>();
-		map.put("freeboard_id", id);
+		Map<String, Integer> map = new HashMap<String, Integer>();
+		map.put("freeboard_num", num);
 		res = sqlSession.delete(namespace + "delete", map);
 
 		return res;

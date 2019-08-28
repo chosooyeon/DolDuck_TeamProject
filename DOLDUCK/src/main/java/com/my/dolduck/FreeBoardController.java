@@ -1,4 +1,4 @@
-package com.my.dolduck;
+﻿package com.my.dolduck;
 
 import java.io.File;
 import java.io.IOException;
@@ -88,7 +88,11 @@ public class FreeBoardController {
 			System.out.println("fileSize : " + fileSize);
 			int res = 0;
 			try {
-				mf.transferTo(new File(class_img_path)); // 파일 집어넣는다
+				if(mf.getSize() == 0) {
+					System.out.println("없음");
+				}else {
+					mf.transferTo(new File(class_img_path)); // 파일 집어넣는다					
+				}
 
 				res = biz.free_insert(dto);
 				if (res > 0) {
@@ -138,27 +142,76 @@ public class FreeBoardController {
 
 	@RequestMapping("free_update.do")
 	public String update(Model model, int freeboard_num) {
+		System.err.println("free_update.do : 수정하기 ");
+		System.out.println(freeboard_num);	
 		model.addAttribute("one", biz.free_detail(freeboard_num));
-
+		System.err.println("통과!!!!");
 		return "board/free_update";
 	}
 
 	// 게시글 수정
 	@RequestMapping("free_updateform.do")
-	public String updateform(@ModelAttribute FreeboardDto dto) {
-		int res = biz.free_update(dto);
-		if (res > 0) {
-			return "redirect:free_list.do";
+	public String updateform(@ModelAttribute FreeboardDto dto, MultipartHttpServletRequest mtfRequest,
+			Authentication auth) {
+		MemberDto Mdto = (MemberDto) auth.getPrincipal();
+		String member_id = Mdto.getUsername();
+		dto.setFreeboard_id(member_id);
+
+		System.err.println("free_updateform : 수정하기 ");
+		List<MultipartFile> fileList = mtfRequest.getFiles("file");
+
+		String path = mtfRequest.getSession().getServletContext().getRealPath("resources/uploadImage");
+		File dir = new File(path);
+		if (!dir.isDirectory()) {
+			dir.mkdirs();
 		}
-		return "redirect:free_list.do";
+
+		for (MultipartFile mf : fileList) {
+			String originFileName = mf.getOriginalFilename(); // 원본 파일 명
+			long fileSize = mf.getSize(); // 파일 사이즈
+			String class_img_path = path + "/" + originFileName; // 경로
+
+			System.out.println("경로 " + class_img_path);
+
+			String feeboard_file = originFileName; // 파일 이름
+			dto.setFreeboard_file(feeboard_file);
+
+			System.out.println(feeboard_file);
+			System.out.println("originFileName : " + originFileName);
+			System.out.println("fileSize : " + fileSize);
+
+			int res = 0;
+			try {
+				
+				if(mf.getSize() == 0) {
+					System.out.println("없음");
+				}else {
+					mf.transferTo(new File(class_img_path)); // 파일 집어넣는다					
+				}
+				res = biz.free_update(dto);
+				if (res > 0) {
+					System.out.println("성공");
+					return "redirect:free_detail.do?freeboard_num=" + dto.getFreeboard_num();
+				}
+
+			} catch (IllegalStateException e) {
+
+				e.printStackTrace();
+			} catch (IOException e) {
+
+				e.printStackTrace();
+			}
+		}
+
+		return "redirect:free_update.do";
 
 	}
 
 	// 게시글 삭제
 	@RequestMapping("free_delete.do")
-	public String delete(@RequestParam("id") String id) {
-		System.out.println(id);
-		int res = biz.free_delete(id);
+	public String delete(@RequestParam("num") int num) {
+		System.out.println(num);
+		int res = biz.free_delete(num);
 		if (res > 0) {
 			return "redirect:free_list.do";
 		}
@@ -259,4 +312,6 @@ public class FreeBoardController {
 
 		return "board/find_list";
 	}
+	
+
 }
