@@ -28,7 +28,6 @@ $(document).ready(function(){
       $('tbody').children().remove();
       start = 0, end = 100, item = 'new-idol';
       voteChart = voteCrawling(item);
-      
       paginationOfList(voteChart, start, end, item)
    });
    
@@ -63,7 +62,7 @@ function paginationOfList(voteChart, start, end, item){
       return b["voteNumber"] - a["voteNumber"];
    });
    
-   switch(item){
+   /*switch(item){
    case 'star-idol':
 	   appendBody(start, end, item)
 	   break;
@@ -82,20 +81,20 @@ function paginationOfList(voteChart, start, end, item){
    case 'boy-idol':
 	   appendBody(start, end, item)
 	   break;
-   }
-   /*if(item == 'girl-group'){
-	   appendBody(start, end, item)
-   }else if(item == 'girl-idol'){
-	   appendBody(start, end, item)
-   }else if(item == 'new-idol'){
-	   appendBody(start, end, item)
-   }else if(item == 'star-idol'){
-	   appendBody(start, end, item)
-   }else if(item == 'boy-group'){
-	   appendBody(start, end, item)
-   }else if(item == 'boy-idol'){
-	   appendBody(start, end, item)
    }*/
+   if(item == 'girl-group'){
+	   appendBody(start, end, voteChart)
+   }else if(item == 'girl-idol'){
+	   appendBody(start, end, voteChart)
+   }else if(item == 'new-idol'){
+	   appendBody(start, end, voteChart)
+   }else if(item == 'star-idol'){
+	   appendBody(start, end, voteChart)
+   }else if(item == 'boy-group'){
+	   appendBody(start, end, voteChart)
+   }else if(item == 'boy-idol'){
+	   appendBody(start, end, voteChart)
+   }
 }
 
 function voteCrawling(item){
@@ -116,7 +115,7 @@ function voteCrawling(item){
    return list
 }
 
-function appendBody(start, end, item){
+function appendBody(start, end, voteChart){
 	for(var i=start ; i<end ; i++){
 		var star = voteChart[i];
 		$('tbody').append(`
