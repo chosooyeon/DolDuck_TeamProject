@@ -13,107 +13,6 @@ import com.my.dolduck.model.dto.VoteDto;
 @Repository
 public class VoteDaoImpl implements VoteDao{
 
-<<<<<<< HEAD
-	@Autowired
-	private SqlSessionTemplate sqlSession;
-	
-	VoteDto dto = new VoteDto();
-
-	// 투표게시판 db 저장
-	@Override
-	public int insertVote(VoteDto votedto) {
-		int res = 0;
-		try {
-			res = sqlSession.insert(namespace + "insertVote", votedto);
-		} catch (Exception e) {
-			System.out.println("error2");
-			e.printStackTrace();
-		}
-
-		return res;
-	}
-
-	@Override
-	public VoteDto selectOneVote(String item, String starName) {
-		VoteDto dto = null;
-		System.out.println("itemm:"+item);
-		Map<String, String> map = new HashMap<String, String>();
-		map.put("item", item);
-		map.put("starName", starName);
-//		dto.setItem(item);
-//		dto.setStarName(starName);
-		//VoteDto voteDto = new VoteDto(item, starName);
-//		System.out.println("voteDto:"+voteDto);
-
-		try {
-			dto = sqlSession.selectOne(namespace + "selectOneVote", map);
-		} catch (Exception e) {
-			System.out.println("selectOneVote error");
-			e.printStackTrace();
-		}
-		System.out.println("voteDto2:"+dto);
-		return dto;
-	}
-
-	@Override
-	public int updateVote(VoteDto dto) {
-		int res = 0;
-		try {
-			res = sqlSession.update(namespace + "updateVote", dto);
-		} catch (Exception e) {
-			System.out.println("error");
-			e.printStackTrace();
-		}
-
-		return res;
-	}
-
-	// member 에서 투표권수 select
-	@Override
-	public int selectMemberVote(String member_id) {
-		int res = 0;
-		try {
-			res = sqlSession.selectOne(namespace + "selectMemberVote", member_id);
-		} catch (Exception e) {
-			System.out.println("error");
-			e.printStackTrace();
-		}
-		return res;
-	}
-
-	// member 에서 투표권수 빼기
-	@Override
-	public int updateMemberVote(String member_id, int voteNumber) {
-		int res = 0;
-
-		MemberVoteDto memberVoteDto = new MemberVoteDto();
-		memberVoteDto.setMember_id(member_id);
-		memberVoteDto.setVoteNumber(voteNumber);
-
-		try {
-			res = sqlSession.update(namespace + "updateMemberVote", memberVoteDto);
-			System.out.println("updateMemberVote:" + memberVoteDto);
-		} catch (Exception e) {
-			System.out.println("error");
-			e.printStackTrace();
-		}
-		return res;
-	}
-
-	@Override
-	public int selectVoteNumber(String starName) {
-		int res = 0;
-		
-		try {
-			res = sqlSession.selectOne(namespace + "selectVoteNumber", starName);
-		} catch (Exception e) {
-			System.out.println("error");
-			e.printStackTrace();
-		}
-		return res;
-	}
-}
-=======
    @Autowired
    private SqlSessionTemplate sqlSession;
    
@@ -126,7 +25,7 @@ public class VoteDaoImpl implements VoteDao{
       try {
          res = sqlSession.insert(namespace + "insertVote", votedto);
       } catch (Exception e) {
-         System.out.println("error2");
+         System.out.println("insertVote error");
          e.printStackTrace();
       }
 
@@ -136,15 +35,10 @@ public class VoteDaoImpl implements VoteDao{
    @Override
    public String selectOneVote(String item, String starName) {
       String name = null;
-      System.out.println("itemm:"+item);
       Map<String, String> map = new HashMap<String, String>();
       map.put("item", item);
       map.put("starName", starName);
       System.out.println("mapp:"+map);
-//      dto.setItem(item);
-//      dto.setStarName(starName);
-      //VoteDto voteDto = new VoteDto(item, starName);
-//      System.out.println("voteDto:"+voteDto);
 
       try {
          name = sqlSession.selectOne(namespace + "selectOneVote", map);
@@ -152,7 +46,6 @@ public class VoteDaoImpl implements VoteDao{
          System.out.println("selectOneVote error");
          e.printStackTrace();
       }
-      System.out.println("voteDto2:"+name);
       return name;
    }
 
@@ -162,7 +55,7 @@ public class VoteDaoImpl implements VoteDao{
       try {
          res = sqlSession.update(namespace + "updateVote", dto);
       } catch (Exception e) {
-         System.out.println("error");
+         System.out.println("updateVote error");
          e.printStackTrace();
       }
 
@@ -176,7 +69,7 @@ public class VoteDaoImpl implements VoteDao{
       try {
          res = sqlSession.selectOne(namespace + "selectMemberVote", member_id);
       } catch (Exception e) {
-         System.out.println("error");
+         System.out.println("selectMemberVote error");
          e.printStackTrace();
       }
       return res;
@@ -195,7 +88,7 @@ public class VoteDaoImpl implements VoteDao{
          res = sqlSession.update(namespace + "updateMemberVote", memberVoteDto);
          System.out.println("updateMemberVote:" + memberVoteDto);
       } catch (Exception e) {
-         System.out.println("error");
+         System.out.println("updateMemberVote error");
          e.printStackTrace();
       }
       return res;
@@ -212,4 +105,3 @@ public class VoteDaoImpl implements VoteDao{
       return res;
    }
 }
->>>>>>> 260eec08e3a61ad27e0ef902b99968753b70e8c9

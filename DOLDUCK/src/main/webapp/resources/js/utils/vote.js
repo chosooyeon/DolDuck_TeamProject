@@ -3,7 +3,7 @@ $(document).ready(function(){
    var voteChart, start = 0, end = 100
 
    $('tbody').children().remove();
-   item = 'girl-group';
+   item = 'star-idol';
    voteChart = voteCrawling(item);
    
    paginationOfList(voteChart, start, end, item)
