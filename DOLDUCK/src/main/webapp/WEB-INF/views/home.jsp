@@ -143,8 +143,6 @@
 					<div id="getVideo"></div>			
 			</div>
 		</section>
-
-<<<<<<< HEAD
 <!-- 		<div class="div-modal-chat">
 			<div class="modal-top">
 				<div id="modal-title">고객센터</div>
@@ -153,7 +151,6 @@
 			<a href="#" class="button-modal-close" onclick="closeChat()">X</a>
 			<iframe class="iframe-chat" src="http://192.168.10.169:3000/"></iframe>
 		</div> -->
-=======
 		<!-- Extra -->
 		<section class="extra">
 			<div class="extra_container">
@@ -181,7 +178,6 @@
 				</div>
 			</div>
 		</section>
->>>>>>> d09b87b101a19fc93b015b56fdc58d9824d2ac7d
 
 		<!-- Footer  -->
 	</section>
