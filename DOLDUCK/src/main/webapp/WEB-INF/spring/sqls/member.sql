@@ -102,6 +102,7 @@ INSERT INTO BROADCAST VALUES(BROADCASTSEQ.NEXTVAL, TO_DATE('2019-10-15 09:00','y
 INSERT INTO BROADCAST VALUES(BROADCASTSEQ.NEXTVAL, TO_DATE('2019-09-02 09:00','yyyy-mm-dd hh24:mi'), 'Zsoo', 'test' , null);
 
 select * from broadcast
+
 delete from broadcast
 
 

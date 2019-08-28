@@ -22,7 +22,7 @@ public class FreeboardDaoImpl implements FreeboardDao {
 	public List<FreeboardDto> free_list() {
 
 		System.out.println("FreeboardDaoImpl : free_list");
-		
+
 		List<FreeboardDto> list = new ArrayList<FreeboardDto>();
 		list = sqlSession.selectList(namespace + "selectList");
 
@@ -33,7 +33,7 @@ public class FreeboardDaoImpl implements FreeboardDao {
 	public FreeboardDto free_detail(int freeboard_num) {
 
 		System.out.println("FreeboardDaoImpl : free_detail");
-		
+
 		FreeboardDto dto = sqlSession.selectOne(namespace + "selectOne", freeboard_num);
 
 		return dto;
@@ -53,7 +53,7 @@ public class FreeboardDaoImpl implements FreeboardDao {
 	public int free_update(FreeboardDto dto) {
 
 		System.out.println("FreeboardDaoImpl : free_update");
-		
+
 		int res = 0;
 		res = sqlSession.update(namespace + "update", dto);
 
@@ -73,4 +73,23 @@ public class FreeboardDaoImpl implements FreeboardDao {
 		return res;
 	}
 
+	@Override
+	public List<FreeboardDto> find_list(String Searchtext) {
+
+		System.out.println("FreeboardDaoImpl : find_list");
+
+		List<FreeboardDto> list = new ArrayList<FreeboardDto>();
+		Map<String, String> map = new HashMap<String, String>();
+
+		map.put("Searchtext", Searchtext);
+
+		try {
+			list = sqlSession.selectList(namespace + "find_list", map);
+		} catch (Exception e) {
+			System.out.println("finderror");
+			e.printStackTrace();
+		}
+
+		return list;
+	}
 }

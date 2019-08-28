@@ -49,4 +49,8 @@
 		DELETE FROM FREEBOARD WHERE FREEBOARD_NUM = #{freeboard_num}
 	</select>
 	
+	<select id="find_list" resultType="FreeboardDto">
+      SELECT FREEBOARD_NUM, FREEBOARD_ID, FREEBOARD_TITLE, FREEBOARD_CONTENT, FREEBOARD_REGDATE
+      FROM FREEBOARD WHERE FREEBOARD_TITLE LIKE '%'||#{Searchtext}||'%'
+   </select>
 </mapper>

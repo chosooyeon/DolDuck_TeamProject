@@ -1,4 +1,4 @@
-package com.my.dolduck;
+﻿package com.my.dolduck;
 
 import java.io.File;
 import java.io.IOException;
@@ -7,7 +7,10 @@ import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
 
+<<<<<<< HEAD
 
+=======
+>>>>>>> d87e43679dd5e258f3649c35140451187c5404dc
 import org.json.simple.JSONObject;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
@@ -218,28 +221,28 @@ public class FreeBoardController {
 		}
 		return "redirect:free_list.do";
 	}
-	
+
 	// 게시글 입력 + 로그인체크
-	   @RequestMapping("/free_insert_login.do")
-	   @ResponseBody
-	   public JSONObject insertLogin(Principal principal) {
-	      JSONObject loginChk = new JSONObject();
-	      if(principal == null) {
-	         loginChk.put("loginState", "null");
-	      }
-	      return loginChk;
-	   }
-	   
-	   // 게시글 입력 + 로그인체크
-	   @RequestMapping("/free_detail_login.do")
-	   @ResponseBody
-	   public JSONObject detailLogin(Principal principal) {
-	      JSONObject loginChk = new JSONObject();
-	      if(principal == null) {
-	         loginChk.put("loginState", "null");
-	      }
-	      return loginChk;
-	   }
+	@RequestMapping("/free_insert_login.do")
+	@ResponseBody
+	public JSONObject insertLogin(Principal principal) {
+		JSONObject loginChk = new JSONObject();
+		if (principal == null) {
+			loginChk.put("loginState", "null");
+		}
+		return loginChk;
+	}
+
+	// 게시글 입력 + 로그인체크
+	@RequestMapping("/free_detail_login.do")
+	@ResponseBody
+	public JSONObject detailLogin(Principal principal) {
+		JSONObject loginChk = new JSONObject();
+		if (principal == null) {
+			loginChk.put("loginState", "null");
+		}
+		return loginChk;
+	}
 
 	// ====================comment=========================
 
@@ -302,5 +305,17 @@ public class FreeBoardController {
 		}
 		return "redirect:free_detail.do?freeboard_num=" + dto.getFreeboard_num();
 	}
+
+	// =====Search
+	@RequestMapping("find.do")
+	public String find_list(String Searchtext, Model model) {
+
+		System.out.println("text= " + Searchtext);
+		model.addAttribute("list", biz.find_list(Searchtext));
+		System.out.println("biz.find_list(Searchtext)= " + biz.find_list(Searchtext));
+
+		return "board/find_list";
+	}
+	
 
 }
