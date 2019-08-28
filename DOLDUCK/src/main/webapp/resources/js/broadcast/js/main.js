@@ -1,6 +1,6 @@
-var socket = io.connect()
+//var socket = io.connect()
 
-var startLiveBtn = document.getElementById('startLiveBtn')
+
 var reloadBtn = document.getElementById('channel-reload')
 var channelList = document.getElementById('channel-list')
 
@@ -58,10 +58,7 @@ function appendRoom(item){
     $('ul').append(roomUnit)
 }
 
-startLiveBtn.addEventListener('click', ()=>{ 
-    random = parseInt(Math.random()*999999999999)
-    location.href = `/caster/${random}` 
-})
+
 reloadBtn.addEventListener('click', ()=>{
     socket.emit('requestRoomlist')
 })
