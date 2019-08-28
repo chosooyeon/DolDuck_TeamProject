@@ -76,7 +76,7 @@
                     <p class="rankNum">6</p>
                        </a>
   				</div>
-				<div class="vote_button"><a href="#">Vote Now</a></div>
+				<div class="vote_button"><a href="vote.do">Vote Now</a></div>
 			</div>
 		</div>
 		

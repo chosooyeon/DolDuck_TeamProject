@@ -1,6 +1,6 @@
 
 window.onload = function(){
-	var url = location.href
+	var url = location.href('vote.do')
 
 	Kakao.init('a9ef9a318deb5784906e6e394fb3c4e1');
 	
@@ -9,9 +9,9 @@ window.onload = function(){
 		Kakao.Link.sendDefault({
 			objectType: 'feed',
 			content: {
-				title: '${title}',
-				description: '${festival_location}',
-				imageUrl: '${festival_imgsrc}',
+				title: '${star.name}님에게 투표해주세요',
+				description: '현재 ${star.name}님의 투표수는 ${star.voteNumber}표 입니다.',
+				imageUrl: '${star.img}',
 				link: {
 					mobileWebUrl: url,
 					webUrl: url
