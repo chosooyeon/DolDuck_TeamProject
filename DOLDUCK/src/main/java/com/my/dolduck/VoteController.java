@@ -70,7 +70,6 @@ public class VoteController {
    @RequestMapping("vote-pick.do")
    @ResponseBody
    public JSONObject votePick(String starname, String item, Principal principal) {
-      System.out.println();
       dto.setStarName(starname);
       dto.setItem(item);
 
