@@ -102,9 +102,8 @@
 							<li class="dropdown-item:hover"><a href="market_list.do">Goodies</a></li>
 						</ul></li>
 					<form action="find.do">
-						<li class="form-group has-search"><span
-							class="fa fa-search form-control-feedback"></span> <input
-							type="text" class="form-control" placeholder="Search"
+						<li class="form-group has-search"><span class="fa fa-search form-control-feedback"></span> 
+							<input type="text" class="form-control" placeholder="Search"
 							name="Searchtext"></li>
 					</form>
 

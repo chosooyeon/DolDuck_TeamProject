@@ -768,7 +768,13 @@ video{
 	  width: 100%;
 	  margin-bottom: 28px;
 }
-	  
+.vote-banner{
+	background-repeat: no-repeat; 
+	background-size:contain; 
+	widht: 100%;
+	min-height:210px;
+	height: auto;
+}
 .ranking{
 	font-size: 16px;
 	color: rgb(255, 255, 255);
@@ -1490,13 +1496,19 @@ table {
 .freeboard{
 	margin-top: 200px;
 }
+.not_board{
+	clear: both;
+    text-align: center;
+    top: 100px;
+}
 .table_comment{
-	 background-color: #f9f9f9;
-	 width: -webkit-fill-available;
+	background-color: #f9f9f9;
+    width: -webkit-fill-available;
+    padding: 15px 27px 11px 26px;
 
 }
-#comment_edit_btn, #reply_btn{ margin: 0 -14px 0px 0;}
-#comment_delete_btn{margin: 0 -11px 0 0px;}
+#comment_edit_btn, #co_comment_btn{margin-right: -18px;}
+#comment_delete_btn{margin-right: -18px;}
 
 #btn-board{
 	float: right;

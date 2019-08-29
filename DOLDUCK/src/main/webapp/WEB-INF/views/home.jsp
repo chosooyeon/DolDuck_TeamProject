@@ -50,6 +50,7 @@
    <section class="vote">
       <div class="container">
          <div class="row">
+               <div class="col-lg-12 vote-banner" style="background-image: url('resources/images/vote-top-banner.png');margin-bottom: 55px;"></div>
             <div class="col-lg-6 offset-lg-3">
             <!-- ranking -->
                <p class="ranking">DOL RANKING CHART</p>
