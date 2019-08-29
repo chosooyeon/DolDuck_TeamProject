@@ -44,17 +44,14 @@
 	<br>
 	<table class="table_comment">
 		<c:forEach items="${commList }" var="comm">
-	<tr>
-		<td>
+	<tr class="comment_border">
+		<td style="width: 10%;">
 			댓글번호 : ${comm.market_comment_num }
 		</td>
-		<td id="comment_content${comm.market_comment_num }">
+		<td id="comment_content${comm.market_comment_num }" style="width: 63%;">
 			댓글내용 : ${comm.market_comment_content } 
 		</td>
-		<td>	
-			댓글작성자 : ${comm.market_id }
-		</td>
-		<td>	
+		<td style="width: 18%;">	
 			댓글작성시간 : ${comm.market_comment_regdate }
 		</td>
 		<td id="edit_btn">

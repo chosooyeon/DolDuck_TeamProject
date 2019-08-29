@@ -47,14 +47,15 @@
 	<br>
 	<table class="table_comment">
 		<c:forEach items="${commList }" var="comm">
-	<tr>
-		<td>	
+
+	<tr class="comment_border">
+		<td style="width: 10%;">	
 			ID : ${comm.freeboard_id }
 		</td>
-		<td id="comment_content${comm.freeboard_comment_num }">
+		<td id="comment_content${comm.freeboard_comment_num }" style="width: 63%;">
 				 ${comm.freeboard_comment_content } 
 		</td>
-		<td>	
+		<td style="width: 18%;">	
 
 			댓글작성시간 : ${comm.freeboard_comment_regdate }
 		</td>
