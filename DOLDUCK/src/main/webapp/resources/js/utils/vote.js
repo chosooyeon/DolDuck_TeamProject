@@ -125,12 +125,13 @@ function appendBody(start, end, voteChart){
 					  <td>
 					  	<div class="progress" style="margin-top: 36px;height: 50px;">
 					  		<div class="progress-bar" style="width:${star.voteNumber}%; background-color:#c0aded;"></div>
+					  		<input type="hidden" name="star_got_vote" value="${star.voteNumber}">
 					  	</div>
 					  </td>
 					  <td style="line-height: 8.5em;text-align: center;font-weight: bold;">${star.voteNumber} 표</td>
 					  <td style="text-align: center;"><button onclick="voteClickPickBtn('${star.name}','girl-group')"style="width: 60px; height: 60px; border-radius: 5em; border: none; margin-top: 30px; background-color: #f2ecf5;" >pick</button></td>
-				      <td><a id="kakao-link-btn" href="javascript:sendLink()" style="line-height: 8em;"> 
-						<img src="//developers.kakao.com/assets/img/about/logos/kakaolink/kakaolink_btn_medium.png" style="width:25px; float:center;" />
+				      <td><a class="kakao-link-btn" style="line-height: 8em;"> 
+						<img src="//developers.kakao.com/assets/img/about/logos/kakaolink/kakaolink_btn_medium.png" style="width:35px; float:center;" />
 						</a>
 					  </td>
 			      </tr>`);
