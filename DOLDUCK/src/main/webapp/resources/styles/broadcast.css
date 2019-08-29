@@ -37,6 +37,10 @@
     top: 50%;
     bottom: 50%;
 }
+.stream-box{
+	margin-top: 1.5em;
+    margin-bottom: 10em;
+}
 
 .live-booth{
     width: 75%;
