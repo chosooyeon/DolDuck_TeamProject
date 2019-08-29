@@ -34,7 +34,12 @@
 		</tr>
 		<tr>
 			<th height="200">내용</th>
-			<td colspan="3">${one.freeboard_content }
+			<td colspan="3">${one.freeboard_content }		
+<!-- 			<video width="320" height="240" controls> -->
+<%--   				<source src="${pageContext.request.contextPath }/resources/uploadImage/${one.freeboard_file }" type="video/mp4"> --%>
+<!--   				<source src="movie.ogg" type="video/ogg"> -->
+<!--   				<source src="/video.webm" type="video/webm"> -->
+<!-- 			</video> -->
 				<img src="${pageContext.request.contextPath }/resources/uploadImage/${one.freeboard_file }">
 			</td>
 		</tr>
