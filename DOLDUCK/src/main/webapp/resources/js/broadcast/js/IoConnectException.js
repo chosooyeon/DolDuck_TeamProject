@@ -1,11 +1,12 @@
 try {
-    var socket = io.connect('https://192.168.10.139:3000', { rejectUnauthorized: false });
+    var socket = io.connect('https://192.168.10.107:5571', { rejectUnauthorized: false });
 } catch (error) {
-    console.log(`[인증서 오류!]`)
-    location.href='https://192.168.10.139:3000/certification'
+    alert('라이브채널로 이동합니다!')
+    location.href='certification.do'
+    //location.href='live-onair.do'
     // Swal.fire({
     //     type: 'error',
-    //     title: '인증된 인증서가 유료에요..',
+    //     title: '인증된 인증서가 유료에요... ㅠㅠ',
     //     text: '제성합니다... ㅠㅠ',
     //     showCancelButton: true,
     //     confirmButtonText: '이동',

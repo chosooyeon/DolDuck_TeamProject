@@ -397,7 +397,7 @@ section
 	padding-right: 23px;
 	z-index: 1;
 }
-.main_nav ul li a::after
+.main_nav ul li a::after, .main_nav ul li a::before
 {
 	display: block;
 	position: absolute;
@@ -416,6 +416,7 @@ section
 	-o-transition: all 400ms ease;
 	transition: all 400ms ease;
 }
+
 
 /* main메뉴 market 호버 */
 .dropdown{
@@ -514,7 +515,7 @@ section
 
 .quick-menu-frame{
 	width: 450px;
-    height: 700px;
+    height: 650px;
     position: fixed;
     bottom: 3%;
     right: 3%;
@@ -767,7 +768,13 @@ video{
 	  width: 100%;
 	  margin-bottom: 28px;
 }
-	  
+.vote-banner{
+	background-repeat: no-repeat; 
+	background-size:contain; 
+	widht: 100%;
+	min-height:210px;
+	height: auto;
+}
 .ranking{
 	font-size: 16px;
 	color: rgb(255, 255, 255);
@@ -779,8 +786,11 @@ video{
 	max-height: 489px;
 	margin-top: 71px;
 }
+
+
 /* 차트 */
-.item{
+/**/
+.home-vote-star-idol{
 	float: left;
 	width: 180px;
 	height: 341px;
@@ -790,12 +800,157 @@ video{
     margin: 25px 0 0 41px;
 
 }
-.item:first-of-type .rankNum{ 
+.home-vote-star-idol:first-of-type .rankNum{ 
 	background: #ff007f; 
 	top: 0; 
 	left: 12px; 
 }
-.item:first-of-type .rankNum:after { 
+.home-vote-star-idol:first-of-type .rankNum:after { 
+	content: ""; 
+	display: block; 
+	width: 0; 
+	height: 0; 
+	font-size: 0; 
+	line-height: 0; 
+	background: none; 
+	border-top: 12px solid #ff007f; 
+	border-right: 15px solid transparent; 
+	border-left: 15px solid  transparent; 
+	position: absolute; 
+}
+/**/
+.home-vote-girl-group{
+	float: left;
+	width: 180px;
+	height: 341px;
+    display: block;
+    overflow: hidden;
+    position: relative;
+    margin: 25px 0 0 41px;
+
+}
+.home-vote-girl-group:first-of-type .rankNum{ 
+	background: #ff007f; 
+	top: 0; 
+	left: 12px; 
+}
+.home-vote-girl-group:first-of-type .rankNum:after { 
+	content: ""; 
+	display: block; 
+	width: 0; 
+	height: 0; 
+	font-size: 0; 
+	line-height: 0; 
+	background: none; 
+	border-top: 12px solid #ff007f; 
+	border-right: 15px solid transparent; 
+	border-left: 15px solid  transparent; 
+	position: absolute; 
+}
+/**/
+.home-vote-girl-idol{
+	float: left;
+	width: 180px;
+	height: 341px;
+    display: block;
+    overflow: hidden;
+    position: relative;
+    margin: 25px 0 0 41px;
+
+}
+.home-vote-girl-idol:first-of-type .rankNum{ 
+	background: #ff007f; 
+	top: 0; 
+	left: 12px; 
+}
+.home-vote-girl-idol:first-of-type .rankNum:after { 
+	content: ""; 
+	display: block; 
+	width: 0; 
+	height: 0; 
+	font-size: 0; 
+	line-height: 0; 
+	background: none; 
+	border-top: 12px solid #ff007f; 
+	border-right: 15px solid transparent; 
+	border-left: 15px solid  transparent; 
+	position: absolute; 
+}
+/**/
+.home-vote-boy-idol{
+	float: left;
+	width: 180px;
+	height: 341px;
+    display: block;
+    overflow: hidden;
+    position: relative;
+    margin: 25px 0 0 41px;
+
+}
+.home-vote-boy-idol:first-of-type .rankNum{ 
+	background: #ff007f; 
+	top: 0; 
+	left: 12px; 
+}
+.home-vote-boy-idol:first-of-type .rankNum:after { 
+	content: ""; 
+	display: block; 
+	width: 0; 
+	height: 0; 
+	font-size: 0; 
+	line-height: 0; 
+	background: none; 
+	border-top: 12px solid #ff007f; 
+	border-right: 15px solid transparent; 
+	border-left: 15px solid  transparent; 
+	position: absolute; 
+}
+/**/
+.home-vote-boy-group{
+	float: left;
+	width: 180px;
+	height: 341px;
+    display: block;
+    overflow: hidden;
+    position: relative;
+    margin: 25px 0 0 41px;
+
+}
+.home-vote-boy-group:first-of-type .rankNum{ 
+	background: #ff007f; 
+	top: 0; 
+	left: 12px; 
+}
+.home-vote-boy-group:first-of-type .rankNum:after { 
+	content: ""; 
+	display: block; 
+	width: 0; 
+	height: 0; 
+	font-size: 0; 
+	line-height: 0; 
+	background: none; 
+	border-top: 12px solid #ff007f; 
+	border-right: 15px solid transparent; 
+	border-left: 15px solid  transparent; 
+	position: absolute; 
+}
+/**/
+.home-vote-new-idol{
+	float: left;
+	width: 180px;
+	height: 341px;
+    display: block;
+    overflow: hidden;
+    position: relative;
+    margin: 25px 0 0 41px;
+
+}
+.home-vote-new-idol:first-of-type .rankNum{ 
+	background: #ff007f; 
+	top: 0; 
+	left: 12px; 
+}
+.home-vote-new-idol:first-of-type .rankNum:after { 
 	content: ""; 
 	display: block; 
 	width: 0; 
@@ -809,6 +964,7 @@ video{
 	position: absolute; 
 }
 
+/**/
 .thum
 {
 	float: left;
@@ -1113,7 +1269,7 @@ svg{
 	padding: 0;
 }
 .div-channel{
-	margin-top: 15%;
+	margin-top: 200px;
 	display: inline-block;
 	text-align : center;
 	width: 100%;
@@ -1489,13 +1645,19 @@ table {
 .freeboard{
 	margin-top: 200px;
 }
+.not_board{
+	clear: both;
+    text-align: center;
+    top: 100px;
+}
 .table_comment{
-	 background-color: #f9f9f9;
-	 width: -webkit-fill-available;
+	background-color: #f9f9f9;
+    width: -webkit-fill-available;
+    padding: 15px 27px 11px 26px;
 
 }
-#comment_edit_btn, #reply_btn{ margin: 0 -14px 0px 0;}
-#comment_delete_btn{margin: 0 -11px 0 0px;}
+#comment_edit_btn, #co_comment_btn{margin-right: -18px;}
+#comment_delete_btn{margin-right: -18px;}
 
 #btn-board{
 	float: right;

@@ -10,5 +10,5 @@ public interface VoteDao {
 	public int updateVote(VoteDto dto);
 	public int selectMemberVote(String member_id);
 	public int updateMemberVote(String member_id, int voteNumber);
-	public int selectVoteNumber(String starName);
+	public int selectVoteNumber(String starName, String item);
 }

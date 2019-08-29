@@ -3,10 +3,15 @@ const express = require('express'),
       https = require('https'),
       socketIO = require('socket.io'),
       fs = require('fs')
-var os = require('os')
 var app = express()
 
 var roomNumber
+var caster
+var roomArr = []
+
+/*******************
+      Server
+*******************/
 
 //Allow to use STATIC Files
 app.use('/css/', express.static('./css'))
@@ -18,44 +23,91 @@ var options = {
     cert : fs.readFileSync('./key/server.cert')
 }
 
-app.get('/certification', (req, res) => {
-    
+app.get('/', (req, res) => {
+
+    fs.readFile('./index.html', (err, data) =>{
+        if(err){
+            res.send(err)
+        }else{
+            res.writeHead(200, { 'Content-Type' : 'text/html'})
+            res.write(data)
+            res.end()
+        }
+    })
 })
 
 
-// app.get('/caster/:page', (req, res) => {
-//     roomNumber = req.params.page;
+app.get('/caster/:page', (req, res) => {
+    roomNumber = req.params.page;
 
-//     fs.readFile(`./caster.html`, (err, data) => {
-//         if(err){
-//             res.send(err)
-//         }else{
-//             res.writeHead(200, { 'Content-Type' : 'text/html'})
-//             res.write(data)
-//             res.end()
-//         }
-//     }) 
-// })
+    fs.readFile(`./caster.html`, (err, data) => {
+        if(err){
+            res.send(err)
+        }else{
+            res.writeHead(200, { 'Content-Type' : 'text/html'})
+            res.write(data)
+            res.end()
+        }
+    }) 
+})
 
-// app.get('/user', (req, res) => {
-//     fs.readFile(`./user.html`, (err, data) => {
-//         if(err){
-//             res.send(err)
-//         }else{
-//             res.writeHead(200, { 'Content-Type' : 'text/html'})
-//             res.write(data)
-//             res.end()
-//         }
-//     })
-// })
+app.get('/user/:page', (req, res) => {
 
-/* -------------------------------------------------------------- */
+    fs.readFile('./user.html', (err,data) => {
+        if(err){
+            res.send(err)
+        }else{
+            res.writeHead(200, { 'Content-Type' : 'text/html'})
+            res.write(data)
+            res.end()
+        }
+    })
+    
+})
+
+/*******************
+    Useful func
+*******************/
+
+function findCaster(roomNum){
+    
+    // for(var key in roomArr){
+    //     if(key.room == roomNum){
+    //         return key.casterid
+    //     }
+    // }
+
+    for(let i=0 ; i<roomArr.length ; i++){
+        if(roomArr[i].room == roomNum){
+            return roomArr[i].casterid
+        }
+    }
+}
+
+function getNumClients(room) {
+    var clientsInRoom = io.sockets.adapter.rooms[room];
+    var numClients = clientsInRoom ? Object.keys(clientsInRoom.sockets).length : 0;
+    return numClients
+}
+
+function getRoomInfo(roomNum){
+    for(var one in roomArr){
+        if(one.room === roomNum){
+            console.log('찾았다!!', onair)
+            return one
+        }
+    }
+}
+
+
+
+/*******************
+       Socket
+*******************/
 const server = https.createServer(options, app)
 const io = socketIO(server)
 
-var live
-var caster
-var roomArr = []
+
 
 io.sockets.on('connection', (socket) => {
 
@@ -68,48 +120,58 @@ io.sockets.on('connection', (socket) => {
 
         var rooms = io.sockets.adapter.rooms
         for(var key in rooms){
-            if(key == 1){
-                socket.to(key).emit('conflicted', key)
-                socket.leave(key)
-            }else{
+            if(key.room != roomNumber){
                 socket.join(roomNumber)
                 io.sockets.to(roomNumber).emit('createdRoom', roomNumber)
+                break;
             }
         }
     })
 
-    socket.on('joinedCaster', (roomInfo) => {
-        if(roomArr.length == 0){
-            roomArr.push(roomInfo)
-        }else{
-
-        }
-        console.log(roomInfo)
-        console.log('roomArray length : ', roomArr.length)
-        for(var key in roomArr){
-                if(key == roomInfo){
-                    console.log('방 있음')
-                    continue;
-                } else{
-                    console.log('방 추가')
-                    roomArr.push(roomInfo)
-                }
-        }
-        
-        socket.emit('roomlist', roomArr)
+    socket.on('caster-join', (roomInfo) => {
+        //console.log('<<<생성된 방 정보>>>\n', roomInfo);
+        roomArr.push(roomInfo)
+        console.log(`${roomInfo.caster}가 ${roomInfo.room}을 개설했습니다!`)   
+    })
+    
+    socket.on('user-join', (_room, name) => {
+        console.log(`${_room}에 ${name}(${socket.id})님이 들어왔습니다`)
+        socket.join(_room)
+        io.to(findCaster(_room)).emit('newUserJoined', name, socket.id)
+        io.sockets.to(_room).emit('joinedUser', name, socket.id, getNumClients(_room), getRoomInfo(_room) ) 
     })
 
+    socket.on('userMessage', (msg, room) =>{
+        var casterid = findCaster(room)
+        console.log('casterid : ', casterid);
+        io.to(casterid).emit('message', msg, socket.id)
+    })
+    socket.on('casterMessage', (msg, id) =>{
+        io.to(id).emit('message', msg, socket.id)
+    })
+
+    //Index.html -> 방 목록 요청 
     socket.on('requestRoomlist', () =>{
         socket.emit('roomlist', roomArr)
     })
-    socket.on('user-join', (room, name) => {
-       socket.name = name
-    })
-   
+    
     //Event on Chat :: 'Message'
-    socket.on('message', (_room, name, msg) => {
-        io.sockets.to(_room).emit('message', name , msg)
+    socket.on('chat-message', (_room, name, msg) => {
+        io.sockets.to(_room).emit('chat-message', name , msg)
     })
+
+    // socket.on('disconnect', function () {
+    //     for (let i = 0; i < roomArr.length; i++) {
+    //         if (roomArr[i].caster === socket.id) {
+    //             var room = roomArr[i].room
+    //             io.in(room).clients((error, socketIds) => {
+    //                 socketIds.forEach(socketId => io.to(socketId).emit('chatMsg', { type: 'leaveCaster', class_num: room }));
+    //             });
+    //             roomArr.splice(i, 1);
+    //             break;
+    //         }
+    //     }
+    // })
 })
 
 server.listen(5571, () => { console.log('::: Port listening 5571 :::'); } )
