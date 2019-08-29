@@ -81,7 +81,7 @@ function sendLink(data) {
 	Kakao.Link.sendDefault({
 		objectType: 'feed',
 		content: {
-			title: '(DD)당신의 아이돌에게 투표하세요!',
+			title: '[DolDuck]당신의 아이돌에게 투표하세요!',
 			description: data.artist + '님은 지금  ♥' + data.vote +'♥표를 얻었습니다!\n｡゜゜(｣｡≧⊿≦)｣마감이 얼마남지 않았어요!｡゜゜(｣｡≧⊿≦)｣\n서둘러 투표를 통해 당신의 아이돌을 센터로 만들어주세요♥ ',
 			imageUrl: data.thumb,
 			link: {
