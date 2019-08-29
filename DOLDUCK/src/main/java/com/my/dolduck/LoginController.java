@@ -8,6 +8,7 @@ import java.io.UnsupportedEncodingException;
 import java.net.HttpURLConnection;
 import java.net.URL;
 import java.nio.file.AccessDeniedException;
+import java.security.Principal;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
@@ -77,6 +78,18 @@ public class LoginController {
 	private MemberBizImpl biz;
 
 	private String randompassword;
+	
+	//로그인 체크
+	@RequestMapping("login-status.do")
+	@ResponseBody
+	public String loginStatus(Principal principal) {
+		
+		if(principal == null){
+			return "false";
+		}else {
+			return "true";
+		}
+	}
 
 	// 로그인 페이지로 이동
 	@RequestMapping(value = "login.do")
