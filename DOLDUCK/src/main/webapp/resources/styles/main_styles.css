@@ -515,7 +515,7 @@ section
 
 .quick-menu-frame{
 	width: 450px;
-    height: 700px;
+    height: 650px;
     position: fixed;
     bottom: 3%;
     right: 3%;
@@ -790,181 +790,17 @@ video{
 
 /* 차트 */
 /**/
-.home-vote-star-idol{
-	float: left;
-	width: 180px;
-	height: 341px;
+
+.home-ranking{
+    float: left;
+    width: 180px;
+    height: 341px;
     display: block;
     overflow: hidden;
     position: relative;
-    margin: 25px 0 0 41px;
-
-}
-.home-vote-star-idol:first-of-type .rankNum{ 
-	background: #ff007f; 
-	top: 0; 
-	left: 12px; 
-}
-.home-vote-star-idol:first-of-type .rankNum:after { 
-	content: ""; 
-	display: block; 
-	width: 0; 
-	height: 0; 
-	font-size: 0; 
-	line-height: 0; 
-	background: none; 
-	border-top: 12px solid #ff007f; 
-	border-right: 15px solid transparent; 
-	border-left: 15px solid  transparent; 
-	position: absolute; 
-}
-/**/
-.home-vote-girl-group{
-	float: left;
-	width: 180px;
-	height: 341px;
-    display: block;
-    overflow: hidden;
-    position: relative;
-    margin: 25px 0 0 41px;
-
-}
-.home-vote-girl-group:first-of-type .rankNum{ 
-	background: #ff007f; 
-	top: 0; 
-	left: 12px; 
-}
-.home-vote-girl-group:first-of-type .rankNum:after { 
-	content: ""; 
-	display: block; 
-	width: 0; 
-	height: 0; 
-	font-size: 0; 
-	line-height: 0; 
-	background: none; 
-	border-top: 12px solid #ff007f; 
-	border-right: 15px solid transparent; 
-	border-left: 15px solid  transparent; 
-	position: absolute; 
-}
-/**/
-.home-vote-girl-idol{
-	float: left;
-	width: 180px;
-	height: 341px;
-    display: block;
-    overflow: hidden;
-    position: relative;
-    margin: 25px 0 0 41px;
-
-}
-.home-vote-girl-idol:first-of-type .rankNum{ 
-	background: #ff007f; 
-	top: 0; 
-	left: 12px; 
-}
-.home-vote-girl-idol:first-of-type .rankNum:after { 
-	content: ""; 
-	display: block; 
-	width: 0; 
-	height: 0; 
-	font-size: 0; 
-	line-height: 0; 
-	background: none; 
-	border-top: 12px solid #ff007f; 
-	border-right: 15px solid transparent; 
-	border-left: 15px solid  transparent; 
-	position: absolute; 
-}
-/**/
-.home-vote-boy-idol{
-	float: left;
-	width: 180px;
-	height: 341px;
-    display: block;
-    overflow: hidden;
-    position: relative;
-    margin: 25px 0 0 41px;
-
-}
-.home-vote-boy-idol:first-of-type .rankNum{ 
-	background: #ff007f; 
-	top: 0; 
-	left: 12px; 
-}
-.home-vote-boy-idol:first-of-type .rankNum:after { 
-	content: ""; 
-	display: block; 
-	width: 0; 
-	height: 0; 
-	font-size: 0; 
-	line-height: 0; 
-	background: none; 
-	border-top: 12px solid #ff007f; 
-	border-right: 15px solid transparent; 
-	border-left: 15px solid  transparent; 
-	position: absolute; 
-}
-/**/
-.home-vote-boy-group{
-	float: left;
-	width: 180px;
-	height: 341px;
-    display: block;
-    overflow: hidden;
-    position: relative;
-    margin: 25px 0 0 41px;
-
-}
-.home-vote-boy-group:first-of-type .rankNum{ 
-	background: #ff007f; 
-	top: 0; 
-	left: 12px; 
-}
-.home-vote-boy-group:first-of-type .rankNum:after { 
-	content: ""; 
-	display: block; 
-	width: 0; 
-	height: 0; 
-	font-size: 0; 
-	line-height: 0; 
-	background: none; 
-	border-top: 12px solid #ff007f; 
-	border-right: 15px solid transparent; 
-	border-left: 15px solid  transparent; 
-	position: absolute; 
-}
-/**/
-.home-vote-new-idol{
-	float: left;
-	width: 180px;
-	height: 341px;
-    display: block;
-    overflow: hidden;
-    position: relative;
-    margin: 25px 0 0 41px;
-
-}
-.home-vote-new-idol:first-of-type .rankNum{ 
-	background: #ff007f; 
-	top: 0; 
-	left: 12px; 
-}
-.home-vote-new-idol:first-of-type .rankNum:after { 
-	content: ""; 
-	display: block; 
-	width: 0; 
-	height: 0; 
-	font-size: 0; 
-	line-height: 0; 
-	background: none; 
-	border-top: 12px solid #ff007f; 
-	border-right: 15px solid transparent; 
-	border-left: 15px solid  transparent; 
-	position: absolute; 
+    margin: 49px 0 0 10px;
 }
 
-/**/
 .thum
 {
 	float: left;
@@ -1000,11 +836,10 @@ video{
 }
 
 .etc p{
-	margin-top: 10px;
-	margin-left: 21px;
-	display: inline-block;
-	font-size: 14px;
-	color: #000;
+    margin: 10px 0 0 45%;
+    display: inline-block;
+    font-size: 14px;
+    color: #000;
 }
 .far{
 	vertical-align: middle;
@@ -1430,8 +1265,8 @@ svg{
 
 }
 .login_button{    
-    width: 396%;
-    margin: 18px 0 0 -3px;
+    width: 100%;
+    margin-top:18px;
     color: #ffffff;
     background: #ffa550;
     border: 5px solid #ffa550;
@@ -1439,8 +1274,8 @@ svg{
     padding: .375rem .75rem;
 }
 .join_button{    
-	width: 396%;
-    margin: -5px 0 0 -3px;
+	width: 100%;
+    margin-top: -5px;
     color: #ffffff;
     background: #ffa550;
     border: 5px solid #ffa550;
@@ -1659,6 +1494,9 @@ table {
 #comment_edit_btn, #co_comment_btn{margin-right: -18px;}
 #comment_delete_btn{margin-right: -18px;}
 
+.comment_border td{
+    border-bottom: 1px dotted #a9a9a9;
+}
 #btn-board{
 	float: right;
 	width: 53px;
