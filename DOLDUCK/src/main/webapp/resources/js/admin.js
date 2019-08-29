@@ -1,4 +1,4 @@
-var acc = document.getElementsByClassName("accordion");
+/*var acc = document.getElementsByClassName("accordion");
 var i;
 
 for (i = 0; i < acc.length; i++) {
@@ -24,20 +24,26 @@ function roleUpdate(role) {
 	return role;
 }
 
-var grade = $("#item option:selected").val();
 
-$.ajax({
-   type : 'post' ,
-   url : 'update-grade.do',
-   data : '보낼 데이터' (예시 -> { name : '한지수' , age : 27} ),
-   dataType : '받을 데이터의 타입'  (예시 ->'text'),
-   success : function(data){
-      alert(data)
-   //성공했을때 동작
-   },error: function(){
-      alert('네트워크 오류')
-   // 실패했을때 동작
-   }
+$(document).ready(function(){
+	$("#upgrade").click(function(){
+		var grade = $("#item option:selected").val();
+		var id = ?;
+		alert(grade);
+		$.ajax({
+			type : 'post' ,
+			url : 'role_update.do',
+			data : {"grade":grade,"id":id},
+			dataType : 'text',
+			success : function(data){
+				alert(data)
+				//성공했을때 동작
+			},error: function(){
+				alert('네트워크 오류')
+				// 실패했을때 동작
+			}
+	});
+});
 })
 
 function textLengthOverCut(txt, len, lastTxt) {
@@ -53,3 +59,4 @@ function textLengthOverCut(txt, len, lastTxt) {
     return txt;
 }
 
+*/

@@ -55,8 +55,11 @@
 		<td id="comment_content${comm.freeboard_comment_num }">
 				 ${comm.freeboard_comment_content } 
 		</td>
+		<td>
+			댓글작성자 : ${comm.freeboard_id }
+		</td>
 		<td>	
-			작성시간 : ${comm.freeboard_comment_regdate }
+			댓글작성시간 : ${comm.freeboard_comment_regdate }
 		</td>
 		
 		<td id="edit_btn">
@@ -86,7 +89,8 @@
 			<td id="comment_textarea">
 					<textarea id="comment_textarea_css" rows="2"cols="50" name="freeboard_comment_content"></textarea>	
 			</td>
-			<td id="comment_submit">				
+			<td id="comment_submit">
+				<input type="submit" value="작성">
 				<button class="comment_btn" type="submit">작성</button>
 			</td>
 			</tr>

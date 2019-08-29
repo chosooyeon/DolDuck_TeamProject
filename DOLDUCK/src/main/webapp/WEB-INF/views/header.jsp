@@ -150,7 +150,7 @@
 						<li><a href="home.do">HOME</a></li>
 						<li><a href="youtube.do">You Tube</a></li>
 						<li><a href="vote.do">Vote</a></li>
-						<li><a href="chart.do">Music Chart</a></li>
+						<li><a href="chart.do">MusicChart</a></li>
 						<li><a href="live-home.do">LIVE</a></li>
 						<li><a href="free_list.do">Board</a></li>
 						<li><a href="heartShop.do">heartShop</a></li>
@@ -216,17 +216,5 @@
 <script src="resources/js/custom.js"></script>
 <script src="https://d3js.org/d3.v4.min.js"></script>
 <script src="https://kit.fontawesome.com/c1455fa856.js"></script>
-<script type="text/javascript">
-	/* var menu = $(".skfk > li");
-	menu.find("a").cilck(function(){
-		menu.removeClass("active");
-		$(this).parent().addClass("active");
-	}) */
-
-	$('.skfk > li').on('click', function() {
-
-		$(this).addClass('active')
-	})
-</script>
 
 </html>
