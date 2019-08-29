@@ -108,7 +108,8 @@ public class VoteController {
 
    // 투표 성공시 결과창 출력
    @RequestMapping("vote-result.do")
-   public String voteResult(Model model) {
+   @ResponseBody
+   public void voteResult(Model model) {
       System.out.println(dto.getStarName() + dto.getItem() + dto.getVoteNumber());
       model.addAttribute("starName", dto.getStarName());
       model.addAttribute("voteNumber", dto.getVoteNumber());
@@ -121,6 +122,5 @@ public class VoteController {
          biz.updateVote(new VoteDto(dto.getItem(), dto.getStarName(), dto.getVoteNumber()));
          System.out.println("update");
       }
-      return "vote/vote_result";
    }
 }
