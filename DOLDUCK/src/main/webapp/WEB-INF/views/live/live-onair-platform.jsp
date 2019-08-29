@@ -109,8 +109,6 @@
     <!-- <script src="https://192.168.10.107:5571/socket.io/socket.io.js"></script> -->
     <!-- 윈도우  -->
     <script src="https://192.168.10.169:5571/socket.io/socket.io.js"></script>
-    
-    
     <script src="resources/js/broadcast/js/main.js"></script>
 </body>
 </html>
