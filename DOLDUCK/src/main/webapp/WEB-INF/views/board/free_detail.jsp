@@ -35,7 +35,7 @@
 		<tr>
 			<th height="200">내용</th>
 			<td colspan="3">${one.freeboard_content }
-				<img src="${pageContext.request.contextPath }/resources/uploadImage/${one.freeboard_file }">
+				<img  onerror="this.style.display='none'" alt='' src="${pageContext.request.contextPath }/resources/uploadImage/${one.freeboard_file }">
 			</td>
 		</tr>
 		<tr>

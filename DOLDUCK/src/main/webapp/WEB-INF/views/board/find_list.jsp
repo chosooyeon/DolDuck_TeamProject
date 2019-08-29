@@ -15,8 +15,9 @@
 
    <div class="container freeboard">
       <div class="center">
-   <h1 class="text-center">처돌이</h1>
-   <button type="button" id="btn-board" onclick="location.href='free_insertform.do'">글작성</button>
+   <h1 class="text-center"></h1>
+   <div style="float: right;"><a href="free_list.do">게시판 바로가기</a></div>
+   <!-- <button type="button" id="btn-board" onclick="location.href='free_insertform.do'">글작성</button> -->
    <c:choose>
       <c:when test="${empty list }">
          <h3>게시글이 없습니다....</h3>      </c:when>

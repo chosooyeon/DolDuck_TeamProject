@@ -51,7 +51,7 @@ where member_id = 'lotus526'
 --투표권 구매 
 update member 
 set member_vote = ((select member_vote from member where member_id = 'lotus526') + 10),
-member_heart = ((select member_heart from member where member_id = 'lotus526') - 250)
+member_heart = ((select member_heart from member where member_id = 'lotus526') + 250)
 where member_id = 'lotus526'
 
 /*------------------------------------- 투표 테이블	-----------------------------------------*/

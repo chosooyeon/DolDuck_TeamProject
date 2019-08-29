@@ -1,4 +1,4 @@
-// 보유투표권수 체크
+﻿// 보유투표권수 체크
 function voteNumberChk(){
 	$.ajax({
 		type : 'POST',
@@ -22,6 +22,7 @@ function voteNumberChk(){
 };
 
 function votePopup(popUrl){
-	var popOption = "width=1000, height=300, status=no;";
+	var popOption = "width=500, height=500, status=no;";
 	window.open(popUrl,"",popOption);
+
 }
