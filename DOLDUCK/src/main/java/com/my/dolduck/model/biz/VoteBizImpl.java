@@ -32,7 +32,7 @@ public class VoteBizImpl implements VoteBiz{
 		return dao.updateMemberVote(member_id, voteNumber);
 	}
 	@Override
-	public int selectVoteNumber(String starName) {
-		return dao.selectVoteNumber(starName);
+	public int selectVoteNumber(String starName, String item) {
+		return dao.selectVoteNumber(starName, item);
 	}
 }

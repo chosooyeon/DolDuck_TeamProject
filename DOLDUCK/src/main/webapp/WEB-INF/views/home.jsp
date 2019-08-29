@@ -50,6 +50,7 @@
    <section class="vote">
       <div class="container">
          <div class="row">
+               <div class="col-lg-12 vote-banner" style="background-image: url('resources/images/vote-top-banner.png');margin-bottom: 55px;"></div>
             <div class="col-lg-6 offset-lg-3">
             <!-- ranking -->
                <p class="ranking">DOL RANKING CHART</p>
@@ -57,68 +58,26 @@
          </div>
          <div class="row row-lg-eq-height">
             <div class="col-md-12">
-                  <a href="#" class="item">
-                          <div class="thum" style="background-image:url(resources/images/2.jpg)"></div>
-                          <div class="txt-container">
-                             <p class="date">빅</p>
-                              <p class="bbsTit">뱅</p>
-                          </div>
-                          <div class="etc">
-                              <p class="reply"><i class="far fa-comment-alt"></i>549</p>
-                              <p class="favorites"><i class="fas fa-heart"></i>&nbsp;21,838</p>
-                          </div>
+                  <a href="#" class="home-vote-star-idol">
                              <p class="rankNum">1</p>
                        </a>
-                  <a href="#" class="item">
-                          <div class="thum" style="background-image:url(resources/images/3.jpg)"></div>
-                             <div class="txt-container">
-                                  <p class="date">big</p>
-                                 <p class="bbsTit">bang</p>
-                          </div>
-                          <div class="etc">
-                              <p class="reply"><i class="far fa-comment-alt"></i>549</p>
-                              <p class="favorites"><i class="fas fa-heart"></i>&nbsp;21,838</p>
-                          </div>
-                          <p class="rankNum">2</p>
-                       </a>
-                  <a href="#" class="item">
-                          <div class="thum" style="background-image:url(resources/images/4.jpg)"></div>
-                             <div class="txt-container">
-                                  <p class="date">big</p>
-                                 <p class="bbsTit">bang</p>
-                          </div>
-                          <div class="etc">
-                              <p class="reply"><i class="far fa-comment-alt"></i>549</p>
-                              <p class="favorites"><i class="fas fa-heart"></i>&nbsp;21,838</p>
-                          </div>
+                  <a href="#" class="home-vote-girl-group">
+                  		<p class="rankNum">2</p>                          
+                  </a>
+                  <a href="#" class="home-vote-girl-idol">
                     <p class="rankNum">3</p>
                        </a>
-                  <a href="#" class="item">
-                          <div class="thum" style="background-image:url(resources/images/5.jpg)"></div>
-                             <div class="txt-container">
-                                  <p class="date">big</p>
-                                 <p class="bbsTit">bang</p>
-                             </div>
-                          <div class="etc">
-                              <p class="reply"><i class="far fa-comment-alt"></i>549</p>
-                              <p class="favorites"><i class="fas fa-heart"></i>&nbsp;21,838</p>
-                          </div>
+                  <a href="#" class="home-vote-boy-group">
                     <p class="rankNum">4</p>
                        </a>
-               <a href="#" class="item">
-                          <div class="thum" style="background-image:url(resources/images/1.jpg)"></div>
-                             <div class="txt-container">
-                                  <p class="date">big</p>
-                                 <p class="bbsTit">bang</p>
-                             </div>
-                          <div class="etc">
-                              <p class="reply"><i class="far fa-comment-alt"></i>549</p>
-                              <p class="favorites"><i class="fas fa-heart"></i>&nbsp;21,838</p>
-                          </div>
+               <a href="#" class="home-vote-boy-idol">
                     <p class="rankNum">5</p>
                        </a>
+                 <a href="#" class="home-vote-new-idol">
+                    <p class="rankNum">6</p>
+                       </a>
   				</div>
-				<div class="vote_button"><a href="#">Vote Now</a></div>
+				<div class="vote_button"><a href="vote.do">Vote Now</a></div>
 			</div>
 		</div>
 		
@@ -186,6 +145,7 @@
 	<script type="text/javascript"
 		src="https://code.jquery.com/jquery-3.4.1.min.js"></script>
 	<script type="text/javascript" src="resources/js/home.js"></script>
+	<script type="text/javascript" src="resources/js/home_vote.js"></script>
 	<script src="resources/js/jquery-3.2.1.min.js"></script>
 	<script src="resources/styles/bootstrap-4.1.2/popper.js"></script>
 	<script src="resources/styles/bootstrap-4.1.2/bootstrap.min.js"></script>

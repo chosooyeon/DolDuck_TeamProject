@@ -17,7 +17,7 @@
     <%@include file="../header.jsp" %>
 
    <div class="container vote_board">
-   	  <div class="vote-banner" style="background-image: url('resources/images/vote-top-banner.png'); background-repeat: no-repeat; background-size:contain; widht: 100%; min-height:210px; height: auto;"></div>
+   	  <div class="vote-banner" style="background-image: url('resources/images/vote-top-banner.png');"></div>
       <div class="center">   
    	<div class="div-star">
             <ul class="vote-button">

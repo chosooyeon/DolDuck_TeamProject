@@ -72,8 +72,8 @@ CREATE TABLE VOTE(
 SELECT * FROM VOTE;
 
 UPDATE MEMBER
-SET MEMBER_VOTE = 10
-WHERE MEMBER_ID = '조수연'
+SET MEMBER_VOTE = 100
+WHERE MEMBER_ID = 'user1'
 
 SELECT * FROM MEMBER
 
@@ -112,17 +112,6 @@ SELECT BROADCAST_SEQ, TO_CHAR(BROADCAST_DATE, 'yyyy-mm-dd hh24:mi') as "BROADCAS
 		where broadcast_content is not null
 
 UPDATE MEMBER SET MEMBER_PW='$2a$10$WzmejPwX08xRYaKDbB1Ie.NOX5uwfHwSCahrNar1.VC0jWpx/.yiS' WHERE MEMBER_ID='1whtndus'
-
-
---투표결과 테이블
-
-DROP TABLE VOTE_RESULT;
-
-CREATE TABLE VOTE_RESULT(
-	
-)
-
-SELECT * FROM VOTE_RESULT;
 
 
 ----------------------------------------- 실험

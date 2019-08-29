@@ -36,13 +36,13 @@
 		</tr>
 		<tr>
 			<td colspan="4" align="right">
-			<input type="button" onclick="location.href='market_list.do'" value="취소">
+			<input type="button" onclick="location.href='market_list.do'" value="목록">
 			<input type="button" value="수정" onclick="location.href='market_update.do?market_num=${one.market_num }'">
-			<input type="button" value="삭제" onclick="location.href='market_delete.do?id=${one.market_id }'">
+			<input type="button" value="삭제" onclick="location.href='market_delete.do?id=${one.market_id }'" style="margin-right:18px;">
 		</tr>
 	</table>
 	<br>
-	<table class="table">
+	<table class="table_comment">
 		<c:forEach items="${commList }" var="comm">
 	<tr>
 		<td>
@@ -76,22 +76,20 @@
 	댓글쓰기
 	<form action="market_comment_insert.do" method="post">
 		<input type="hidden" name="market_num" value="${one.market_num }">
+		<input type="hidden" name="market_id" value="${one.market_id }">
 	<table class="comment_tadle">
 		<tr>
 			<td id="comment_textarea">
-				<textarea rows="3"cols="60" name="market_comment_content" style="resize: none;border-style: solid;"></textarea>
+				<textarea id="comment_textarea_css" rows="2"cols="50" name="market_comment_content"></textarea>
 			</td>
-			<td id="comment_input_id">
-				<input type="hidden" name="market_id">	
-			</td>
-		<tr>
 			<td id="comment_submit">
-				<input type="submit" value="작성">
+				<button class="comment_btn" type="submit">작성</button>
 			</td>
 	</tr>
 	</table>
 	</form>
 	</div>
 </div>
+<%@ include file="../footer.jsp" %>
 </body>
 </html>
