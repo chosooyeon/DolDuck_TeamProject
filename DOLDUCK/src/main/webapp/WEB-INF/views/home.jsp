@@ -58,7 +58,7 @@
          </div>
          <div class="row row-lg-eq-height">
             <div class="col-md-12">
-                  <a href="#" class="home-vote-star-idol">
+                  <a href="" class="home-vote-star-idol">
                              <p class="rankNum">1</p>
                        </a>
                   <a href="#" class="home-vote-girl-group">

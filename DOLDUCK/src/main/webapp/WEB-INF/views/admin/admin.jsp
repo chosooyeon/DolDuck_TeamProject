@@ -41,10 +41,10 @@
 								</tr>
 							</c:when>
 							<c:otherwise>
-								<c:forEach items="${list}" var="dto">
+								<c:forEach items="${list}" var="dto" varStatus="status">
 								<c:if test="${dto.member_role eq 'ROLE_USER' || dto.member_role eq 'ROLE_ARTIST'}">
-									<tr>
-										<td scope="col" id="seq">${dto.member_seq }</td>
+									<tr id="a${status.count }">
+										<td scope="col" class="seq">${dto.member_seq }</td>
 										<td scope="col">${dto.member_name }</td>
 										<td scope="col">${dto.member_id }</td>
 										<td scope="col">${dto.member_phone }</td>
