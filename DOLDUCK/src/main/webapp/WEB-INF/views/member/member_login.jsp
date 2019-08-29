@@ -38,16 +38,14 @@ img#kakao-login-btn {
 							<td><input class="form-control login" type="password" id="pw" name="passwd"></td>
 						</tr>
 						<tr>
-							<td colspan="1"><input class="login_button" type="submit" value="로그인"></td>
+							<td colspan="2"><input class="login_button" type="submit" value="로그인"></td>
 						</tr>
 						<tr>
-							<td colspan="1"><input class="join_button" type="button" value="회원가입"
+							<td colspan="2"><input class="join_button" type="button" value="회원가입"
 								onclick="location.href='${pageContext.request.contextPath}/join.do'"></td>
 						</tr>
 						<tr>
-							<td>&emsp;<a href="idfind.do">아이디 찾기</a>&emsp;
-							</td>
-							<td>/&emsp;&emsp;<a href="pwfind.do">비밀번호 찾기</a></td>
+							<td colspan="2" style="text-align: center;"><a href="idfind.do">아이디 찾기</a>&emsp;/&emsp;<a href="pwfind.do">비밀번호 찾기</a></td>
 						</tr>
 
 					</table>

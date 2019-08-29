@@ -17,9 +17,11 @@
 			<div class="col-lg-6 offset-lg-3 modified_table">
 				<h1 class="text-center">마이페이지</h1>
 				<form method="post" action="modifiedfied.do" enctype="multipart/form-data">
+					<input type="hidden" name="user_name" value="${dto.member_name }">
+					<input type="hidden" name="user_id" value="${dto.member_id }">
 					<table class="modified_form">
 						<c:choose>
-							<c:when test="${empty dto.member_img }">
+							<c:when test="${dto.member_img eq '이미지'}">
 								<div>
 									<img id="profileImg" src="${pageContext.request.contextPath }/resources/profileImage/profile.jpg"
 										style="border-radius: 50%; height: 100px; width: 100px; margin-top: 13px;">
@@ -37,7 +39,7 @@
 							<th>이름</th>
 						</tr>
 						<tr>
-							<td><input type ="text" name="user_name" id="user_name" value="${dto.member_name }"></td>
+							<td><div id="user_name">${dto.member_name }</div></td>
 						</tr>
 						<tr>
 						</tr>
@@ -45,7 +47,7 @@
 							<th>아이디</th>
 						</tr>
 						<tr>
-							<td><input type ="text" name="user_id" id="user_id" value="${dto.member_id }"></td>
+							<td><div id="user_id">${dto.member_id}</div></td>
 						</tr>
 						<tr>
 						</tr>

@@ -17,8 +17,9 @@
                  var kakaoid = res.id;
                  var kakaoname = res.properties.nickname;
                  
-                 alert(kakaoid);
-                 alert(kakaoname);
+                 $('input[name=id]').attr('value',kakaoid);
+                 $('input[name=name]').attr('value',kakaoname);
+                 
                  document.write(`<form action="kakao.do" id="sub_form" method="post">
                 		 			<input type="hidden" name="command" value="kakao">
                 		 			<input type="hidden" name="id" value="kakaoid">

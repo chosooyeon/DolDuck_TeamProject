@@ -26,10 +26,20 @@
 					<table class="join_form">
 						<tr>
 						<td>
-							<div style="margin: -60px 0px 47px 73px;">
-								<img width="250px" height="250px" src="${pageContext.request.contextPath }/resources/uploadImage/${dto.member_img}" 
-								style="border-radius: 50%; height: 100px; width: 100px;">
-							</div>
+							<c:choose>
+							<c:when test="${dto.member_img eq '이미지'}">
+								<div align="center">
+									<img id="profileImg" src="${pageContext.request.contextPath }/resources/profileImage/profile.jpg"
+										style="border-radius: 50%; height: 100px; width: 100px; margin-top: 13px;">
+								</div>
+							</c:when>
+							<c:otherwise>
+								<div>
+									<img id="profileImg" src="${pageContext.request.contextPath }/resources/uploadImage/${dto.member_img}"
+										style="border-radius: 50%; height: 100px; width: 100px; margin-top: 13px;">
+								</div>
+							</c:otherwise>
+						</c:choose>
 						</td>
 						</tr>
 						<tr>

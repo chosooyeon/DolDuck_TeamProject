@@ -41,7 +41,7 @@ public class FreeBoardController {
 
 	private static final Logger logger = LoggerFactory.getLogger(FreeBoardController.class);
 
-	// ê²Œì‹œê¸€ ëª©ë¡
+	// °Ô½Ã±Û ¸ñ·Ï
 	@RequestMapping("free_list.do")
 	public String freeboard_list(Model model) {
 
@@ -51,84 +51,89 @@ public class FreeBoardController {
 	}
 
 	@RequestMapping("free_insertform.do")
-	public String insertform(Model model,Authentication auth) {
+	public String insertform(Model model, Authentication auth) {
 		MemberDto dto = (MemberDto) auth.getPrincipal();
 		String M_id = dto.getUsername();
-		model.addAttribute("member_id",M_id);
-		
+		model.addAttribute("member_id", M_id);
+
 		return "board/free_insert";
 	}
 
-	// ê²Œì‹œê¸€ ì…ë ¥
+	// °Ô½Ã±Û ÀÔ·Â
 	@RequestMapping("free_insert.do")
-	public String insert(@ModelAttribute FreeboardDto dto, MultipartHttpServletRequest mtfRequest, Authentication auth) {
+	public String insert(@ModelAttribute FreeboardDto dto, MultipartHttpServletRequest mtfRequest,
+			Authentication auth) {
 
 		MemberDto Mdto = (MemberDto) auth.getPrincipal();
 		String member_id = Mdto.getUsername();
 		dto.setFreeboard_id(member_id);
-		
+
 		List<MultipartFile> fileList = mtfRequest.getFiles("file");
-		   
-	      String path = mtfRequest.getSession().getServletContext().getRealPath("resources/uploadImage");
-	      File dir = new File(path);
-	      if (!dir.isDirectory()) {
-	         dir.mkdirs();
-	      }
 
-	      for (MultipartFile mf : fileList) {
-	         String originFileName = mf.getOriginalFilename(); // ì›ë³¸ íŒŒì¼ ëª…
-	         long fileSize = mf.getSize(); // íŒŒì¼ ì‚¬ì´ì¦ˆ
-	         String class_img_path = path + "/" + originFileName; // ê²½ë¡œ
-	         System.out.println("ê²½ë¡œ " + class_img_path);
-	         String feeboard_file = originFileName; // íŒŒì¼ ì´ë¦„
-	         dto.setFreeboard_file(feeboard_file);
-	         System.out.println(feeboard_file);
-	         System.out.println("originFileName : " + originFileName);
-	         System.out.println("fileSize : " + fileSize);
-	         int res = 0;
-	         try {
-	            mf.transferTo(new File(class_img_path)); // íŒŒì¼ ì§‘ì–´ë„£ëŠ”ë‹¤
+		String path = mtfRequest.getSession().getServletContext().getRealPath("resources/uploadImage");
+		File dir = new File(path);
+		if (!dir.isDirectory()) {
+			dir.mkdirs();
+		}
 
-	            res = biz.free_insert(dto);
-	            if (res > 0) {
-	                System.out.println("ì„±ê³µ");
-	                return "redirect:free_list.do";
-	             } 
-	        
-	         } catch (IllegalStateException e) {
+		for (MultipartFile mf : fileList) {
+			String originFileName = mf.getOriginalFilename(); // ¿øº» ÆÄÀÏ ¸í
+			long fileSize = mf.getSize(); // ÆÄÀÏ »çÀÌÁî
+			String class_img_path = path + "/" + originFileName; // °æ·Î
+			System.out.println("°æ·Î " + class_img_path);
+			String feeboard_file = originFileName; // ÆÄÀÏ ÀÌ¸§
+			dto.setFreeboard_file(feeboard_file);
+			System.out.println(feeboard_file);
+			System.out.println("originFileName : " + originFileName);
+			System.out.println("fileSize : " + fileSize);
+			int res = 0;
+			try {
+				if(mf.getSize() == 0) {
+					System.out.println("¾øÀ½");
+				}else {
+					mf.transferTo(new File(class_img_path)); // ÆÄÀÏ Áı¾î³Ö´Â´Ù					
+				}
 
-	            e.printStackTrace();
-	         } catch (IOException e) {
+				res = biz.free_insert(dto);
+				if (res > 0) {
+					System.out.println("¼º°ø");
+					return "redirect:free_list.do";
+				}
 
-	            e.printStackTrace();
-	         }
-	      }
-	  
-              System.out.println("ì‹¤íŒ¨");
-              return "redirect:free_insert.do";
-	      
+			} catch (IllegalStateException e) {
+
+				e.printStackTrace();
+			} catch (IOException e) {
+
+				e.printStackTrace();
+			}
+		}
+
+		System.out.println("½ÇÆĞ");
+		return "redirect:free_insert.do";
+
 	}
 
-	// ê²Œì‹œê¸€ ìì„¸íˆë³´ê¸° & ëŒ“ê¸€ ë¦¬ìŠ¤íŠ¸
+	// °Ô½Ã±Û ÀÚ¼¼È÷º¸±â & ´ñ±Û ¸®½ºÆ®
 	@RequestMapping("free_detail.do")
 	public String selectOne(Model model, int freeboard_num, FreeboardDto dto, Authentication auth) {
-		
+
 		MemberDto Mdto = (MemberDto) auth.getPrincipal();
 		String member_id = Mdto.getUsername();
 		dto.setFreeboard_id(member_id);
-		
-		System.out.println("ë‚˜ì¤‘ì— ì§€ìš°ê¸°");
-		System.out.println("ì„ íƒëœ ë©”ì†Œë“œ : selectOne");
-		System.out.println("ì„ íƒëœ ê²Œì‹œê¸€ ë²ˆí˜¸ : " + freeboard_num);
 
-		// ê²Œì‹œê¸€
+		System.out.println("³ªÁß¿¡ Áö¿ì±â");
+		System.out.println("¼±ÅÃµÈ ¸Ş¼Òµå : selectOne");
+		System.out.println("¼±ÅÃµÈ °Ô½Ã±Û ¹øÈ£ : " + freeboard_num);
+
+		// °Ô½Ã±Û
 		FreeboardDto Fdto = biz.free_detail(freeboard_num);
-		// ëŒ“ê¸€
+		// ´ñ±Û
 		List<FreeboardCommentDto> list = bizComm.freeboard_comment_list(freeboard_num);
 
-		// ê²Œì‹œê¸€
+		// °Ô½Ã±Û
 		model.addAttribute("one", Fdto);
-		// ëŒ“ê¸€
+		// ´ñ±Û
 		model.addAttribute("commList", list);
 
 		return "board/free_detail";
@@ -137,58 +142,107 @@ public class FreeBoardController {
 
 	@RequestMapping("free_update.do")
 	public String update(Model model, int freeboard_num) {
+		System.err.println("free_update.do : ¼öÁ¤ÇÏ±â ");
+		System.out.println(freeboard_num);	
 		model.addAttribute("one", biz.free_detail(freeboard_num));
-
+		System.err.println("Åë°ú!!!!");
 		return "board/free_update";
 	}
 
-	// ê²Œì‹œê¸€ ìˆ˜ì •
+	// °Ô½Ã±Û ¼öÁ¤
 	@RequestMapping("free_updateform.do")
-	public String updateform(@ModelAttribute FreeboardDto dto) {
-		int res = biz.free_update(dto);
-		if (res > 0) {
-			return "redirect:free_list.do";
+	public String updateform(@ModelAttribute FreeboardDto dto, MultipartHttpServletRequest mtfRequest,
+			Authentication auth) {
+		MemberDto Mdto = (MemberDto) auth.getPrincipal();
+		String member_id = Mdto.getUsername();
+		dto.setFreeboard_id(member_id);
+
+		System.err.println("free_updateform : ¼öÁ¤ÇÏ±â ");
+		List<MultipartFile> fileList = mtfRequest.getFiles("file");
+
+		String path = mtfRequest.getSession().getServletContext().getRealPath("resources/uploadImage");
+		File dir = new File(path);
+		if (!dir.isDirectory()) {
+			dir.mkdirs();
 		}
-		return "redirect:free_list.do";
+
+		for (MultipartFile mf : fileList) {
+			String originFileName = mf.getOriginalFilename(); // ¿øº» ÆÄÀÏ ¸í
+			long fileSize = mf.getSize(); // ÆÄÀÏ »çÀÌÁî
+			String class_img_path = path + "/" + originFileName; // °æ·Î
+
+			System.out.println("°æ·Î " + class_img_path);
+
+			String feeboard_file = originFileName; // ÆÄÀÏ ÀÌ¸§
+			dto.setFreeboard_file(feeboard_file);
+
+			System.out.println(feeboard_file);
+			System.out.println("originFileName : " + originFileName);
+			System.out.println("fileSize : " + fileSize);
+
+			int res = 0;
+			try {
+				
+				if(mf.getSize() == 0) {
+					System.out.println("¾øÀ½");
+				}else {
+					mf.transferTo(new File(class_img_path)); // ÆÄÀÏ Áı¾î³Ö´Â´Ù					
+				}
+				res = biz.free_update(dto);
+				if (res > 0) {
+					System.out.println("¼º°ø");
+					return "redirect:free_detail.do?freeboard_num=" + dto.getFreeboard_num();
+				}
+
+			} catch (IllegalStateException e) {
+
+				e.printStackTrace();
+			} catch (IOException e) {
+
+				e.printStackTrace();
+			}
+		}
+
+		return "redirect:free_update.do";
 
 	}
 
-	// ê²Œì‹œê¸€ ì‚­ì œ
+	// °Ô½Ã±Û »èÁ¦
 	@RequestMapping("free_delete.do")
-	public String delete(@RequestParam("id") String id) {
-		System.out.println(id);
-		int res = biz.free_delete(id);
+	public String delete(@RequestParam("num") int num) {
+		System.out.println(num);
+		int res = biz.free_delete(num);
 		if (res > 0) {
 			return "redirect:free_list.do";
 		}
 		return "redirect:free_list.do";
 	}
-	
-	// ê²Œì‹œê¸€ ì…ë ¥ + ë¡œê·¸ì¸ì²´í¬
-	   @RequestMapping("/free_insert_login.do")
-	   @ResponseBody
-	   public JSONObject insertLogin(Principal principal) {
-	      JSONObject loginChk = new JSONObject();
-	      if(principal == null) {
-	         loginChk.put("loginState", "null");
-	      }
-	      return loginChk;
-	   }
-	   
-	   // ê²Œì‹œê¸€ ì…ë ¥ + ë¡œê·¸ì¸ì²´í¬
-	   @RequestMapping("/free_detail_login.do")
-	   @ResponseBody
-	   public JSONObject detailLogin(Principal principal) {
-	      JSONObject loginChk = new JSONObject();
-	      if(principal == null) {
-	         loginChk.put("loginState", "null");
-	      }
-	      return loginChk;
-	   }
+
+	// °Ô½Ã±Û ÀÔ·Â + ·Î±×ÀÎÃ¼Å©
+	@RequestMapping("/free_insert_login.do")
+	@ResponseBody
+	public JSONObject insertLogin(Principal principal) {
+		JSONObject loginChk = new JSONObject();
+		if (principal == null) {
+			loginChk.put("loginState", "null");
+		}
+		return loginChk;
+	}
+
+	// °Ô½Ã±Û ÀÔ·Â + ·Î±×ÀÎÃ¼Å©
+	@RequestMapping("/free_detail_login.do")
+	@ResponseBody
+	public JSONObject detailLogin(Principal principal) {
+		JSONObject loginChk = new JSONObject();
+		if (principal == null) {
+			loginChk.put("loginState", "null");
+		}
+		return loginChk;
+	}
 
 	// ====================comment=========================
 
-	// =====ëŒ“ê¸€ ì…ë ¥
+	// =====´ñ±Û ÀÔ·Â
 	@RequestMapping("freeboard_comment_insert.do")
 	public String free_comment_insert(@ModelAttribute FreeboardCommentDto dto) {
 
@@ -199,34 +253,34 @@ public class FreeBoardController {
 		return "redirect:free_detail.do?freeboard_num=" + dto.getFreeboard_num();
 	}
 
-	// =====ëŒ“ê¸€ ìˆ˜ì •
+	// =====´ñ±Û ¼öÁ¤
 	@RequestMapping("freeboard_comment_update.do")
 	@ResponseBody
-	public Map<String,Object> free_comment_update(int comm_num,String comm_content) {
-		System.out.println("ê²Œì‹œíŒë²ˆí˜¸"+comm_num);
-		System.out.println("ëŒ“ê¸€ë‚´ìš©"+comm_content);
+	public Map<String, Object> free_comment_update(int comm_num, String comm_content) {
+		System.out.println("°Ô½ÃÆÇ¹øÈ£" + comm_num);
+		System.out.println("´ñ±Û³»¿ë" + comm_content);
 		Boolean updatechk = false;
-		Map<String,Object> map = new HashMap<String, Object>();
-		
+		Map<String, Object> map = new HashMap<String, Object>();
+
 		FreeboardCommentDto dto = new FreeboardCommentDto();
 		dto.setFreeboard_comment_content(comm_content);
 		dto.setFreeboard_comment_num(comm_num);
-		
+
 		int res = bizComm.freeboard_comment_update(dto);
 		System.out.println(res);
-		
+
 		if (res > 0) {
-			updatechk=true;
+			updatechk = true;
 			map.put("content", comm_content);
 			map.put("updatechk", updatechk);
-		}else {
+		} else {
 			map.put("updatechk", updatechk);
 		}
 		System.out.println(updatechk);
 		return map;
 	}
 
-	// =====ëŒ“ê¸€ ì‚­ì œ
+	// =====´ñ±Û »èÁ¦
 	@RequestMapping("freeboard_comment_delete.do")
 	public String free_comment_delete(@RequestParam("Comment_num") int Comment_num, int freeboard_num) {
 
@@ -236,16 +290,28 @@ public class FreeBoardController {
 		}
 		return "redirect:free_detail.do?freeboard_num=" + freeboard_num;
 	}
-	
-	// =====ëŒ€ëŒ“ê¸€ ì…ë ¥
+
+	// =====´ë´ñ±Û ÀÔ·Â
 	@RequestMapping("freeboard_co_comment_insert")
-	public String freeboard_co_comment_insert(@ModelAttribute FreeboardCommentDto dto){
+	public String freeboard_co_comment_insert(@ModelAttribute FreeboardCommentDto dto) {
 		int res = bizComm.freeboard_co_comment_insert(dto);
-		
-		if(res > 0) {
+
+		if (res > 0) {
 			return "redirect:free_detail.do?freeboard_num=" + dto.getFreeboard_num();
 		}
-	return "redirect:free_detail.do?freeboard_num=" + dto.getFreeboard_num();
+		return "redirect:free_detail.do?freeboard_num=" + dto.getFreeboard_num();
+	}
+
+	// =====Search
+	@RequestMapping("find.do")
+	public String find_list(String Searchtext, Model model) {
+
+		System.out.println("text= " + Searchtext);
+		model.addAttribute("list", biz.find_list(Searchtext));
+		System.out.println("biz.find_list(Searchtext)= " + biz.find_list(Searchtext));
+
+		return "board/find_list";
 	}
 	
+
 }

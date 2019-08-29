@@ -139,9 +139,19 @@ public class LiveController {
 	
 	//온에어- 입장(Caster)
 	@RequestMapping("start-onair.do")
-	public String startLive(@RequestParam String live_title) {
-		System.out.println(live_title + "으로 입장!");
-		return "live/live-onair-caster";
+	public String startLive(String live_caster, String live_title, String startingTime) {
+		System.out.println("["+live_caster+"]님이 "+startingTime+"에 "+ live_title + "으로 방송시작!");
+		BroadcastDto dto = new BroadcastDto();
+		dto.setBroadcast_caster(live_caster);
+		dto.setBroadcast_title(live_title);
+		dto.setBroadcast_date(startingTime);
+		int res = b_biz.insert(dto);
+		System.err.println("라이브 시작! 일정추가하기 : " + res);
+		if(res>0) {
+			return "live/live-onair-caster";
+		}else {
+			return "redirect:live-onair.do";
+		}
 	}
 	
 	//온에어 - 입장(User)
@@ -156,6 +166,11 @@ public class LiveController {
 		return "live/live-channel";
 	}
 	
+	//
+	@RequestMapping("certification.do")
+	public String certification() {
+		return "live/certification";
+	}
 	
 	
 

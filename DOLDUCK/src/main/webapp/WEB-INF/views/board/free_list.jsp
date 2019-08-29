@@ -1,9 +1,12 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
 	pageEncoding="UTF-8"%>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
+
 <!DOCTYPE html>
 <html>
 <head>
+<script type="text/javascript" src="https://code.jquery.com/jquery-3.4.1.js"></script>
+<script type="text/javascript" src="resources/js/freeboard.js"></script>
 <meta charset="UTF-8">
 <%-- <meta name="_csrf" content="${_csrf.token}"/> --%>
 <%-- <meta name="_csrf_header" content="${_csrf.headerName}"/> --%>
@@ -14,13 +17,14 @@
 <%@ include file="../header.jsp" %>
 
 	<div class="container freeboard">
-		<div class="center">
 	<h1 class="text-center">처돌이</h1>
 	<button type="button" id="btn-board" onclick="freeInsertLogin()">글작성</button>
+	
 	<c:choose>
 		<c:when test="${empty list }">
-			<h3>게시글이 없습니다....</h3>		
-			<button type="button" id="btn-board" onclick="freeInsertLogin()">글작성</button>
+		<div class="not_board">
+			<h3>---- 등록 된 게시글이 없습니다 ----</h3>
+		</div>
 			</c:when>
 		<c:otherwise>
 			<table class="table">
@@ -29,17 +33,20 @@
 				<col width="150">
 				<col width="150">
 				<col width="50">
-				<tr align="center">
+			<tr align="center">
 					<th>글번호</th>
 					<th>제목</th>
 					<th>글쓴이</th>
 					<th>작성일</th>
 					<th>조회수</th>
-				</tr>
+			</tr>
 				<c:forEach items="${list }" var="dto">
 					<tr align="center">
-						<td>${dto.freeboard_num }</td>
-						<td align="left"><a href="javascript:void(0);" onclick="freeDetailLogin(${dto.freeboard_num})">${dto.freeboard_title }</a></td>
+
+						<td>${dto.freeboard_num }</td>						
+						<td align="left"><a href="free_detail.do?freeboard_num=${dto.freeboard_num}">${dto.freeboard_title }</a></td>
+
+
 						<td>${dto.freeboard_id }</td>
 						<td>${dto.freeboard_regdate }</td>
 						<td>0</td>
@@ -49,7 +56,7 @@
 		</c:otherwise>
 	</c:choose>
 
-	</div>
+
 </div>
 <script src="resources/js/freeboard_login.js" type="text/javascript"></script>
 </body>
