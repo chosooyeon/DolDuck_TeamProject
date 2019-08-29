@@ -779,8 +779,11 @@ video{
 	max-height: 489px;
 	margin-top: 71px;
 }
+
+
 /* 차트 */
-.item{
+/**/
+.home-vote-star-idol{
 	float: left;
 	width: 180px;
 	height: 341px;
@@ -790,12 +793,157 @@ video{
     margin: 25px 0 0 41px;
 
 }
-.item:first-of-type .rankNum{ 
+.home-vote-star-idol:first-of-type .rankNum{ 
 	background: #ff007f; 
 	top: 0; 
 	left: 12px; 
 }
-.item:first-of-type .rankNum:after { 
+.home-vote-star-idol:first-of-type .rankNum:after { 
+	content: ""; 
+	display: block; 
+	width: 0; 
+	height: 0; 
+	font-size: 0; 
+	line-height: 0; 
+	background: none; 
+	border-top: 12px solid #ff007f; 
+	border-right: 15px solid transparent; 
+	border-left: 15px solid  transparent; 
+	position: absolute; 
+}
+/**/
+.home-vote-girl-group{
+	float: left;
+	width: 180px;
+	height: 341px;
+    display: block;
+    overflow: hidden;
+    position: relative;
+    margin: 25px 0 0 41px;
+
+}
+.home-vote-girl-group:first-of-type .rankNum{ 
+	background: #ff007f; 
+	top: 0; 
+	left: 12px; 
+}
+.home-vote-girl-group:first-of-type .rankNum:after { 
+	content: ""; 
+	display: block; 
+	width: 0; 
+	height: 0; 
+	font-size: 0; 
+	line-height: 0; 
+	background: none; 
+	border-top: 12px solid #ff007f; 
+	border-right: 15px solid transparent; 
+	border-left: 15px solid  transparent; 
+	position: absolute; 
+}
+/**/
+.home-vote-girl-idol{
+	float: left;
+	width: 180px;
+	height: 341px;
+    display: block;
+    overflow: hidden;
+    position: relative;
+    margin: 25px 0 0 41px;
+
+}
+.home-vote-girl-idol:first-of-type .rankNum{ 
+	background: #ff007f; 
+	top: 0; 
+	left: 12px; 
+}
+.home-vote-girl-idol:first-of-type .rankNum:after { 
+	content: ""; 
+	display: block; 
+	width: 0; 
+	height: 0; 
+	font-size: 0; 
+	line-height: 0; 
+	background: none; 
+	border-top: 12px solid #ff007f; 
+	border-right: 15px solid transparent; 
+	border-left: 15px solid  transparent; 
+	position: absolute; 
+}
+/**/
+.home-vote-boy-idol{
+	float: left;
+	width: 180px;
+	height: 341px;
+    display: block;
+    overflow: hidden;
+    position: relative;
+    margin: 25px 0 0 41px;
+
+}
+.home-vote-boy-idol:first-of-type .rankNum{ 
+	background: #ff007f; 
+	top: 0; 
+	left: 12px; 
+}
+.home-vote-boy-idol:first-of-type .rankNum:after { 
+	content: ""; 
+	display: block; 
+	width: 0; 
+	height: 0; 
+	font-size: 0; 
+	line-height: 0; 
+	background: none; 
+	border-top: 12px solid #ff007f; 
+	border-right: 15px solid transparent; 
+	border-left: 15px solid  transparent; 
+	position: absolute; 
+}
+/**/
+.home-vote-boy-group{
+	float: left;
+	width: 180px;
+	height: 341px;
+    display: block;
+    overflow: hidden;
+    position: relative;
+    margin: 25px 0 0 41px;
+
+}
+.home-vote-boy-group:first-of-type .rankNum{ 
+	background: #ff007f; 
+	top: 0; 
+	left: 12px; 
+}
+.home-vote-boy-group:first-of-type .rankNum:after { 
+	content: ""; 
+	display: block; 
+	width: 0; 
+	height: 0; 
+	font-size: 0; 
+	line-height: 0; 
+	background: none; 
+	border-top: 12px solid #ff007f; 
+	border-right: 15px solid transparent; 
+	border-left: 15px solid  transparent; 
+	position: absolute; 
+}
+/**/
+.home-vote-new-idol{
+	float: left;
+	width: 180px;
+	height: 341px;
+    display: block;
+    overflow: hidden;
+    position: relative;
+    margin: 25px 0 0 41px;
+
+}
+.home-vote-new-idol:first-of-type .rankNum{ 
+	background: #ff007f; 
+	top: 0; 
+	left: 12px; 
+}
+.home-vote-new-idol:first-of-type .rankNum:after { 
 	content: ""; 
 	display: block; 
 	width: 0; 
@@ -809,6 +957,7 @@ video{
 	position: absolute; 
 }
 
+/**/
 .thum
 {
 	float: left;

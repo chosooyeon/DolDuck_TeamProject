@@ -13,7 +13,7 @@ function voteNumberChk(){
 				alert('저장성공');
 				votePopup('vote-result.do');
 			}
-			window.close();
+//			window.close();
 		},
 		error : function(){
 			alert('ajax 통신에러 (votenumber)')

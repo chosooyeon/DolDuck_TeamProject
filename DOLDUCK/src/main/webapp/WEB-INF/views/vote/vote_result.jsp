@@ -12,8 +12,9 @@
 		<td><h1>${starName} 에게 ${voteNumber} 표 투표하였습니다.</h1></td>
 	</tr>
 	<tr>
-		<td><input type="button" onclick="location.href=vote.do; javascript:window.close();">닫기</td>
+		<td><input type="button" onclick="javascript:closepopup(); ">닫기</td>
 	</tr>
 </table>
 </body>
+<script src="resources/js/utils/vote_result.js" type="text/javascript"></script>
 </html>
