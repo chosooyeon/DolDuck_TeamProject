@@ -65,6 +65,7 @@
                	<a href="vote.do" class="home-ranking home-vote-boy-idol"></a>
                 <a href="vote.do" class="home-ranking home-vote-new-idol"></a>
   			</div>
+
 				<div class="vote_button"><a href="vote.do">Vote Now</a></div>
 			</div>
 		</div>
@@ -90,6 +91,7 @@
 					<div id="getVideo"></div>			
 			</div>
 		</section>
+
 <!-- 		<div class="div-modal-chat">
 			<div class="modal-top">
 				<div id="modal-title">고객센터</div>
