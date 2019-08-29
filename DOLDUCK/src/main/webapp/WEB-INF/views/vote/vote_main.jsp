@@ -17,8 +17,9 @@
     <%@include file="../header.jsp" %>
 
    <div class="container vote_board">
+   	  <div class="vote-banner" style="background-image: url('resources/images/vote-top-banner.png'); background-repeat: no-repeat; background-size:contain; widht: 100%; min-height:210px; height: auto;"></div>
       <div class="center">   
-   <div class="div-star">
+   	<div class="div-star">
             <ul class="vote-button">
             	<li class="star-idol">별별 스타</li>
                <li class="girl-group">여자 그룹</li>

@@ -166,6 +166,11 @@ public class LiveController {
 		return "live/live-channel";
 	}
 	
+	//
+	@RequestMapping("certification.do")
+	public String certification() {
+		return "live/certification";
+	}
 	
 	
 
