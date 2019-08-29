@@ -24,21 +24,43 @@ function roleUpdate(role) {
 	return role;
 }
 
-var grade = $("#item option:selected").val();
 
-$.ajax({
-   type : 'post' ,
-   url : 'update-grade.do',
-   data : '보낼 데이터' (예시 -> { name : '한지수' , age : 27} ),
-   dataType : '받을 데이터의 타입'  (예시 ->'text'),
-   success : function(data){
-      alert(data)
-   //성공했을때 동작
-   },error: function(){
-      alert('네트워크 오류')
-   // 실패했을때 동작
-   }
+<<<<<<< HEAD
+$(document).ready(function(){
+	$("#upgrade").click(function(){
+		var grade = $("#item option:selected").val();
+		var id = ?;
+		alert(grade);
+		$.ajax({
+			type : 'post' ,
+			url : 'role_update.do',
+			data : {"grade":grade,"id":id},
+			dataType : 'text',
+			success : function(data){
+				alert(data)
+				//성공했을때 동작
+			},error: function(){
+				alert('네트워크 오류')
+				// 실패했을때 동작
+			}
+	});
+});
 })
+=======
+//$.ajax({
+//   type : 'post' ,
+//   url : 'update-grade.do',
+//   data : '보낼 데이터' (예시 -> { name : '한지수' , age : 27} ),
+//   dataType : '받을 데이터의 타입'  (예시 ->'text'),
+//   success : function(data){
+//      alert(data)
+//   //성공했을때 동작
+//   },error: function(){
+//      alert('네트워크 오류')
+//   // 실패했을때 동작
+//   }
+//})
+>>>>>>> 0cf379f61ed96202a07402326f1074c0387e9210
 
 function textLengthOverCut(txt, len, lastTxt) {
     if (len == "" || len == null) { // 기본값
@@ -52,4 +74,6 @@ function textLengthOverCut(txt, len, lastTxt) {
     }
     return txt;
 }
+<<<<<<< HEAD
+
 */

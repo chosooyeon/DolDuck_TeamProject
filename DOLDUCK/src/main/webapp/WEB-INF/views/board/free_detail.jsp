@@ -55,6 +55,7 @@
 		<td id="comment_content${comm.freeboard_comment_num }" style="width: 63%;">
 				 ${comm.freeboard_comment_content } 
 		</td>
+
 		<td style="width: 18%;">	
 
 			댓글작성시간 : ${comm.freeboard_comment_regdate }

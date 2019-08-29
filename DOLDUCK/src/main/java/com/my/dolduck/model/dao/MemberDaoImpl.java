@@ -223,6 +223,11 @@ public class MemberDaoImpl implements MemberDao {
 
 	@Override
 	public SelectDto selectId(String id) {
-		return sqlSession.selectOne(namespace+"selectId", id);
+		
+		SelectDto dto = sqlSession.selectOne(namespace+"selectId", id);
+		System.out.println("11dto:"+dto.getMember_vote());
+		
+		
+		return dto;
 	}
 }
