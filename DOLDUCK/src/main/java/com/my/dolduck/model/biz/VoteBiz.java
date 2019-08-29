@@ -8,5 +8,5 @@ public interface VoteBiz {
 	public int updateVote(VoteDto voteDto);
 	public int selectMemberVote(String member_id);
 	public int updateMemberVote(String member_id, int voteNumber);
-	public int selectVoteNumber(String starName);
+	public int selectVoteNumber(String starName, String item);
 }

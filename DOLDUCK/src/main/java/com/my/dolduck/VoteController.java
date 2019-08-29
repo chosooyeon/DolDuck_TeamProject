@@ -52,7 +52,7 @@ public class VoteController {
 
          star.put("name", starOne.getName());
          star.put("img", starOne.getImg());
-         star.put("voteNumber", biz.selectVoteNumber(starOne.getName()));
+         star.put("voteNumber", biz.selectVoteNumber(starOne.getName(), item));
          
          starArr.add(star);
       }
@@ -73,6 +73,8 @@ public class VoteController {
       dto.setStarName(starname);
       dto.setItem(item);
 
+      System.out.println("starname:"+starname);
+      System.out.println("item:"+item);
       JSONObject loginChk = new JSONObject();
       if (principal == null) {
          loginChk.put("loginState", "null");
@@ -106,9 +108,10 @@ public class VoteController {
       return voteNumberChk;
    }
 
-   // 투표 성공시 결과창 출력
+   // 
    @RequestMapping("vote-result.do")
-   public String voteResult(Model model) {
+   @ResponseBody
+   public void voteResult(Model model) {
       System.out.println(dto.getStarName() + dto.getItem() + dto.getVoteNumber());
       model.addAttribute("starName", dto.getStarName());
       model.addAttribute("voteNumber", dto.getVoteNumber());
@@ -121,6 +124,5 @@ public class VoteController {
          biz.updateVote(new VoteDto(dto.getItem(), dto.getStarName(), dto.getVoteNumber()));
          System.out.println("update");
       }
-      return "vote/vote_result";
    }
 }

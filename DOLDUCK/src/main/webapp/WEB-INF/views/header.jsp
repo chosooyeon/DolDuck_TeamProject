@@ -1,4 +1,4 @@
-<%@ page language="java" contentType="text/html; charset=UTF-8"
+﻿<%@ page language="java" contentType="text/html; charset=UTF-8"
 	pageEncoding="UTF-8"%>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
 <%@ taglib uri="http://www.springframework.org/security/tags"
@@ -102,9 +102,8 @@
 							<li class="dropdown-item:hover"><a href="market_list.do">Goodies</a></li>
 						</ul></li>
 					<form action="find.do">
-						<li class="form-group has-search"><span
-							class="fa fa-search form-control-feedback"></span> <input
-							type="text" class="form-control" placeholder="Search"
+						<li class="form-group has-search"><span class="fa fa-search form-control-feedback"></span> 
+							<input type="text" class="form-control" placeholder="Search"
 							name="Searchtext"></li>
 					</form>
 

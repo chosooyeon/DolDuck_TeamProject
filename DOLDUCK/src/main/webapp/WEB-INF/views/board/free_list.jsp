@@ -17,13 +17,14 @@
 <%@ include file="../header.jsp" %>
 
 	<div class="container freeboard">
-		<div class="center">
 	<h1 class="text-center">처돌이</h1>
 	<button type="button" id="btn-board" onclick="freeInsertLogin()">글작성</button>
+	
 	<c:choose>
 		<c:when test="${empty list }">
-			<h3>게시글이 없습니다....</h3>		
-			<button type="button" id="btn-board" onclick="freeInsertLogin()">글작성</button>
+		<div class="not_board">
+			<h3>---- 등록 된 게시글이 없습니다 ----</h3>
+		</div>
 			</c:when>
 		<c:otherwise>
 			<table class="table">
@@ -55,7 +56,7 @@
 		</c:otherwise>
 	</c:choose>
 
-	</div>
+
 </div>
 <script src="resources/js/freeboard_login.js" type="text/javascript"></script>
 </body>
