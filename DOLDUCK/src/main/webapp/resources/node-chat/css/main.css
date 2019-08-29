@@ -6,7 +6,8 @@
 
 body {
 	font: 13px Helvetica, Arial;
-	background: sandybrown;
+	/* background: sandybrown; */
+	background-color: #c0aded;
 }
 
 form input {

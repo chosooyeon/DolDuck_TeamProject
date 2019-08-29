@@ -55,7 +55,7 @@ public class LogFilter implements Filter {
 		
 		//FilterChain 중간에서 request랑 request를 연결해준다.
 		//client에서 요청이 들어와서 중간에 짤린 요청을 연결해주는 것
-		chain.doFilter(req, response);
+		chain.doFilter(request, response);
 	}
 
 	@Override

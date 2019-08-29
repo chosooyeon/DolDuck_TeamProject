@@ -8,6 +8,7 @@ import java.io.UnsupportedEncodingException;
 import java.net.HttpURLConnection;
 import java.net.URL;
 import java.nio.file.AccessDeniedException;
+import java.security.Principal;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
@@ -77,6 +78,18 @@ public class LoginController {
 	private MemberBizImpl biz;
 
 	private String randompassword;
+	
+	//로그인 체크
+	@RequestMapping("login-status.do")
+	@ResponseBody
+	public String loginStatus(Principal principal) {
+		
+		if(principal == null){
+			return "false";
+		}else {
+			return "true";
+		}
+	}
 
 	// 로그인 페이지로 이동
 	@RequestMapping(value = "login.do")
@@ -138,10 +151,7 @@ public class LoginController {
 
 	@ResponseBody
 	public Map<String, Boolean> roleUpdate(String role) {
-		Boolean rolechk = false;
 		Map<String, Boolean> map = new HashMap<String, Boolean>();
-		int res = 0;
-
 		return map;
 
 	}
@@ -190,18 +200,15 @@ public class LoginController {
 			int res = 0;
 			try {
 				mf.transferTo(new File(member_img_path)); // 파일 집어넣는다
-
 			} catch (IllegalStateException e) {
-
 				e.printStackTrace();
 			} catch (IOException e) {
-
 				e.printStackTrace();
 			}
 			res = biz.updateMember(map);
 			if (res > 0) {
 				System.out.println("2");
-				return "mypage.do";
+				return "redirect:mypage.do";
 			} else {
 				System.out.println("3");
 				return "modified.do";

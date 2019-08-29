@@ -35,12 +35,14 @@
 			<h5>생방송! 관심 아티스트와 채널을 팔로우하고, 라이브 방송을 즐겨 보세요!</h5>
          </div>
          
+        
         <!-- Add Events Button for ADMIN -->
-        <sec:authorize access="hasAnyRole('ROLE_USER', 'ROLE_ARTIST')">
-	        <div id="area-addEvent">
+	    <div id="area-addEvent">
+        	<sec:authorize access="hasAnyRole('ROLE_USER', 'ROLE_ARTIST')">
 	        	<button type="button" class="btn btn-danger" data-toggle="modal" data-target="#liveInfoModal">방 송 시 작</button>
-	        </div> 
-        </sec:authorize>
+        	</sec:authorize>
+        	<button type="button" class="btn btn-secondary" id="channel-reload">새 로 고 침</button>
+	    </div> 
     </div>
     
    	<!-- Onair Channel list - waiting room -->
@@ -51,6 +53,7 @@
 	</div>
 
 	<!-- The Modal -->
+	<sec:authorize access="hasAnyRole('ROLE_USER', 'ROLE_ARTIST')">
 	<div class="modal-area container">
 	  <div class="modal fade" id="liveInfoModal">
 	    <div class="modal-dialog modal-sm modal-dialog-centered">
@@ -66,10 +69,18 @@
 	        <div class="modal-body">
 	          <form action="start-onair.do" id="liveinfo-form">
 	          	<table style="width: 100%;">
+	          		<tr><td>방송진행자</td></tr>
+	          		<tr><td><input type="text" class="form-control" name="live_caster"  value="<sec:authentication property="principal.member_id"/>" readonly="readonly"></td></tr>
+	          		<tr><td></td></tr>
 	          		<tr><td>방 송 제 목</td></tr>
 					<tr>
 						<td>
 							<input type="text" class="form-control" name="live_title">
+						</td>
+					</tr>
+					<tr>
+						<td>
+							<input type="hidden" name="startingTime" value=""> 
 						</td>
 					</tr>       	
 	          	</table>
@@ -80,24 +91,28 @@
 	        <div class="modal-footer">
 		      <button type="button" class="btn btn-danger" id="btn-startlive">시 작</button>
 	          <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+	          <script src="resources/js/live/live-start.js"></script>
 	        </div>
-	        
 	      </div>
 	    </div>
 	  </div>
 	</div>
-	
+	</sec:authorize>
 
-    
     
     <!-- Footer -->
     <%@include file="/WEB-INF/views/footer.jsp" %>
-    
     <script src="https://code.jquery.com/jquery-3.4.1.min.js"></script>
     <script src="resources/js/utils/live.js"></script>
-    <script src="resources/js/ioConnectException.js"></script>
-    <script src="https://192.168.10.107:5571/socket.io/socket.io.js"></script>
-    <script src=""></script>
+    <script src="resources/js/live/ioConnectException.js"></script>
+    <!-- 맥북  -->
+    <!-- <script src="https://192.168.10.107:5571/socket.io/socket.io.js"></script> -->
+    <!-- 윈도우  -->
+    <script src="https://192.168.10.169:5571/socket.io/socket.io.js"></script>
     <script src="resources/js/broadcast/js/main.js"></script>
 </body>
 </html>
+
+
+
+

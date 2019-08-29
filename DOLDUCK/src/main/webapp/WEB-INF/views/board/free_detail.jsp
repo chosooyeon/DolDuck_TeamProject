@@ -1,4 +1,4 @@
-<%@ page language="java" contentType="text/html; charset=UTF-8" pageEncoding="UTF-8"%>
+﻿<%@ page language="java" contentType="text/html; charset=UTF-8" pageEncoding="UTF-8"%>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
 <%@ taglib prefix="sec" uri="http://www.springframework.org/security/tags"%>
 <!DOCTYPE html>
@@ -42,31 +42,34 @@
 			<td colspan="4" align="right">
 			<input type="button" onclick="location.href='free_list.do'" value="목록">
 			<input type="button" value="수정" onclick="location.href='free_update.do?freeboard_num=${one.freeboard_num }'">
-			<input type="button" value="삭제" onclick="location.href='free_delete.do?id=${one.freeboard_id }'">
+			<input type="button" value="삭제" onclick="location.href='free_delete.do?num=${one.freeboard_num }'">
 		</tr>
 	</table>
 	<br>
 	<table class="table_comment">
 		<c:forEach items="${commList }" var="comm">
 	<tr>
-				<td>	
-			댓글작성자 : ${comm.freeboard_id }
+		<td>	
+			ID : ${comm.freeboard_id }
 		</td>
 		<td id="comment_content${comm.freeboard_comment_num }">
-			댓글내용 : ${comm.freeboard_comment_content } 
+				 ${comm.freeboard_comment_content } 
 		</td>
-<<<<<<< HEAD
+
 
 		<td>
 			댓글작성자 : ${comm.freeboard_id }
 		</td>
 		<td>
 		<td>	
-=======
+
 		<td>	
 
->>>>>>> 44d3330ca2a6572acf7eaf1edd1e59600381d891
+
+
 			댓글작성시간 : ${comm.freeboard_comment_regdate }
+
+			작성시간 : ${comm.freeboard_comment_regdate }
 		</td>
 		
 		<td id="edit_btn">
@@ -96,17 +99,10 @@
 			<td id="comment_textarea">
 					<textarea id="comment_textarea_css" rows="2"cols="50" name="freeboard_comment_content"></textarea>	
 			</td>
-<<<<<<< HEAD
 			<td id="comment_submit">
-				
-				<input type="submit" value="작성">
 
 				<button class="comment_btn" type="submit">작성</button>
 
-=======
-			<td id="comment_submit">				
-				<button class="comment_btn" type="submit">작성</button>
->>>>>>> 44d3330ca2a6572acf7eaf1edd1e59600381d891
 			</td>
 			</tr>
 	</table>

@@ -25,7 +25,7 @@ public class VoteDaoImpl implements VoteDao{
       try {
          res = sqlSession.insert(namespace + "insertVote", votedto);
       } catch (Exception e) {
-         System.out.println("error2");
+         System.out.println("insertVote error");
          e.printStackTrace();
       }
 
@@ -35,15 +35,10 @@ public class VoteDaoImpl implements VoteDao{
    @Override
    public String selectOneVote(String item, String starName) {
       String name = null;
-      System.out.println("itemm:"+item);
       Map<String, String> map = new HashMap<String, String>();
       map.put("item", item);
       map.put("starName", starName);
       System.out.println("mapp:"+map);
-//      dto.setItem(item);
-//      dto.setStarName(starName);
-      //VoteDto voteDto = new VoteDto(item, starName);
-//      System.out.println("voteDto:"+voteDto);
 
       try {
          name = sqlSession.selectOne(namespace + "selectOneVote", map);
@@ -51,7 +46,6 @@ public class VoteDaoImpl implements VoteDao{
          System.out.println("selectOneVote error");
          e.printStackTrace();
       }
-      System.out.println("voteDto2:"+name);
       return name;
    }
 
@@ -61,7 +55,7 @@ public class VoteDaoImpl implements VoteDao{
       try {
          res = sqlSession.update(namespace + "updateVote", dto);
       } catch (Exception e) {
-         System.out.println("error");
+         System.out.println("updateVote error");
          e.printStackTrace();
       }
 
@@ -75,7 +69,7 @@ public class VoteDaoImpl implements VoteDao{
       try {
          res = sqlSession.selectOne(namespace + "selectMemberVote", member_id);
       } catch (Exception e) {
-         System.out.println("error");
+         System.out.println("selectMemberVote error");
          e.printStackTrace();
       }
       return res;
@@ -94,7 +88,7 @@ public class VoteDaoImpl implements VoteDao{
          res = sqlSession.update(namespace + "updateMemberVote", memberVoteDto);
          System.out.println("updateMemberVote:" + memberVoteDto);
       } catch (Exception e) {
-         System.out.println("error");
+         System.out.println("updateMemberVote error");
          e.printStackTrace();
       }
       return res;

@@ -3,6 +3,8 @@ $(function(){
 	
 	var kindOf, amount, price
 	
+	var login_status
+	
 	$(document).on('click', '.btn-buy-item', function(){
 		kindOf = $(this).children('input[name=kindof]').val()
 		amount = $(this).children('input[name=item-amount]').val()
@@ -20,8 +22,10 @@ $(function(){
 		$('.modal').modal('show')
 		
 	}).on('click', '.btn-purchase', function(){
+
+		login_status = checkLoginStatus()
 		
-		
+		if(login_status == 'true'){
 			//Purchase Process
 			if(kindOf == 'heart'){
 				var IMP = window.IMP; 
@@ -34,25 +38,47 @@ $(function(){
 					if ( response.success ) { 				// Payment Successed
 						console.log(response);
 						ajaxPurchase('buy-heart.do', amount, price)
-						$('.modal').modal('hide')
+						$('.modal').hide()
+						location.href = 'heartShop.do'
 					} else {								// Payment Failed
 						alert('결제실패 : ' + response.error_msg);
 					}
 				})
 			}else if(kindOf == 'vote'){
 				ajaxPurchase('buy-vote.do', amount, price)
+				$('.modal').hide()
+				location.href = 'heartShop.do'
 			}
 		
+		}else if(login_status == 'false'){
+			alert('로그인이 필요한 서비스입니다!')
+			location.href = 'login.do'
+		}
 	})
 	
 })
 
+function checkLoginStatus(){
+	var result 
+	
+	$.ajax({
+		type : 'post',
+		url : 'login-status.do',
+		async : false,
+		success : function(res){
+			result = res
+			console.log('로그인 상태 확인 결과!!', res)
+		},
+		error: function(err){
+			 console.log('ajax 통신에러')
+		}
+	})
+	
+	return result
+}
+
 //Insert and Update at DataBase of User
 function ajaxPurchase(comm, amount, price){
-	var token = $("meta[name='_csrf']").attr("content");
-	var header = $("meta[name='_csrf_header']").attr("content");
-	console.log(token, ' // ' , header); 
-	
 	$.ajax({
 		type : 'post',
 		url : comm,
@@ -60,9 +86,6 @@ function ajaxPurchase(comm, amount, price){
 			'price' : parseInt(price),
 			'amount' : parseInt(amount)
 		},
-		beforeSend: function( xhr ) {
-	         xhr.setRequestHeader(header, token);
-	    },
 		success : function(msg){
 			console.log(msg)
 			if(msg == 'succeed'){

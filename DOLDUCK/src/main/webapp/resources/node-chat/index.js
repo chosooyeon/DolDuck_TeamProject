@@ -17,6 +17,10 @@ app.get('/', (req, res) => {
     res.sendFile(__dirname + '/chatroom.html');
 });
 
+app.get('/twits', (req, res) => {
+    res.sendFile(__dirname + "/twits.html");
+})
+
 const server = https.createServer(options, app)
 
 const io = socketIO(server)
