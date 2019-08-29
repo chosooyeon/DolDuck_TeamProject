@@ -23,7 +23,8 @@ function roleUpdate(role) {
 	}
 	return role;
 }
-/*
+
+var grade = $("#item option:selected").val();
 
 $.ajax({
    type : 'post' ,
@@ -38,8 +39,6 @@ $.ajax({
    // 실패했을때 동작
    }
 })
-
-*/
 
 function textLengthOverCut(txt, len, lastTxt) {
     if (len == "" || len == null) { // 기본값

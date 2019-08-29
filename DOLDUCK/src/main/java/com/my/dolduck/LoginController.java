@@ -148,7 +148,6 @@ public class LoginController {
 
 	/* @RequestMapping(value = "role_update.do", method = {RequestMethod.POST}) */
 	@PostMapping("role_update.do")
-
 	@ResponseBody
 	public Map<String, Boolean> roleUpdate(String role) {
 		Map<String, Boolean> map = new HashMap<String, Boolean>();
