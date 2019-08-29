@@ -9,6 +9,7 @@
 	 <!-- Header -->
 	 <%@include file="../header.jsp" %>
 	 
+	 <br><br><br><br><br><br><br>
 	 <button type="button" class="btn btn-danger" id="gobackBtn">전 페이지로 이동하기</button>
 	 <script type="text/javascript">
 	 	var backBtn = document.getElementById('gobackBtn')
