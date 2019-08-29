@@ -21,7 +21,7 @@ $(function(){
                     <td id=reply_reply_btn>
                          <input type="button" id="co-comment-btn" value="작성" onclick="co_comment_run(${comm_num});">
                     </td>
-                    <td>
+                    <td id=reply_reply_cancle_btn>
                          <input type="button" id="co-comment-cancle-btn" onclick="history.go();" value="취소">
                     </td>
                    </tr>`
