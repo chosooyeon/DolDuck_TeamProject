@@ -52,7 +52,7 @@ public class VoteController {
 
          star.put("name", starOne.getName());
          star.put("img", starOne.getImg());
-         star.put("voteNumber", biz.selectVoteNumber(starOne.getName()));
+         star.put("voteNumber", biz.selectVoteNumber(starOne.getName(), item));
          
          starArr.add(star);
       }
@@ -73,6 +73,8 @@ public class VoteController {
       dto.setStarName(starname);
       dto.setItem(item);
 
+      System.out.println("starname:"+starname);
+      System.out.println("item:"+item);
       JSONObject loginChk = new JSONObject();
       if (principal == null) {
          loginChk.put("loginState", "null");
@@ -106,7 +108,7 @@ public class VoteController {
       return voteNumberChk;
    }
 
-   // 투표 성공시 결과창 출력
+   // 
    @RequestMapping("vote-result.do")
    @ResponseBody
    public void voteResult(Model model) {
