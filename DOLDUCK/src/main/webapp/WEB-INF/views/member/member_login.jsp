@@ -51,11 +51,7 @@ img#kakao-login-btn {
 						</tr>
 
 					</table>
-					<!-- <div class="fb-login-button" data-width="" data-size="large"
-						data-button-type="login_with" data-auto-logout-link="false"
-						data-use-continue-as="false" scope="public_profile,email"
-						onlogin="checkLoginState();" style="margin-bottom: 0.4em;"></div>
-					<script src="resources/js/sns/facebooklogin.js"></script> -->
+
 					<p></p>
 					<a id="kakao-login-btn"></a>
 					<script src="resources/js/sns/kakaologin.js"></script>
