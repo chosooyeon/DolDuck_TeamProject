@@ -23,3 +23,5 @@ $(document).on('click', ".icon-chat-circle", function(){
 			break;
 		}
 	})
+
+	
