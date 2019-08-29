@@ -1,4 +1,4 @@
-<%@ page language="java" contentType="text/html; charset=UTF-8"
+﻿<%@ page language="java" contentType="text/html; charset=UTF-8"
 	pageEncoding="UTF-8"%>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
 <%@ taglib uri="http://www.springframework.org/security/tags"
@@ -102,9 +102,8 @@
 							<li class="dropdown-item:hover"><a href="market_list.do">Goodies</a></li>
 						</ul></li>
 					<form action="find.do">
-						<li class="form-group has-search"><span
-							class="fa fa-search form-control-feedback"></span> <input
-							type="text" class="form-control" placeholder="Search"
+						<li class="form-group has-search"><span class="fa fa-search form-control-feedback"></span> 
+							<input type="text" class="form-control" placeholder="Search"
 							name="Searchtext"></li>
 					</form>
 
@@ -150,7 +149,7 @@
 						<li><a href="home.do">HOME</a></li>
 						<li><a href="youtube.do">You Tube</a></li>
 						<li><a href="vote.do">Vote</a></li>
-						<li><a href="chart.do">Music Chart</a></li>
+						<li><a href="chart.do">MusicChart</a></li>
 						<li><a href="live-home.do">LIVE</a></li>
 						<li><a href="free_list.do">Board</a></li>
 						<li><a href="heartShop.do">heartShop</a></li>
@@ -216,17 +215,6 @@
 <script src="resources/js/custom.js"></script>
 <script src="https://d3js.org/d3.v4.min.js"></script>
 <script src="https://kit.fontawesome.com/c1455fa856.js"></script>
-<script type="text/javascript">
-	/* var menu = $(".skfk > li");
-	menu.find("a").cilck(function(){
-		menu.removeClass("active");
-		$(this).parent().addClass("active");
-	}) */
 
-	$('.skfk > li').on('click', function() {
-
-		$(this).addClass('active')
-	})
-</script>
 
 </html>
