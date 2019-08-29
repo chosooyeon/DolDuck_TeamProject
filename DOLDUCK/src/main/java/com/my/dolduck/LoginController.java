@@ -115,8 +115,10 @@ public class LoginController {
 		MemberDto memberdto = (MemberDto) auth.getPrincipal();
 		String member_id = memberdto.getUsername();
 
+		System.out.println("memberdtovote:"+memberdto.getMember_vote());
 		System.err.println(member_id);
 		SelectDto dto = biz.selectId(member_id);
+		System.out.println("dtovote:"+dto.getMember_vote());
 		model.addAttribute("dto", dto);
 		return "member/member_mypage";
 	}
