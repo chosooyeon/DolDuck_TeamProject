@@ -8,6 +8,7 @@ import org.json.simple.JSONObject;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.security.core.Authentication;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.RequestMapping;
@@ -17,6 +18,7 @@ import org.springframework.web.bind.annotation.ResponseBody;
 
 import com.my.dolduck.model.biz.BroadcastBiz;
 import com.my.dolduck.model.dto.BroadcastDto;
+import com.my.dolduck.model.dto.MemberDto;
 
 @Controller
 public class LiveController {
@@ -147,6 +149,7 @@ public class LiveController {
 		dto.setBroadcast_date(startingTime);
 		int res = b_biz.insert(dto);
 		System.err.println("라이브 시작! 일정추가하기 : " + res);
+	
 		if(res>0) {
 			return "live/live-onair-caster";
 		}else {
@@ -156,13 +159,17 @@ public class LiveController {
 	
 	//온에어 - 입장(User)
 	@RequestMapping("join-onair.do")
-	public String joinLive() {
-		return "";
+	public String joinLive(@RequestParam String room, Model model, Authentication auth) {
+		MemberDto dto = (MemberDto)auth.getPrincipal();
+		model.addAttribute("dto", dto);
+		
+		return "live/live-onair-user";
 	}
 	
 	//채널보기
 	@RequestMapping("live-channel.do")
-	public String liveChannel() {
+	public String liveChannel() {	
+		
 		return "live/live-channel";
 	}
 	

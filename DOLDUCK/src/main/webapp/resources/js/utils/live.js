@@ -55,7 +55,8 @@ function getTime(){
 			+ handleTimeFormat('month',date.getMonth()) + '-'
 			+ date.getDate() + ' '
 			+ handleTimeFormat('hour',date.getHours()) + ':'
-			+ handleTimeFormat('minute',date.getMinutes())
+			+ handleTimeFormat('minute',date.getMinutes()) + ':'
+			+ handleTimeFormat('second', date.getSeconds())
 	return now
 }
 
@@ -87,6 +88,14 @@ function handleTimeFormat(type, data){
 					return data
 				}
 				break;
+		case 'seconds':
+			if(data > 60){
+				return '00'
+			}else if(data >= 0 && data <10){
+				return '0'+data
+			}else{
+				return data
+			}
+			break;
 		}
-
 }

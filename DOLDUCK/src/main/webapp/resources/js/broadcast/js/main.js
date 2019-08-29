@@ -11,11 +11,11 @@ var roomArr = []
 
 
 $(function(){
-
+	
 	try {
 	    var socket = io.connect('https://192.168.10.169:5571', { rejectUnauthorized: false });
 	} catch (error) {
-	    alert('라이브채널로 이동합니다!')
+	    alert('안전하지 않은 페이지입니다!')
 	    location.href='certification.do'
 	}
 	
@@ -43,7 +43,7 @@ function addRoomList(list){
 
 function appendRoom(item){
     var roomUnit = `<li class="channel-box">
-                    <a href="/user/${item.room}">
+                    <a href="join-onair.do?room=${item.room}">
                         <img src="${item.thumb}" width="228" height="128">
                     </a>
                     <p><a href="/user/${item.room}>${item.title}</a></p>
