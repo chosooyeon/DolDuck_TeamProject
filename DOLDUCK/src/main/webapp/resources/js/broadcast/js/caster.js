@@ -38,7 +38,7 @@ var clients = []
 /**************************** 
             Socket
 *****************************/
-//var socket = io.connect()
+//var socket = io.connect('https://192.168.10.107:5571')
 
 socket.emit('create', name, title)
 
@@ -346,7 +346,6 @@ function downloadRecording(){
     }
 }
 
-//startBtn.addEventListener('click', ()=>{ init(constraints); startBtn.disabled = true; })
 stopBtn.addEventListener('click', ()=>{ stopRecording(); console.log('Stop Recording....')})
 mediaSource.addEventListener('sourceopen', handleSourceopen, false)
 
@@ -403,6 +402,5 @@ function leadingZeros(n, digits) {
 
 $(function(){
     init(constraints); 
-    //startBtn.disabled = true
     stopBtn.disabled = true
 })
