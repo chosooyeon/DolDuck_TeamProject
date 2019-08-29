@@ -7,8 +7,6 @@
 <html>
 <head>
 <meta charset="UTF-8">
-<meta name="_csrf" content="${_csrf.token}"/>
-<meta name="_csrf_header" content="${_csrf.headerName}"/> 
 <title>All About K-POP! DD - Live</title>
 <link rel="stylesheet" type="text/css" href="resources/styles/live.css">
 <link rel="stylesheet" href="resources/js/fullcalendar/core/main.css">
@@ -24,7 +22,7 @@
     <!-- Slide Caresel  -->
     <%@include file="/WEB-INF/views/live/liveroom-slide.jsp" %>
     
-   
+   	
     <div id="main" class="container nav-tab-menu">
         <!-- Tab Menu -->
     	<div class="col-lg-12 offset-lg-4 "> 
@@ -46,10 +44,11 @@
          
         <!-- Add button for Events on calendar -->
         <!-- If the role of session(User) is 'ROLE_ARTIST', SHOW FOLLOWING 'BUTTON' -->
-        <sec:authorize access="hasAnyRole('ROLE_USER','ROLE_ARTIST')">
+        <sec:authorize access="hasAnyRole('ROLE_ADMIN','ROLE_ARTIST')">
 	        <div id="area-addEvent">
 	        	<button type="button" class="btn btn-warning" id="btn-addevent" data-toggle="modal" data-target="#addEventModal">일정추가</button>
 	        </div> 
+	        
         </sec:authorize> 
      </div>  
      
@@ -62,6 +61,7 @@
      
      
      <!-- AddEvent Modal -->
+    <sec:authorize access="hasAnyRole('ROLE_ADMIN','ROLE_ARTIST')">
 	<div class="modal-area container">
 	  <div class="modal fade" id="addEventModal">
 	    <div class="modal-dialog modal-sm modal-dialog-centered">
@@ -105,15 +105,18 @@
 	        <!-- Modal footer -->
 	        <div class="modal-footer">
 		      <button type="button" class="btn btn-danger" id="btn-addLiveInfo">저 장</button>
-            <button type="button" class="btn btn-secondary" data-dismiss="modal">취 소</button>
+              <button type="button" class="btn btn-secondary" data-dismiss="modal">취 소</button>
+              <script src="resources/js/fullcalendar/live-add-event.js"></script>
 	        </div>
 	        
 	      </div>
 	    </div>
 	  </div>
 	</div>
-     
-
+	</sec:authorize>
+     	
+   
+   
     <!-- Footer -->
     <%@include file="/WEB-INF/views/footer.jsp" %>
     

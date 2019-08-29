@@ -1,4 +1,4 @@
-<%@ page language="java" contentType="text/html; charset=UTF-8" pageEncoding="UTF-8"%>
+﻿<%@ page language="java" contentType="text/html; charset=UTF-8" pageEncoding="UTF-8"%>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
 <%@ taglib prefix="sec" uri="http://www.springframework.org/security/tags"%>
 <!DOCTYPE html>
@@ -16,7 +16,6 @@
 <%@ include file="../header.jsp" %>
 
 	<div class="container freeboard">
-
 		<div class="center">
 	<h1 class="text-center">상세 보기</h1>
 
@@ -35,27 +34,29 @@
 		<tr>
 			<th height="200">내용</th>
 			<td colspan="3">${one.freeboard_content }
-				<img src="${pageContext.request.contextPath }/resources/uploadImage/${one.freeboard_file }">
+				<img  onerror="this.style.display='none'" alt='' src="${pageContext.request.contextPath }/resources/uploadImage/${one.freeboard_file }">
 			</td>
 		</tr>
 		<tr>
 			<td colspan="4" align="right">
 			<input type="button" onclick="location.href='free_list.do'" value="목록">
 			<input type="button" value="수정" onclick="location.href='free_update.do?freeboard_num=${one.freeboard_num }'">
-			<input type="button" value="삭제" onclick="location.href='free_delete.do?id=${one.freeboard_id }'">
+			<input type="button" value="삭제" onclick="location.href='free_delete.do?num=${one.freeboard_num }'" style="margin-right:18px;">
 		</tr>
 	</table>
 	<br>
 	<table class="table_comment">
 		<c:forEach items="${commList }" var="comm">
-	<tr>
-				<td>	
-			댓글작성자 : ${comm.freeboard_id }
+
+	<tr class="comment_border">
+		<td style="width: 10%;">	
+			ID : ${comm.freeboard_id }
 		</td>
-		<td id="comment_content${comm.freeboard_comment_num }">
-			댓글내용 : ${comm.freeboard_comment_content } 
+		<td id="comment_content${comm.freeboard_comment_num }" style="width: 63%;">
+				 ${comm.freeboard_comment_content } 
 		</td>
-		<td>	
+
+		<td style="width: 18%;">	
 
 			댓글작성시간 : ${comm.freeboard_comment_regdate }
 		</td>
@@ -87,7 +88,7 @@
 			<td id="comment_textarea">
 					<textarea id="comment_textarea_css" rows="2"cols="50" name="freeboard_comment_content"></textarea>	
 			</td>
-			<td id="comment_submit">				
+			<td id="comment_submit">
 				<button class="comment_btn" type="submit">작성</button>
 			</td>
 			</tr>

@@ -50,7 +50,8 @@
 					<table>
 						<tr>
 							<td colspan="1"><input class="goto_login" type="button"
-								value="로그인하러가기"></td>
+								value="로그인하러가기"
+								onclick="location.href='${pageContext.request.contextPath}/login.do'"></td>
 						</tr>
 						<tr>
 							<td colspan="1"><input class="find_id" type="button"

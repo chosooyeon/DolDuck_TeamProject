@@ -85,7 +85,8 @@
 
 	<!-- 마켓: 하트 구매하기  -->
 	<update id="purchaseHeart" parameterType="map">
-		UPDATE MEMBER SET MEMBER_HEART = ((SELECT MEMBER_HEART FROM MEMBER WHERE MEMBER_ID = #{member_id}) + #{heart})
+		UPDATE MEMBER SET MEMBER_HEART = 
+		((SELECT MEMBER_HEART FROM MEMBER WHERE MEMBER_ID = #{member_id}) + #{heart})
 		WHERE MEMBER_ID = #{member_id}	
 	</update>
 	

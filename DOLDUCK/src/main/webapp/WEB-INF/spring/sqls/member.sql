@@ -51,7 +51,7 @@ where member_id = 'lotus526'
 --투표권 구매 
 update member 
 set member_vote = ((select member_vote from member where member_id = 'lotus526') + 10),
-member_heart = ((select member_heart from member where member_id = 'lotus526') - 250)
+member_heart = ((select member_heart from member where member_id = 'lotus526') + 250)
 where member_id = 'lotus526'
 
 /*------------------------------------- 투표 테이블	-----------------------------------------*/
@@ -72,8 +72,8 @@ CREATE TABLE VOTE(
 SELECT * FROM VOTE;
 
 UPDATE MEMBER
-SET MEMBER_VOTE = 10
-WHERE MEMBER_ID = '조수연'
+SET MEMBER_VOTE = 100
+WHERE MEMBER_ID = 'user1'
 
 SELECT * FROM MEMBER
 
@@ -102,6 +102,7 @@ INSERT INTO BROADCAST VALUES(BROADCASTSEQ.NEXTVAL, TO_DATE('2019-10-15 09:00','y
 INSERT INTO BROADCAST VALUES(BROADCASTSEQ.NEXTVAL, TO_DATE('2019-09-02 09:00','yyyy-mm-dd hh24:mi'), 'Zsoo', 'test' , null);
 
 select * from broadcast
+
 delete from broadcast
 
 
@@ -113,15 +114,6 @@ SELECT BROADCAST_SEQ, TO_CHAR(BROADCAST_DATE, 'yyyy-mm-dd hh24:mi') as "BROADCAS
 UPDATE MEMBER SET MEMBER_PW='$2a$10$WzmejPwX08xRYaKDbB1Ie.NOX5uwfHwSCahrNar1.VC0jWpx/.yiS' WHERE MEMBER_ID='1whtndus'
 
 
---투표결과 테이블
-
-DROP TABLE VOTE_RESULT;
-
-CREATE TABLE VOTE_RESULT(
-	
-)
-
-SELECT * FROM VOTE_RESULT;
-
-
-
+----------------------------------------- 실험
+	UPDATE FREEBOARD SET FREEBOARD_TITLE = 11111123, FREEBOARD_CONTENT = 123 , FREEBOARD_FILE = 123
+	WHERE FREEBOARD_NUM = 1

@@ -8,6 +8,7 @@ import java.io.UnsupportedEncodingException;
 import java.net.HttpURLConnection;
 import java.net.URL;
 import java.nio.file.AccessDeniedException;
+import java.security.Principal;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
@@ -77,6 +78,18 @@ public class LoginController {
 	private MemberBizImpl biz;
 
 	private String randompassword;
+	
+	//로그인 체크
+	@RequestMapping("login-status.do")
+	@ResponseBody
+	public String loginStatus(Principal principal) {
+		
+		if(principal == null){
+			return "false";
+		}else {
+			return "true";
+		}
+	}
 
 	// 로그인 페이지로 이동
 	@RequestMapping(value = "login.do")
@@ -102,8 +115,10 @@ public class LoginController {
 		MemberDto memberdto = (MemberDto) auth.getPrincipal();
 		String member_id = memberdto.getUsername();
 
+		System.out.println("memberdtovote:"+memberdto.getMember_vote());
 		System.err.println(member_id);
 		SelectDto dto = biz.selectId(member_id);
+		System.out.println("dtovote:"+dto.getMember_vote());
 		model.addAttribute("dto", dto);
 		return "member/member_mypage";
 	}
@@ -135,7 +150,6 @@ public class LoginController {
 
 	/* @RequestMapping(value = "role_update.do", method = {RequestMethod.POST}) */
 	@PostMapping("role_update.do")
-
 	@ResponseBody
 	public Map<String, Boolean> roleUpdate(String role) {
 		Map<String, Boolean> map = new HashMap<String, Boolean>();

@@ -22,19 +22,15 @@
 				href="heartShop.do">HeartShop</a></li>
 			<li class="nav-item"><a class="nav-link market_link"
 				href="market_list.do">Goodies</a></li>
-
 		</ul>
-
 		<div class="col-md-12 market_border">
-			<div class="container freeboard">
-				<div class="center">
 					<button type="button" id="btn-board"
 						onclick="location.href='market_insertform.do'">글작성</button>
 					<c:choose>
 						<c:when test="${empty list }">
-							<h3>게시글이 없습니다....</h3>
-							<input type="button" value="글작성"
-								onclick="location.href='market_insertform.do'">
+							<div class="not_board">
+								<h3>---- 등록 된 게시글이 없습니다 ----</h3>
+							</div>
 						</c:when>
 						<c:otherwise>
 							<table class="table">
@@ -66,8 +62,7 @@
 				</div>
 
 
-			</div>
-		</div>
-	</div>
+</div>
+
 </body>
 </html>

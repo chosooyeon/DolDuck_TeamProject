@@ -1,5 +1,16 @@
+<<<<<<< HEAD
 Manifest-Version: 1.0
 Built-By: zsoo
 Build-Jdk: 1.8.0_201
 Created-By: Maven Integration for Eclipse
 
+=======
+
+Manifest-Version: 1.0
+Built-By: user1
+
+Build-Jdk: 1.8.0_201
+
+
+Created-By: Maven Integration for Eclipse
+>>>>>>> a590ff8c337178827490f1b5192f5854d46bd990

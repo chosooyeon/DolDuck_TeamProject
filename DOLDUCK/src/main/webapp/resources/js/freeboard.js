@@ -21,7 +21,7 @@ $(function(){
                     <td id=reply_reply_btn>
                          <input type="button" id="co-comment-btn" value="작성" onclick="co_comment_run(${comm_num});">
                     </td>
-                    <td>
+                    <td id=reply_reply_cancle_btn>
                          <input type="button" id="co-comment-cancle-btn" onclick="history.go();" value="취소">
                     </td>
                    </tr>`
@@ -64,25 +64,17 @@ function comment_edit_do(num){
 	var edited_comm_content = document.getElementsByName("edited-comm-content")[0].value;
 	
 		alert(edited_comm_content);
-	
-//		var token = $("input[name='_csrf']").val()
-//	    var header = $("input[name='_csrf_header']").val()
-//	    alert(token);
-//	    
+
 	if(edited_comm_content != null){
-//		alert(">>"+header);
+
 		$.ajax({ 
 			url:"freeboard_comment_update.do",
 			type:"post",
 			data:"comm_num="+num+"&comm_content="+edited_comm_content,
-//			beforeSend: function( xhr ) {
-//	            xhr.setRequestHeader(header, token);
-//	            console.log("X-CSRF TOKEN : " , token)
-//	       },
+
 			success:function(msg){
 				alert(msg.updatechk);
-				$(`#comment_content${num}`).text('덧글내용 : ' + msg.content);
-//				$(`#comment_content${num}`).val('덧글내용 : '+ edited_comm_content);
+				$(`#comment_content${num}`).text(msg.content);
 				document.getElementById(`comment_content${num}`).value=msg.content;
 				$(`#comment_content${num}`).siblings('#edit_btn').children('#comment_edit_btn').text('수정')
 			},error:function( req, error){
@@ -92,3 +84,32 @@ function comment_edit_do(num){
 		});
 	}	
 }
+
+//pick 버튼 클릭시 VoteDto에 starname, item 저장 + 로그인 체크
+function voteClickPickBtn(freeboard_id){
+	$.ajax({
+		type : 'POST',
+		url : 'vote-pick.do?starname='+starname+'&item='+item,
+		dataType : 'json',
+		async : false,
+		beforeSend: function( xhr ) {
+            xhr.setRequestHeader(header, token);
+       },
+		success : function(data){
+			if(data.loginState == "null"){
+				// 로그인상태가 아닐경우
+				alert('로그인이 필요한 서비스입니다.');
+				location.href="login.do";
+			}else{
+				// 로그인상태일경우 투표수 선택하는 팝업창 띄우기
+				votePopup("vote-popup.do");
+			}
+		},
+		error : function(){
+			console.log('ajax 통신에러')
+			alert('ajax 통신에러 (votelike)')
+		}
+	});
+}
+
+
