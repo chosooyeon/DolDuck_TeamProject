@@ -1,0 +1,50 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="broadcast">
+
+	<select id="selectList_broadcast" resultType="BroadcastDto">
+		SELECT BROADCAST_SEQ, TO_CHAR(BROADCAST_DATE, 'yyyy-mm-dd hh24:mi') AS "BROADCAST_DATE", 
+		BROADCAST_CASTER, BROADCAST_TITLE, BROADCAST_CONTENT
+		FROM BROADCAST
+	</select>
+	
+	<!-- Live-Home 동영상가져오기  -->
+	<select id="selectList_havingVideo" resultType="BroadcastDto">
+		SELECT BROADCAST_SEQ, TO_CHAR(BROADCAST_DATE, 'yyyy-mm-dd hh24:mi') AS "BROADCAST_DATE", 
+		BROADCAST_CASTER, BROADCAST_TITLE, BROADCAST_CONTENT
+		FROM BROADCAST
+		WHERE BROADCAST_CONTENT IS NOT NULL
+		ORDER BY BROADCAST_DATE DESC
+	</select>
+	
+	<select id="selectOne_broadcast" parameterType="map">
+		SELECT BROADCAST_SEQ, TO_CHAR(BROADCAST_DATE, 'yyyy-mm-dd hh24:mi'), 
+		BRODACAST_CASTER, BROADCAST_TITLE, BROADCAST_CONTENT
+		FROM BROADCAST 
+		WHERE BROADCAST_SEQ = #{seq}
+	</select>
+	
+	<!-- 일정추가 -->
+	<!-- INSERT INTO BROADCAST VALUES(BROADCASTSEQ.NEXTVAL, TO_DATE('2019-09-02 09:00','yyyy-mm-dd hh24:mi'), 'Zsoo', 'test' , null); -->
+	<insert id="insert_broadcast" parameterType="BroadcastDto">
+		INSERT INTO BROADCAST
+		VALUES(BROADCASTSEQ.NEXTVAL, TO_DATE(#{broadcast_date},'yyyy-mm-dd hh24:mi'),
+		#{broadcast_caster}, #{broadcast_title}, null)	
+	</insert>
+	
+	<!-- 일정변경 -->
+	<update id="update_broadcast_event" parameterType="BroadcastDto">
+		UPDATE BROADCAST
+		SET BROADCAST_TITLE = #{broadcast_title},
+		BROADCAST_DATE = TO_DATE(#{broadcast_date},'yyyy-mm-dd hh24:mi')
+		WHERE BROADCAST_SEQ = #{broadcast_seq}		
+	</update>
+	
+	<!--  라이브방송 종료후 동영상 첨부 -->
+	
+	<!-- 일정 삭제 -->
+	<delete id="delete_broadcast_event">
+		DELETE BROADCAST WHERE BROADCAST = #{seq}
+	</delete>
+	
+</mapper>
