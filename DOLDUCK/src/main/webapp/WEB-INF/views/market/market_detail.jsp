@@ -61,7 +61,7 @@
 		</td>
 		<td id="reply_btn">
 			<input type="hidden" name="comm_num" value="${comm.market_comment_num }">
-			<button type="button" id="reply_btn">댓글</button>
+			<button type="button" id="co_comment_btn">댓글</button>
 		</td>
 		<td id="delete_btn">
 			<button type="button" id="comment_delete_btn" onclick="location.href='market_comment_delete.do?Comment_num=${comm.market_comment_num }&market_num=${one.market_num }'">삭제</button>
