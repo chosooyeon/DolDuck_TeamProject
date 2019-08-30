@@ -8,6 +8,7 @@
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <meta http-equiv="X-UA-Compatible" content="ie=edge">
 <title>D.Live OnAir</title>
+<link href="resources/plugins/font-awesome-4.7.0/css/font-awesome.min.css" rel="stylesheet" type="text/css">
 <link rel="stylesheet" type="text/css" href="resources/styles/live.css">
 <link rel="stylesheet" type="text/css" href="resources/styles/broadcast.css">
 <!-- <link rel="stylesheet" href="resources/js/broadcast/css/broadcast.css">-->
@@ -44,9 +45,9 @@
                 			<div id="channel-icon" style="background-image: url('${caster.member_img}');"></div>
                 		</c:otherwise>
                 	</c:choose>
-                    <div id="channel-name-area"><a id="channel-name" href="#">${caster.member_id}</a></div>
-                    <div id="channel-follow">
-                        <span><i class="fal fa-star"></i></span>
+                    <div id="channel-name-area" style="margin-left:1em;"><a id="channel-name" href="#" >${caster.member_id}</a></div>
+                    <div id="channel-follow" style="margin-left: 7em;">
+                        <span><i class="far fa-star" style="margin:0;"></i></span>
                         <!-- Status in following:  <i class="fas fa-star"></i> -->
                         <span>팔로우</span></div>
                 </div>
@@ -106,9 +107,10 @@
     <!-- footer -->
     <!-- <%@include file="../footer.jsp"%> -->
     <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.2/js/bootstrap.min.js"></script>
+    <script src="https://kit.fontawesome.com/c1455fa856.js"></script>
     <script src="https://code.jquery.com/jquery-3.4.1.min.js"></script>
-	<script src="https://192.168.10.107:5571/socket.io/socket.io.js"></script>
+	<script src="https://192.168.10.169:5571/socket.io/socket.io.js"></script>
     <script src="https://webrtc.github.io/adapter/adapter-latest.js"></script>
-    <script src="resources/js/broadcast/js/caster.js"></script>
+    <script id="casterInfo" src="resources/js/broadcast/js/caster.js" room="${room_number}"></script>
 </body>
 </html>

@@ -45,16 +45,26 @@
 .nav-link:active{font-weight: bold;}
 .nav-tab-menu{ border-bottom : 1px solid #ddd; }
 .live-content{ 
-	margin-top: 30px;
+	margin-top: 1em;
 	margin-bottom: 6em;
 	min-height :  800px;
 	height: auto;
 }
 .live-banner{
-	border: 1px solid red;
-	margin-top:3em;
+	background-repeat: no-repeat; 
+	background-size:contain; 
+	min-height:210px;
+	height: auto;
 }
 
+.no-live-room{
+	font-size: 25px;
+    font-weight: 900;
+    color: #c0aded;
+    font-family: 'Futura', 'NIXGONM-Vb';
+    text-align: center;
+    padding-top: 0px;
+}
 
 /*******************
 	Live onair
@@ -63,7 +73,6 @@
 	min-height: 700px;
 	margin-top: 6em;
 	margin-bottom: 6em;
-	border:1px solid darkgreen;
 }
 
 .onair-body {
@@ -71,3 +80,4 @@
     margin-top: 2em;
     margin-bottom: 5em;
 }
+

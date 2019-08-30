@@ -41,7 +41,7 @@
       muted:음소거
       -->   
             <video autoplay loop muted="muted">
-            	<source src="resources/videos/index.mp4" type="video/mp4">
+            	<source src="resources/videos/kang.mp4" type="video/mp4">
             </video>
       </div>  
    </section>
@@ -105,8 +105,7 @@
 	</section>
 	<%@include file="footer.jsp"%>
 
-	<script type="text/javascript"
-		src="https://code.jquery.com/jquery-3.4.1.min.js"></script>
+	<script type="text/javascript" src="https://code.jquery.com/jquery-3.4.1.min.js"></script>
 	<script type="text/javascript" src="resources/js/home.js"></script>
 	<script type="text/javascript" src="resources/js/home_vote.js"></script>
 	<script src="resources/js/jquery-3.2.1.min.js"></script>

@@ -296,13 +296,16 @@ public class LoginController {
 
 	@RequestMapping(value = "pwSearch.do", method = RequestMethod.POST)
 	@ResponseBody
-	public void pwSearch(String id, String email) throws UnsupportedEncodingException, MessagingException {
+	public Map<String, Object> pwSearch(String id, String email) throws UnsupportedEncodingException, MessagingException {
 		System.out.println(id);
 		boolean pwSearch = false;
-
+		
+		Map<String, Object> map = new HashMap<String, Object>();
+		
 		if (biz.pwSearch(id, email) != null) {
 			pwSearch = true;
 
+			map.put("pwSearch", pwSearch);
 			randompassword = MakeRandom.GetRandomPassword();
 			System.out.println(randompassword);
 
@@ -335,8 +338,10 @@ public class LoginController {
 				logger.error("인증실패", ex);
 			}
 		} else {
+			map.put("pwSearch", pwSearch);
 			logger.error("pwSearch", pwSearch);
 		}
+		return map;
 
 	}
 
