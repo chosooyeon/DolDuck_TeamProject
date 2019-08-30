@@ -41,7 +41,7 @@ public class FreeBoardController {
 
 	private static final Logger logger = LoggerFactory.getLogger(FreeBoardController.class);
 
-	// °Ô½Ã±Û ¸ñ·Ï
+	// ï¿½Ô½Ã±ï¿½ ï¿½ï¿½ï¿½
 	@RequestMapping("free_list.do")
 	public String freeboard_list(Model model) {
 
@@ -59,7 +59,7 @@ public class FreeBoardController {
 		return "board/free_insert";
 	}
 
-	// °Ô½Ã±Û ÀÔ·Â
+	//
 	@RequestMapping("free_insert.do")
 	public String insert(@ModelAttribute FreeboardDto dto, MultipartHttpServletRequest mtfRequest,
 			Authentication auth) {
@@ -77,11 +77,11 @@ public class FreeBoardController {
 		}
 
 		for (MultipartFile mf : fileList) {
-			String originFileName = mf.getOriginalFilename(); // ¿øº» ÆÄÀÏ ¸í
-			long fileSize = mf.getSize(); // ÆÄÀÏ »çÀÌÁî
-			String class_img_path = path + "/" + originFileName; // °æ·Î
-			System.out.println("°æ·Î " + class_img_path);
-			String feeboard_file = originFileName; // ÆÄÀÏ ÀÌ¸§
+			String originFileName = mf.getOriginalFilename(); // ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½
+			long fileSize = mf.getSize(); // ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½
+			String class_img_path = path + "/" + originFileName; // ï¿½ï¿½ï¿½
+			System.out.println("ï¿½ï¿½ï¿½ " + class_img_path);
+			String feeboard_file = originFileName; // ï¿½ï¿½ï¿½ï¿½ ï¿½Ì¸ï¿½
 			dto.setFreeboard_file(feeboard_file);
 			System.out.println(feeboard_file);
 			System.out.println("originFileName : " + originFileName);
@@ -89,14 +89,14 @@ public class FreeBoardController {
 			int res = 0;
 			try {
 				if(mf.getSize() == 0) {
-					System.out.println("¾øÀ½");
+					System.out.println("ï¿½ï¿½ï¿½ï¿½");
 				}else {
-					mf.transferTo(new File(class_img_path)); // ÆÄÀÏ Áý¾î³Ö´Â´Ù					
+					mf.transferTo(new File(class_img_path)); // ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½Ö´Â´ï¿½					
 				}
 
 				res = biz.free_insert(dto);
 				if (res > 0) {
-					System.out.println("¼º°ø");
+					System.out.println("ï¿½ï¿½ï¿½ï¿½");
 					return "redirect:free_list.do";
 				}
 
@@ -109,12 +109,12 @@ public class FreeBoardController {
 			}
 		}
 
-		System.out.println("½ÇÆÐ");
+		System.out.println("ï¿½ï¿½ï¿½ï¿½");
 		return "redirect:free_insert.do";
 
 	}
 
-	// °Ô½Ã±Û ÀÚ¼¼È÷º¸±â & ´ñ±Û ¸®½ºÆ®
+	// ï¿½Ô½Ã±ï¿½ ï¿½Ú¼ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ & ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½Æ®
 	@RequestMapping("free_detail.do")
 	public String selectOne(Model model, int freeboard_num, FreeboardDto dto, Authentication auth) {
 
@@ -122,18 +122,18 @@ public class FreeBoardController {
 		String member_id = Mdto.getUsername();
 		dto.setFreeboard_id(member_id);
 
-		System.out.println("³ªÁß¿¡ Áö¿ì±â");
-		System.out.println("¼±ÅÃµÈ ¸Þ¼Òµå : selectOne");
-		System.out.println("¼±ÅÃµÈ °Ô½Ã±Û ¹øÈ£ : " + freeboard_num);
+		System.out.println("ï¿½ï¿½ï¿½ß¿ï¿½ ï¿½ï¿½ï¿½ï¿½ï¿½");
+		System.out.println("ï¿½ï¿½ï¿½Ãµï¿½ ï¿½Þ¼Òµï¿½ : selectOne");
+		System.out.println("ï¿½ï¿½ï¿½Ãµï¿½ ï¿½Ô½Ã±ï¿½ ï¿½ï¿½È£ : " + freeboard_num);
 
-		// °Ô½Ã±Û
+		// ï¿½Ô½Ã±ï¿½
 		FreeboardDto Fdto = biz.free_detail(freeboard_num);
-		// ´ñ±Û
+		// ï¿½ï¿½ï¿½
 		List<FreeboardCommentDto> list = bizComm.freeboard_comment_list(freeboard_num);
 
-		// °Ô½Ã±Û
+		// ï¿½Ô½Ã±ï¿½
 		model.addAttribute("one", Fdto);
-		// ´ñ±Û
+		// ï¿½ï¿½ï¿½
 		model.addAttribute("commList", list);
 
 		return "board/free_detail";
@@ -142,14 +142,14 @@ public class FreeBoardController {
 
 	@RequestMapping("free_update.do")
 	public String update(Model model, int freeboard_num) {
-		System.err.println("free_update.do : ¼öÁ¤ÇÏ±â ");
+		System.err.println("free_update.do : ï¿½ï¿½ï¿½ï¿½ï¿½Ï±ï¿½ ");
 		System.out.println(freeboard_num);	
 		model.addAttribute("one", biz.free_detail(freeboard_num));
-		System.err.println("Åë°ú!!!!");
+		System.err.println("ï¿½ï¿½ï¿½!!!!");
 		return "board/free_update";
 	}
 
-	// °Ô½Ã±Û ¼öÁ¤
+	// ï¿½Ô½Ã±ï¿½ ï¿½ï¿½ï¿½ï¿½
 	@RequestMapping("free_updateform.do")
 	public String updateform(@ModelAttribute FreeboardDto dto, MultipartHttpServletRequest mtfRequest,
 			Authentication auth) {
@@ -157,7 +157,7 @@ public class FreeBoardController {
 		String member_id = Mdto.getUsername();
 		dto.setFreeboard_id(member_id);
 
-		System.err.println("free_updateform : ¼öÁ¤ÇÏ±â ");
+		System.err.println("free_updateform : ï¿½ï¿½ï¿½ï¿½ï¿½Ï±ï¿½ ");
 		List<MultipartFile> fileList = mtfRequest.getFiles("file");
 
 		String path = mtfRequest.getSession().getServletContext().getRealPath("resources/uploadImage");
@@ -167,13 +167,13 @@ public class FreeBoardController {
 		}
 
 		for (MultipartFile mf : fileList) {
-			String originFileName = mf.getOriginalFilename(); // ¿øº» ÆÄÀÏ ¸í
-			long fileSize = mf.getSize(); // ÆÄÀÏ »çÀÌÁî
-			String class_img_path = path + "/" + originFileName; // °æ·Î
+			String originFileName = mf.getOriginalFilename(); // ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½
+			long fileSize = mf.getSize(); // ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½
+			String class_img_path = path + "/" + originFileName; // ï¿½ï¿½ï¿½
 
-			System.out.println("°æ·Î " + class_img_path);
+			System.out.println("ï¿½ï¿½ï¿½ " + class_img_path);
 
-			String feeboard_file = originFileName; // ÆÄÀÏ ÀÌ¸§
+			String feeboard_file = originFileName; // ï¿½ï¿½ï¿½ï¿½ ï¿½Ì¸ï¿½
 			dto.setFreeboard_file(feeboard_file);
 
 			System.out.println(feeboard_file);
@@ -184,13 +184,13 @@ public class FreeBoardController {
 			try {
 				
 				if(mf.getSize() == 0) {
-					System.out.println("¾øÀ½");
+					System.out.println("ï¿½ï¿½ï¿½ï¿½");
 				}else {
-					mf.transferTo(new File(class_img_path)); // ÆÄÀÏ Áý¾î³Ö´Â´Ù					
+					mf.transferTo(new File(class_img_path)); // ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½Ö´Â´ï¿½					
 				}
 				res = biz.free_update(dto);
 				if (res > 0) {
-					System.out.println("¼º°ø");
+					System.out.println("ï¿½ï¿½ï¿½ï¿½");
 					return "redirect:free_detail.do?freeboard_num=" + dto.getFreeboard_num();
 				}
 
@@ -207,7 +207,7 @@ public class FreeBoardController {
 
 	}
 
-	// °Ô½Ã±Û »èÁ¦
+	// ï¿½Ô½Ã±ï¿½ ï¿½ï¿½ï¿½ï¿½
 	@RequestMapping("free_delete.do")
 	public String delete(@RequestParam("num") int num) {
 		System.out.println(num);
@@ -218,7 +218,7 @@ public class FreeBoardController {
 		return "redirect:free_list.do";
 	}
 
-	// °Ô½Ã±Û ÀÔ·Â + ·Î±×ÀÎÃ¼Å©
+	// ï¿½Ô½Ã±ï¿½ ï¿½Ô·ï¿½ + ï¿½Î±ï¿½ï¿½ï¿½Ã¼Å©
 	@RequestMapping("/free_insert_login.do")
 	@ResponseBody
 	public JSONObject insertLogin(Principal principal) {
@@ -229,7 +229,7 @@ public class FreeBoardController {
 		return loginChk;
 	}
 
-	// °Ô½Ã±Û ÀÔ·Â + ·Î±×ÀÎÃ¼Å©
+	// ï¿½Ô½Ã±ï¿½ ï¿½Ô·ï¿½ + ï¿½Î±ï¿½ï¿½ï¿½Ã¼Å©
 	@RequestMapping("/free_detail_login.do")
 	@ResponseBody
 	public JSONObject detailLogin(Principal principal) {
@@ -242,7 +242,7 @@ public class FreeBoardController {
 
 	// ====================comment=========================
 
-	// =====´ñ±Û ÀÔ·Â
+	// =====ï¿½ï¿½ï¿½ ï¿½Ô·ï¿½
 	@RequestMapping("freeboard_comment_insert.do")
 	public String free_comment_insert(@ModelAttribute FreeboardCommentDto dto) {
 
@@ -253,12 +253,12 @@ public class FreeBoardController {
 		return "redirect:free_detail.do?freeboard_num=" + dto.getFreeboard_num();
 	}
 
-	// =====´ñ±Û ¼öÁ¤
+	// =====ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½
 	@RequestMapping("freeboard_comment_update.do")
 	@ResponseBody
 	public Map<String, Object> free_comment_update(int comm_num, String comm_content) {
-		System.out.println("°Ô½ÃÆÇ¹øÈ£" + comm_num);
-		System.out.println("´ñ±Û³»¿ë" + comm_content);
+		System.out.println("ï¿½Ô½ï¿½ï¿½Ç¹ï¿½È£" + comm_num);
+		System.out.println("ï¿½ï¿½Û³ï¿½ï¿½ï¿½" + comm_content);
 		Boolean updatechk = false;
 		Map<String, Object> map = new HashMap<String, Object>();
 
@@ -280,7 +280,7 @@ public class FreeBoardController {
 		return map;
 	}
 
-	// =====´ñ±Û »èÁ¦
+	// =====ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½
 	@RequestMapping("freeboard_comment_delete.do")
 	public String free_comment_delete(@RequestParam("Comment_num") int Comment_num, int freeboard_num) {
 
@@ -291,7 +291,7 @@ public class FreeBoardController {
 		return "redirect:free_detail.do?freeboard_num=" + freeboard_num;
 	}
 
-	// =====´ë´ñ±Û ÀÔ·Â
+	// =====ï¿½ï¿½ï¿½ï¿½ ï¿½Ô·ï¿½
 	@RequestMapping("freeboard_co_comment_insert")
 	public String freeboard_co_comment_insert(@ModelAttribute FreeboardCommentDto dto) {
 		int res = bizComm.freeboard_co_comment_insert(dto);
