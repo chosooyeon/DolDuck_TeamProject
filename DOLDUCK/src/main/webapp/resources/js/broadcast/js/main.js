@@ -1,5 +1,4 @@
 //var socket = io.connect('https://192.168.10.169:5571')
-
 //var startLiveBtn = document.getElementById('startLiveBtn')
 
 
@@ -11,21 +10,13 @@ var roomArr = []
 
 
 $(function(){
-
-	try {
-	    var socket = io.connect('https://192.168.10.169:5571', { rejectUnauthorized: false });
-	} catch (error) {
-	    alert('라이브채널로 이동합니다!')
-	    location.href='certification.do'
-	}
-	
     socket.emit('requestRoomlist')
     
     socket.on('roomlist', (rooms) => {
         console.log(rooms)
         if(rooms.length == 0){
         	$('#channel-item').html('')
-            $('#channel-item').append(`<li>개설된 방이 없습니다!</li>`)
+            $('#channel-item').append($(`<li>`).html(`<p class="no-live-room">아직 방송중인 방이 없습니다!</p>`))
         }else{
             addRoomList(rooms)
         }
@@ -34,7 +25,7 @@ $(function(){
 })
 
 function addRoomList(list){
-    $('ul').html('')
+    $('#channel-item').html('')
     list.forEach( item => {
         console.log(item);
         appendRoom(item)
@@ -43,37 +34,56 @@ function addRoomList(list){
 
 function appendRoom(item){
     var roomUnit = `<li class="channel-box">
-                    <a href="/user/${item.room}">
-                        <img src="${item.thumb}" width="228" height="128">
-                    </a>
-                    <p><a href="/user/${item.room}>${item.title}</a></p>
-                    <div class="channel-info">
-                        <div>
-                            <p>${item.date}</p>
-                            <p>&nbsp;|&nbsp;</p>
-                            <p>${item.caster}</p>
-                        </div>
-                        <div>
-    				<!-- 접속자수 -->
-                            <span>
-                                <span>＠</span>
-                                <span>Test</span>
-                            </span>
-                                  <!-- 좋아요 수 -->
-                            <span>
-                                <span>♥</span>
-                                <span>Test</span>
-                            </span>
-                        </div>
-                    </div>
+    					<div>
+	    			        <a href="join-onair.do?room=${item.room}">
+	                        	<img src="${item.thumb}" width="228" height="128">
+	                    	</a>
+                    	</div>
+                    	<div class="channel-info">
+                    		<p><a href="void:0;">[${item.caster}] ${item.title}</a></p>
+                    		<p>방송시작시간: ${item.date}</p>
+                    		<p>방 번호: ${item.room}</p>
+                    	</div>
                     </li>`
-    $('ul').append(roomUnit)
+    $('#channel-item').append(roomUnit)
 }
-/*
-startLiveBtn.addEventListener('click', ()=>{ 
-    random = parseInt(Math.random()*999999999999)
-    location.href = `/caster/${random}` 
-})*/
+
+/*<li class="channel-box">
+<div>
+    <a href="join-onair.do?room=${item.room}">
+    	<img src="${item.thumb}" width="228" height="128">
+	</a>
+</div>
+<div class="channel-info">
+	<div>
+		<p><a href="/user/${item.room}>[${item.caster}] ${item.title}</a></p>
+	</div>
+	<div>
+        <p>${item.date}</p>
+        <p>${item.caster}</p>
+	</div>
+    <div>
+	<!-- 접속자수 -->
+    <span>
+        <span>＠</span>
+        <span>Test</span>
+        </span>
+              <!-- 좋아요 수 -->
+        <span>
+        <span>♥</span>
+        <span>Test</span>
+        </span>
+    </div>
+</div>
+</li>`
+
+/*startLiveBtn.addEventListener('click', () =>{
+    var ran = parseInt(Math.random()*9999999999)
+    location.href = 'https://localhost:5571/caster/${ran}'
+})
+*/
+
 reloadBtn.addEventListener('click', ()=>{
+	console.log('룸 목록 새로고침!')
     socket.emit('requestRoomlist')
 })

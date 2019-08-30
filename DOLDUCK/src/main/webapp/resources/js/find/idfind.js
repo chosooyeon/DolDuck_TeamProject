@@ -9,7 +9,6 @@ function idfind(){
 		}else if(email==null || email == ""){
 			alert('이메일을 입력해주세요')
 		}else{
-			
 			$.ajax({
 				type : "post",
 				url : "idSearch.do",	
@@ -43,7 +42,7 @@ function idfind(){
 					}
 				},
 				error: function(){
-					alert('아이디 찾기 통신실패');
+					alert('이름 또는 이메일을 확인해주세요');
 				}
 			});
 		}

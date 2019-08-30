@@ -30,10 +30,20 @@ public class BroadcastBizImpl implements BroadcastBiz {
 	}
 
 	@Override
+	public BroadcastDto selectOneByRoom(String room_number) {
+		return dao.selectOneByRoom(room_number);
+	}
+	
+	@Override
 	public int insert(BroadcastDto dto) {
 		return dao.insert(dto);
 	}
 
+	@Override
+	public int insertOnair(BroadcastDto dto) {
+		return dao.insertOnair(dto);
+	}
+	
 	@Override
 	public int update(BroadcastDto dto) {
 		return dao.update(dto);
@@ -48,5 +58,7 @@ public class BroadcastBizImpl implements BroadcastBiz {
 	public int saveVideo(BroadcastDto dto) {
 		return dao.saveVideo(dto);
 	}
+
+
 
 }

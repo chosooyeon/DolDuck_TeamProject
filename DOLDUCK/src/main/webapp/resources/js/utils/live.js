@@ -42,9 +42,9 @@ $(document).on('click', '.video-item-thumb', function(){
 
 /*********************** 라이브 대기 플랫폼	************************/
 
-$(document).on('click', '#btn-startlive', function(){
+$(document).on('click', '.toggle-start-live', function(){
 	$('input[name=startingTime]').val(getTime())
-	$('#liveinfo-form').submit()
+	$('input[name=room_number]').val(parseInt(Math.random()*9999999999))
 })
 
 
@@ -52,10 +52,10 @@ function getTime(){
 	
 	var date = new Date()
 	var now = date.getFullYear() + '-' 
-			+ handleTimeFormat('month',date.getMonth()) + '-'
+			+ handleTimeFormat('month',date.getMonth()+1) + '-'
 			+ date.getDate() + ' '
 			+ handleTimeFormat('hour',date.getHours()) + ':'
-			+ handleTimeFormat('minute',date.getMinutes())
+			+ handleTimeFormat('minute',date.getMinutes()) 
 	return now
 }
 
@@ -88,5 +88,4 @@ function handleTimeFormat(type, data){
 				}
 				break;
 		}
-
 }
