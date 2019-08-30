@@ -23,19 +23,32 @@
 			<h1 class="text-center">상세 보기</h1>
 
 			<table class="table">
-
-				<tr>
-					<th>글쓴이</th>
-					<td>${one.freeboard_id }</td>
-					<th>작성일</th>
-					<td>${one.freeboard_regdate }</td>
-				</tr>
-				<tr>
-					<th>제목</th>
-					<td colspan="3">${one.freeboard_title }</td>
-				</tr>
-				<tr>
-					<th height="200">내용</th>
+		<tr>
+			<th>글쓴이</th>
+			<td>${one.freeboard_id }</td>
+			<th>작성일</th>
+			<td>${one.freeboard_regdate }</td>
+		</tr>
+		<tr>
+			<th>제목</th>
+			<td colspan="3">${one.freeboard_title }</td>
+		</tr>
+		<tr>
+			<th height="200">내용</th>
+			<td colspan="3">${one.freeboard_content }
+				<img  onerror="this.style.display='none'" alt='' src="${pageContext.request.contextPath }/resources/uploadImage/${one.freeboard_file }">
+			</td>
+		</tr>
+		<tr>
+			<td colspan="4" align="right">
+			<input type="button" onclick="location.href='free_list.do'" value="목록">
+			<input type="button" value="수정" onclick="location.href='free_update.do?freeboard_num=${one.freeboard_num }'">
+			<input type="button" value="삭제" onclick="location.href='free_delete.do?num=${one.freeboard_num }'" style="margin-right:18px;">
+		</tr>
+	</table>
+	<br>
+	<table class="table_comment">
+		<c:forEach items="${commList }" var="comm">
 
 					<td colspan="3">${one.freeboard_content }
 						<video width="320"height="240" preload="metadata" playsinline="" autoplay="" loop="" height="auto" controls>
