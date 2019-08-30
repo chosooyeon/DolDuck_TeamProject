@@ -35,7 +35,7 @@ getAuthorizationURL: <%=requestToken.getAuthorizationURL()%><br/>
 getToken: <%=requestToken.getToken()%><br/>
 getTokenSecret(): <%=requestToken.getTokenSecret()%><br/> --%>
 
-<a href="<%=requestToken.getAuthorizationURL()%>"><img height="50" width="235" src="${pageContext.request.contextPath}/resources/images/twitter.PNG"/></a>
+<a href="<%=requestToken.getAuthorizationURL()%>"><img height="50" width="240px" style="border-radius: .25rem;" src="${pageContext.request.contextPath}/resources/images/twitter.PNG"/></a>
 </body>
 </html>
 

@@ -65,10 +65,7 @@
          
          <!-- Title & Banner -->
 	   	<div class="container"> 
-	         <div class="live-banner" > 
-	         	<h4>D.Live - Home</h4>
-				<h5>최신 업데이트된 스타의 라이브를 확인하세요!</h5>
-	         </div>
+	         <div class="live-banner" style="background-image: url('resources/images/banner-live-home.png')"></div>
 	    </div>
 	    
 	     <!-- Home - 동영상 목록 -->
