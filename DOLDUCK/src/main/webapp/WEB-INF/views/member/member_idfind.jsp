@@ -15,38 +15,29 @@
 <div class="container login">
 	<div class="row">
 		<div class="col-lg-6 offset-lg-3 login_table">
-		<h1 class="text-center login_text">아이디 찾기</h1>
+			<h1 class="text-center login_text">아이디 찾기</h1>
 
-<form action="${pageContext.request.contextPath}/idfind.do" method="post">
-<input type="hidden" name="${_csrf.parameterName }" value="${_csrf.token}">
-		<table>
-	
-			<tr>
-				<th>NAME</th>
-				<td><input class="form-control login" type="text" id="name" name="name" ></td>
-			</tr>
-			<tr>
-				<th>EMAIL</th>
-				<td><input class="form-control login" type="email" id="email" name="email"></td>
-			</tr>
-			<tr>
-				<td colspan="1"><input class="login_button" type="button" value="아이디 찾기" onclick="idfind()"></td>
-			</tr>
-		</table>
-			<span class ="result" style="color:red;"></span>
-		<table>
-			<tr>
-				<td colspan="1"><input class="goto_login" type="button" value="로그인하러가기" onclick="location.href='${pageContext.request.contextPath}/login.do'"></td>
-			</tr>
-			<tr>
-				<td colspan="1"><input class="find_pw" type="button" value="비밀번호 찾기" onclick="location.href='${pageContext.request.contextPath}/pwfind.do'"></td>
-			</tr>
-		</table>
-	</form>
+			<form action="${pageContext.request.contextPath}/idfind.do" method="post">
+				<input type="hidden" name="${_csrf.parameterName }" value="${_csrf.token}">
+				<table>
+					<tr>
+						<th>NAME</th>
+						<td><input class="form-control login" type="text" id="name" name="name" ></td>
+						<td rowspan="2"><input class="login_button" type="button" value="아이디 찾기" onclick="idfind()" style="height:91px;margin-top:0;margin-left:5px;"></td>
+					</tr>
+					<tr>
+						<th>EMAIL</th>
+						<td><input class="form-control login" type="email" id="email" name="email"></td>
+					</tr>
+					<tr>
+						<td colspan="2"><input class="login_button" type="button" value="로그인" onclick="location.href='${pageContext.request.contextPath}/login.do'" style="margin: 19px 4px 0 0;">&emsp;&emsp;</td>
+						<td colspan="1"><input class="login_button" type="button" value="비밀번호 찾기" onclick="location.href='${pageContext.request.contextPath}/pwfind.do'" style="margin:-2px 0 0 7px;"></td>
+					</tr>
+				</table>
+			</form>
+		</div>
 	</div>
-	</div>
-	<div class="modal fade" id="checkModal" tableindex="-1" role="dialog" aria-hidden="true">
-	</div>
+	<div class="modal fade" id="checkModal" tableindex="-1" role="dialog" aria-hidden="true"></div>
 </div>
 </body>
 </html>

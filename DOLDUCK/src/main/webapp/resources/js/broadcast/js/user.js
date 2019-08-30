@@ -1,12 +1,14 @@
 /*  USER  */
 var socket = io.connect('https://192.168.10.169:5571')
 
-var url = location.href
-var params = url.split('/')
-var requestedRoom = params[4]           //room number 
+var query = location.href.split('/')[4]
+var param = query.split('?')[1]
+var requestedRoom = param.split('=')[1]
+console.log(requestedRoom)
+//var requestedRoom = $('#userRoom').atrr('room')
 
 var remoteStream
-var remoteVideo = document.getElementById('video')
+var remoteVideo = document.getElementById('remoteVideo')
 var pc;
 var pcConfig = {
     'iceServers': [
@@ -29,10 +31,11 @@ const constraints = {
     }
 };
 
+
 /**************************** 
           User Info
 *****************************/
-var name = prompt('닉네임을 입력해주세요!')
+var name = $('#user_id').text()
 var _room = requestedRoom
 console.log(`${name}님이 ${_room}에 접속하였습니다`)
 
@@ -44,9 +47,8 @@ console.log(`${name}님이 ${_room}에 접속하였습니다`)
 //user 접속 
 socket.emit('user-join', _room, name)
 
-socket.on('joinedUser', (name, id, numberofClients, roomInfo) => {
+socket.on('joinedUser', (name, id, numberofClients) => {
     $('#numoof-visitor').text(numberofClients)
-    console.log(roomInfo);
     //$('#channel-name').text('('+roomInfo.room+')')
     //$('#onair-title').text(roomInfo.title)
 })
@@ -71,6 +73,7 @@ socket.on('message', (msg) => {
         })
         pc.addIceCandidate(candidate)
     } else if(msg.type === 'bye'){
+        alert('방송이 종료되었습니다')
         handleRemoteHangup()
     }else{
         console.log(`잘 못 보낸 메세지입니다! ${msg}`)
@@ -88,8 +91,6 @@ socket.on('livedCaster', (room) =>{
     location.href='https://localhost:5571/'
     //location.href='http://192.168.10.169:8787/dolduck/live-home.do'
 })
-
-
 
 /**************************** 
     WebRTC - PeerConnection
@@ -157,7 +158,6 @@ function hanldeRemoteHangup(id){
 }
 
 function close(id){
-    alert('방송이 종료되었습니다')
     findPc(id).close()
 }
 

@@ -41,7 +41,7 @@
       muted:음소거
       -->   
             <video autoplay loop muted="muted">
-            	<source src="resources/videos/index.mp4" type="video/mp4">
+            	<source src="resources/videos/kang.mp4" type="video/mp4">
             </video>
       </div>  
    </section>
