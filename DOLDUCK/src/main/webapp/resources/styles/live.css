@@ -51,11 +51,10 @@
 	height: auto;
 }
 .live-banner{
-	margin-top:2em;
-	min-height: 200px;
+	background-repeat: no-repeat; 
+	background-size:contain; 
+	min-height:210px;
 	height: auto;
-	background-repeat: no-repeat;
-	background-size: cover;
 }
 
 .no-live-room{
