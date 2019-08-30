@@ -22,8 +22,7 @@
 	<button type="button" id="btn-board" onclick="freeInsertLogin()">글작성</button>
 	<c:choose>
 		<c:when test="${empty list }">
-			<h3>게시글이 없습니다....</h3>		
-			<button type="button" id="btn-board" onclick="freeInsertLogin()">글작성</button>
+			<h3>첫게시물 주인공은 너야너!!!</h3>		
 			</c:when>
 		<c:otherwise>
 			<table class="table">
