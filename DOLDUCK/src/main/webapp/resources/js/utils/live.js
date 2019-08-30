@@ -52,7 +52,7 @@ function getTime(){
 	
 	var date = new Date()
 	var now = date.getFullYear() + '-' 
-			+ handleTimeFormat('month',date.getMonth()) + '-'
+			+ handleTimeFormat('month',date.getMonth()+1) + '-'
 			+ date.getDate() + ' '
 			+ handleTimeFormat('hour',date.getHours()) + ':'
 			+ handleTimeFormat('minute',date.getMinutes()) 

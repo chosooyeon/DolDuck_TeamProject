@@ -6,6 +6,7 @@
 <meta charset="UTF-8">
 <title>All About K-POP! DD - Live</title>
 <link rel="stylesheet" type="text/css" href="resources/styles/live.css">
+<link rel="stylesheet" type="text/css" href="resources/js/broadcast/css/main.css">
 </head>
 <body>
     <!-- Header -->
@@ -41,7 +42,6 @@
         	<sec:authorize access="hasAnyRole('ROLE_ARTIST', 'ROLE_ADMIN')">
 	        	<button type="button" class="btn btn-danger toggle-start-live" data-toggle="modal" data-target="#liveInfoModal">방 송 시 작</button>
         	</sec:authorize>
-        	<button type="button" class="btn btn-danger toggle-start-live" data-toggle="modal" data-target="#liveInfoModal">방 송 시 작</button>
         	<button type="button" class="btn btn-secondary" id="channel-reload">새 로 고 침</button>
 	    </div> 
     </div>

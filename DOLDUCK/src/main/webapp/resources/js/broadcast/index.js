@@ -5,8 +5,9 @@ const express = require('express'),
       fs = require('fs')
 var app = express()
 
+var title
 var roomNumber
-var caster
+var caster 
 var roomArr = []
 
 /*******************
@@ -91,17 +92,6 @@ function getNumClients(room) {
     return numClients
 }
 
-function getRoomInfo(roomNum){
-    for(var one in roomArr){
-        if(one.room === roomNum){
-            console.log('찾았다!!', onair)
-            return one
-        }
-    }
-}
-
-
-
 /*******************
        Socket
 *******************/
@@ -113,11 +103,11 @@ const io = socketIO(server)
 io.sockets.on('connection', (socket) => {
 
     //caster 접속 (방 생성)
-    socket.on('create', (casterName, title) => {
+    socket.on('create', (casterName, title, roomNumber) => {
         socket.name = casterName
         caster = socket.id
         console.log(`Caster(socket.id) : ${caster}`)
-        console.log(`[Caster Join] "${socket.name}" created room ${roomNumber}`)
+        console.log(`[Caster Join] "${socket.name}" created room "${title}"(${roomNumber})`)
 
         var rooms = io.sockets.adapter.rooms
         for(var key in rooms){
@@ -139,7 +129,7 @@ io.sockets.on('connection', (socket) => {
         console.log(`${_room}에 ${name}(${socket.id})님이 들어왔습니다`)
         socket.join(_room)
         io.to(findCaster(_room)).emit('newUserJoined', name, socket.id)
-        io.sockets.to(_room).emit('joinedUser', name, socket.id, getNumClients(_room), getRoomInfo(_room) ) 
+        io.sockets.to(_room).emit('joinedUser', name, socket.id, getNumClients(_room)) 
     })
 
     socket.on('userMessage', (msg, room) =>{
