@@ -7,7 +7,7 @@
 	import="org.springframework.security.core.context.SecurityContextHolder"%>
 <%@page import="org.springframework.security.core.Authentication"%>
 <%@page import="com.my.dolduck.model.dto.MemberDto"%>
-<%
+<%-- <%
 	Authentication auth = SecurityContextHolder.getContext().getAuthentication();
 	Object principal = auth.getPrincipal();
 	String name = "";
@@ -15,7 +15,7 @@
 	if (principal != null && principal instanceof MemberDto) {
 		name = ((MemberDto) principal).getUsername();
 	}
-%>
+%> --%>
 <!DOCTYPE html>
 <html>
 
@@ -69,7 +69,7 @@
 					</sec:authorize>
 					<sec:authorize access="hasAnyRole('ROLE_USER','ROLE_ARTIST')">
 						<li class="dropdown"><a class="dropdown-toggle"
-							data-toggle="dropdown"><%=name%>님</a>
+							data-toggle="dropdown">님</a>
 							<ul class="dropdown-menu" role="menu">
 								<li class="dropdown-item:hover"><a href="logout.do">Logout</a></li>
 								<li class="dropdown-item:hover"><a
@@ -78,7 +78,7 @@
 					</sec:authorize>
 					<sec:authorize access="hasRole('ROLE_ADMIN')">
 						<li class="dropdown"><a class="dropdown-toggle"
-							data-toggle="dropdown"><%=name%>님</a>
+							data-toggle="dropdown">님</a>
 							<ul class="dropdown-menu" role="menu">
 								<li class="dropdown-item:hover"><a href="logout.do">Logout</a></li>
 								<li class="dropdown-item:hover"><a
@@ -132,12 +132,12 @@
 							<li><a href="${pageContext.request.contextPath}/login.do">Login</a></li>
 						</sec:authorize>
 						<sec:authorize access="hasAnyRole('ROLE_USER','ROLE_ARTIST')">
-							<li style="color: #fff"><%=name%>님</li>
+							<li style="color: #fff">님</li>
 							<li><a href="logout.do">Logout</a></li>
 							<li><a href="${pageContext.request.contextPath}/mypage.do">Mypage</a></li>
 						</sec:authorize>
 						<sec:authorize access="hasRole('ROLE_ADMIN')">
-							<li style="color: #fff"><%=name%>님</li>
+							<li style="color: #fff">님</li>
 							<li><a href="logout.do">Logout</a></li>
 							<li><a href="${pageContext.request.contextPath}/admin.do">Userpage</a></li>
 						</sec:authorize>
