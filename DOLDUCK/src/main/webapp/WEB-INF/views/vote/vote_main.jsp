@@ -70,10 +70,11 @@ Kakao.init('4a03c6de35fa570bcbf9f88ff1c10994');
 
 $(document).on('click', '.kakao-link-btn', function(){
 	var data = { 
-		artist :  $(this).parent().siblings().eq(0).text(),
+		artist : $(this).parent().siblings().eq(0).text(),
 		thumb : $(this).parent().siblings().eq(1).children().eq(0).attr('src'),
 		vote : $(this).parent().siblings().eq(2).children().eq(0).children('input[name=star_got_vote]').val()
 	}
+	console.log(data)
 	sendLink(data)
 })
 
@@ -82,7 +83,7 @@ function sendLink(data) {
 		objectType: 'feed',
 		content: {
 			title: '[DolDuck]당신의 아이돌에게 투표하세요!',
-			description: data.artist + '님은 지금  ♥' + data.vote +'♥표를 얻었습니다!\n｡゜゜(｣｡≧⊿≦)｣마감이 얼마남지 않았어요!｡゜゜(｣｡≧⊿≦)｣\n서둘러 투표를 통해 당신의 아이돌을 센터로 만들어주세요♥ ',
+			description: data.artist + '님은 지금  ♥<' + data.vote +'>♥표를 얻었습니다!\n｡゜゜(｣｡≧⊿≦)｣마감이 얼마남지 않았어요!｡゜゜(｣｡≧⊿≦)｣\n서둘러 투표를 통해 당신의 아이돌을 센터로 만들어주세요♥ ',
 			imageUrl: data.thumb,
 			link: {
 				mobileWebUrl: 'http://192.168.10.169:8787/dolduck/vote.do',
