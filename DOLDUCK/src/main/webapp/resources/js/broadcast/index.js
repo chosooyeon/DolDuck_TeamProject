@@ -78,13 +78,6 @@ app.get('/user/:page', (req, res) => {
 *******************/
 
 function findCaster(roomNum){
-    
-    // for(var key in roomArr){
-    //     if(key.room == roomNum){
-    //         return key.casterid
-    //     }
-    // }
-
     for(let i=0 ; i<roomArr.length ; i++){
         if(roomArr[i].room == roomNum){
             return roomArr[i].casterid
