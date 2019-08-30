@@ -344,15 +344,15 @@ function downloadRecording(){
     }, 100);
 }
 
-// async function init(constraints){
-//     const stream = await navigator.mediaDevices.getUserMedia(constraints)
-//         .then(handleSuccess(stream))
-//         .catch((e) => {
-//             console.error('navigator.getUserMedia error:', e)
-//             alert(`Error occured on getUserMedia() : ${e} `)
-//         })
-// }
 
+/*****************************
+ * 
+ * 
+ *  여기는 빨간줄 나는게 맞아요!
+ *  이클립스 버전문제라서 빨간줄나는데 
+ *  동작에는 이상 없습니다!!!
+ * 
+ * ***************************/
 async function init(constraints){
     try {
         const stream = await navigator.mediaDevices.getUserMedia(constraints);
