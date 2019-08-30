@@ -24,7 +24,7 @@ function freeInsertLogin(){
 function freeDetailLogin(freeboard_num){
    $.ajax({
       type : 'POST',
-      url : 'free_detail_login.do?',
+      url : 'free_detail_login.do',
       dataType : 'json',
       async : false,
       success : function(data){

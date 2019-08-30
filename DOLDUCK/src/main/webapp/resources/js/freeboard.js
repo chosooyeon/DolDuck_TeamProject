@@ -84,32 +84,3 @@ function comment_edit_do(num){
 		});
 	}	
 }
-
-//pick 버튼 클릭시 VoteDto에 starname, item 저장 + 로그인 체크
-function voteClickPickBtn(freeboard_id){
-	$.ajax({
-		type : 'POST',
-		url : 'vote-pick.do?starname='+starname+'&item='+item,
-		dataType : 'json',
-		async : false,
-		beforeSend: function( xhr ) {
-            xhr.setRequestHeader(header, token);
-       },
-		success : function(data){
-			if(data.loginState == "null"){
-				// 로그인상태가 아닐경우
-				alert('로그인이 필요한 서비스입니다.');
-				location.href="login.do";
-			}else{
-				// 로그인상태일경우 투표수 선택하는 팝업창 띄우기
-				votePopup("vote-popup.do");
-			}
-		},
-		error : function(){
-			console.log('ajax 통신에러')
-			alert('ajax 통신에러 (votelike)')
-		}
-	});
-}
-
-
