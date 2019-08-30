@@ -130,6 +130,9 @@
 
 @media only screen and (max-width: 991px)
 {
+	.container{
+		width: 792px;
+	}
 	.main_nav
 	{
 		display: none;
@@ -252,8 +255,12 @@
 /************
 9. 768px
 ************/
-
-
+@media only screen and (max-width: 769px)
+{
+	.container{
+		width:566px;	
+	}
+}
 
 /************
 10. 767px
