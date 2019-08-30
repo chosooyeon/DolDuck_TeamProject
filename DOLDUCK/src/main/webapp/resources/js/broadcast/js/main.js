@@ -11,7 +11,6 @@ var roomArr = []
 
 
 $(function(){
-	
     socket.emit('requestRoomlist')
     
     socket.on('roomlist', (rooms) => {
@@ -36,7 +35,7 @@ function addRoomList(list){
 
 function appendRoom(item){
     var roomUnit = `<li class="channel-box">
-                    <a href="/user/${item.room}">
+                    <a href="join-onair.do?room=${item.room}">
                         <img src="${item.thumb}" width="228" height="128">
                     </a>
                     <p><a href="/user/${item.room}>${item.title}</a></p>

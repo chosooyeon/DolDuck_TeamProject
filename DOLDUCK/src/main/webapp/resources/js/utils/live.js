@@ -86,15 +86,5 @@ function handleTimeFormat(type, data){
 					return data
 				}
 				break;
-		case 'second':
-			if(data > 60){
-				return '00'
-			}else if(data >= 0 && data <10){
-				return '0'+data
-			}else{
-				return data
-			}
-			break;
 		}
-
 }

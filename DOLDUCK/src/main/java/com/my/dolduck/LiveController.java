@@ -150,7 +150,7 @@ public class LiveController {
 		System.err.println(dto.getBroadcast_date());
 		int res = b_biz.insert(dto);
 		System.err.println("라이브 시작! 일정추가하기 : " + res);
-		
+
 		if(res>0) {
 			MemberDto caster = (MemberDto)auth.getPrincipal();
 			model.addAttribute("caster", caster);
@@ -163,13 +163,17 @@ public class LiveController {
 	
 	//온에어 - 입장(User)
 	@RequestMapping("join-onair.do")
-	public String joinLive() {
-		return "";
+	public String joinLive(@RequestParam String room, Model model, Authentication auth) {
+		MemberDto dto = (MemberDto)auth.getPrincipal();
+		model.addAttribute("dto", dto);
+		
+		return "live/live-onair-user";
 	}
 	
 	//채널보기
 	@RequestMapping("live-channel.do")
-	public String liveChannel() {
+	public String liveChannel() {	
+		
 		return "live/live-channel";
 	}
 	
