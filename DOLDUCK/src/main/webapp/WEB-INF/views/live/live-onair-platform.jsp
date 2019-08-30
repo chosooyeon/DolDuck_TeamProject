@@ -31,10 +31,7 @@
 
    	<!-- Title & Banner -->
    	<div class="container"> 
-         <div class="live-banner" > 
-         	<h4>ON AIR</h4>
-			<h5>생방송! 관심 아티스트와 채널을 팔로우하고, 라이브 방송을 즐겨 보세요!</h5>
-         </div>
+         <div class="live-banner" style="background-image: url('resources/images/banner-live-onair.png')"></div>
          
         
         <!-- Add Events Button for ADMIN -->

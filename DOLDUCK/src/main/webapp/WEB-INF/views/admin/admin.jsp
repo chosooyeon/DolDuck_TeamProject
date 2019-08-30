@@ -21,18 +21,29 @@
 				</button>
 				<div class="panel">
 					<table class="table">
+					<col width="70">
+					<col width="70">
+					<col width="70">
+					<col width="70">
+					<col width="70">
+					<col width="70">
+					<col width="70">
+					<col width="70">
+					<col width="70">
+					<col width="70">
+					<col width="70">
 						<tr>
-							<th scope="col">No</th>
-							<th scope="col">Name</th>
-							<th scope="col">Id</th>
-							<th scope="col">Phone</th>
-							<th scope="col">Email</th>
-							<th scope="col">Addr</th>
-							<th scope="col">Heart</th>
-							<th scope="col">Vote</th>
-							<th scope="col">Enabled</th>
-							<th scope="col">Authority</th>
-							<th scope="col">Regdate</th>
+							<th>No</th>
+							<th>Name</th>
+							<th>Id</th>
+							<th>Phone</th>
+							<th>Email</th>
+							<th>Addr</th>
+							<th>Heart</th>
+							<th>Vote</th>
+							<th>Enabled</th>
+							<th>Authority</th>
+							<th>Regdate</th>
 						</tr>
 						<c:choose>
 							<c:when test="${empty list}">
@@ -44,25 +55,25 @@
 								<c:forEach items="${list}" var="dto" varStatus="status">
 								<c:if test="${dto.member_role eq 'ROLE_USER' || dto.member_role eq 'ROLE_ARTIST'}">
 									<tr id="a${status.count }">
-										<td scope="col" class="seq">${dto.member_seq }</td>
-										<td scope="col">${dto.member_name }</td>
-										<td scope="col">${dto.member_id }</td>
-										<td scope="col">${dto.member_phone }</td>
-										<td scope="col">${dto.member_email }</td>
-										<td scope="col">${dto.member_addr }</td>
-										<td scope="col">${dto.member_heart }</td>
-										<td scope="col">${dto.member_vote }</td>
+										<td class="seq">${dto.member_seq }</td>
+										<td>${dto.member_name }</td>
+										<td>${dto.member_id }</td>
+										<td>${dto.member_phone }</td>
+										<td>${dto.member_email }</td>
+										<td>${dto.member_addr }</td>
+										<td>${dto.member_heart }</td>
+										<td>${dto.member_vote }</td>
 									<c:if test="${dto.member_role eq 'ROLE_USER' || dto.member_role eq 'ROLE_ARTIST'}">
 									
 									<c:if test="${dto.member_role eq 'ROLE_USER'}">
-										<td scope="col"><select name="item">
+										<td><select name="item">
 												<option>${dto.member_role }</option>
 												<option>ROLE_ARTIST</option>
 										</select>
 										</td>
 									</c:if>
 									<c:if test="${dto.member_role eq 'ROLE_ARTIST'}">
-										<td scope="col"><select name="item">
+										<td><select name="item">
 												<option>${dto.member_role }</option>
 												<option>ROLE_USER</option>
 										</select>
@@ -70,10 +81,9 @@
 									</c:if>
 									</c:if>
 									
-										<td scope="col">${dto.member_enabled }</td>
-										<td scope="col"><fmt:formatDate pattern="yyyy-MM-dd"
-												value="${dto.member_regdate }" /></td>
-										<td scope="col"><button id="upgrade">등급 변경하기</button></td>
+										<td>${dto.member_enabled }</td>
+										<td><fmt:formatDate pattern="yyyy-MM-dd" value="${dto.member_regdate }" /></td>
+										<td><button id="upgrade">등급 변경하기</button></td>
 									</tr>
 									</c:if>
 								</c:forEach>

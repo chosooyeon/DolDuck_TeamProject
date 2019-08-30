@@ -28,10 +28,7 @@
     
     <!-- Title & Banner -->
     <div class="container">
-    	<div class="live-banner"> 
-         	<h4>아티스트 채널보기</h4>
-			<h5>관심있는 아티스트의 지난 동영상을 챙겨보세요!</h5>
-         </div>
+    	<div class="live-banner" style="background-image: url('resources/images/banner-live-channel.png')"></div>
     </div>
     
     <!--  -->
