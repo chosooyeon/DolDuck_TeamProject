@@ -141,21 +141,25 @@ public class LiveController {
 	
 	//온에어- 입장(Caster)
 	@RequestMapping("start-onair.do")
-	public String startLive(String live_caster, String live_title, String startingTime, String room_number, Model model, Authentication auth) {
+	public String startLive(String live_caster, String live_title, String startingTime, Model model, Authentication auth) {
 		
+		int room_number = (int) Math.ceil(Math.random()*99999999);
 		MemberDto caster = (MemberDto)auth.getPrincipal();
+		
 		System.out.println("["+caster.getMember_id()+"]님이 "+startingTime+"에 "+ live_title + "으로 방송시작!\n" + " >>> 방번호 : " + room_number);
 		
 		BroadcastDto dto = new BroadcastDto();
 		dto.setBroadcast_caster(live_caster);
 		dto.setBroadcast_title(live_title);
 		dto.setBroadcast_date(startingTime);
+		dto.setBroadcast_room(room_number+"");
 		System.err.println(dto.getBroadcast_date());
-		int res = b_biz.insert(dto);
+		int res = b_biz.insertOnair(dto);
 		System.err.println("라이브 시작! 일정추가하기 : " + res);
 
 		if(res>0) {
 			model.addAttribute("caster", caster);
+			model.addAttribute("room_number", room_number);
 			model.addAttribute("live", dto);
 			return "live/live-onair-caster";
 		}else {
@@ -166,10 +170,25 @@ public class LiveController {
 	//온에어 - 입장(User)
 	@RequestMapping("join-onair.do")
 	public String joinLive(@RequestParam String room, Model model, Authentication auth) {
-		MemberDto dto = (MemberDto)auth.getPrincipal();
-		model.addAttribute("dto", dto);
 		
-		return "live/live-onair-user";
+		//유저정보
+		MemberDto user = (MemberDto)auth.getPrincipal();
+		model.addAttribute("user", user);
+		
+		//방송정보 
+		BroadcastDto live = new BroadcastDto();
+		live = b_biz.selectOneByRoom(room);
+		model.addAttribute("live", live);
+		model.addAttribute("room_number", room);
+	
+		System.err.println(user.getMember_id()+ "님이 " + room + "(" + live + ")번 방에 입장합니다!");
+		
+		if(live != null) {
+			return "live/live-onair-user";
+		}else {
+			return "redirect:live-onair.do";
+		}
+		
 	}
 	
 	//채널보기

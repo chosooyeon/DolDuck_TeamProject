@@ -30,9 +30,20 @@ const constraints = {
 /**************************** 
           Caster Info
 *****************************/
-var title = 'Live Stream Test'
+var name = $('#channel-name').text()
+var title = $('#onair-title').text()
+var room_number = $('#casterInfo').attr('room')
 var _room
 var clients = []
+
+$(function(){
+	/*room_number = location.href.split('/')
+	console.log(room_number)*/
+    console.log(`Request room is.. caster: ${name} / title : ${title} / room : ${room_number}`)
+	
+    init(constraints); 
+    stopBtn.disabled = true
+})
 
 
 /**************************** 
@@ -40,9 +51,7 @@ var clients = []
 *****************************/
 var socket = io.connect('https://192.168.10.169:5571')
 
-socket.emit('create', name, title)
-
-document.getElementById('onair-title').innerHTML = title
+socket.emit('create', name, title, room_number)
 
 socket.on('createdRoom', (roomNumber) =>{
     _room = roomNumber
@@ -335,16 +344,25 @@ function downloadRecording(){
     }, 100);
 }
 
+// async function init(constraints){
+//     const stream = await navigator.mediaDevices.getUserMedia(constraints)
+//         .then(handleSuccess(stream))
+//         .catch((e) => {
+//             console.error('navigator.getUserMedia error:', e)
+//             alert(`Error occured on getUserMedia() : ${e} `)
+//         })
+// }
 
- function init(constraints){
+async function init(constraints){
     try {
-        const stream = navigator.mediaDevices.getUserMedia(constraints);
+        const stream = await navigator.mediaDevices.getUserMedia(constraints);
         handleSuccess(stream);
     } catch (e) {
         console.error('navigator.getUserMedia error:', e)
         alert(`Error occured on getUserMedia() : ${e} `)
     }
 }
+
 
 stopBtn.addEventListener('click', ()=>{ stopRecording(); console.log('Stop Recording....')})
 mediaSource.addEventListener('sourceopen', handleSourceopen, false)
@@ -366,7 +384,7 @@ function onChatSubmit(){
         event.preventDefault()
         var msg = $('#msg').val().trim();
         if (msg != "" && msg != null) {
-            socket.emit('chat-message', _room, 'caster', msg)
+            socket.emit('chat-message', _room, name, msg)
         }
         $('#msg').val('');
     }
@@ -400,10 +418,3 @@ function leadingZeros(n, digits) {
     return zero + n;
 }
 
-$(function(){
-	room_number = loaction.href.split('/')
-	conosole.log(room_number)
-    
-    init(constraints); 
-    stopBtn.disabled = true
-})
