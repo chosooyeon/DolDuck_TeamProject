@@ -1,18 +1,10 @@
-//var url = require('url')
-//var queryString = url.parse(document., true);
-// var para = document.location.href.split("?");
-// var mymy = para[1].split('=')[1];
-// console.log(para[1].split('=')[1]);
-
-// /*  CASTER  */
-// var socket = io.connect()
-
+/**************************** 
+        RTC & Peer Info
+*****************************/
 var localStream
 var remoteStream
-var peer
-var peerArr = []
-var servers = null
-
+var pc
+var pcArr = []
 var pcConfig = {
     'iceServers': [
         { 'urls': 'stun:stun.l.google.com:19302' }
@@ -26,97 +18,239 @@ var pcConfig = {
 }
 var sdpConstraints = {      
     offerToReceiveAudio: 1,         
-    offerToReceiveVideo: 1
-    // 1 = true    
+    offerToReceiveVideo: 1              // 1 = true    
 };
 
-var video = document.getElementById('video')
+var video = document.getElementById('localVideo')
 const constraints = {
     audio: true,
-    video: {
-    width: 1280, height: 720
-    }
+    video: { width: 1280, height: 720 }
 };
 
-
-/* ---------------------- SOCKET --------------------- */
-//var name = prompt('닉네임을 입력해주세요!')
-//var title = prompt('방제목을 입력해주세요')
-var name = 'Zsoo'
+/**************************** 
+          Caster Info
+*****************************/
 var title = 'Live Stream Test'
 var _room
+var clients = []
 
-//caster 접속 -> 방생성
-if(name!=null && name != ""){
-    socket.emit('create', name, title)
-    document.getElementById('onair-title').innerHTML = title
-}else{
-    console.log(`Caster is not defined`)
-    alert('Caster is not defined')
-}
+
+/**************************** 
+            Socket
+*****************************/
+//var socket = io.connect()
+
+socket.emit('create', name, title)
+
+document.getElementById('onair-title').innerHTML = title
 
 socket.on('createdRoom', (roomNumber) =>{
     _room = roomNumber
     console.log(`this room number is ${_room}`)
 
     var roomInfo = {
-        room : _room,
-        caster : name,
-        title : title,
-        thumb : `https://v-phinf.pstatic.net/20190813_56/1565623602340qwcBD_JPEG/upload_2.jpg?type=f228_128`,
-        date : getTimeStamp()
+        'room' : _room,
+        'caster' : name,
+        'casterid' : socket.id,
+        'title' : title,
+        'thumb' : `https://v-phinf.pstatic.net/20190813_56/1565623602340qwcBD_JPEG/upload_2.jpg?type=f228_128`,
+        'date' : getTimeStamp()
     }
-    socket.emit('joinedCaster', roomInfo)
+    socket.emit('caster-join', roomInfo)
 })
 
-
-socket.on('conflicted', (room) => {
-    socket.leave(room)
+socket.on('joinedUser', (name, id, numberofClients) => {
+    var newUser = {
+        name : name,
+        id : id
+    }
+    $('#numoof-visitor').text(numberofClients)
+    clients.push(newUser)
+    console.log(`(New user joined)${newUser.name}님이 접속하였습니다!`);
+    casterPeerCreate(newUser.id)
 })
-//Chat
-socket.on('message', (name, msg) => {
+
+socket.on('message', (message,  id) => {
+    console.log('Client received message: ', message)
+    if(message.type === 'answer'){
+        console.log('Received Answer message')
+        commit(findPc(id).setRemoteDescription(new RTCSessionDescription(message)),id)
+    }else if(message.type === 'candidate'){
+        var candidate = new RTCIceCandidate({
+            sdpMLineIndex : message.label,
+            candidate : message.candidate
+        })
+        commit(findPc(id).addIceCandidate(candidate), id)
+    }else if(message.type === 'bye'){
+        hanldeRemoteHangup()
+    }
+})
+
+socket.on('chat-message', (name, msg) => {
     appendMessage(name, msg)
 })
 
-/* ---------------------- STREAM VIDEO --------------------- */
+/**************************** 
+    WebRTC - PeerConnection
+*****************************/
 
-function gotStream(stream){
-    console.log('Received local stream');
-    video.scrObject = stream
-    window.localStream = stream;
+function findPc(id) {
+    for (let i = 0; i < pcArr.length; i++) {
+        if (pcArr[i].id === id) {
+            return pcArr[i].pc
+        }
+    }
 }
 
-function start(){
-    console.log('Requesting local stream!')
-
-    navigator.mediaDevices.getUserMedia({
-        video : true,
-        audio : true
-    }).then(gotStream)
-    .catch(e => {
-        console.log('getUserMedia() error : ' , e);
-    })
+function commit(pc, id){
+    for (let i = 0; i < pcArr.length; i++) {
+        if (pcArr[i].id === id) {
+            pcArr[i].pc === pc
+        }
+    }
 }
 
-function createOffer(socketId){
+function casterPeerCreate(id) {
+    console.log('피어 커넥션 생성');
 
+
+    pcArr.push({ 'id': id, 'pc': createPeerConnection(id) })
+    console.log('생성된 피어 : ', findPc(id) );
+    commit(findPc(id).addStream(localStream), id)
+    sendOffer(id)
 }
 
-/* ---------------------- RECODING VIDEO --------------------- */
-var startBtn = document.getElementById('startButton'),
-    stopBtn = document.getElementById('stopButton')
+function createPeerConnection(id){
+    var emptyPc
+    try{
+        emptyPc = new RTCPeerConnection(null)
+        emptyPc.onicecandidate = function(event){
+            handleIceCandidateCaster(event, id)
+        }
+        //emptyPc.onaddStream = handleRemoteStreamAdded
+        //emptyPc.onremovestream = handleRemoteStreamRemoved
+        console.log('Created RTCPeerConnection')
+        return emptyPc
+    }catch(e){
+        console.log('Failed to create PeerConnection.\nexception : ', e)
+        alert('Cannot create RTCPeerConnection object.')
+        return;
+    }
+}
+
+function sendOffer(id) {
+    console.log(`Send Offer to Client(${id})`);
+    findPc(id).createOffer()
+        .then(function (sessionDescription) {
+            setLocalAndSendMessageCaster(sessionDescription, id)
+        })
+        .catch(function (err) {
+            handleCreateOfferError(err)
+        })
+}
+
+function setLocalAndSendMessageCaster(sdp, id){
+    commit(findPc(id).setLocalDescription(sdp), id)
+    console.log('SetLocal And SendMessage sending message : ', sdp)
+    sendMessage(sdp, id)
+}
+
+function handleCreateOfferError(err){
+    console.log(`Error : ${err}`);
+}
+
+function handleIceCandidateCaster(e, id){
+    console.log('icecandidate event: ', e)
+    if(e.candidate){
+        sendMessage({
+            type : 'candidate',
+            label : e.candidate.sdpMLineIndex,
+            id : e.candidate.sdpMid,
+            candidate : e.candidate.candidate
+        },id)
+    }else{
+        console.log('End of candidates.')
+    }
+}
+
+function handleRemoteStreamAdded(event){
+    console.log('Remote Stream Added')
+    remoteStream = event.stream
+    remoteVideo.srcObject = remoteStream
+}
+
+function handleRemoteStreamRemoved(event){
+    console.log('Remote Stream Removed : ', event);
+}
+
+function hanldeRemoteHangup(id){
+    console.log('Session terminated')
+    close(id)
+}
+
+function close(id){
+    commit(findPc(id).close(), id)
+}
+
+function sendMessage(msg, id){
+    console.log(`sendMessage : ${msg} / ${id}`);
+    socket.emit('casterMessage', msg, id)
+}
+
+function sendByeMessage(){
+    socket.emit('message', 'bye')
+}
+
+
+window.onbeforeunload = function () {
+    sendByeMessage()
+};
+
+/** Setting TURN Server **/
+var turnReady
+
+function requestTurn(turnURL){
+    var turnExists = false;
+    for(var i in pcConfig.iceServers){
+        if(pcConfig.iceServers[i].urls.substr(0,5) === 'turn:'){
+            turnExists = true;
+            turnReady = true;
+            break;
+        }
+    }
+    if(!turnExists){
+        console.log('Getting TURN server from', turnURL)
+
+        var xhr = new XMLHttpRequest()
+        xhr.onreadystatechange = function(){
+            if(xhr.readyState === 4 && xhr.status === 200){
+                var turnServer = JSON.parse(xhr.responseText)
+                console.log('Got TURN server: ', turnServer)
+                pcConfig.iceServers.push({
+                    'urls' : 'turn:' + turnServer.username + '@' + turnServer.turn,
+                    'credential' : turnServer.password
+                })
+                turnReady = true
+            }
+        }
+        xhr.open('GET', turnURL, true)
+        xhr.send()
+    }
+}
+
+
+/**************************** 
+    WebRTC- Recording Video
+*****************************/
+
+//var startBtn = document.getElementById('startButton')
+var stopBtn = document.getElementById('stopButton')
 
 const mediaSource = new MediaSource()
 let mediaRecorder;
 let recordedBlobs = [];
 let sourceBuffer;
-    
 var videoSeq = 0;
-    
-startBtn.addEventListener('click', ()=>{ init(constraints); startBtn.disabled = true; })
-stopBtn.addEventListener('click', ()=>{ stopRecording(); console.log('Stop Recording....')})
-mediaSource.addEventListener('sourceopen', handleSourceopen, false)
-
 
 function handleSourceopen(e){
     console.log('MediaSource Opened')
@@ -126,8 +260,10 @@ function handleSourceopen(e){
 
 function handleSuccess(stream){
     console.log('getUserMedia() got stream : ', stream)
-    window.stream = stream
+    localStream = stream
+    //window.stream = stream
     video.srcObject = stream
+    startRecording()
 }
 
 function handleDataAvailable(event) {
@@ -136,7 +272,7 @@ function handleDataAvailable(event) {
     }
   }
 
-function startLiveStream(){
+function startRecording(){
     //Setting Recording Options
     let options = {mimeType: 'video/webm;codecs=vp9'};
     if (!MediaRecorder.isTypeSupported(options.mimeType)) {
@@ -156,7 +292,7 @@ function startLiveStream(){
     }
 
     try{
-        mediaRecorder = new MediaRecorder(window.stream, options)
+        mediaRecorder = new MediaRecorder(localStream, options)
     }catch(e){
         console.log('Error : ', e);
         return ;
@@ -164,7 +300,7 @@ function startLiveStream(){
     
     //녹화시작: rec버튼 무효/stop버튼 유효화 
     stopBtn.disabled = false
-
+    //레코딩이 끝나면 저장
     mediaRecorder.onstop = function(e){
         downloadRecording()
         console.log('Recoreded stop : ', e);
@@ -177,19 +313,14 @@ function startLiveStream(){
 }
 
 function stopRecording(){
-    //녹화중지: rec버튼 유효/stop버튼 무효화 
     stopBtn.disabled = true
     mediaRecorder.stop()
     console.log('Recorded Blobs: ', recordedBlobs);
-
-    var buttonBox = $('#button-box-download')
-    buttonBox.html($(`<button id="downButton">`).html('DOWNLOAD'))
 }
 
 function downloadRecording(){
     ++videoSeq;
     //Blob 객체는 파일과 흡사한 불변 객체로 raw data
-
     const blob = new Blob(recordedBlobs, {type: 'video/webm'});
     const url = window.URL.createObjectURL(blob);
     const a = document.createElement('a');
@@ -204,31 +335,31 @@ function downloadRecording(){
     }, 100);
 }
 
-//When the Start Button is Pressed, initialize stream(getUserMedia)
-function init(constraints){
+
+ function init(constraints){
     try {
-        // const stream = await navigator.mediaDevices.getUserMedia(constraints);
-        // handleSuccess(stream);
-        startLiveStream()
+        const stream = navigator.mediaDevices.getUserMedia(constraints);
+        handleSuccess(stream);
     } catch (e) {
         console.error('navigator.getUserMedia error:', e)
         alert(`Error occured on getUserMedia() : ${e} `)
     }
 }
 
-/* ------------------------------------------- */
+//startBtn.addEventListener('click', ()=>{ init(constraints); startBtn.disabled = true; })
+stopBtn.addEventListener('click', ()=>{ stopRecording(); console.log('Stop Recording....')})
+mediaSource.addEventListener('sourceopen', handleSourceopen, false)
+
+/************** 
+    Chatting
+***************/
 
 function appendMessage(userName, msg){
     var _name = userName
     var text;
-    if (_name === 'caster') {
-        text = `<p class="nameSpace">${_name}</p>&nbsp;<p>${msg}</p>`
-    } else if(_name === 'user'){
-        text = `<p class="nameSpace">${_name}</p>&nbsp;<p>${msg}</p>`
-    } else {
-        text = `<p>${msg}</p>`
-    }
+    text = `<p class="nameSpace">${_name}</p>&nbsp;<p>${msg}</p>`
     $('#messages').append($(`<li>`).html(text))
+    $(".chatroom").scrollTop($("#msgDiv")[0].scrollHeight);
 }
 
 function onChatSubmit(){
@@ -236,37 +367,33 @@ function onChatSubmit(){
         event.preventDefault()
         var msg = $('#msg').val().trim();
         if (msg != "" && msg != null) {
-            console.log(`[Caster-${name}] ${msg}`)
-            socket.emit('message', _room, 'caster', msg)
+            socket.emit('chat-message', _room, 'caster', msg)
         }
         $('#msg').val('');
-        $(".chatroom").scrollTop($("#msgDiv")[0].scrollHeight);
     }
-    var e = jQuery.Event( "keypress", { keyCode: 13 } ); 
-    $("#msg").trigger(e);
 }
+
+/*************** 
+   Useful Func
+****************/
 
 function getTimeStamp() {
     var d = new Date();
-  
     var stamp =
       leadingZeros(d.getFullYear(), 4) + '-' +
       leadingZeros(d.getMonth() + 1, 2) + '-' +
       leadingZeros(d.getDate(), 2) + ' ' +
-  
       leadingZeros(d.getHours(), 2) + ':' +
       leadingZeros(d.getMinutes(), 2) + ":00";
-  
-    
     console.log('now is', stamp, ' ...');
     
     return stamp;
-  }
+}
 
 function leadingZeros(n, digits) {
    var zero = '';
    n = n.toString();
-  
+
     if (n.length < digits) {
       for (i = 0; i < digits - n.length; i++)
         zero += '0';
@@ -275,17 +402,7 @@ function leadingZeros(n, digits) {
 }
 
 $(function(){
-    startBtn.disabled = false
+    init(constraints); 
+    //startBtn.disabled = true
     stopBtn.disabled = true
-    //Download Button
-    $(document).on('click', '#downButton', () => {
-        downloadRecording()
-    })
-    
-    // //On Chat
-    // $('form').submit(function (e) {
-    //     e.preventDefault();
-        
-    //     return false;
-    // });
 })

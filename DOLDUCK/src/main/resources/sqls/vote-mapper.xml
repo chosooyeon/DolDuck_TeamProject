@@ -30,9 +30,9 @@
       WHERE MEMBER_ID=#{member_id}
    </update>
    
-   <select id="selectVoteNumber" parameterType="String" resultType="int">
+   <select id="selectVoteNumber" parameterType="VoteDto" resultType="int">
       SELECT VOTE_TOTAL
       FROM VOTE
-      WHERE VOTE_NAME=#{starName}
+      WHERE VOTE_NAME=#{starName} AND VOTE_ITEM=#{item}
    </select>
 </mapper>

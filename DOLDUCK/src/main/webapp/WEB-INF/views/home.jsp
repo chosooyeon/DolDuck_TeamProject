@@ -1,4 +1,4 @@
-<%@page language="java" contentType="text/html; charset=UTF-8"
+﻿<%@page language="java" contentType="text/html; charset=UTF-8"
 	pageEncoding="UTF-8"%>
 <!DOCTYPE html>
 <html lang="ko">
@@ -50,75 +50,22 @@
    <section class="vote">
       <div class="container">
          <div class="row">
+               <div class="col-lg-12 vote-banner" style="background-image: url('resources/images/banner-home-01.png');margin-bottom: 55px; cursor: pointer;" onclick="location.href='vote.do';"></div>
             <div class="col-lg-6 offset-lg-3">
             <!-- ranking -->
                <p class="ranking">DOL RANKING CHART</p>
             </div>
          </div>
-         <div class="row row-lg-eq-height">
+         <div class="row">
             <div class="col-md-12">
-                  <a href="#" class="item">
-                          <div class="thum" style="background-image:url(resources/images/2.jpg)"></div>
-                          <div class="txt-container">
-                             <p class="date">빅</p>
-                              <p class="bbsTit">뱅</p>
-                          </div>
-                          <div class="etc">
-                              <p class="reply"><i class="far fa-comment-alt"></i>549</p>
-                              <p class="favorites"><i class="fas fa-heart"></i>&nbsp;21,838</p>
-                          </div>
-                             <p class="rankNum">1</p>
-                       </a>
-                  <a href="#" class="item">
-                          <div class="thum" style="background-image:url(resources/images/3.jpg)"></div>
-                             <div class="txt-container">
-                                  <p class="date">big</p>
-                                 <p class="bbsTit">bang</p>
-                          </div>
-                          <div class="etc">
-                              <p class="reply"><i class="far fa-comment-alt"></i>549</p>
-                              <p class="favorites"><i class="fas fa-heart"></i>&nbsp;21,838</p>
-                          </div>
-                          <p class="rankNum">2</p>
-                       </a>
-                  <a href="#" class="item">
-                          <div class="thum" style="background-image:url(resources/images/4.jpg)"></div>
-                             <div class="txt-container">
-                                  <p class="date">big</p>
-                                 <p class="bbsTit">bang</p>
-                          </div>
-                          <div class="etc">
-                              <p class="reply"><i class="far fa-comment-alt"></i>549</p>
-                              <p class="favorites"><i class="fas fa-heart"></i>&nbsp;21,838</p>
-                          </div>
-                    <p class="rankNum">3</p>
-                       </a>
-                  <a href="#" class="item">
-                          <div class="thum" style="background-image:url(resources/images/5.jpg)"></div>
-                             <div class="txt-container">
-                                  <p class="date">big</p>
-                                 <p class="bbsTit">bang</p>
-                             </div>
-                          <div class="etc">
-                              <p class="reply"><i class="far fa-comment-alt"></i>549</p>
-                              <p class="favorites"><i class="fas fa-heart"></i>&nbsp;21,838</p>
-                          </div>
-                    <p class="rankNum">4</p>
-                       </a>
-               <a href="#" class="item">
-                          <div class="thum" style="background-image:url(resources/images/1.jpg)"></div>
-                             <div class="txt-container">
-                                  <p class="date">big</p>
-                                 <p class="bbsTit">bang</p>
-                             </div>
-                          <div class="etc">
-                              <p class="reply"><i class="far fa-comment-alt"></i>549</p>
-                              <p class="favorites"><i class="fas fa-heart"></i>&nbsp;21,838</p>
-                          </div>
-                    <p class="rankNum">5</p>
-                       </a>
-  				</div>
-				<div class="vote_button"><a href="#">Vote Now</a></div>
+                <a href="vote.do" class="home-ranking home-vote-star-idol"></a>
+                <a href="vote.do" class="home-ranking home-vote-girl-group"></a>
+                <a href="vote.do" class="home-ranking home-vote-girl-idol"></a>
+                <a href="vote.do" class="home-ranking home-vote-boy-group"></a>
+               	<a href="vote.do" class="home-ranking home-vote-boy-idol"></a>
+                <a href="vote.do" class="home-ranking home-vote-new-idol"></a>
+  			</div>
+				<div class="vote_button"><a href="vote.do">Vote Now</a></div>
 			</div>
 		</div>
 		
@@ -151,33 +98,6 @@
 			<a href="#" class="button-modal-close" onclick="closeChat()">X</a>
 			<iframe class="iframe-chat" src="http://192.168.10.169:3000/"></iframe>
 		</div> -->
-		<!-- Extra -->
-		<section class="extra">
-			<div class="extra_container">
-				<div class="background_image"
-					style="background-image: url(images/extra.jpg)"></div>
-				<div class="container">
-					<div class="row">
-						<div class="col-lg-9">
-							<div
-								class="extra_content d-flex flex-column align-items-start justify-content-center">
-								<div class="extra_title">
-									<h1>Get your tickets now!</h1>
-								</div>
-								<div class="extra_text">
-									<p>In vitae nisi aliquam, scelerisque leo a, volutpat sem.
-										Vivamus rutrum dui fermentum eros hendrerit, id lobortis leo
-										volutpat. Maecenas sollicitudin est in libero pretium interdum</p>
-								</div>
-								<div class="extra_button">
-									<a href="#">Buy Now</a>
-								</div>
-							</div>
-						</div>
-					</div>
-				</div>
-			</div>
-		</section>
 
 		<!-- Footer  -->
 	</section>
@@ -186,6 +106,7 @@
 	<script type="text/javascript"
 		src="https://code.jquery.com/jquery-3.4.1.min.js"></script>
 	<script type="text/javascript" src="resources/js/home.js"></script>
+	<script type="text/javascript" src="resources/js/home_vote.js"></script>
 	<script src="resources/js/jquery-3.2.1.min.js"></script>
 	<script src="resources/styles/bootstrap-4.1.2/popper.js"></script>
 	<script src="resources/styles/bootstrap-4.1.2/bootstrap.min.js"></script>

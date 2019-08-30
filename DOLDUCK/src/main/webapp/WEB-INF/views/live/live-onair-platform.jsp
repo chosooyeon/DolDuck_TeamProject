@@ -38,7 +38,7 @@
         
         <!-- Add Events Button for ADMIN -->
 	    <div id="area-addEvent">
-        	<sec:authorize access="hasAnyRole('ROLE_USER', 'ROLE_ARTIST')">
+        	<sec:authorize access="hasAnyRole('ROLE_ADMIN', 'ROLE_ARTIST')">
 	        	<button type="button" class="btn btn-danger" data-toggle="modal" data-target="#liveInfoModal">방 송 시 작</button>
         	</sec:authorize>
         	<button type="button" class="btn btn-secondary" id="channel-reload">새 로 고 침</button>
@@ -48,12 +48,12 @@
    	<!-- Onair Channel list - waiting room -->
 	<div class="container">
 		<div class="channel-list">
-	       <ul></ul>
+	       <ul id="channel-item"></ul>
 	    </div>
 	</div>
 
 	<!-- The Modal -->
-	<sec:authorize access="hasAnyRole('ROLE_USER', 'ROLE_ARTIST')">
+	<sec:authorize access="hasAnyRole('ROLE_ADMIN', 'ROLE_ARTIST')">
 	<div class="modal-area container">
 	  <div class="modal fade" id="liveInfoModal">
 	    <div class="modal-dialog modal-sm modal-dialog-centered">
@@ -102,14 +102,14 @@
     
     <!-- Footer -->
     <%@include file="/WEB-INF/views/footer.jsp" %>
+    <script src="https://192.168.10.169:5571/socket.io/socket.io.js"></script>
     <script src="https://code.jquery.com/jquery-3.4.1.min.js"></script>
-    <script src="resources/js/utils/live.js"></script>
     <script src="resources/js/live/ioConnectException.js"></script>
     <!-- 맥북  -->
     <!-- <script src="https://192.168.10.107:5571/socket.io/socket.io.js"></script> -->
     <!-- 윈도우  -->
-    <script src="https://192.168.10.169:5571/socket.io/socket.io.js"></script>
     <script src="resources/js/broadcast/js/main.js"></script>
+    <script src="resources/js/utils/live.js"></script>
 </body>
 </html>
 

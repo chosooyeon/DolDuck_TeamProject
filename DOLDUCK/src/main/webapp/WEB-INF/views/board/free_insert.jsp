@@ -59,7 +59,7 @@
 			<tr>
 				<th>내용</th>
 				<td><textarea name="freeboard_content" id="summernote"></textarea>
-					<input type="file" name="file">
+					<input multiple="multiple" type="file" name="file">
 				</td>
 			</tr>
 			</table>

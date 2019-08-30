@@ -41,10 +41,10 @@
 								</tr>
 							</c:when>
 							<c:otherwise>
-								<c:forEach items="${list}" var="dto">
+								<c:forEach items="${list}" var="dto" varStatus="status">
 								<c:if test="${dto.member_role eq 'ROLE_USER' || dto.member_role eq 'ROLE_ARTIST'}">
-									<tr>
-										<td scope="col">${dto.member_seq }</td>
+									<tr id="a${status.count }">
+										<td scope="col" class="seq">${dto.member_seq }</td>
 										<td scope="col">${dto.member_name }</td>
 										<td scope="col">${dto.member_id }</td>
 										<td scope="col">${dto.member_phone }</td>
@@ -73,7 +73,7 @@
 										<td scope="col">${dto.member_enabled }</td>
 										<td scope="col"><fmt:formatDate pattern="yyyy-MM-dd"
 												value="${dto.member_regdate }" /></td>
-										<td scope="col"><button>등급 변경하기</button></td>
+										<td scope="col"><button id="upgrade">등급 변경하기</button></td>
 									</tr>
 									</c:if>
 								</c:forEach>

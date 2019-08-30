@@ -1,5 +1,3 @@
-	var token = $("meta[name='_csrf']").attr("content");
-	var header = $("meta[name='_csrf_header']").attr("content");
 	//console.log(`token: ${token} / header: ${header}`)
 
 	var _events = getEventList()
@@ -41,9 +39,6 @@
 			url : 'getcalevents.do',
 			dataType : 'json',
 			async: false,
-			beforeSend: function( xhr ) {
-		         xhr.setRequestHeader(header, token);
-		    },
 			success : function(data){
 				list = data.list;
 			}, error : function(){
@@ -101,9 +96,7 @@
 			type : 'POST', 
 			url : '',
 			dataType : 'json',
-			beforeSend : function(xhr){
-				xhr.setRequestHeader(header, token)
-			}, success : function(data){
+			success : function(data){
 				console.log(`Success to get ${data}`)
 			}, error: function(e){
 				console.log(`Error: ${e}`)

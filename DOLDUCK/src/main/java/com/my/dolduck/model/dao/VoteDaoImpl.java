@@ -95,11 +95,15 @@ public class VoteDaoImpl implements VoteDao{
    }
 
    @Override
-   public int selectVoteNumber(String starName) {
+   public int selectVoteNumber(String starName, String item) {
       int res = 0;
       
+      Map<String, String> map = new HashMap<String, String>();
+      map.put("item", item);
+      map.put("starName", starName);
+      
       try {
-         res = sqlSession.selectOne(namespace + "selectVoteNumber", starName);
+         res = sqlSession.selectOne(namespace + "selectVoteNumber", map);
       } catch (Exception e) {
       }
       return res;

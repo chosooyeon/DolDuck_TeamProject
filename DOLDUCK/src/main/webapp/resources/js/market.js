@@ -19,17 +19,12 @@ $(function(){
 function comment_edit_do(num){
 	var edited_comm_content = document.getElementsByName("edited-comm-content")[0].value;
 	alert(edited_comm_content);
-	var token = $("meta[name='_csrf']").attr("content");
-	   var header = $("meta[name='_csrf_header']").attr("content");
 
 	if(edited_comm_content != null){
 		$.ajax({ 
 			url:"freeboard_comment_update.do",
 			type:"post",
 			data:"comm_num="+num+"&comm_content="+edited_comm_content,
-			beforeSend: function( xhr ) {
-	            xhr.setRequestHeader(header, token);
-	       },
 			success:function(msg){
 				alert(msg.updatechk);
 				$(`#comment_content${num}`).text('덧글내용 : ' + msg.content);

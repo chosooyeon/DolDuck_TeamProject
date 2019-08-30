@@ -18,9 +18,6 @@
 					start_date : start_date,
 					start_hour : start_hour,
 					start_min : start_min
-			},
-			beforeSend : function(xhr){
-				xhr.setRequestHeader(header, token)
 			},success : function(data){
 				switch(data){
 				case 'succeed':
