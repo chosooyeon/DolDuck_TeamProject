@@ -34,7 +34,7 @@
 		<tr>
 			<th height="200">내용</th>
 			<td colspan="3">${one.freeboard_content }
-				<img src="${pageContext.request.contextPath }/resources/uploadImage/${one.freeboard_file }">
+				<img  onerror="this.style.display='none'" alt='' src="${pageContext.request.contextPath }/resources/uploadImage/${one.freeboard_file }">
 			</td>
 		</tr>
 		<tr>
@@ -47,17 +47,17 @@
 	<br>
 	<table class="table_comment">
 		<c:forEach items="${commList }" var="comm">
-	<tr>
-		<td>	
+
+	<tr class="comment_border">
+		<td style="width: 10%;">	
 			ID : ${comm.freeboard_id }
 		</td>
-		<td id="comment_content${comm.freeboard_comment_num }">
+		<td id="comment_content${comm.freeboard_comment_num }" style="width: 63%;">
 				 ${comm.freeboard_comment_content } 
 		</td>
-		<td>
-			댓글작성자 : ${comm.freeboard_id }
-		</td>
-		<td>
+
+		<td style="width: 18%;">	
+
 			댓글작성시간 : ${comm.freeboard_comment_regdate }
 		</td>
 		

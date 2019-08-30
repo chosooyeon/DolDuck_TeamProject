@@ -141,16 +141,20 @@ public class LiveController {
 	
 	//온에어- 입장(Caster)
 	@RequestMapping("start-onair.do")
-	public String startLive(String live_caster, String live_title, String startingTime) {
+	public String startLive(String live_caster, String live_title, String startingTime, Model model, Authentication auth) {
 		System.out.println("["+live_caster+"]님이 "+startingTime+"에 "+ live_title + "으로 방송시작!");
 		BroadcastDto dto = new BroadcastDto();
 		dto.setBroadcast_caster(live_caster);
 		dto.setBroadcast_title(live_title);
 		dto.setBroadcast_date(startingTime);
+		System.err.println(dto.getBroadcast_date());
 		int res = b_biz.insert(dto);
 		System.err.println("라이브 시작! 일정추가하기 : " + res);
-	
+
 		if(res>0) {
+			MemberDto caster = (MemberDto)auth.getPrincipal();
+			model.addAttribute("caster", caster);
+			model.addAttribute("live", dto);
 			return "live/live-onair-caster";
 		}else {
 			return "redirect:live-onair.do";

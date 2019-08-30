@@ -42,9 +42,8 @@ $(document).on('click', '.video-item-thumb', function(){
 
 /*********************** 라이브 대기 플랫폼	************************/
 
-$(document).on('click', '#btn-startlive', function(){
+$(document).on('click', '.toggle-start-live', function(){
 	$('input[name=startingTime]').val(getTime())
-	$('#liveinfo-form').submit()
 })
 
 
@@ -55,8 +54,7 @@ function getTime(){
 			+ handleTimeFormat('month',date.getMonth()) + '-'
 			+ date.getDate() + ' '
 			+ handleTimeFormat('hour',date.getHours()) + ':'
-			+ handleTimeFormat('minute',date.getMinutes()) + ':'
-			+ handleTimeFormat('second', date.getSeconds())
+			+ handleTimeFormat('minute',date.getMinutes()) 
 	return now
 }
 
@@ -88,14 +86,5 @@ function handleTimeFormat(type, data){
 					return data
 				}
 				break;
-		case 'seconds':
-			if(data > 60){
-				return '00'
-			}else if(data >= 0 && data <10){
-				return '0'+data
-			}else{
-				return data
-			}
-			break;
 		}
 }

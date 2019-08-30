@@ -36,7 +36,7 @@
 			<span class ="result" style="color:red;"></span>
 		<table>
 			<tr>
-				<td colspan="1"><input class="goto_login" type="button" value="로그인하러가기" ></td>
+				<td colspan="1"><input class="goto_login" type="button" value="로그인하러가기" onclick="location.href='${pageContext.request.contextPath}/login.do'"></td>
 			</tr>
 			<tr>
 				<td colspan="1"><input class="find_pw" type="button" value="비밀번호 찾기" onclick="location.href='${pageContext.request.contextPath}/pwfind.do'"></td>

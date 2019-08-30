@@ -129,10 +129,9 @@ function appendBody(start, end, voteChart){
 					  	</div>
 					  </td>
 					  <td style="line-height: 8.5em;text-align: center;font-weight: bold;">${star.voteNumber} 표</td>
-					  <td style="text-align: center;"><button onclick="voteClickPickBtn('${star.name}','girl-group')"style="width: 60px; height: 60px; border-radius: 5em; border: none; margin-top: 30px; background-color: #f2ecf5;" >pick</button></td>
-				      <td><a class="kakao-link-btn" style="line-height: 8em;"> 
+					  <td style="text-align: center;"><button onclick="voteClickPickBtn('${star.name}','${item}')"style="width: 60px; height: 60px; border-radius: 5em; border: none; margin-top: 30px; background-color: #f2ecf5;" >pick</button></td>
+				      <td><a class="kakao-link-btn" style="line-height: 8.5em;"> 
 						<img src="//developers.kakao.com/assets/img/about/logos/kakaolink/kakaolink_btn_medium.png" style="width:35px; float:center;" />
-
 						</a>
 					  </td>
 			      </tr>`);
@@ -168,26 +167,3 @@ function votePopup(popUrl){
    var popOption = "width=500, height=500, status=no, toolbar=no;";
    window.open(popUrl,"",popOption);
 }
-
-// 보유투표권수 체크
-function voteNumberChk(){
-   $.ajax({
-      type : 'POST',
-      url : 'vote-numberchk.do?voteNumber='+$('#voteNum').val(),
-      data : 'json',
-      async : false,
-      success : function(data){
-         if(data.voteNeed == "need"){
-            alert('투표권이 부족합니다');
-            location.href="heartShop.do";
-         }else{
-            alert('저장성공');
-            votePopup('vote-result.do');
-         }
-         window.close();
-      },
-      error : function(){
-         alert('ajax 통신에러 (votenumber)')
-      }
-   });
-};

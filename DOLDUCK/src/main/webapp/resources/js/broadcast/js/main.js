@@ -11,14 +11,6 @@ var roomArr = []
 
 
 $(function(){
-	
-	try {
-	    var socket = io.connect('https://192.168.10.169:5571', { rejectUnauthorized: false });
-	} catch (error) {
-	    alert('안전하지 않은 페이지입니다!')
-	    location.href='certification.do'
-	}
-	
     socket.emit('requestRoomlist')
     
     socket.on('roomlist', (rooms) => {
@@ -69,11 +61,8 @@ function appendRoom(item){
                     </li>`
     $('ul').append(roomUnit)
 }
-/*
-startLiveBtn.addEventListener('click', ()=>{ 
-    random = parseInt(Math.random()*999999999999)
-    location.href = `/caster/${random}` 
-})*/
+
 reloadBtn.addEventListener('click', ()=>{
+	console.log('룸 목록 새로고침!')
     socket.emit('requestRoomlist')
 })

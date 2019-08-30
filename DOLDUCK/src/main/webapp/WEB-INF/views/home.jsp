@@ -1,4 +1,4 @@
-<%@page language="java" contentType="text/html; charset=UTF-8"
+﻿<%@page language="java" contentType="text/html; charset=UTF-8"
 	pageEncoding="UTF-8"%>
 <!DOCTYPE html>
 <html lang="ko">
@@ -56,27 +56,16 @@
                <p class="ranking">DOL RANKING CHART</p>
             </div>
          </div>
-         <div class="row row-lg-eq-height">
+         <div class="row">
             <div class="col-md-12">
-                  <a href="#" class="home-vote-star-idol">
-                             <p class="rankNum">1</p>
-                       </a>
-                  <a href="#" class="home-vote-girl-group">
-                  		<p class="rankNum">2</p>                          
-                  </a>
-                  <a href="#" class="home-vote-girl-idol">
-                    <p class="rankNum">3</p>
-                       </a>
-                  <a href="#" class="home-vote-boy-group">
-                    <p class="rankNum">4</p>
-                       </a>
-               <a href="#" class="home-vote-boy-idol">
-                    <p class="rankNum">5</p>
-                       </a>
-                 <a href="#" class="home-vote-new-idol">
-                    <p class="rankNum">6</p>
-                       </a>
-  				</div>
+                <a href="vote.do" class="home-ranking home-vote-star-idol"></a>
+                <a href="vote.do" class="home-ranking home-vote-girl-group"></a>
+                <a href="vote.do" class="home-ranking home-vote-girl-idol"></a>
+                <a href="vote.do" class="home-ranking home-vote-boy-group"></a>
+               	<a href="vote.do" class="home-ranking home-vote-boy-idol"></a>
+                <a href="vote.do" class="home-ranking home-vote-new-idol"></a>
+  			</div>
+
 				<div class="vote_button"><a href="vote.do">Vote Now</a></div>
 			</div>
 		</div>
@@ -102,6 +91,7 @@
 					<div id="getVideo"></div>			
 			</div>
 		</section>
+
 <!-- 		<div class="div-modal-chat">
 			<div class="modal-top">
 				<div id="modal-title">고객센터</div>
@@ -110,33 +100,6 @@
 			<a href="#" class="button-modal-close" onclick="closeChat()">X</a>
 			<iframe class="iframe-chat" src="http://192.168.10.169:3000/"></iframe>
 		</div> -->
-		<!-- Extra -->
-		<section class="extra">
-			<div class="extra_container">
-				<div class="background_image"
-					style="background-image: url(images/extra.jpg)"></div>
-				<div class="container">
-					<div class="row">
-						<div class="col-lg-9">
-							<div
-								class="extra_content d-flex flex-column align-items-start justify-content-center">
-								<div class="extra_title">
-									<h1>Get your tickets now!</h1>
-								</div>
-								<div class="extra_text">
-									<p>In vitae nisi aliquam, scelerisque leo a, volutpat sem.
-										Vivamus rutrum dui fermentum eros hendrerit, id lobortis leo
-										volutpat. Maecenas sollicitudin est in libero pretium interdum</p>
-								</div>
-								<div class="extra_button">
-									<a href="#">Buy Now</a>
-								</div>
-							</div>
-						</div>
-					</div>
-				</div>
-			</div>
-		</section>
 
 		<!-- Footer  -->
 	</section>

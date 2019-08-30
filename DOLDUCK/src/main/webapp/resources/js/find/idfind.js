@@ -43,7 +43,7 @@ function idfind(){
 					}
 				},
 				error: function(){
-					alert('아이디 찾기 통신실패');
+					alert('이름 또는 이메일을 확인해주세요');
 				}
 			});
 		}
