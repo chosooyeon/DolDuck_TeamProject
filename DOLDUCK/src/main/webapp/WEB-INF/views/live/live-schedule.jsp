@@ -37,10 +37,7 @@
          </div>
          
          <!-- Title & Banner -->
-         <div class="live-banner"> 
-         	<h4>일정표</h4>
-			<h5>방송 일정을 미리 확인하고, 생생한 라이브를 놓치지 마세요!</h5>
-         </div>
+         <div class="live-banner" style="background-image: url('resources/images/banner-live-schedule.png')"></div>
          
         <!-- Add button for Events on calendar -->
         <!-- If the role of session(User) is 'ROLE_ARTIST', SHOW FOLLOWING 'BUTTON' -->
