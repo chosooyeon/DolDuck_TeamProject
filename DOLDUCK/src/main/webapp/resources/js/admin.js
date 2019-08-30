@@ -1,4 +1,4 @@
-/*var acc = document.getElementsByClassName("accordion");
+var acc = document.getElementsByClassName("accordion");
 var i;
 
 for (i = 0; i < acc.length; i++) {
@@ -24,7 +24,7 @@ function roleUpdate(role) {
 	return role;
 }
 
-
+/*
 $(document).ready(function(){
 	$("#upgrade").click(function(){
 		var grade = $("#item option:selected").val();

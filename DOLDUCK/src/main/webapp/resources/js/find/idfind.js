@@ -9,7 +9,6 @@ function idfind(){
 		}else if(email==null || email == ""){
 			alert('이메일을 입력해주세요')
 		}else{
-			
 			$.ajax({
 				type : "post",
 				url : "idSearch.do",	
