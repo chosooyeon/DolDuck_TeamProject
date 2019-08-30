@@ -2,10 +2,13 @@ package com.my.dolduck;
 
 import java.io.File;
 import java.io.IOException;
+import java.io.PrintWriter;
 import java.security.Principal;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
+
+import javax.servlet.http.HttpServletResponse;
 
 import org.json.simple.JSONObject;
 import org.slf4j.Logger;
@@ -139,16 +142,32 @@ public class FreeBoardController {
 		return "board/free_detail";
 
 	}
-
+	
 	@RequestMapping("free_update.do")
-	public String update(Model model, int freeboard_num) {
-		System.err.println("free_update.do : �����ϱ� ");
-		System.out.println(freeboard_num);	
-		model.addAttribute("one", biz.free_detail(freeboard_num));
-		System.err.println("���!!!!");
-		return "board/free_update";
+	public String update(Model model, int freeboard_num, Principal principal, HttpServletResponse response) {
+		int res = 0;
+		System.out.println("prin:"+principal.getName());
+		System.out.println("biz:"+biz.idChk(freeboard_num));
+		if((principal.getName().toString().equals(biz.idChk(freeboard_num)))) {
+				model.addAttribute("one", biz.free_detail(freeboard_num));
+				System.out.println(biz.free_detail(freeboard_num).getFreeboard_title());
+				System.out.println("글수정페이지 로드성공");
+				return "board/free_update";
+		}else {
+			System.out.println("글수정페이지 로드실패 (id불일치)");
+			try {
+				response.setContentType("text/html; charset=UTF-8");
+				PrintWriter out;
+				out = response.getWriter();
+				out.println("<script>alert('본인이 작성한 글만 수정할 수 있습니다.'); history.go(-1);</script>");
+				out.flush();
+			} catch (IOException e) {
+				e.printStackTrace();
+			}
+		}
+		return "board/free_list";
 	}
-
+	
 	// �Խñ� ����
 	@RequestMapping("free_updateform.do")
 	public String updateform(@ModelAttribute FreeboardDto dto, MultipartHttpServletRequest mtfRequest,
@@ -209,13 +228,39 @@ public class FreeBoardController {
 
 	// �Խñ� ����
 	@RequestMapping("free_delete.do")
-	public String delete(@RequestParam("num") int num) {
-		System.out.println(num);
-		int res = biz.free_delete(num);
-		if (res > 0) {
-			return "redirect:free_list.do";
+	public String delete(@RequestParam("num") int num, Principal principal, HttpServletResponse response) {
+		int res = 0;
+		if((principal.getName().toString().equals(biz.idChk(num)))) {
+			res = biz.free_delete(num);
+			if(res > 0) {
+				System.out.println("글삭제 성공");
+				try {
+					response.setContentType("text/html; charset=UTF-8");
+					PrintWriter out;
+					out = response.getWriter();
+					out.println("<script>alert('삭제 완료되었습니다.'); window.location.href='free_list.do';</script>");
+					out.flush();
+				} catch (IOException e) {
+					e.printStackTrace();
+				} 
+				return "board/free_list";
+			}else {
+				System.out.println("글삭제 실패 (error)");
+				return "board/free_list";
+			}
+		}else {
+			System.out.println("글삭제실패 (id불일치)");
+			try {
+				response.setContentType("text/html; charset=UTF-8");
+				PrintWriter out;
+				out = response.getWriter();
+				out.println("<script>alert('본인이 작성한 글만 삭제할 수 있습니다.'); history.go(-1);</script>");
+				out.flush();
+			} catch (IOException e) {
+				e.printStackTrace();
+			} 
 		}
-		return "redirect:free_list.do";
+		return "board/free_list";
 	}
 
 	// �Խñ� �Է� + �α���üũ

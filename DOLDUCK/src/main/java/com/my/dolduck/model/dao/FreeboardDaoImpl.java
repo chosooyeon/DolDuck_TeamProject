@@ -92,4 +92,16 @@ public class FreeboardDaoImpl implements FreeboardDao {
 
 		return list;
 	}
+	
+	public String free_idChk(int freeboard_num) {
+		String freeboard_id = "";
+		
+		try {
+			freeboard_id = sqlSession.selectOne(namespace + "idChk", freeboard_num);
+		} catch (Exception e) {
+			System.out.println("idChk error");
+			e.printStackTrace();
+		}
+		return freeboard_id;
+	}
 }

@@ -48,4 +48,8 @@ public class FreeboardBizImpl implements FreeboardBiz {
 		return dao.find_list(Searchtext);
 	}
 
+	@Override
+	public String idChk(int freeboard_num) {
+		return dao.free_idChk(freeboard_num);
+	}
 }

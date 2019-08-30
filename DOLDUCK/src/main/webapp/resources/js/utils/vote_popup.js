@@ -11,7 +11,7 @@ function voteNumberChk(){
       success : function(data){
          if(data.voteNeed == "need"){
             alert('투표권이 부족합니다');
-            location.href="heartShop.do";
+            window.opener.location.href='heartShop.do';
          }else{
             alert('투표완료');
             window.location.href='vote-result.do';
