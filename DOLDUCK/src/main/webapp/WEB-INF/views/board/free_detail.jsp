@@ -1,4 +1,4 @@
-<%@ page language="java" contentType="text/html; charset=UTF-8" pageEncoding="UTF-8"%>
+﻿<%@ page language="java" contentType="text/html; charset=UTF-8" pageEncoding="UTF-8"%>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
 <%@ taglib prefix="sec" uri="http://www.springframework.org/security/tags"%>
 <!DOCTYPE html>
@@ -18,7 +18,6 @@
    <div class="container freeboard">
       <div class="center">
    <h1 class="text-center">상세 보기</h1>
-
 			<table class="table">
 		<tr>
 			<th>글쓴이</th>
@@ -51,6 +50,7 @@
 							<source src="${pageContext.request.contextPath }/resources/uploadImage/${one.freeboard_file} " />
 						</video>
 
+
    <tr class="comment_border">
       <td style="width: 10%;">   
          ID : ${comm.freeboard_id }
@@ -82,6 +82,7 @@
                      ${comm.freeboard_comment_content }
                   </td>
       <td style="width: 18%;">덧글작성시간 : ${comm.freeboard_comment_regdate }</td>
+
       <td id="edit_btn">
          <input type="hidden" name="comm-num" value="${comm.freeboard_comment_num }">   
          <input type="hidden" name="comm-content" value="${comm.freeboard_comment_content}">
