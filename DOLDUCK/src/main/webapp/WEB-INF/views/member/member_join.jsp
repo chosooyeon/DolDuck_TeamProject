@@ -10,6 +10,7 @@
 <meta charset="UTF-8">
 <script type="text/javascript" src="resources/js/join.js"></script>
 <script src="http://dmaps.daum.net/map_js_init/postcode.v2.js"></script>
+<script src="https://ssl.daumcdn.net/dmaps/map_js_init/postcode.v2.js"></script>
 <title>Insert title here</title>
 </head>
 <body>

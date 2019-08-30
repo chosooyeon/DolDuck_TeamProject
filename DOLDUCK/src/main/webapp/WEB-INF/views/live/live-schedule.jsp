@@ -44,11 +44,11 @@
          
         <!-- Add button for Events on calendar -->
         <!-- If the role of session(User) is 'ROLE_ARTIST', SHOW FOLLOWING 'BUTTON' -->
-        <sec:authorize access="hasAnyRole('ROLE_USER','ROLE_ARTIST')">
+        <sec:authorize access="hasAnyRole('ROLE_ADMIN','ROLE_ARTIST')">
 	        <div id="area-addEvent">
 	        	<button type="button" class="btn btn-warning" id="btn-addevent" data-toggle="modal" data-target="#addEventModal">일정추가</button>
 	        </div> 
-	        <script src="resources/js/fullcalendar/live-add-event.js"></script>
+	        
         </sec:authorize> 
      </div>  
      
@@ -61,7 +61,7 @@
      
      
      <!-- AddEvent Modal -->
-    <sec:authorize access="hasAnyRole('ROLE_USER','ROLE_ARTIST')">
+    <sec:authorize access="hasAnyRole('ROLE_ADMIN','ROLE_ARTIST')">
 	<div class="modal-area container">
 	  <div class="modal fade" id="addEventModal">
 	    <div class="modal-dialog modal-sm modal-dialog-centered">
@@ -75,7 +75,7 @@
 	        
 	        <!-- Modal body -->
 	        <div class="modal-body">
-	          <form action="start-onair.do" id="liveinfo-form">
+	          <form id="liveinfo-form">
 	          	<table style="width: 100%;">
 	          		<tr><td>방송진행자</td></tr>
 	          		<tr><td><input type="text" class="form-control" name="live_caster"  value="<sec:authentication property="principal.member_id"/>" style="width:100%;" readonly="readonly"></td></tr>
@@ -105,7 +105,8 @@
 	        <!-- Modal footer -->
 	        <div class="modal-footer">
 		      <button type="button" class="btn btn-danger" id="btn-addLiveInfo">저 장</button>
-            <button type="button" class="btn btn-secondary" data-dismiss="modal">취 소</button>
+              <button type="button" class="btn btn-secondary" data-dismiss="modal">취 소</button>
+              <script src="resources/js/fullcalendar/live-add-event.js"></script>
 	        </div>
 	        
 	      </div>

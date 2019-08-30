@@ -1,4 +1,5 @@
-//var socket = io.connect()
+//var socket = io.connect('https://192.168.10.169:5571')
+//var startLiveBtn = document.getElementById('startLiveBtn')
 
 
 var reloadBtn = document.getElementById('channel-reload')
@@ -7,14 +8,15 @@ var channelList = document.getElementById('channel-list')
 var random 
 var roomArr = []
 
-$(function(){
 
+$(function(){
     socket.emit('requestRoomlist')
     
     socket.on('roomlist', (rooms) => {
         console.log(rooms)
         if(rooms.length == 0){
-            $('.channel-list > ul').append(`<li>개설된 방이 없습니다!</li>`)
+        	$('#channel-item').html('')
+            $('#channel-item').append($(`<li>`).html(`<p class="no-live-room">아직 방송중인 방이 없습니다!</p>`))
         }else{
             addRoomList(rooms)
         }
@@ -23,6 +25,7 @@ $(function(){
 })
 
 function addRoomList(list){
+    $('ul').html('')
     list.forEach( item => {
         console.log(item);
         appendRoom(item)
@@ -31,23 +34,23 @@ function addRoomList(list){
 
 function appendRoom(item){
     var roomUnit = `<li class="channel-box">
-                    <a href="/user/${item.room}">
+                    <a href="join-onair.do?room=${item.room}">
                         <img src="${item.thumb}" width="228" height="128">
                     </a>
-                    <p><a href="/user/${item.room}>${item.casterid}</a></p>
+                    <p><a href="/user/${item.room}>${item.title}</a></p>
                     <div class="channel-info">
                         <div>
-                            <span>${item.date}</span>
-                            <span>&nbsp;|&nbsp;</span>
-                            <span>${item.caster}</span>
+                            <p>${item.date}</p>
+                            <p>&nbsp;|&nbsp;</p>
+                            <p>${item.caster}</p>
                         </div>
                         <div>
-                            <!-- 접속자수 -->
+    				<!-- 접속자수 -->
                             <span>
                                 <span>＠</span>
                                 <span>Test</span>
                             </span>
-                            <!-- 좋아요 수 -->
+                                  <!-- 좋아요 수 -->
                             <span>
                                 <span>♥</span>
                                 <span>Test</span>
@@ -58,7 +61,13 @@ function appendRoom(item){
     $('ul').append(roomUnit)
 }
 
+/*startLiveBtn.addEventListener('click', () =>{
+    var ran = parseInt(Math.random()*9999999999)
+    location.href = 'https://localhost:5571/caster/${ran}'
+})
+*/
 
 reloadBtn.addEventListener('click', ()=>{
+	console.log('룸 목록 새로고침!')
     socket.emit('requestRoomlist')
 })

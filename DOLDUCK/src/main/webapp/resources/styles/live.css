@@ -55,6 +55,14 @@
 	margin-top:3em;
 }
 
+.no-live-room{
+	font-size: 25px;
+    font-weight: 900;
+    color: #c0aded;
+    font-family: 'Futura', 'NIXGONM-Vb';
+    text-align: center;
+    padding-top: 0px;
+}
 
 /*******************
 	Live onair
@@ -71,3 +79,4 @@
     margin-top: 2em;
     margin-bottom: 5em;
 }
+

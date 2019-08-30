@@ -38,9 +38,10 @@
         
         <!-- Add Events Button for ADMIN -->
 	    <div id="area-addEvent">
-        	<sec:authorize access="hasAnyRole('ROLE_USER', 'ROLE_ARTIST')">
-	        	<button type="button" class="btn btn-danger" data-toggle="modal" data-target="#liveInfoModal">방 송 시 작</button>
+        	<sec:authorize access="hasAnyRole('ROLE_ARTIST', 'ROLE_ADMIN')">
+	        	<button type="button" class="btn btn-danger toggle-start-live" data-toggle="modal" data-target="#liveInfoModal">방 송 시 작</button>
         	</sec:authorize>
+        	<button type="button" class="btn btn-danger toggle-start-live" data-toggle="modal" data-target="#liveInfoModal">방 송 시 작</button>
         	<button type="button" class="btn btn-secondary" id="channel-reload">새 로 고 침</button>
 	    </div> 
     </div>
@@ -48,12 +49,12 @@
    	<!-- Onair Channel list - waiting room -->
 	<div class="container">
 		<div class="channel-list">
-	       <ul></ul>
+	       <ul id="channel-item"></ul>
 	    </div>
 	</div>
 
 	<!-- The Modal -->
-	<sec:authorize access="hasAnyRole('ROLE_USER', 'ROLE_ARTIST')">
+	<sec:authorize access="hasAnyRole('ROLE_ADMIN', 'ROLE_ARTIST')">
 	<div class="modal-area container">
 	  <div class="modal fade" id="liveInfoModal">
 	    <div class="modal-dialog modal-sm modal-dialog-centered">
@@ -67,11 +68,11 @@
 	        
 	        <!-- Modal body -->
 	        <div class="modal-body">
-	          <form action="start-onair.do" id="liveinfo-form">
+	          <form action="start-onair.do" id="liveinfo-form" method="post">
 	          	<table style="width: 100%;">
 	          		<tr><td>방송진행자</td></tr>
 	          		<tr><td><input type="text" class="form-control" name="live_caster"  value="<sec:authentication property="principal.member_id"/>" readonly="readonly"></td></tr>
-	          		<tr><td></td></tr>
+ 					<tr><td></td></tr>
 	          		<tr><td>방 송 제 목</td></tr>
 					<tr>
 						<td>
@@ -80,19 +81,20 @@
 					</tr>
 					<tr>
 						<td>
-							<input type="hidden" name="startingTime" value=""> 
+							<input type="hidden" name="startingTime" value="">
+							<input type="hidden" name="room_number" value=""> 
 						</td>
-					</tr>       	
+					</tr>
+					<tr><td></td></tr>
 	          	</table>
+		        <!-- Modal footer -->
+		        <div class="modal-footer">
+			      <button class="btn btn-danger" id="btn-startlive">시 작</button>
+		          <button class="btn btn-secondary" data-dismiss="modal" type="button">Close</button>
+		        </div>
 	          </form>
 	        </div>
 	        
-	        <!-- Modal footer -->
-	        <div class="modal-footer">
-		      <button type="button" class="btn btn-danger" id="btn-startlive">시 작</button>
-	          <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
-	          <script src="resources/js/live/live-start.js"></script>
-	        </div>
 	      </div>
 	    </div>
 	  </div>
@@ -102,14 +104,14 @@
     
     <!-- Footer -->
     <%@include file="/WEB-INF/views/footer.jsp" %>
-    <script src="https://code.jquery.com/jquery-3.4.1.min.js"></script>
-    <script src="resources/js/utils/live.js"></script>
-    <script src="resources/js/live/ioConnectException.js"></script>
     <!-- 맥북  -->
-    <!-- <script src="https://192.168.10.107:5571/socket.io/socket.io.js"></script> -->
-    <!-- 윈도우  -->
     <script src="https://192.168.10.169:5571/socket.io/socket.io.js"></script>
+    <!-- 윈도우  -->
+   <!--  <script src="https://192.168.10.169:5571/socket.io/socket.io.js"></script> -->
+    <script src="https://code.jquery.com/jquery-3.4.1.min.js"></script>
+    <script src="resources/js/broadcast/js/IoConnectException.js"></script>
     <script src="resources/js/broadcast/js/main.js"></script>
+    <script src="resources/js/utils/live.js"></script>
 </body>
 </html>
 

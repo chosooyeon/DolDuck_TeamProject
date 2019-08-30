@@ -16,8 +16,11 @@ function sendEmail(){
 				if(data.pwSearch == true){
 					$(function(){
 						$('#checkModal').modal("show");
+		
 					})
 					//alert("변경된 비밀번호가 메일로 전송되었습니다!");
+				}else{
+					alert('이름 또는 이메일을 확인해주세요!');
 				}
 
 			},

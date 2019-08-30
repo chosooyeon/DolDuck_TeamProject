@@ -1,5 +1,4 @@
-<%@ page language="java" contentType="text/html; charset=UTF-8"
-    pageEncoding="UTF-8"%>
+<%@ page language="java" contentType="text/html; charset=UTF-8" pageEncoding="UTF-8"%>
 <!DOCTYPE html>
 <html>
 <head>
@@ -23,7 +22,7 @@
 	  <!-- 슬라이드 이미지 -->
 	  <div class="carousel-inner">
 		    <div class="carousel-item active">
-		      <img class="slide_img" src="http://www.bloter.net/wp-content/uploads/2019/05/BTS-World-800x450.jpg" alt="BTS">
+		      <img class="slide_img" src="https://www.bloter.net/wp-content/uploads/2019/05/BTS-World-800x450.jpg" alt="BTS">
 		    </div>
 		    <div class="carousel-item">
 		      <img class="slide_img" src="https://www.sbs.com.au/popasia/sites/sbs.com.au.popasia/files/styles/full/public/wannaonegaon.jpg?itok=lRwEQOlZ&mtime=1546474382" alt="WannaOne">

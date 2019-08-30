@@ -40,7 +40,7 @@
         <div class="channel-controlbox">
                 <button id="startButton">START</button>
                 <!-- <button id="recButton">REC</button> -->
-                <button id="stopButton">STOP</button>
+                <button type="button" class="btn btn-secondary" id="stopButton">STOP</button>
         </div>
 
         <div class="form-inline">
@@ -48,7 +48,7 @@
             <div class="live-booth">
                 <!-- Video  -->
                 <div class="channel-video-area">
-                    <video id="video" autoplay></video>
+                    <video class="video" id="localVideo" autoplay></video>
                 </div> 
                 <!-- Live Stream Title -->
                 <div class="channel-onair-info">
@@ -57,7 +57,7 @@
                     </div>
                     <!-- Number of visitors -->
                     <div id="info-numOf-visitor">
-                        <span><h4>526</h4></span>
+                        <span><h4 id="numoof-visitor"></h4></span>
                         <span>명 접속중</span>
                     </div>
                     
@@ -87,9 +87,10 @@
     <!-- <%@include file="../footer.jsp"%> -->
 
     <script src="https://code.jquery.com/jquery-3.4.1.min.js"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.2/js/bootstrap.min.js"></script>
     <script src="/socket.io/socket.io.js"></script>
+    <script src="https://webrtc.github.io/adapter/adapter-latest.js"></script>
     <script src="./js/caster.js"></script>
     <!-- 합쳐지고 최소화된 최신 자바스크립트 -->
-    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.2/js/bootstrap.min.js"></script>
 </body>
 </html>
