@@ -22,7 +22,9 @@
 	
 	<c:choose>
 		<c:when test="${empty list }">
-			<h3>첫게시물 주인공은 너야너!!!</h3>		
+			<div class="not_board">
+			<h3>첫게시물 주인공은 너야너!!!</h3>
+			</div>		
 		<div class="not_board">
 		</div>
 			</c:when>
