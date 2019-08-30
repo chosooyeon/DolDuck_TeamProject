@@ -1,8 +1,6 @@
-﻿
-﻿<%@ page language="java" contentType="text/html; charset=UTF-8" pageEncoding="UTF-8"%>
+﻿﻿<%@ page language="java" contentType="text/html; charset=UTF-8" pageEncoding="UTF-8"%>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
-<%@ taglib prefix="sec"
-	uri="http://www.springframework.org/security/tags"%>
+<%@ taglib prefix="sec" uri="http://www.springframework.org/security/tags"%>
 <!DOCTYPE html>
 <html>
 <head>
@@ -48,8 +46,7 @@
 	</table>
 	<br>
 	<table class="table_comment">
-		<c:forEach items="${commList }" var="comm">
-
+		<c:forEach items="${commList }" var="one">
 					<td colspan="3">${one.freeboard_content }
 						<video width="320"height="240" preload="metadata" playsinline="" autoplay="" loop="" height="auto" controls>
 							<source src="${pageContext.request.contextPath }/resources/uploadImage/${one.freeboard_file} " />
@@ -78,7 +75,8 @@
 				 		<input type="button" value="삭제" 	onclick="location.href='free_delete.do?num=${one.freeboard_num }'" style="margin-right: 18px;">
 				 	</td>	
 				</tr>
-			</table>
+			</c:forEach>
+		</table>
 			<br>
 			<table class="table_comment">
 				<c:forEach items="${commList }" var="comm">
