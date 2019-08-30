@@ -62,8 +62,7 @@
 				</form>
 			</div>
 		</div>
-	</div>
-	<!-- Modal -->
+		<!-- Modal -->
 	<div class="modal fade" id="checkModal" tableindex="-1" role="dialog" aria-hidden="true">
 		<div class="modal-dialog">
 			<div class="modal-content">
@@ -81,6 +80,8 @@
 			</div>
 		</div>
 	</div>
+	</div>
+	
 
 </body>
 </html>
