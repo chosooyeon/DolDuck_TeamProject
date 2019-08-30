@@ -38,7 +38,7 @@ var clients = []
 /**************************** 
             Socket
 *****************************/
-//var socket = io.connect('https://192.168.10.107:5571')
+var socket = io.connect('https://192.168.10.169:5571')
 
 socket.emit('create', name, title)
 
@@ -401,6 +401,9 @@ function leadingZeros(n, digits) {
 }
 
 $(function(){
+	room_number = loaction.href.split('/')
+	conosole.log(room_number)
+    
     init(constraints); 
     stopBtn.disabled = true
 })

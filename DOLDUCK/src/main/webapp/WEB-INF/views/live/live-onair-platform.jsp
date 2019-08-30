@@ -38,9 +38,10 @@
         
         <!-- Add Events Button for ADMIN -->
 	    <div id="area-addEvent">
-        	<sec:authorize access="hasAnyRole('ROLE_ADMIN', 'ROLE_ARTIST')">
+        	<sec:authorize access="hasAnyRole('ROLE_ARTIST', 'ROLE_ADMIN')">
 	        	<button type="button" class="btn btn-danger toggle-start-live" data-toggle="modal" data-target="#liveInfoModal">방 송 시 작</button>
         	</sec:authorize>
+        	<button type="button" class="btn btn-danger toggle-start-live" data-toggle="modal" data-target="#liveInfoModal">방 송 시 작</button>
         	<button type="button" class="btn btn-secondary" id="channel-reload">새 로 고 침</button>
 	    </div> 
     </div>
@@ -71,7 +72,7 @@
 	          	<table style="width: 100%;">
 	          		<tr><td>방송진행자</td></tr>
 	          		<tr><td><input type="text" class="form-control" name="live_caster"  value="<sec:authentication property="principal.member_id"/>" readonly="readonly"></td></tr>
-	          		<tr><td></td></tr>
+ 					<tr><td></td></tr>
 	          		<tr><td>방 송 제 목</td></tr>
 					<tr>
 						<td>
@@ -80,15 +81,16 @@
 					</tr>
 					<tr>
 						<td>
-							<input type="hidden" name="startingTime" value=""> 
+							<input type="hidden" name="startingTime" value="">
+							<input type="hidden" name="room_number" value=""> 
 						</td>
 					</tr>
-					<tr></tr>
+					<tr><td></td></tr>
 	          	</table>
 		        <!-- Modal footer -->
 		        <div class="modal-footer">
 			      <button class="btn btn-danger" id="btn-startlive">시 작</button>
-		          <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+		          <button class="btn btn-secondary" data-dismiss="modal" type="button">Close</button>
 		        </div>
 	          </form>
 	        </div>
@@ -103,7 +105,7 @@
     <!-- Footer -->
     <%@include file="/WEB-INF/views/footer.jsp" %>
     <!-- 맥북  -->
-    <script src="https://192.168.10.107:5571/socket.io/socket.io.js"></script>
+    <script src="https://192.168.10.169:5571/socket.io/socket.io.js"></script>
     <!-- 윈도우  -->
    <!--  <script src="https://192.168.10.169:5571/socket.io/socket.io.js"></script> -->
     <script src="https://code.jquery.com/jquery-3.4.1.min.js"></script>

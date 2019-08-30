@@ -1,5 +1,5 @@
 /*  USER  */
-//var socket = io.connect()
+var socket = io.connect('https://192.168.10.169:5571')
 
 var url = location.href
 var params = url.split('/')
