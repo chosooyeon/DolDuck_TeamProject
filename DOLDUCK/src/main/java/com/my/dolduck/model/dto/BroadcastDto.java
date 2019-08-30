@@ -7,17 +7,19 @@ public class BroadcastDto {
 	private String broadcast_caster;
 	private String broadcast_title;
 	private String broadcast_content;
+	private String broadcast_room;
 	
 	public BroadcastDto() {}
 
 	public BroadcastDto(int broadcast_seq, String broadcast_date, String broadcast_time, String broadcast_caster, String broadcast_title,
-			String broadcast_content) {
+			String broadcast_content, String broadcast_room) {
 		super();
 		this.broadcast_seq = broadcast_seq;
 		this.broadcast_date = broadcast_date;
 		this.broadcast_caster = broadcast_caster;
 		this.broadcast_title = broadcast_title;
 		this.broadcast_content = broadcast_content;
+		this.broadcast_room = broadcast_room;
 	}
 
 	//Constructor for INSERT
@@ -85,6 +87,14 @@ public class BroadcastDto {
 
 	public void setBroadcast_content(String broadcast_content) {
 		this.broadcast_content = broadcast_content;
+	}
+
+	public String getBroadcast_room() {
+		return broadcast_room;
+	}
+
+	public void setBroadcast_room(String broadcast_room) {
+		this.broadcast_room = broadcast_room;
 	}
 	
 	

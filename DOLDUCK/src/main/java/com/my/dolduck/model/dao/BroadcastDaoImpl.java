@@ -42,7 +42,24 @@ public class BroadcastDaoImpl implements BroadcastDao {
 		dto = sqlSession.selectOne(namespace+"selectOne_broadcast", map);
 		return dto;
 	}
+	
+	@Override
+	public BroadcastDto selectOneByRoom(String room_number) {
+		Map<String, String> map = new HashMap<String, String>();
+		map.put("room", room_number);
+		BroadcastDto dto = new BroadcastDto();
+		dto = sqlSession.selectOne(namespace+"selectOne_ByRoom", room_number);
+		return dto;
+	}
 
+	//라이브시작 (일정 바로 추가)
+	@Override
+	public int insertOnair(BroadcastDto dto) {
+		return sqlSession.insert(namespace+"insert_broadcast_onair", dto);
+	}
+	
+	
+	//일정추가 
 	@Override
 	public int insert(BroadcastDto dto) {
 		return sqlSession.insert(namespace+"insert_broadcast", dto);
@@ -65,6 +82,7 @@ public class BroadcastDaoImpl implements BroadcastDao {
 	public int saveVideo(BroadcastDto dto) {
 		return sqlSession.update(namespace+"update_broadcast_saveVideo", dto);
 	}
+
 
 	
 

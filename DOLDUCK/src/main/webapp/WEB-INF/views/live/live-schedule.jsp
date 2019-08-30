@@ -75,7 +75,7 @@
 	        
 	        <!-- Modal body -->
 	        <div class="modal-body">
-	          <form action="start-onair.do" id="liveinfo-form">
+	          <form id="liveinfo-form">
 	          	<table style="width: 100%;">
 	          		<tr><td>방송진행자</td></tr>
 	          		<tr><td><input type="text" class="form-control" name="live_caster"  value="<sec:authentication property="principal.member_id"/>" style="width:100%;" readonly="readonly"></td></tr>

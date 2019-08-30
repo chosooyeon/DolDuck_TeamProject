@@ -44,6 +44,7 @@ $(document).on('click', '.video-item-thumb', function(){
 
 $(document).on('click', '.toggle-start-live', function(){
 	$('input[name=startingTime]').val(getTime())
+	$('input[name=room_number]').val(parseInt(Math.random()*9999999999))
 })
 
 
@@ -51,7 +52,7 @@ function getTime(){
 	
 	var date = new Date()
 	var now = date.getFullYear() + '-' 
-			+ handleTimeFormat('month',date.getMonth()) + '-'
+			+ handleTimeFormat('month',date.getMonth()+1) + '-'
 			+ date.getDate() + ' '
 			+ handleTimeFormat('hour',date.getHours()) + ':'
 			+ handleTimeFormat('minute',date.getMinutes()) 
@@ -86,15 +87,5 @@ function handleTimeFormat(type, data){
 					return data
 				}
 				break;
-		case 'second':
-			if(data > 60){
-				return '00'
-			}else if(data >= 0 && data <10){
-				return '0'+data
-			}else{
-				return data
-			}
-			break;
 		}
-
 }
