@@ -36,6 +36,14 @@ app.get('/', (req, res) => {
     })
 })
 
+app.get('/IoException', (req, res) => {
+    fs.readFile('./exception.html', (err, data) => {
+        if(err){
+            
+        }
+    })
+})
+
 
 app.get('/caster/:page', (req, res) => {
     roomNumber = req.params.page;

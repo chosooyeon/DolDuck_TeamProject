@@ -8,6 +8,7 @@ import org.json.simple.JSONObject;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.security.core.Authentication;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.RequestMapping;
@@ -17,6 +18,7 @@ import org.springframework.web.bind.annotation.ResponseBody;
 
 import com.my.dolduck.model.biz.BroadcastBiz;
 import com.my.dolduck.model.dto.BroadcastDto;
+import com.my.dolduck.model.dto.MemberDto;
 
 @Controller
 public class LiveController {
@@ -139,15 +141,20 @@ public class LiveController {
 	
 	//온에어- 입장(Caster)
 	@RequestMapping("start-onair.do")
-	public String startLive(String live_caster, String live_title, String startingTime) {
+	public String startLive(String live_caster, String live_title, String startingTime, Model model, Authentication auth) {
 		System.out.println("["+live_caster+"]님이 "+startingTime+"에 "+ live_title + "으로 방송시작!");
 		BroadcastDto dto = new BroadcastDto();
 		dto.setBroadcast_caster(live_caster);
 		dto.setBroadcast_title(live_title);
 		dto.setBroadcast_date(startingTime);
+		System.err.println(dto.getBroadcast_date());
 		int res = b_biz.insert(dto);
 		System.err.println("라이브 시작! 일정추가하기 : " + res);
+
 		if(res>0) {
+			MemberDto caster = (MemberDto)auth.getPrincipal();
+			model.addAttribute("caster", caster);
+			model.addAttribute("live", dto);
 			return "live/live-onair-caster";
 		}else {
 			return "redirect:live-onair.do";
@@ -156,13 +163,17 @@ public class LiveController {
 	
 	//온에어 - 입장(User)
 	@RequestMapping("join-onair.do")
-	public String joinLive() {
-		return "";
+	public String joinLive(@RequestParam String room, Model model, Authentication auth) {
+		MemberDto dto = (MemberDto)auth.getPrincipal();
+		model.addAttribute("dto", dto);
+		
+		return "live/live-onair-user";
 	}
 	
 	//채널보기
 	@RequestMapping("live-channel.do")
-	public String liveChannel() {
+	public String liveChannel() {	
+		
 		return "live/live-channel";
 	}
 	
