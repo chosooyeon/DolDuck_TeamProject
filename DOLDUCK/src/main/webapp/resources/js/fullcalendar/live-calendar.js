@@ -1,6 +1,12 @@
 	//console.log(`token: ${token} / header: ${header}`)
 
 	var _events = getEventList()
+	var rect = {
+		width : $('.container').width(),
+		height : $('.container').height()
+	}
+	var cooridinate
+	
 	
 	document.addEventListener('DOMContentLoaded', function() {
 		
@@ -18,9 +24,17 @@
             eventLimit: true , 					// allow "more" link when too many events
             events : _events, 
             eventClick : function(info){
-            	console.log('Id: ' + info.event.id)
-            	console.log('Event: ' + info.event.title);
-            	console.log('Date : ' + info.event.start + ' ~ ' + info.event.end)
+            	//console.log(info.event)
+            	//console.log('Id: ' + info.event.id)
+            	//console.log(`(x,y) : (${coordinate.posiX},${coordinate.posiY})`)
+            	var eventInfo = {
+            		caster : info.event.title.split('-')[0],
+            		title : info.event.title.split('-')[1],
+            		date : info.event.start,
+            		time : info.event.end
+            	}
+            	console.log(eventInfo)
+            	popOverEventDetails(eventInfo)
             },
             eventBackgroundColor : 'cornflowerblue',
             eventBorderColor : 'cornflowerblue',
@@ -48,49 +62,6 @@
 		return list;
 	}
 	
-	
-
-	//일정추가
-//	var addLiveInfoBtn = document.getElementById('btn-addLiveInfo')
-//
-//	addLiveInfoBtn.addEventListener('click', function(){
-//		var caster = $('input[name=live_caster]').val(),
-//			title = $('input[name=live_title]').val(),
-//			start_date = $('input[name=live_start_date]').val(),
-//			start_hour = handleTimeFormat('hour',document.getElementsByName('live_start_hour')[0].value),
-//			start_min = handleTimeFormat('minute',document.getElementsByName('live_start_min')[0].value),
-//			date = `${start_date} ${start_hour}:${start_min}`
-//		
-//		$.ajax({
-//			type : 'POST',
-//			url : 'addevent.do',
-//			data : {
-//					caster : caster,
-//					title : title,
-//					start_date : start_date,
-//					start_hour : start_hour,
-//					start_min : start_min
-//			},
-//			beforeSend : function(xhr){
-//				xhr.setRequestHeader(header, token)
-//			},success : function(data){
-//				switch(data){
-//				case 'succeed':
-//					$('.modal-body').toggle()
-//					alert('저장되었습니다!')
-//					location.href='live-schedule.do'
-//					break;
-//				case 'failed':
-//					alert('일정추가에 실패하였습니다! 새로고침 후 다시 시도해주세요!')
-//					break;	
-//				}
-//			}, error : function(e){
-//				console.log(e)
-//			}
-//		})
-//		
-//	})
-
 	function handleLiveBoard(){
 		$.ajax({
 			type : 'POST', 
@@ -128,4 +99,31 @@
 		}
 
 	}
+	
+	function popOverEventDetails(info){
+    	$('#popover_event_caster').text(info.caster)
+    	$('#popover_event_title').text(info.title)
+    	$('#popover_event_date').text(`날짜 : ${info.date}`)
+    	$('.popOver_details').attr('style', `top:${coordinate.posiY}px; left:${coordinate.posiX}px;`)
+    	$('.popOver_details').show()
+	}
+	
+	$('#popover_close_icon').on('click', function(){
+		$('.popOver_details').hide()
+	})
+	
+	$('body').mousemove(function(e){
+		coordinate = {
+			posiX : e.clientX-50,
+			posiY : e.clientY-100
+		}
+	})
+	
+	
+	
+	
+	
+	
+	
+	
 	

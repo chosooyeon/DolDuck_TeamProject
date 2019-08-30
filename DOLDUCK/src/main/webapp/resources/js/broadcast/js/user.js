@@ -195,7 +195,3 @@ function onChatSubmit(){
     }
 }
 
-
-
-
-
