@@ -12,7 +12,7 @@
 <style type="text/css">
 img#kakao-login-btn {
 	width: 240px;
-	/* padding-left: 30px; */
+	margin-bottom: 6px;
 	height: 50px;
 }
 </style>
@@ -64,5 +64,6 @@ img#kakao-login-btn {
 			</div>
 		</div>
 	</div>
+<%@include file="../footer.jsp"%>
 </body>
 </html>

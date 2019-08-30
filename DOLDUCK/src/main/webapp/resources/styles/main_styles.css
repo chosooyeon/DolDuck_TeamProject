@@ -1251,7 +1251,7 @@ svg{
 	margin-top: 300px;
 }
 .login .login_table{
-    height: 345px;
+    height: 500px;
     text-align: -webkit-center;
     padding: 36px;
     border-radius: .25rem;
@@ -1282,6 +1282,9 @@ svg{
     border: 5px solid #ffa550;
     border-radius: .25rem;
     padding: .375rem .75rem;
+}
+.snsLogin{
+	height: auto;
 }
 /*******************
 	  회원가입
