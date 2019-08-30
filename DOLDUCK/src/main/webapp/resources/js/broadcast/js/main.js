@@ -1,5 +1,4 @@
 //var socket = io.connect('https://192.168.10.169:5571')
-
 //var startLiveBtn = document.getElementById('startLiveBtn')
 
 
@@ -17,7 +16,7 @@ $(function(){
         console.log(rooms)
         if(rooms.length == 0){
         	$('#channel-item').html('')
-            $('#channel-item').append(`<li>개설된 방이 없습니다!</li>`)
+            $('#channel-item').append($(`<li>`).html(`<p class="no-live-room">아직 방송중인 방이 없습니다!</p>`))
         }else{
             addRoomList(rooms)
         }
@@ -61,6 +60,12 @@ function appendRoom(item){
                     </li>`
     $('ul').append(roomUnit)
 }
+
+/*startLiveBtn.addEventListener('click', () =>{
+    var ran = parseInt(Math.random()*9999999999)
+    location.href = 'https://localhost:5571/caster/${ran}'
+})
+*/
 
 reloadBtn.addEventListener('click', ()=>{
 	console.log('룸 목록 새로고침!')

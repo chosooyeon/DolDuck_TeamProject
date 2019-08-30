@@ -44,6 +44,7 @@ $(document).on('click', '.video-item-thumb', function(){
 
 $(document).on('click', '.toggle-start-live', function(){
 	$('input[name=startingTime]').val(getTime())
+	$('input[name=room_number]').val(parseInt(Math.random()*9999999999))
 })
 
 

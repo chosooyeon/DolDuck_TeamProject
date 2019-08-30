@@ -1,11 +1,8 @@
 function sendEmail(){
 
+
 		var id = $('#id').val();
 		var email = $('#email').val();
-		
-		console.log("pw!!");
-		console.log(id);
-		console.log(email);
 		
 		if(id == null || id == ""){
 			alert('아이디를 확인해주세요')
@@ -19,10 +16,6 @@ function sendEmail(){
 				success:function(data){
 					var pwSearch = data.pwSearch
 					var pw = data.pw
-
-					console.log(pwSearch);
-					console.log(pw);
-					
 					if(pwSearch == true){
 						$(function(){
 							$('#checkModal').html(`
