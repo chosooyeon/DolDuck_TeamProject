@@ -204,12 +204,5 @@ public class LiveController {
 		return "live/certification";
 	}
 	
-	@RequestMapping("/error.do")
-	public String error(@RequestParam String kind) {
-		
-		return kind;
-		
-	}
-	
 
 }

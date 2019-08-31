@@ -192,4 +192,11 @@ public class HomeController {
 		
 		return "utils/translate";
 	}
+	
+	@RequestMapping("/error.do")
+	public String error(Model model,@RequestParam String kind) {
+		System.out.println(kind);
+		model.addAttribute("kind", kind);
+		return "error";
+	}
 }
