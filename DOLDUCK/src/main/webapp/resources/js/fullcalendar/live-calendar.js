@@ -62,6 +62,10 @@
 		return list;
 	}
 	
+<<<<<<< HEAD
+=======
+
+>>>>>>> master
 	function handleLiveBoard(){
 		$.ajax({
 			type : 'POST', 
@@ -98,8 +102,18 @@
 				break;
 		}
 
+
+	}
+
+	document.onmousemove = function(e){
+		cooridnate = {
+			posiX = e.clientX,
+			posiY = e.clientY	
+		}
+		console.log(`(x,y) =>  (${coordinate.posiX} , ${coordinate.posiY})`)
 	}
 	
+<<<<<<< HEAD
 	function popOverEventDetails(info){
     	$('#popover_event_caster').text(info.caster)
     	$('#popover_event_title').text(info.title)
@@ -112,12 +126,31 @@
 		$('.popOver_details').hide()
 	})
 	
+	$('#event-alram-btn').on('click', function(){
+		alert('서비스 준비중입니다...')
+	})
+	
 	$('body').mousemove(function(e){
 		coordinate = {
 			posiX : e.clientX-50,
 			posiY : e.clientY-100
 		}
 	})
+=======
+	
+	function popOverEventDetail(Info){
+		
+		var top = (coordinate.posiX/window.width)*100,
+			left = (coordinate.posiY/winodw.height)*100
+		
+			
+	}
+	
+	
+	
+	
+	
+>>>>>>> master
 	
 	
 	

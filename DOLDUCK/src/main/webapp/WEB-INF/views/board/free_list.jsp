@@ -11,13 +11,22 @@
 <%-- <meta name="_csrf" content="${_csrf.token}"/> --%>
 <%-- <meta name="_csrf_header" content="${_csrf.headerName}"/> --%>
 	<meta name="viewport" content="width=device-width, initial-scale=1">
-<title>Insert title here</title>
+<title>All About K-POP! DolDuck - 자유게시판</title>
+<style>
+.freeboard-top-banner{
+	background-image: url('');
+	background-repeat: no-repeat;
+	background-size: cover;
+	height: auto;
+	width: 100%;
+}
+</style>
 </head>
 <body>
 <%@ include file="../header.jsp" %>
 
 	<div class="container freeboard">
-	<h1 class="text-center">처돌이</h1>
+	<div><img class="freeboard-top-banner" src="resources/images/banner-freeboard.png"></div>
 	<button type="button" id="btn-board" onclick="freeInsertLogin()">글작성</button>
 	
 	<c:choose>
