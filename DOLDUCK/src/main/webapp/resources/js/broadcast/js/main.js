@@ -35,7 +35,7 @@ function addRoomList(list){
 function appendRoom(item){
     var roomUnit = `<li class="channel-box">
     					<div>
-	    			        <a href="join-onair.do?room=${item.room}">
+	    			        <a onclick="checkLoginStatus(${item.room})">
 	                        	<img src="${item.thumb}" width="228" height="128">
 	                    	</a>
                     	</div>
@@ -48,40 +48,21 @@ function appendRoom(item){
     $('#channel-item').append(roomUnit)
 }
 
-/*<li class="channel-box">
-<div>
-    <a href="join-onair.do?room=${item.room}">
-    	<img src="${item.thumb}" width="228" height="128">
-	</a>
-</div>
-<div class="channel-info">
-	<div>
-		<p><a href="/user/${item.room}>[${item.caster}] ${item.title}</a></p>
-	</div>
-	<div>
-        <p>${item.date}</p>
-        <p>${item.caster}</p>
-	</div>
-    <div>
-	<!-- 접속자수 -->
-    <span>
-        <span>＠</span>
-        <span>Test</span>
-        </span>
-              <!-- 좋아요 수 -->
-        <span>
-        <span>♥</span>
-        <span>Test</span>
-        </span>
-    </div>
-</div>
-</li>`
+function checkLoginStatus(room){
+	$.ajax({
+		type : 'post',
+		url : 'login-status.do',
+		success : function(res){
+			if(res == 'true'){
+				loaction.href=`join-onair.do?room=${room}`
+			}else {
+				alert('로그인이 필요한 페이지입니다')
+				locatio.href='login.do'
+			}
+		}
+	})
+}
 
-/*startLiveBtn.addEventListener('click', () =>{
-    var ran = parseInt(Math.random()*9999999999)
-    location.href = 'https://localhost:5571/caster/${ran}'
-})
-*/
 
 reloadBtn.addEventListener('click', ()=>{
 	console.log('룸 목록 새로고침!')

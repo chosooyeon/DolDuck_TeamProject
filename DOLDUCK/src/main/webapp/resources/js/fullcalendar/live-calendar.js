@@ -112,6 +112,10 @@
 		$('.popOver_details').hide()
 	})
 	
+	$('#event-alram-btn').on('click', function(){
+		alert('서비스 준비중입니다...')
+	})
+	
 	$('body').mousemove(function(e){
 		coordinate = {
 			posiX : e.clientX-50,
