@@ -93,7 +93,7 @@
 					<li class="active"><a href="home.do">HOME</a></li>
 					<li><a href="youtube.do">YouTube</a></li>
 					<li><a href="vote.do">Vote</a></li>
-					<li><a href="chart.do">Music Chart</a></li>
+					<li><a href="chart.do">MusicChart</a></li>
 					<li><a href="live-home.do">LIVE</a></li>
 					<li><a href="free_list.do">Board</a></li>
 					<li class="dropdown"><a class="dropdown-toggle" data-toggle="dropdown">Market</a>
@@ -147,7 +147,7 @@
 					<ul
 						class="d-flex flex-column align-items-start justify-content-start">
 						<li><a href="home.do">HOME</a></li>
-						<li><a href="youtube.do">You Tube</a></li>
+						<li><a href="youtube.do">YouTube</a></li>
 						<li><a href="vote.do">Vote</a></li>
 						<li><a href="chart.do">MusicChart</a></li>
 						<li><a href="live-home.do">LIVE</a></li>
@@ -162,23 +162,31 @@
 	<!-- Quick Menu -->
 	<aside class="quick_icon">
 		<ul>
-			<li><a class="icon-chat-circle"><i
-					class="fas fa-broadcast-tower fa-2x"
-					style="color: white; z-index: 20;"></i></a> <input type="hidden"
-				name="quick-menu" value="onair"></li>
-			<li><a class="icon-chat-circle" href="void:0;"><i
-					class="fas fa-atlas fa-2x" style="color: white; z-index: 20;"></i></a>
-				<input type="hidden" name="quick-menu" value="translate"></li>
-			<li><a class="icon-chat-circle" href="void:0;"><i
-					class="fab fa-twitter-square fa-2x"
-					style="color: white; z-index: 20;"></i></a> <input type="hidden"
-				name="quick-menu" value="twits"></li>
-			<li><a class="icon-chat-circle" href="void:0;"><i
-					class="fas fa-comments fa-2x" style="color: white; z-index: 20;"></i></a>
-				<input type="hidden" name="quick-menu" value="chat"></li>
-			<li><a class="icon-chat-circle"
-				onclick="$('html').animate({scrollTop : 0})"><i
-					class="fas fa-arrow-up fa-2x" style="color: white; z-index: 20;"></i></a>
+			<li>
+				<a class="icon-chat-circle">
+					<i class="fas fa-broadcast-tower fa-2x" style="color: white; z-index: 20;"></i>
+				</a> 
+				<input type="hidden" name="quick-menu" value="onair">
+			</li>
+			<li>
+				<a class="icon-chat-circle" href="void:0;">
+					<i class="fas fa-atlas fa-2x" style="color: white; z-index: 20;"></i>
+				</a>
+				<input type="hidden" name="quick-menu" value="translate">
+			</li>
+			<li><a class="icon-chat-circle" href="void:0;">
+					<i class="fab fa-twitter-square fa-2x" style="color: white; z-index: 20;"></i>
+				</a> 
+				<input type="hidden" name="quick-menu" value="twits">
+			</li>
+			<li><a class="icon-chat-circle" href="void:0;">
+					<i class="fas fa-comments fa-2x" style="color: white; z-index: 20;"></i>
+				</a>
+				<input type="hidden" name="quick-menu" value="chat">
+			</li>
+			<li><a class="icon-chat-circle" onclick="$('html').animate({scrollTop : 0})">
+					<i class="fas fa-arrow-up fa-2x" style="color: white; z-index: 20;"></i>
+				</a>
 			</li>
 		</ul>
 	</aside>
@@ -187,8 +195,7 @@
 
 	<div class="quick-menu-frame" style="display: none;">
 		<div id="quickframe-close-btn">
-			<i class="fas fa-times fa-2x"
-				style="color: #fff; padding: 8px; float: right;"></i>
+			<i class="fas fa-times fa-2x" style="color: #fff; padding: 8px; float: right;"></i>
 		</div>
 		<div id="quickframe-frame-area">
 			<iframe id="qucik-iframe" src=""></iframe>

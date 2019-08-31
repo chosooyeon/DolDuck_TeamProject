@@ -20,7 +20,10 @@
    <!-- <button type="button" id="btn-board" onclick="location.href='free_insertform.do'">글작성</button> -->
    <c:choose>
       <c:when test="${empty list }">
-         <h3>게시글이 없습니다....</h3>      </c:when>
+		<div class="not_board">
+			<h3>---- 등록 된 게시글이 없습니다 ----</h3>
+		</div>      
+      </c:when>
       <c:otherwise>
          <table class="table">
             <col width="70">
