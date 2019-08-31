@@ -24,12 +24,13 @@ function roleUpdate(role) {
 	return role;
 }
 
-/*
+
 $(document).ready(function(){
 	$("#upgrade").click(function(){
 		var grade = $("#item option:selected").val();
-		var id = ?;
+		var id = $("#item option:selected").val();
 		alert(grade);
+		alert(id);
 		$.ajax({
 			type : 'post' ,
 			url : 'role_update.do',
@@ -45,7 +46,7 @@ $(document).ready(function(){
 	});
 });
 })
-
+/*
 $.ajax({
    type : 'post' ,
    url : 'update-grade.do',
