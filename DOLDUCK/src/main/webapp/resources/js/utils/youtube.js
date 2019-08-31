@@ -8,9 +8,6 @@
 	  	//youtube게시판 초기화 -> 1theK Channel
 	    var init = getVideoList("PLID4CZACkMJTQGYm6R0Gc4yk_CKZIZKdv");
 	    init;
-	    //button-channel div Element 클릭 이벤트 발생시
-	    //div의 자식요소인 videoId classd의 값을 받아와
-	    //재생목록 표시
       	$(document).on('click', '.button-channel', function(){
       		var videoId = $(this).children('.videoId').val();
       		getVideoList(videoId);
