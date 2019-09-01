@@ -145,7 +145,11 @@ public class LoginController {
 		int res = biz.deleteMember(userDetails.getUsername());
 		System.out.println(res);
 
-		return "home";
+		if(res>0) {
+			alert("회원탈퇴가 완료되었습니다♥");
+		}
+		
+		return "redirect:/logout.do";
 	}
 
 	/* @RequestMapping(value = "role_update.do", method = {RequestMethod.POST}) */
@@ -722,4 +726,7 @@ public class LoginController {
 		}
 	}
 
+	public void alert(String msg) {
+		msg = "<script type='text/javascript'>" + " alert('" + msg + "');" + "</script>";
+	}
 }

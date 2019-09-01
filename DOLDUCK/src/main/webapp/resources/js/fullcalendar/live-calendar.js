@@ -75,7 +75,6 @@
 		})
 		return list;
 	}
-	
 	function handleLiveBoard(){
 		$.ajax({
 			type : 'POST', 
@@ -146,6 +145,13 @@
 			posiY : e.clientY-80
 		}
 	})
+	function popOverEventDetail(Info){
+		
+		var top = (coordinate.posiX/window.width)*100,
+			left = (coordinate.posiY/winodw.height)*100
+		
+			
+	}
 
 	
 	

@@ -68,8 +68,9 @@
 						<li><a href="${pageContext.request.contextPath}/login.do">Login</a></li>
 					</sec:authorize>
 					<sec:authorize access="hasAnyRole('ROLE_USER','ROLE_ARTIST')">
+					<sec:authentication var="user" property="principal" />
 						<li class="dropdown"><a class="dropdown-toggle"
-							data-toggle="dropdown">님</a>
+							data-toggle="dropdown">${user.username }님</a>
 							<ul class="dropdown-menu" role="menu">
 								<li class="dropdown-item:hover"><a href="logout.do">Logout</a></li>
 								<li class="dropdown-item:hover"><a
@@ -78,7 +79,7 @@
 					</sec:authorize>
 					<sec:authorize access="hasRole('ROLE_ADMIN')">
 						<li class="dropdown"><a class="dropdown-toggle"
-							data-toggle="dropdown">님</a>
+							data-toggle="dropdown">admin님</a>
 							<ul class="dropdown-menu" role="menu">
 								<li class="dropdown-item:hover"><a href="logout.do">Logout</a></li>
 								<li class="dropdown-item:hover"><a
