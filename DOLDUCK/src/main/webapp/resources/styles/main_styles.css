@@ -884,7 +884,7 @@ svg{
 	padding-left: 51px;
 	padding-right: 52px;
 }
-.dol_now{
+.dol_now, .ranking{
 	font-size: 16px;
 	color: rgb(255, 255, 255);
 	text-align: center;

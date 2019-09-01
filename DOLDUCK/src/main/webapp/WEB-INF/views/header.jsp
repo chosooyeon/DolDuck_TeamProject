@@ -182,6 +182,15 @@
 			</li>
 			<li><a class="icon-chat-circle" href="void:0;">
 					<i class="fas fa-comments fa-2x" style="color: white; z-index: 20;"></i>
+					<sec:authorize access="isAnonymous()">
+						<input type="hidden" name="loginstatus-role" value="not-signed">
+					</sec:authorize>
+					<sec:authorize access="hasRole('ROLE_USER')">
+						<input type="hidden" name="loginstatus-role" value="user">
+					</sec:authorize>
+					<sec:authorize access="hasRole('ROLE_ADMIN')">
+						<input type="hidden" name="loginstatus-role" value="admin">
+					</sec:authorize>
 				</a>
 				<input type="hidden" name="quick-menu" value="chat">
 			</li>
@@ -199,7 +208,7 @@
 			<i class="fas fa-times fa-2x" style="color: #fff; padding: 8px; float: right;"></i>
 		</div>
 		<div id="quickframe-frame-area">
-			<iframe id="qucik-iframe" src=""></iframe>
+			<iframe id="quick-iframe" src=""></iframe>
 		</div>
 	</div>
 
@@ -207,6 +216,10 @@
 </body>
 <script src="https://code.jquery.com/jquery-3.4.1.min.js"></script>
 <script src="resources/js/header.js"></script>
+<!-- SweetAlert 2 -->
+<script src="sweetalert2/dist/sweetalert2.all.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/sweetalert2@8"></script>
+<script src="https://cdn.jsdelivr.net/npm/promise-polyfill"></script>
 <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js"></script>
 <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js"></script>
 <script src="resources/styles/bootstrap-4.1.2/popper.js"></script>
