@@ -758,7 +758,9 @@ public class LoginController {
 					"</script>");
 		} catch (IOException e) {
 			e.printStackTrace();
-		}	}
+		}	
+	}
+
 }
 
 
