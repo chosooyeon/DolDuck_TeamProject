@@ -40,7 +40,7 @@
       loop: 무한반복
       muted:음소거
       -->   
-      		<img alt="" src="resources/images/kangdaniel-image.GIF">
+      		<img alt="" src="resources/images/kangdaniel-image.GIF" style="width:100%;">
       		<!-- 강다니엘 뮤직비디오 -->
             <!-- <video autoplay loop muted="muted">
             	<source src="resources/videos/kang.mp4" type="video/mp4">

@@ -144,7 +144,7 @@ function votePopup(popUrl){
 }
 
 var nowDate = new Date().getTime()
-var endDate = new Date('2019-09-30 11:59:59').getTime()
+var endDate = new Date('2019-09-30 23:59:59').getTime()
 var remainedDate = endDate - nowDate
 console.log(`remainedDate : ${remainedDate}`)
 
@@ -159,7 +159,7 @@ function setDeadlineTimeOut(){
 	 
 	$('#timer-timeout-day').text(days)
 	$('#timer-timeout-time').text(`${hours}:${minutes}:${seconds}`)
-	console.log(`${hours}:${minutes}:${seconds}`)
+	//console.log(`${hours}:${minutes}:${seconds}`)
 	if (remainedDate < 0) {      
 	    // 시간이 종료 되었으면..
 	    clearInterval(tid);   // 타이머 해제
