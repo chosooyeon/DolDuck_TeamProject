@@ -9,16 +9,23 @@ $(document).on('click', '#quickframe-close-btn', function(){
 					location.href = 'live-onair.do'
 					break;
 				case 'translate':
-					$('#qucik-iframe').attr('src','https://192.168.10.169:8787/dolduck/translate.do')
+					$('#quick-iframe').attr('src','https://192.168.10.169:8787/dolduck/translate')
 					//'https://192.168.10.169:3000/translate-form'
 					$('.quick-menu-frame').show()
 					break;
 				case 'twits':
-					$('#qucik-iframe').attr('src','https://192.168.10.169:3000/twits')
+					$('#quick-iframe').attr('src','https://192.168.10.169:3000/twits')
 					$('.quick-menu-frame').show()
 					break;
 				case 'chat':
-					$('#qucik-iframe').attr('src','https://192.168.10.169:3000')
+					var userStatus = $('input[name=loginstatus-role]').val()
+					switch(userStatus){
+					case 'user':
+						$('#quick-iframe').attr('src','https://192.168.10.169:3000')
+						break;
+					case 'admin':
+						$('#quick-iframe')
+					}
 					$('.quick-menu-frame').show()
 					break;
 				}
