@@ -20,7 +20,7 @@
                  $('input[name=id]').attr('value',kakaoid);
                  $('input[name=name]').attr('value',kakaoname);
                  
-                 document.write('<form action="logincontroller.do" id="sub_form" method="post">'+
+                 document.write('<form action="kakao.do" id="sub_form" method="post">'+
                          '<input type="hidden" name="command" value="kakao">'+
                          '<input type="hidden" name="id" value="'+kakaoid+'">'+
                          '<input type="hidden" name="name" value="'+kakaoname+'">'+

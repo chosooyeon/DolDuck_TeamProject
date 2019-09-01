@@ -18,7 +18,7 @@ public interface MemberBiz {
 	public MemberDto loginChk(String id, String pw);
 	public int register(Map<String, String> map);
 	public MemberJoinDto idCheck(String id);
-	public int updateRole(MemberDto dto);
+	public int updateRole(String role, String id);
 	public int updateMember(Map<String, String> map);
 	public int updateUserPw(MemberDto dto);
 	public SelectDto idSearch(String name, String email);
