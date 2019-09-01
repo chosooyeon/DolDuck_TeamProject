@@ -83,7 +83,7 @@
 						</tr>
 						<tr>
 							<td>
-								<input class="form-control" type="text" class="text" name="ranNum" placeholder="이메일 인증번호" required/>
+								<input class="form-control" type="text" class="text" name="ranNum" id="email" placeholder="이메일 인증번호" required readonly="readonly"/>
 								<input type="button" id="ranChk" value="인증번호확인" onclick="ranNumChk()"/>
 								<div id="samesame"></div>
 								<div id="emailChkConfirm"></div>

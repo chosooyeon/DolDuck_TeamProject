@@ -40,6 +40,7 @@
 		
 				success:function(data){
 					alert("이메일 전송 완료")
+					$("#email").attr("readonly", false);
 					$("input[name=code]").change(function(){
 						if($("input[name=code]").val()==data){
 							$("div[id=confirm]").html('');
@@ -82,7 +83,7 @@
 						$("div[id=emailChkConfirm]").html('');
 						document.getElementById("samesame").innerHTML = "인증번호가 일치합니다";
 						document.getElementById("samesame").style.color = "blue";
-						$(".form-control").prop("disabled", "disabled");
+						$("#email").prop("disabled", "disabled");
 					}
 				}
 			},
