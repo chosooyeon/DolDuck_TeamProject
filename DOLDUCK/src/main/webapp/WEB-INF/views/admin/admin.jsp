@@ -43,7 +43,7 @@
 							<th>Vote</th>
 							<th>Enabled</th>
 							<th>Authority</th>
-							<th>Regdate</th>
+							<th colspan="2" align="center">Regdate</th>
 						</tr>
 						<c:choose>
 							<c:when test="${empty list}">
@@ -58,26 +58,26 @@
 										<td class="seq">${dto.member_seq }</td>
 										<td>${dto.member_name }</td>
 										<td>${dto.member_id }</td>
+										<script type="text/javascript">
+										var id = "<c:out value="${dto.member_id } "></c:out>"
+										</script>
 										<td>${dto.member_phone }</td>
 										<td>${dto.member_email }</td>
 										<td>${dto.member_addr }</td>
 										<td>${dto.member_heart }</td>
 										<td>${dto.member_vote }</td>
+										<td>${dto.member_role }</td>
 									<c:if test="${dto.member_role eq 'ROLE_USER' || dto.member_role eq 'ROLE_ARTIST'}">
 									
 									<c:if test="${dto.member_role eq 'ROLE_USER'}">
-										<td><select name="item">
-												<option>${dto.member_role }</option>
-												<option>ROLE_ARTIST</option>
-										</select>
-										</td>
+										<script type="text/javascript">
+										var role = "<c:out value="${'ROLE_ARTIST'}"></c:out>"
+										</script>
 									</c:if>
 									<c:if test="${dto.member_role eq 'ROLE_ARTIST'}">
-										<td><select name="item">
-												<option>${dto.member_role }</option>
-												<option>ROLE_USER</option>
-										</select>
-										</td>
+										<script type="text/javascript">
+										var role = "<c:out value="${'ROLE_USER'}"></c:out>"
+										</script>
 									</c:if>
 									</c:if>
 									

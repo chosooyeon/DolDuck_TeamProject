@@ -18,6 +18,18 @@
 
    <div class="container vote_board">
    	  <div class="vote-banner" style="background-image: url('resources/images/vote-top-banner.png');"></div>
+   	  <div class="vote-timer">
+   	  		<div id="vote-top-main">9월 투표 진행중</div>
+   	  		<div><span id="vote-top-question"> 커플 코트를 걸치고 함께 떠나고싶은 스타는? </span></div>
+   	  		<div id="vote-top-duration">투표기간 : 2019.09.01~2019.09.30</div>
+   	  		<div>
+   	  			<h1>
+	   	  			<span>투표 마감까지 남은시간 </span>
+	   	  			<span id="timer-timeout-day"></span>일&nbsp;
+	   	  			<span id="timer-timeout-time"></span>
+   	  			</h1>
+   	  		</div>
+   	  </div>
       <div class="center">   
    	<div class="div-star">
             <ul class="vote-button">
@@ -62,7 +74,6 @@
 <script src="resources/styles/bootstrap-4.1.2/bootstrap.min.js"></script>
 <script src="resources/js/utils/vote.js?ver=1" type="text/javascript"></script>
 <script src="//developers.kakao.com/sdk/js/kakao.min.js"></script>
-<!-- <script src="resources/js/utils/kakaoshare.js" type="text/javascript"></script> -->
 <script type="text/javascript">
 var url = 'https://192.168.10.169:8443/dolduck/vote.do'
 

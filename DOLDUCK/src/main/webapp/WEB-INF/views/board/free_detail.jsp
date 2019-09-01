@@ -10,7 +10,7 @@
 <%-- <meta name="_csrf" content="${_csrf.token}"/> --%>
 <%-- <meta name="_csrf_header" content="${_csrf.headerName}"/> --%>
 
-<title>Insert title here</title>
+<title>All About K-POP! DolDuck - 자유게시판</title>
 </head>
 <body>
 <%@ include file="../header.jsp" %>

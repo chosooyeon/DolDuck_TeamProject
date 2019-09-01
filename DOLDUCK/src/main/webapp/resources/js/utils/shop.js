@@ -41,8 +41,13 @@ $(function(){
 						$('.modal').hide()
 						location.href = 'heartShop.do'
 					} else {								// Payment Failed
-						alert('결제실패 : ' + response.error_msg);
+						Swal.fire({
+							type : 'error', 
+							title: 'Error',
+							text : '결제실패 : ' + response.error_msg
+						});
 					}
+					
 				})
 			}else if(kindOf == 'vote'){
 				ajaxPurchase('buy-vote.do', amount, price)
@@ -51,8 +56,14 @@ $(function(){
 			}
 		
 		}else if(login_status == 'false'){
-			alert('로그인이 필요한 서비스입니다!')
-			location.href = 'login.do'
+			//alert('로그인이 필요한 서비스입니다!')
+			Swal.fire({
+				type : 'error',
+				title : '알 림',
+				text : '로그인이 필요한 서비스입니다!\n'
+			}).then(function(){
+				location.href = 'login.do'
+			})
 		}
 	})
 	
@@ -89,13 +100,21 @@ function ajaxPurchase(comm, amount, price){
 		success : function(msg){
 			console.log(msg)
 			if(msg == 'succeed'){
-				alert('투표권 구매성공!')
+				Swal.fire({
+					type : 'success',
+					titlte :'투표권 구매성공!',
+					text : `투표권 ${amount}개 구매에 성공하셨습니다!`
+				})
 			}
 			$('.modal').modal('hide')
 			
 		},error : function(err){
 			console.log(err)
-			alert('[err] 네트워크오류! - ', err)
+			Swal.fire({
+				type : 'error',
+				title : 'Error',
+				text : '네트워크오류. 다시 시도해주세요 '
+			})
 		}
 	})
 }

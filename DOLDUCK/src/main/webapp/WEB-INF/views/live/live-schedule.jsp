@@ -15,6 +15,43 @@
 <link rel="stylesheet" href="resources/js/fullcalendar/bootstrap/main.css">
 <link href='https://use.fontawesome.com/releases/v5.0.6/css/all.css' rel='stylesheet'>
 <link href='https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css' rel='stylesheet' />
+<style>
+.popOver_details{
+    width: 180px;
+    height: 220px;
+    border: 1px solid #ccc;
+    border-radius: 6px;
+    box-shadow: 2px 2px 5px #414141;
+    padding: 6px;
+    position: absolute;
+    z-index: 50;
+    background-color: #fff;
+    display: none;
+}
+#popover_close_icon{
+	float: right;
+    font-size: 20px;
+    width: 100%;
+    z-index:5;
+    text-align: right;
+    cursor: pointer;
+}
+#popover_event_detail_info{
+	width:100%;
+}
+#popover_event_caster{
+	text-align: center; 
+	font-size: 17px; 
+	font-weight: 600;
+	color: #007bff;
+}
+#popover_event_title{
+	text-align: center;
+	color: #414141;
+	
+}
+</style>
+
 </head>
 <body>
     <!-- Header -->
@@ -51,10 +88,28 @@
      
      <!-- Calendar Area-->
      <div class="container">
+       <!-- popover -->
+       <!-- <div class="popOver_details" >
+     	  <div id="popover_close_icon"><i class="fas fa-times" style="color: #414141; float: left;"></i></div>
+     	  <div id="popover_event_detail_info">
+     		<div>
+     			<div id="popover_event_caster"></div>
+	     		<div id="popover_event_title"></div>
+	     		<div id="popover_event_date" style="margin-top: 5px; font-size: 14px;"></div>
+     		</div>
+     		<div style="text-align: center; margin-top: 1.5em;">
+     			<button type="button" class="btn btn-info" id="event-alram-btn">알람예약</button>
+     		</div>
+     	   </div>
+ 	 	</div> -->
+ 	 	<!-- Calendar -->
         <div class="center calendar-box">
 		    <div id="calendar"></div>
        </div>
      </div>
+     
+     
+     
      
      
      <!-- AddEvent Modal -->
@@ -118,6 +173,10 @@
     <%@include file="/WEB-INF/views/footer.jsp" %>
     
     <script src="https://code.jquery.com/jquery-3.4.1.min.js"></script>
+	<!-- SweetAlert 2 -->
+	<script src="sweetalert2/dist/sweetalert2.all.min.js"></script>
+	<script src="https://cdn.jsdelivr.net/npm/sweetalert2@8"></script>
+	<script src="https://cdn.jsdelivr.net/npm/promise-polyfill"></script>
     <script src="resources/js/utils/live.js"></script>
     <script src="resources/js/fullcalendar/core/main.js"></script>
     <script src="resources/js/fullcalendar/daygrid/main.js"></script>
@@ -125,5 +184,6 @@
     <script src="resources/js/fullcalendar/interaction/main.js"></script>
     <script src="resources/js/fullcalendar/bootstrap/main.js"></script>
     <script src="resources/js/fullcalendar/live-calendar.js"></script>
+    
 </body>
 </html>

@@ -202,10 +202,16 @@ public class MemberDaoImpl implements MemberDao {
 	}
 	
 	@Override
-	public int updateRole(MemberDto dto) {
+	public int updateRole(String role, String id) {
 		int res = 0;
-		res = sqlSession.update(namespace+"updateRole",dto);
+		Map<String, Object> map = new HashMap<String, Object>();
+		map.put("member_role", role);
+		map.put("member_id", id);
+		System.out.println("id: "+id);
+		System.out.println("role: "+role);
 		
+		res = sqlSession.update(namespace+"updateRole",map);
+		System.out.println(res);
 		return res;
 	}
 	

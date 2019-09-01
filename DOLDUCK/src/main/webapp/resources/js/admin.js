@@ -24,28 +24,27 @@ function roleUpdate(role) {
 	return role;
 }
 
-/*
+
 $(document).ready(function(){
 	$("#upgrade").click(function(){
-		var grade = $("#item option:selected").val();
-		var id = ?;
-		alert(grade);
+		alert(role);
+		alert(id);
 		$.ajax({
 			type : 'post' ,
 			url : 'role_update.do',
-			data : {"grade":grade,"id":id},
+			data : {"role":role,"id":id},
 			dataType : 'text',
 			success : function(data){
-				alert(data)
+				alert(data);
 				//성공했을때 동작
 			},error: function(){
-				alert('네트워크 오류')
+				alert('네트워크 오류');
 				// 실패했을때 동작
 			}
 	});
 });
 })
-
+/*
 $.ajax({
    type : 'post' ,
    url : 'update-grade.do',
