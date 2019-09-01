@@ -76,7 +76,7 @@
 							<th>등급</th>
 						</tr>
 						<tr>
-							<td><div id="member_addr">${dto.member_addr}</div></td>
+							<td><div id="member_addr">${dto.member_role}</div></td>
 						</tr>
 						<tr>
 							<th>하트수량</th>
