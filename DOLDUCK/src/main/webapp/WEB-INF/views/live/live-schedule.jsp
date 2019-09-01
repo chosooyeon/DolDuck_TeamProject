@@ -89,7 +89,7 @@
      <!-- Calendar Area-->
      <div class="container">
        <!-- popover -->
-       <div class="popOver_details" >
+       <!-- <div class="popOver_details" >
      	  <div id="popover_close_icon"><i class="fas fa-times" style="color: #414141; float: left;"></i></div>
      	  <div id="popover_event_detail_info">
      		<div>
@@ -101,7 +101,7 @@
      			<button type="button" class="btn btn-info" id="event-alram-btn">알람예약</button>
      		</div>
      	   </div>
- 	 	</div>
+ 	 	</div> -->
  	 	<!-- Calendar -->
         <div class="center calendar-box">
 		    <div id="calendar"></div>
@@ -173,6 +173,10 @@
     <%@include file="/WEB-INF/views/footer.jsp" %>
     
     <script src="https://code.jquery.com/jquery-3.4.1.min.js"></script>
+	<!-- SweetAlert 2 -->
+	<script src="sweetalert2/dist/sweetalert2.all.min.js"></script>
+	<script src="https://cdn.jsdelivr.net/npm/sweetalert2@8"></script>
+	<script src="https://cdn.jsdelivr.net/npm/promise-polyfill"></script>
     <script src="resources/js/utils/live.js"></script>
     <script src="resources/js/fullcalendar/core/main.js"></script>
     <script src="resources/js/fullcalendar/daygrid/main.js"></script>
@@ -180,5 +184,6 @@
     <script src="resources/js/fullcalendar/interaction/main.js"></script>
     <script src="resources/js/fullcalendar/bootstrap/main.js"></script>
     <script src="resources/js/fullcalendar/live-calendar.js"></script>
+    
 </body>
 </html>

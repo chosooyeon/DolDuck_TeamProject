@@ -53,9 +53,8 @@
             				frameborder="0" allowfullscreen="allowfullscreen" mozallowfullscreen="mozallowfullscreen"
             				msallowfullscreen="msallowfullscreen" oallowfullscreen="oallowfullscreen" webkitallowfullscreen="webkitallowfullscreen"></iframe></div>
             				<div class="div-player-content">
-            				<a class="a-player-title"href="https://www.youtube.com/watch?v=${items.snippet.resourceId.videoId}">${items.snippet.title}</a><br/>
-            				videoId : ${items.snippet.resourceId.videoId}<br/>
-            				publishedAt : ${items.snippet.publishedAt}<br/><div>
+            				<a class="a-player-title"href="https://www.youtube.com/watch?v=${items.snippet.resourceId.videoId}">${items.snippet.title}</a>
+            				</div>
             				</div>`); 
                 }
             },

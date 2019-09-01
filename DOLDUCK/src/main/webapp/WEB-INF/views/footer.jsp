@@ -36,7 +36,7 @@
                   <li><a href="https://github.com/WeeSBin/Outflearn">1. Outflearn</a></li>
                   <li><a href="#">2. CIWorld</a></li>
                   <li><a href="https://github.com/jaewon0913/Final_Project">3. Neodo Nado</a></li>
-                  <li><a href="https://github.com/rodumani1012/FourRest">4. Forest</a></li>
+                  <li><a href="https://github.com/rodumani1012/FourRest">4. Fourest</a></li>
                </ul>
             </div>
 
