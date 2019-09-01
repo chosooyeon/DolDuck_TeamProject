@@ -5,7 +5,7 @@
 		width : $('.container').width(),
 		height : $('.container').height()
 	}
-	var cooridinate
+	var coordinate
 	
 	
 	document.addEventListener('DOMContentLoaded', function() {
@@ -24,17 +24,31 @@
             eventLimit: true , 					// allow "more" link when too many events
             events : _events, 
             eventClick : function(info){
-            	//console.log(info.event)
-            	//console.log('Id: ' + info.event.id)
-            	//console.log(`(x,y) : (${coordinate.posiX},${coordinate.posiY})`)
-            	var eventInfo = {
-            		caster : info.event.title.split('-')[0],
-            		title : info.event.title.split('-')[1],
-            		date : info.event.start,
-            		time : info.event.end
+            	var eventInfo = info.event.title.split(' ')
+            	var dateInfo = info.event.start.toString().split(' ')
+            	
+            	var item = {
+            		caster : eventInfo[0],
+            		title : eventInfo[1],
+            		year : dateInfo[3],
+            		month : dateInfo[1],
+            		day : dateInfo[2],
+            		date : dateInfo[0],
+            		time : dateInfo[4]
             	}
-            	console.log(eventInfo)
-            	popOverEventDetails(eventInfo)
+
+            	Swal.fire({
+            		  type : "info",
+            		  html : `  <div id="popover_event_detail_info">
+					     		<div>
+					     			<div style="font-size:25px; font-weight:bold;margin-bottom:15px;">일정 상세보기</div>
+					     			<div id="popover_event_caster">채  널: ${item.caster}</div>
+						     		<div id="popover_event_title">타이틀: ${item.title}</div>
+						     		<div id="popover_event_date" style="margin-top: 5px; font-size: 16px;">
+						     			<p>방송일정: ${item.year}/${item.month}/${item.day} ${item.time}</p>
+						     		</div>
+					     		</div>`	
+            	});
             },
             eventBackgroundColor : 'cornflowerblue',
             eventBorderColor : 'cornflowerblue',
@@ -101,14 +115,15 @@
 	}
 
 	document.onmousemove = function(e){
-		cooridnate = {
-			posiX = e.clientX,
-			posiY = e.clientY	
+		coordinate = {
+			posiX : e.clientX,
+			posiY : e.clientY	
 		}
-		console.log(`(x,y) =>  (${coordinate.posiX} , ${coordinate.posiY})`)
+		//console.log(`(x,y) =>  (${coordinate.posiX} , ${coordinate.posiY})`)
 	}
 	
 	function popOverEventDetails(info){
+		
     	$('#popover_event_caster').text(info.caster)
     	$('#popover_event_title').text(info.title)
     	$('#popover_event_date').text(`날짜 : ${info.date}`)
@@ -126,8 +141,8 @@
 	
 	$('body').mousemove(function(e){
 		coordinate = {
-			posiX : e.clientX-50,
-			posiY : e.clientY-100
+			posiX : e.clientX-80,
+			posiY : e.clientY-80
 		}
 	})
 	function popOverEventDetail(Info){

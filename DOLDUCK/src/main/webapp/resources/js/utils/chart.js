@@ -8,7 +8,7 @@
 
 	$(document).on('click', '.button-channel', function(){
 		var site = $(this).children().val()
-		console.log(`Scraping Chart From.... <<${site}>>`)
+			start = 0, end = 30
 		$('tbody').html('')
 		
 		chartlist = getMusicChart(site)
@@ -27,22 +27,15 @@
 
 
 function getMusicChart(site){
-	//var token = $("meta[name='_csrf']").attr("content");
-	//var header = $("meta[name='_csrf_header']").attr("content");
-	//console.log(`token : ${token} / header :  ${header}`)
 
 	var list;
 
-   //console.log(token, ' // ' , header); 
-   $.ajax({
+	$.ajax({
       type : 'POST',
       url : 'musicsearch.do',
       data : { 'site' : site },
       dataType : 'json',
       async : false ,
-//      beforeSend: function( xhr ) {
-//         xhr.setRequestHeader(header, token);
-//      },
       success : function(data){
          $('.label-search').text(data.getTime);
          list = data.chart;
