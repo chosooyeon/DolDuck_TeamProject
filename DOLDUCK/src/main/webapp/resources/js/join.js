@@ -60,7 +60,7 @@
 	}
 	
 	function ranNumChk(){
-		var ranNumPass = $("input[name=ranNum").val();
+		var ranNumPass = $("input[name=ranNum]").val();
 		
 		$.ajax({
 			url:"emailCheck.do",
@@ -69,16 +69,20 @@
 			success:function(data){
 				if(ranNumPass == null || ranNumPass == ""){
 					ranNumChk = false;
-					$("div[id=confirm").html('<b>인증번호를 입력해 주세요</b>');
+					$("div[id=confirm]").html('<b>인증번호를 입력해 주세요</b>');
 				}else{
 					if(data.ranChk != true){
 						ranNumChk = false;
 						$("div[id=emailChkConfirm]").html('');
-						$("div[id=confirm").html('<b style="color:red;">인증번호 확인 실패</b>');
+						document.getElementById("samesame").innerHTML = "인증번호가 일치하지 않습니다";
+						document.getElementById("samesame").style.color = "red";
+						
 					}else{
 						ranNumChk = true;
 						$("div[id=emailChkConfirm]").html('');
-						$("div[id=confirm").html('<b style="color:green;">인증번호 확인 완료</b>');
+						document.getElementById("samesame").innerHTML = "인증번호가 일치합니다";
+						document.getElementById("samesame").style.color = "blue";
+						$(".form-control").prop("disabled", "disabled");
 					}
 				}
 			},

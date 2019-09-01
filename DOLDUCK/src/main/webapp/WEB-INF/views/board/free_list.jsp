@@ -8,9 +8,7 @@
 <script type="text/javascript" src="https://code.jquery.com/jquery-3.4.1.js"></script>
 <script type="text/javascript" src="resources/js/freeboard.js"></script>
 <meta charset="UTF-8">
-<%-- <meta name="_csrf" content="${_csrf.token}"/> --%>
-<%-- <meta name="_csrf_header" content="${_csrf.headerName}"/> --%>
-	<meta name="viewport" content="width=device-width, initial-scale=1">
+<meta name="viewport" content="width=device-width, initial-scale=1">
 <title>All About K-POP! DolDuck - 자유게시판</title>
 <style>
 .freeboard-top-banner{
@@ -55,7 +53,7 @@
 					<tr align="center">
 
 						<td>${dto.freeboard_num }</td>						
-						<td align="left"><a href="free_detail.do?freeboard_num=${dto.freeboard_num}">${dto.freeboard_title }</a></td>
+						<td align="left"><a href="#" onclick="freeDetailLogin(${dto.freeboard_num})">${dto.freeboard_title }</a></td>
 
 
 						<td>${dto.freeboard_id }</td>

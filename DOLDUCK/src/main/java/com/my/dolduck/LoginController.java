@@ -155,9 +155,20 @@ public class LoginController {
 	/* @RequestMapping(value = "role_update.do", method = {RequestMethod.POST}) */
 	@PostMapping("role_update.do")
 	@ResponseBody
-	public Map<String, Boolean> roleUpdate(String role) {
-		Map<String, Boolean> map = new HashMap<String, Boolean>();
-		return map;
+	public String roleUpdate(@RequestParam String role, @RequestParam String id) {
+		System.out.println("들어왔따");
+		System.err.println(role);
+		System.err.println(id);
+		String result ="";
+		
+		int res = biz.updateRole(role, id);
+		if(res>0) {
+			result="succeed";
+		}else {
+			result="failed";
+		}
+		
+		return result;
 
 	}
 
@@ -726,7 +737,8 @@ public class LoginController {
 		}
 	}
 
-	public void alert(String msg) {
+	public String alert(String msg) {
 		msg = "<script type='text/javascript'>" + " alert('" + msg + "');" + "</script>";
+		return msg;
 	}
 }

@@ -89,8 +89,8 @@ public class MemberBizImpl implements MemberBiz {
 		return dao.purchaseVote(amount, id);
 	}
 
-	public int updateRole(MemberDto dto) {
-		return dao.updateRole(dto);
+	public int updateRole(String role, String id) {
+		return dao.updateRole(role, id);
 	}
 
 	@Override
