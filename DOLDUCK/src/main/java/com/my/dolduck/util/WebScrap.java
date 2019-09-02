@@ -52,7 +52,6 @@ public class WebScrap{
 			Document doc = Jsoup.connect("https://music.bugs.co.kr/chart").get();
 			Elements rows = doc.select("tr");
 			
-			System.err.println("ListSize : " + rows.size());
 			for(int i=1 ; i<rows.size() ; ++i){
 				Element ele = rows.get(i);
 				Music song = new Music();
@@ -79,8 +78,6 @@ public class WebScrap{
 	public List<Music> getGenieChart(){
 		
 		List<Music> chart = new ArrayList<Music>();
-		//https://www.genie.co.kr/chart/top200?pg=1
-		//https://www.genie.co.kr/chart/top200?pg=2
 		
 		try {
 			for(int a=1 ; a<3 ; a++) {

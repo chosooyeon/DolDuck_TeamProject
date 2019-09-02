@@ -1,6 +1,12 @@
 	//console.log(`token: ${token} / header: ${header}`)
 
 	var _events = getEventList()
+	var rect = {
+		width : $('.container').width(),
+		height : $('.container').height()
+	}
+	var coordinate
+	
 	
 	document.addEventListener('DOMContentLoaded', function() {
 		
@@ -18,9 +24,31 @@
             eventLimit: true , 					// allow "more" link when too many events
             events : _events, 
             eventClick : function(info){
-            	console.log('Id: ' + info.event.id)
-            	console.log('Event: ' + info.event.title);
-            	console.log('Date : ' + info.event.start + ' ~ ' + info.event.end)
+            	var eventInfo = info.event.title.split(' ')
+            	var dateInfo = info.event.start.toString().split(' ')
+            	
+            	var item = {
+            		caster : eventInfo[0],
+            		title : eventInfo[1],
+            		year : dateInfo[3],
+            		month : dateInfo[1],
+            		day : dateInfo[2],
+            		date : dateInfo[0],
+            		time : dateInfo[4]
+            	}
+
+            	Swal.fire({
+            		  type : "info",
+            		  html : `  <div id="popover_event_detail_info">
+					     		<div>
+					     			<div style="font-size:25px; font-weight:bold;margin-bottom:15px;">일정 상세보기</div>
+					     			<div id="popover_event_caster">채  널: ${item.caster}</div>
+						     		<div id="popover_event_title">타이틀: ${item.title}</div>
+						     		<div id="popover_event_date" style="margin-top: 5px; font-size: 16px;">
+						     			<p>방송일정: ${item.year}/${item.month}/${item.day} ${item.time}</p>
+						     		</div>
+					     		</div>`	
+            	});
             },
             eventBackgroundColor : 'cornflowerblue',
             eventBorderColor : 'cornflowerblue',
@@ -47,50 +75,6 @@
 		})
 		return list;
 	}
-	
-	
-
-	//일정추가
-//	var addLiveInfoBtn = document.getElementById('btn-addLiveInfo')
-//
-//	addLiveInfoBtn.addEventListener('click', function(){
-//		var caster = $('input[name=live_caster]').val(),
-//			title = $('input[name=live_title]').val(),
-//			start_date = $('input[name=live_start_date]').val(),
-//			start_hour = handleTimeFormat('hour',document.getElementsByName('live_start_hour')[0].value),
-//			start_min = handleTimeFormat('minute',document.getElementsByName('live_start_min')[0].value),
-//			date = `${start_date} ${start_hour}:${start_min}`
-//		
-//		$.ajax({
-//			type : 'POST',
-//			url : 'addevent.do',
-//			data : {
-//					caster : caster,
-//					title : title,
-//					start_date : start_date,
-//					start_hour : start_hour,
-//					start_min : start_min
-//			},
-//			beforeSend : function(xhr){
-//				xhr.setRequestHeader(header, token)
-//			},success : function(data){
-//				switch(data){
-//				case 'succeed':
-//					$('.modal-body').toggle()
-//					alert('저장되었습니다!')
-//					location.href='live-schedule.do'
-//					break;
-//				case 'failed':
-//					alert('일정추가에 실패하였습니다! 새로고침 후 다시 시도해주세요!')
-//					break;	
-//				}
-//			}, error : function(e){
-//				console.log(e)
-//			}
-//		})
-//		
-//	})
-
 	function handleLiveBoard(){
 		$.ajax({
 			type : 'POST', 
@@ -127,5 +111,49 @@
 				break;
 		}
 
+
 	}
+
+	document.onmousemove = function(e){
+		coordinate = {
+			posiX : e.clientX,
+			posiY : e.clientY	
+		}
+		//console.log(`(x,y) =>  (${coordinate.posiX} , ${coordinate.posiY})`)
+	}
+	
+	function popOverEventDetails(info){
+		
+    	$('#popover_event_caster').text(info.caster)
+    	$('#popover_event_title').text(info.title)
+    	$('#popover_event_date').text(`날짜 : ${info.date}`)
+    	$('.popOver_details').attr('style', `top:${coordinate.posiY}px; left:${coordinate.posiX}px;`)
+    	$('.popOver_details').show()
+	}
+	
+	$('#popover_close_icon').on('click', function(){
+		$('.popOver_details').hide()
+	})
+	
+	$('#event-alram-btn').on('click', function(){
+		alert('서비스 준비중입니다...')
+	})
+	
+	$('body').mousemove(function(e){
+		coordinate = {
+			posiX : e.clientX-80,
+			posiY : e.clientY-80
+		}
+	})
+	function popOverEventDetail(Info){
+		
+		var top = (coordinate.posiX/window.width)*100,
+			left = (coordinate.posiY/winodw.height)*100
+		
+			
+	}
+
+	
+	
+	
 	

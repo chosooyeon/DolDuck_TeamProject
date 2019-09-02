@@ -78,7 +78,7 @@ public class LiveController {
 			String[] DateTime = dto.getBroadcast_date().split(" ");
 			
 			event.put("id", dto.getBroadcast_seq());
-			event.put("title", dto.getBroadcast_caster() + "-" + dto.getBroadcast_title());
+			event.put("title", "["+dto.getBroadcast_caster() + "] " + dto.getBroadcast_title());
 			event.put("start", DateTime[0]+"T"+DateTime[1]);
 			event.put("end", DateTime[0]+"T"+"23:00");
 			event.put("allDay", false);
@@ -202,13 +202,6 @@ public class LiveController {
 	@RequestMapping("certification.do")
 	public String certification() {
 		return "live/certification";
-	}
-	
-	@RequestMapping("/error.do")
-	public String error(@RequestParam String kind) {
-		
-		return kind;
-		
 	}
 	
 

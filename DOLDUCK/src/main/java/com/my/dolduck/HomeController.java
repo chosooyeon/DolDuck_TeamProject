@@ -43,7 +43,6 @@ public class HomeController {
 
 	@RequestMapping(value = "/home.do", method = {RequestMethod.POST, RequestMethod.GET})
 	public String home(Locale locale, Model model) {
-		System.out.println(" ");
 		logger.info("Welcome home! The client locale is {}.", locale);
 		
 		Date date = new Date();
@@ -191,5 +190,12 @@ public class HomeController {
 		model.addAttribute("outputQuery",outputQuery);
 		
 		return "utils/translate";
+	}
+	
+	@RequestMapping("/error.do")
+	public String error(Model model,@RequestParam String kind) {
+		System.out.println(kind);
+		model.addAttribute("kind", kind);
+		return "error";
 	}
 }

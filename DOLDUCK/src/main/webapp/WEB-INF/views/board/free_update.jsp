@@ -4,10 +4,7 @@
 <html>
 <head>
 <meta charset="UTF-8">
-<%-- <meta name="_csrf" content="${_csrf.token}"/> --%>
-<%-- <meta name="_csrf_header" content="${_csrf.headerName}"/> --%>
-
-<title>Insert title here</title>
+<title>All About K-POP! DolDuck - 자유게시판(수정)</title>
 </head>
 <!-- include libraries(jQuery, bootstrap) -->
 <link href="https://netdna.bootstrapcdn.com/bootstrap/3.3.5/css/bootstrap.css" rel="stylesheet">

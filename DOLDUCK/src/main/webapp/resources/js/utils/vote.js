@@ -1,53 +1,47 @@
 ﻿
 $(document).ready(function(){
+		
+	
    var voteChart, start = 0, end = 100
 
    $('tbody').children().remove();
    item = 'star-idol';
    voteChart = voteCrawling(item);
    paginationOfList(voteChart, start, end, item)
+   
 })
 
+	//클릭 이벤트
    $(document).on('click', '.girl-group', function(){
       $('tbody').children().remove();
       start = 0, end = 100, item = 'girl-group';
       voteChart = voteCrawling(item);
       
       paginationOfList(voteChart, start, end, item)
-   });
-
-   $(document).on('click', '.girl-idol', function(){
+   }).on('click', '.girl-idol', function(){
       $('tbody').children().remove();
       start = 0, end = 100, item = 'girl-idol';
       voteChart = voteCrawling(item);
       
       paginationOfList(voteChart, start, end, item)
-   });
-   
-   $(document).on('click', '.new-idol', function(){
+   }).on('click', '.new-idol', function(){
       $('tbody').children().remove();
       start = 0, end = 100, item = 'new-idol';
       voteChart = voteCrawling(item);
       paginationOfList(voteChart, start, end, item)
-   });
-   
-   $(document).on('click', '.star-idol', function(){
+   }).on('click', '.star-idol', function(){
       $('tbody').children().remove();
       start = 0, end = 100, item = 'star-idol';
       voteChart = voteCrawling(item);
       
       paginationOfList(voteChart, start, end, item)
-   });
-   
-   $(document).on('click', '.boy-group', function(){
+   }).on('click', '.boy-group', function(){
       $('tbody').children().remove();
       start = 0, end = 100, item = 'boy-group';
       voteChart = voteCrawling(item);   
 
       paginationOfList(voteChart, start, end, item)
-   });
-   
-   $(document).on('click', '.boy-idol', function(){
+   }).on('click', '.boy-idol', function(){
       $('tbody').children().remove();
       start = 0, end = 100, item = 'boy-idol'
       voteChart = voteCrawling(item);   
@@ -56,32 +50,13 @@ $(document).ready(function(){
    });
 
 
+
 function paginationOfList(voteChart, start, end, item){
    // 오름차순 정렬
    voteChart.sort(function(a,b){
       return b["voteNumber"] - a["voteNumber"];
    });
    
-   /*switch(item){
-   case 'star-idol':
-	   appendBody(start, end, item)
-	   break;
-   case 'girl-group':
-	   appendBody(start, end, item)
-	   break;
-   case 'girl-idol':
-	   appendBody(start, end, item)
-	   break;
-   case 'new-idol':
-	   appendBody(start, end, item)
-	   break;
-   case 'boy-group':
-	   appendBody(start, end, item)
-	   break;
-   case 'boy-idol':
-	   appendBody(start, end, item)
-	   break;
-   }*/
    if(item == 'girl-group'){
 	   appendBody(start, end, voteChart)
    }else if(item == 'girl-idol'){
@@ -167,3 +142,65 @@ function votePopup(popUrl){
    var popOption = "width=500, height=500, status=no, toolbar=no;";
    window.open(popUrl,"",popOption);
 }
+
+var nowDate = new Date().getTime()
+var endDate = new Date('2019-09-30 23:59:59').getTime()
+var remainedDate = endDate - nowDate
+console.log(`remainedDate : ${remainedDate}`)
+
+   //setInterval('setDeadlineTimeOut()',1000);
+setInterval(setDeadlineTimeOut, 1000)
+   
+function setDeadlineTimeOut(){
+	var seconds = handleTimeFormat('second', Math.floor((remainedDate % (1000 * 60)) / 1000))
+	var minutes = handleTimeFormat('minute', Math.floor((remainedDate % (1000 * 60 * 60)) / (1000*60)))
+	var hours = handleTimeFormat('hour', Math.floor((remainedDate % (1000 * 60 * 60 * 24)) / (1000*60*60)))
+	var days =  Math.floor((remainedDate % (1000 * 60 * 60 * 24 * 30)) / (1000*60*60*24))
+	 
+	$('#timer-timeout-day').text(days)
+	$('#timer-timeout-time').text(`${hours}:${minutes}:${seconds}`)
+	//console.log(`${hours}:${minutes}:${seconds}`)
+	if (remainedDate < 0) {      
+	    // 시간이 종료 되었으면..
+	    clearInterval(tid);   // 타이머 해제
+	}else{
+		remainedDate = remainedDate - 1000; // 남은시간 -1초
+	}
+}
+
+function handleTimeFormat(type, data){
+		
+		switch(type){
+		case 'hour':
+				if(data >24){
+					return '00'
+				}else if(data >= 0 && data <10){
+					return '0'+data
+				}else{
+					return data
+				}
+				break;
+		case 'minute':
+				if(data > 60){
+					return '00'
+				}else if(data >= 0 && data <10){
+					return '0'+data
+				}else{
+					return data
+				}
+				break;
+		case 'second':
+			if(data > 60){
+				return '00'
+			}else if(data >= 0 && data <10){
+				return '0'+data
+			}else{
+				return data
+			}
+			break;
+		}
+
+
+	}
+
+
