@@ -16,13 +16,21 @@
 	function fregister_submit(f) {
 		var agree1 = document.getElementsByName("agree");
 		if (!agree1[0].checked) {
-			alert("회원가입약관의 내용에 동의하셔야 회원가입 하실 수 있습니다.");
+			Swal.fire({
+				type: 'error',
+				title : '알  림',
+				text : '회원가입약관의 내용에 동의해주세요'
+			});
 			agree1[0].focus();
 		}
 
 		var agree2 = document.getElementsByName("agree2");
 		if (!agree2[0].checked) {
-			alert("개인정보취급방침의 내용에 동의하셔야 회원가입 하실 수 있습니다.");
+			Swal.fire({
+				type: 'error',
+				title : '알  림',
+				text : '개인정보취급방침의 내용에 동의 동의해주세요'
+			});
 			agree2[0].focus();
 		}
 	}
@@ -31,15 +39,25 @@
 
 		var user_email = $("input[name=user_email]").val();
 		if(user_email == null || user_email == ""){
-			alert("이메일을 입력해 주세요");								
+			Swal.fire({
+				type: 'error',
+				title : '알  림',
+				text : '이메일을 입력해주세요'
+			});								
 		}else{
+			
+			Swal.fire({
+				type: 'success',
+				title : '이메일 인증메세지 전송!',
+				text : '이메일 전송은 약 최대 2~3분 소요될 수 있습니다.\n메일이 오지 않을 경우 재전송을 시도해주세요.'
+			});
+
 			$.ajax({
 				url:"sendEmail.do",
 				type:"GET",
 				data:"email="+user_email,
 		
 				success:function(data){
-					alert("이메일 전송 완료")
 					$("#email").attr("readonly", false);
 					$("input[name=code]").change(function(){
 						if($("input[name=code]").val()==data){
@@ -88,7 +106,11 @@
 				}
 			},
 			error:function(){
-				alert("이메일체크 에러")
+				Swal.fire({
+					type: 'error',
+					title : '알  림',
+					text : '이메일을 인증해주세요!'
+				});
 			}
 		})
 	}
@@ -97,7 +119,11 @@
 		
 		var user_id = $("input[name=user_id]").val();
 		if(user_id == null || user_id == ""){
-			alert("아이디를 입력하세요");
+			Swal.fire({
+				type: 'error',
+				title : '알  림',
+				text : '아이디를 입력해주세요'
+			});
 		}else{
 		
 			$.ajax({
@@ -116,7 +142,11 @@
 					}
 				},
 				error:function(){
-					alert("아이디 확인 실패");
+					Swal.fire({
+						type: 'error',
+						title : '알  림',
+						text : '아이디 확인 실패!'
+					});
 				}
 			});
 		}
@@ -171,19 +201,29 @@
 		var once = $("input[name=user_pw]").val();
 		var twice = $("input[name=user_pw02]").val();
 		if(once != twice){
-			$("div[id=pass_confirm]").html('비밀번호 같지 않습니다.');
+			$("div[id=pass_confirm]").attr('style','color:red;')
+			$("div[id=pass_confirm]").html('비밀번호가 일치하지 않습니다.');
 			$("div[id=pass_confirm]").val("");
 		}else{
-			$("div[id=pass_confirm]").html('비밀번호 같음 확인');
+			$("div[id=pass_confirm]").attr('style','color:blue;')
+			$("div[id=pass_confirm]").html('비밀번호 일치 확인');
 			pass_cfm = true;
 		}
 	}
 	
 	function formsubmit(){
 		if(grecaptcha.getResponse(widgetId1) != null && grecaptcha.getResponse(widgetId1) != "" && email_chk == true &&	id_chk == true && pass_chk == true && pass_cfm == true && nick_chk == true){
-			alert("회원가입 완료!");
+			Swal.fire({
+				type: 'success',
+				title : '회원가입 완료!',
+				text : '아이돌 덕후아지트 돌덕의 회원이 되신것을 진심으로 환영합니다!'
+			});
 			return true;
 		}
-		alert("다시 확인해 주세요!")
+		Swal.fire({
+			type: 'error',
+			title : '알  림',
+			text : '다시 확인해주세요'
+		});
 		return false;
 	}
