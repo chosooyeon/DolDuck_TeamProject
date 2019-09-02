@@ -68,8 +68,9 @@
 						<li><a href="${pageContext.request.contextPath}/login.do">Login</a></li>
 					</sec:authorize>
 					<sec:authorize access="hasAnyRole('ROLE_USER','ROLE_ARTIST')">
+					<sec:authentication var="user" property="principal" />
 						<li class="dropdown"><a class="dropdown-toggle"
-							data-toggle="dropdown">님</a>
+							data-toggle="dropdown">${user.username }님</a>
 							<ul class="dropdown-menu" role="menu">
 								<li class="dropdown-item:hover"><a href="logout.do">Logout</a></li>
 								<li class="dropdown-item:hover"><a
@@ -78,7 +79,7 @@
 					</sec:authorize>
 					<sec:authorize access="hasRole('ROLE_ADMIN')">
 						<li class="dropdown"><a class="dropdown-toggle"
-							data-toggle="dropdown">님</a>
+							data-toggle="dropdown">admin님</a>
 							<ul class="dropdown-menu" role="menu">
 								<li class="dropdown-item:hover"><a href="logout.do">Logout</a></li>
 								<li class="dropdown-item:hover"><a
@@ -93,7 +94,7 @@
 					<li class="active"><a href="home.do">HOME</a></li>
 					<li><a href="youtube.do">YouTube</a></li>
 					<li><a href="vote.do">Vote</a></li>
-					<li><a href="chart.do">Music Chart</a></li>
+					<li><a href="chart.do">MusicChart</a></li>
 					<li><a href="live-home.do">LIVE</a></li>
 					<li><a href="free_list.do">Board</a></li>
 					<li class="dropdown"><a class="dropdown-toggle" data-toggle="dropdown">Market</a>
@@ -147,7 +148,7 @@
 					<ul
 						class="d-flex flex-column align-items-start justify-content-start">
 						<li><a href="home.do">HOME</a></li>
-						<li><a href="youtube.do">You Tube</a></li>
+						<li><a href="youtube.do">YouTube</a></li>
 						<li><a href="vote.do">Vote</a></li>
 						<li><a href="chart.do">MusicChart</a></li>
 						<li><a href="live-home.do">LIVE</a></li>
@@ -162,23 +163,40 @@
 	<!-- Quick Menu -->
 	<aside class="quick_icon">
 		<ul>
-			<li><a class="icon-chat-circle"><i
-					class="fas fa-broadcast-tower fa-2x"
-					style="color: white; z-index: 20;"></i></a> <input type="hidden"
-				name="quick-menu" value="onair"></li>
-			<li><a class="icon-chat-circle" href="void:0;"><i
-					class="fas fa-atlas fa-2x" style="color: white; z-index: 20;"></i></a>
-				<input type="hidden" name="quick-menu" value="translate"></li>
-			<li><a class="icon-chat-circle" href="void:0;"><i
-					class="fab fa-twitter-square fa-2x"
-					style="color: white; z-index: 20;"></i></a> <input type="hidden"
-				name="quick-menu" value="twits"></li>
-			<li><a class="icon-chat-circle" href="void:0;"><i
-					class="fas fa-comments fa-2x" style="color: white; z-index: 20;"></i></a>
-				<input type="hidden" name="quick-menu" value="chat"></li>
-			<li><a class="icon-chat-circle"
-				onclick="$('html').animate({scrollTop : 0})"><i
-					class="fas fa-arrow-up fa-2x" style="color: white; z-index: 20;"></i></a>
+			<li>
+				<a class="icon-chat-circle">
+					<i class="fas fa-broadcast-tower fa-2x" style="color: white; z-index: 20;"></i>
+				</a> 
+				<input type="hidden" name="quick-menu" value="onair">
+			</li>
+			<li>
+				<a class="icon-chat-circle" href="void:0;">
+					<i class="fas fa-atlas fa-2x" style="color: white; z-index: 20;"></i>
+				</a>
+				<input type="hidden" name="quick-menu" value="translate">
+			</li>
+			<li><a class="icon-chat-circle" href="void:0;">
+					<i class="fab fa-twitter-square fa-2x" style="color: white; z-index: 20;"></i>
+				</a> 
+				<input type="hidden" name="quick-menu" value="twits">
+			</li>
+			<li><a class="icon-chat-circle" href="void:0;">
+					<i class="fas fa-comments fa-2x" style="color: white; z-index: 20;"></i>
+					<sec:authorize access="isAnonymous()">
+						<input type="hidden" name="loginstatus-role" value="not-signed">
+					</sec:authorize>
+					<sec:authorize access="hasRole('ROLE_USER')">
+						<input type="hidden" name="loginstatus-role" value="user">
+					</sec:authorize>
+					<sec:authorize access="hasRole('ROLE_ADMIN')">
+						<input type="hidden" name="loginstatus-role" value="admin">
+					</sec:authorize>
+				</a>
+				<input type="hidden" name="quick-menu" value="chat">
+			</li>
+			<li><a class="icon-chat-circle" onclick="$('html').animate({scrollTop : 0})">
+					<i class="fas fa-arrow-up fa-2x" style="color: white; z-index: 20;"></i>
+				</a>
 			</li>
 		</ul>
 	</aside>
@@ -187,18 +205,21 @@
 
 	<div class="quick-menu-frame" style="display: none;">
 		<div id="quickframe-close-btn">
-			<i class="fas fa-times fa-2x"
-				style="color: #fff; padding: 8px; float: right;"></i>
+			<i class="fas fa-times fa-2x" style="color: #fff; padding: 8px; float: right;"></i>
 		</div>
 		<div id="quickframe-frame-area">
-			<iframe id="qucik-iframe" src=""></iframe>
+			<iframe id="quick-iframe" src=""></iframe>
 		</div>
 	</div>
 
 
 </body>
 <script src="https://code.jquery.com/jquery-3.4.1.min.js"></script>
-<script src="resources/js/home.js"></script>
+<script src="resources/js/header.js"></script>
+<!-- SweetAlert 2 -->
+<script src="sweetalert2/dist/sweetalert2.all.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/sweetalert2@8"></script>
+<script src="https://cdn.jsdelivr.net/npm/promise-polyfill"></script>
 <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js"></script>
 <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js"></script>
 <script src="resources/styles/bootstrap-4.1.2/popper.js"></script>

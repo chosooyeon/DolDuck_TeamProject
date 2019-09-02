@@ -1,4 +1,4 @@
-<%@ page language="java" contentType="text/html; charset=UTF-8" pageEncoding="UTF-8"%>
+﻿<%@ page language="java" contentType="text/html; charset=UTF-8" pageEncoding="UTF-8"%>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
 <%@ taglib prefix="sec" uri="http://www.springframework.org/security/tags"%>
 <!DOCTYPE html>
@@ -10,7 +10,7 @@
 <%-- <meta name="_csrf" content="${_csrf.token}"/> --%>
 <%-- <meta name="_csrf_header" content="${_csrf.headerName}"/> --%>
 
-<title>Insert title here</title>
+<title>All About K-POP! DolDuck - 자유게시판</title>
 </head>
 <body>
 <%@ include file="../header.jsp" %>
@@ -19,37 +19,36 @@
       <div class="center">
    <h1 class="text-center">상세 보기</h1>
 
-			<table class="table">
-		<tr>
-			<th>글쓴이</th>
-			<td>${one.freeboard_id }</td>
-			<th>작성일</th>
-			<td>${one.freeboard_regdate }</td>
-		</tr>
-		<tr>
-			<th>제목</th>
-			<td colspan="3">${one.freeboard_title }</td>
-		</tr>
-		<tr>
-			<th height="200">내용</th>
-			<td colspan="3">${one.freeboard_content }
-				<img  onerror="this.style.display='none'" alt='' src="${pageContext.request.contextPath }/resources/uploadImage/${one.freeboard_file }">
-			</td>
-		</tr>
-		<tr>
-			<td colspan="4" align="right">
-			<input type="button" onclick="location.href='free_list.do'" value="목록">
-			<input type="button" value="수정" onclick="location.href='free_update.do?freeboard_num=${one.freeboard_num }'">
-			<input type="button" value="삭제" onclick="location.href='free_delete.do?num=${one.freeboard_num }'" style="margin-right:18px;">
-		</tr>
-	</table>
-	<br>
-	<table class="table_comment">
-		<c:forEach items="${commList }" var="one">
-					<td colspan="3">${one.freeboard_content }
-						<video width="320"height="240" preload="metadata" playsinline="" autoplay="" loop="" height="auto" controls>
-							<source src="${pageContext.request.contextPath }/resources/uploadImage/${one.freeboard_file} " />
-						</video>
+   <table class="table">
+
+      <tr>
+         <th>글쓴이</th>
+         <td>${one.freeboard_id }</td>
+         <th>작성일</th>
+         <td>${one.freeboard_regdate }</td>
+      </tr>
+      <tr>
+         <th>제목</th>
+         <td colspan="3">${one.freeboard_title }</td>
+      </tr>
+      <tr>
+         <th height="200">내용</th>
+            <td colspan="3">${one.freeboard_content }
+               <video width="320"height="240" preload="metadata" playsinline="" autoplay="" loop="" height="auto" controls>
+                     <source src="${pageContext.request.contextPath }/resources/uploadImage/${one.freeboard_file} " />
+                </video>
+           </td>
+      </tr>
+      <tr>
+         <td colspan="4" align="right">
+         <input type="button" onclick="location.href='free_list.do'" value="목록">
+         <input type="button" value="수정" onclick="location.href='free_update.do?freeboard_num=${one.freeboard_num }'">
+         <input type="button" value="삭제" onclick="location.href='free_delete.do?num=${one.freeboard_num }'" style="margin-right:18px;">
+      </tr>
+   </table>
+   <br>
+   <table class="table_comment">
+      <c:forEach items="${commList }" var="comm">
 
    <tr class="comment_border">
       <td style="width: 10%;">   
@@ -58,30 +57,12 @@
       <td id="comment_content${comm.freeboard_comment_num }" style="width: 63%;">
              ${comm.freeboard_comment_content } 
       </td>
-						<td colspan="3">${one.freeboard_content }
-							 <video width="320"height="240" preload="metadata" playsinline="" autoplay="" loop="" height="auto" controls>
-                     		 	<source src="${pageContext.request.contextPath }/resources/uploadImage/${one.freeboard_file} " />
-                  		     </video>
-						</td>
-				</tr>
-				<tr>
-					<td colspan="4" align="right">
-				 		<input type="button" onclick="location.href='free_list.do'" value="목록"> 
-						<input type="button" value="수정" onclick="location.href='free_update.do?freeboard_num=${one.freeboard_num }'">
-				 		<input type="button" value="삭제" 	onclick="location.href='free_delete.do?num=${one.freeboard_num }'" style="margin-right: 18px;">
-				 	</td>	
-				</tr>
-			</c:forEach>
-		</table>
-			<br>
-			<table class="table_comment">
-				<c:forEach items="${commList }" var="comm">
-					<tr>
-						<td>ID : ${comm.freeboard_id }</td>
-						<td id="comment_content${comm.freeboard_comment_num }">
-                     ${comm.freeboard_comment_content }
-                  </td>
-      <td style="width: 18%;">덧글작성시간 : ${comm.freeboard_comment_regdate }</td>
+
+      <td style="width: 18%;">   
+
+         댓글작성시간 : ${comm.freeboard_comment_regdate }
+      </td>
+      
       <td id="edit_btn">
          <input type="hidden" name="comm-num" value="${comm.freeboard_comment_num }">   
          <input type="hidden" name="comm-content" value="${comm.freeboard_comment_content}">

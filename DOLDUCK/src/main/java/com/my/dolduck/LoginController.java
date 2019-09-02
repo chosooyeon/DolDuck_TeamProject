@@ -4,6 +4,7 @@ import java.io.BufferedReader;
 import java.io.File;
 import java.io.IOException;
 import java.io.InputStreamReader;
+import java.io.PrintWriter;
 import java.io.UnsupportedEncodingException;
 import java.net.HttpURLConnection;
 import java.net.URL;
@@ -19,6 +20,7 @@ import javax.mail.MessagingException;
 import javax.mail.internet.InternetAddress;
 import javax.mail.internet.MimeMessage;
 import javax.servlet.http.HttpServletRequest;
+import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
 
 import org.json.simple.JSONObject;
@@ -38,7 +40,6 @@ import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 import org.springframework.security.web.WebAttributes;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
-import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
@@ -138,22 +139,37 @@ public class LoginController {
 
 	// 회원 탈퇴
 	@RequestMapping(value = "delete.do")
-	public String delete() {
+	public String delete(HttpServletResponse response) {
 		Object principal = SecurityContextHolder.getContext().getAuthentication().getPrincipal();
 		UserDetails userDetails = (UserDetails) principal;
 
 		int res = biz.deleteMember(userDetails.getUsername());
 		System.out.println(res);
 
-		return "home";
+		if(res>0) {
+			alert("success", "회원탈퇴가 완료되었습니다♥", response);
+		}
+		
+		return "redirect:/logout.do";
 	}
 
 	/* @RequestMapping(value = "role_update.do", method = {RequestMethod.POST}) */
 	@PostMapping("role_update.do")
 	@ResponseBody
-	public Map<String, Boolean> roleUpdate(String role) {
-		Map<String, Boolean> map = new HashMap<String, Boolean>();
-		return map;
+	public String roleUpdate(@RequestParam String role, @RequestParam String id) {
+		System.out.println("들어왔따");
+		System.err.println(role);
+		System.err.println(id);
+		String result ="";
+		
+		int res = biz.updateRole(role, id);
+		if(res>0) {
+			result="succeed";
+		}else {
+			result="failed";
+		}
+		
+		return result;
 
 	}
 
@@ -222,7 +238,7 @@ public class LoginController {
 	// 회원가입 페이지로 이동
 	@RequestMapping("register.do")
 	public String userInsert(@RequestParam String user_id, @RequestParam String user_pw, @RequestParam String user_name,
-			@RequestParam String user_email, @RequestParam String user_phone, @RequestParam String user_addr) {
+			@RequestParam String user_email, @RequestParam String user_phone, @RequestParam String user_addr, HttpServletResponse response) {
 
 		Map<String, String> map = new HashMap<String, String>();
 		map.put("member_id", user_id);
@@ -235,7 +251,13 @@ public class LoginController {
 		map.put("member_addr", user_addr);
 		map.put("member_email", user_email);
 
-		biz.insertUser(map);
+		int res = biz.insertUser(map);
+		
+		if(res>0) {
+			alert("success", "환영합니다! 아이돌 덕후아지트 '돌덕'의 회원이 되셨습니다!", response);
+		}else {
+			alert("error", "회원가입에 실패하였습니다! 다시 시도해주세요..!", response);
+		}
 
 		return "member/member_login";
 	}
@@ -722,4 +744,29 @@ public class LoginController {
 		}
 	}
 
+	static public void alert(String type, String msg, HttpServletResponse response) {
+		try {
+			PrintWriter out = response.getWriter();
+			
+			out.print("<script type='text/javascript'>" + 
+						"Swal.fire({+" +
+						"type : '"+ type +"'," + 
+						"title : '알 림'," +
+						"text : '"+ msg +"'" +
+						"})" +
+						"location.href ='login.do' " + 
+					"</script>");
+		} catch (IOException e) {
+			e.printStackTrace();
+		}	
+	}
+
 }
+
+
+
+
+
+
+
+

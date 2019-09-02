@@ -83,9 +83,9 @@
 						</tr>
 						<tr>
 							<td>
-								<input class="form-control" type="text" class="text" name="ranNum" placeholder="이메일 인증번호" required/>
+								<input class="form-control" type="text" class="text" name="ranNum" id="email" placeholder="이메일 인증번호" required readonly="readonly"/>
 								<input type="button" id="ranChk" value="인증번호확인" onclick="ranNumChk()"/>
-								<div id="confirm"></div>
+								<div id="samesame"></div>
 								<div id="emailChkConfirm"></div>
 							</td>
 						</tr>
@@ -260,7 +260,7 @@
 						</tr>
 						<tr>
 							<td align="center" valign="top"><textarea style="width: 98%"
-									rows=10 readonly class=ed>&#039;One Green Korea Movement&#039;은 (이하 &#039;단체&#039;는)
+									rows=10 readonly class=ed>&#039;DOLDuck&#039;은 (이하 &#039;단체&#039;는)
 고객님의 개인정보를 중요시하며, "정보통신망 이용촉진 및 정보보호"에 관한 법률을 준수하고 있습니다.
 
 단체는 개인정보취급방침을 통하여 고객님께서 제공하시는 개인정보가 어떠한 용도와 방식으로 이용되고 있으며, 개인정보보호를 위해 어떠한 조치가 취해지고 있는지 알려드립니다.
@@ -315,7 +315,7 @@
 						</tr>
 						<tr>
 							<td colspan="2" >
-								<input id="joinup" type="submit" value="회원가입"/>
+								<input id="joinup" type="submit" value="회원가입" onclick="formsubmit()"/>
 							</td>
 						</tr>
 					</table>
@@ -334,15 +334,28 @@
 			                    success: function(data) {
 			                        switch (data) {
 			                            case 0:
-			                                alert("자동 가입 방지 봇 통과");
+			                            	Swal.fire({
+			                    				type: 'error',
+			                    				title : '알  림',
+			                    				text : '자동 가입 방지 봇 통과'
+			                    			});
 			                                break;
 			 
 			                            case 1:
-			                                alert("자동 가입 방지 봇을 확인 한뒤 진행 해 주세요.");
+			                            	Swal.fire({
+			                    				type: 'error',
+			                    				title : '알  림',
+			                    				text : '자동 가입 방지 봇을 확인 한뒤 진행 해 주세요.'
+			                    			});
+			                            	
 			                                break;
 			 
 			                            default:
-			                                alert("자동 가입 방지 봇을 실행 하던 중 오류가 발생 했습니다. [Error bot Code : " + Number(data) + "]");
+			                            	Swal.fire({
+			                    				type: 'error',
+			                    				title : '알  림',
+			                    				text : '자동 가입 방지 봇을 실행 하던 중 오류가 발생 했습니다. [Error bot Code : ' + Number(data) + ']'
+			                    			});
 			                                break;
 			                        }
 			                    }
