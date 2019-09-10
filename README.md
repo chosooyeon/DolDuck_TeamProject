@@ -14,7 +14,7 @@
 ```
  * 구현 언어 : Java, JavaScrpit, jQuery, HTML5, CSS3, Jsp/Sevlet, Node.js
  * 사용 기술 : Ajax, WebRTC API, Socket.IO, 오픈 API( Kakao, Google, Twitter, WebNotification, KG이니스시스 ) 
- * 사용 도구 : Spring, Spring Security, MyBatis, ExpressJS, BootStrap4,<br>
+ * 사용 도구 : Spring, Spring Security, MyBatis, ExpressJS, BootStrap4,
              Eclipse, Oracle11g, Visual Studio Code
  ```
 
