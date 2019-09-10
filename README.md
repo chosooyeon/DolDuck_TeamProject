@@ -1,6 +1,6 @@
 # DolDuck_TeamProject
 :sparkles: 프로젝트명 : K-POP 아이돌 팬페이지_DolDuck<br>
-:sparkles: 팀원 : 한지수, 조수연, 정햇나라, 이영한, 박준용
+:sparkles: 팀원 : 한지수, 조수연, 정햇나라, 이영한, 박준용<br>
 :sparkles: 작업기간 : 2019.08.01 ~ 2019.08.31 (1개월)
 
 ## 사용기술
